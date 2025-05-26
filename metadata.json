@@ -1,0 +1,7 @@
+
+{
+  "name": "GINDEX",
+  "description": "An app to browse Ginocchi, track their PV, and manage status effects.",
+  "requestFramePermissions": [],
+  "prompt": ""
+}

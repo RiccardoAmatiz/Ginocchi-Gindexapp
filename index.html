@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/images/pittogramma_logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GINDEX</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&family=Rubik:wght@700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            rubik: ['Rubik', 'sans-serif'],
+            'roboto-mono': ['"Roboto Mono"', 'monospace'],
+          },
+          colors: {
+            categories: {
+              'Bilanciato': '#CDBB00',
+              'Fruttato': '#ca1828',
+              'Erbaceo': '#45AD63',
+              'Speziato': '#0072BB',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #000000;
+      color: #FFFFFF;
+      font-family: 'Roboto Mono', monospace;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Rubik', sans-serif;
+      font-weight: 700;
+    }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.6.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/"
+  }
+}
+</script>
+</head>
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html><link rel="stylesheet" href="index.css">
+<script src="index.tsx" type="module"></script>
