@@ -12,12 +12,18 @@ const HomePage: React.FC = () => {
         alt="Header GINDEX - Bottiglia di gin con occhio" 
         className="mb-8 rounded-lg shadow-xl w-full max-w-2xl object-contain"
       />
-      <h1 className="text-5xl font-rubik mb-4" style={{color: CATEGORY_COLORS.Bilanciato}}>GINDEX</h1>
+      <h1 className="text-5xl font-rubik mb-4 text-white">GINDEX</h1>
       <p className="text-xl mb-12 max-w-2xl text-gray-300">
         Colleziona, bevi, combatti!
       </p>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 w-full max-w-4xl">
+        <Link to="/gindex" className="w-full">
+          <Button variant="category" categoryColor={CATEGORY_COLORS.Speziato} className="w-full">
+            Tutti i Ginocchi
+          </Button>
+        </Link>
+
         <a 
           href="https://ginocchi-twiubso.gamma.site/" 
           target="_blank" 
@@ -51,11 +57,6 @@ const HomePage: React.FC = () => {
           </Button>
         </a>
         
-        <Link to="/gindex" className="w-full">
-          <Button variant="category" categoryColor={CATEGORY_COLORS.Speziato} className="w-full">
-            Gindex
-          </Button>
-        </Link>
       </div>
     </div>
   );

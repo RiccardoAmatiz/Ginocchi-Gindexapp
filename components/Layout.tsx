@@ -21,10 +21,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               onError={(e) => (e.currentTarget.style.display = 'none')} 
             />
           </Link>
-          <div className="space-x-4">
-            <Link to="/" className="hover:text-categories-Speziato transition-colors">Home</Link>
-            <Link to="/gindex" className="hover:text-categories-Erbaceo transition-colors">Gindex</Link>
-          </div>
+          {/* Navigation links removed as per request */}
         </nav>
       </header>
       
@@ -43,7 +40,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       </div>
 
       <footer className="w-full p-4 text-center text-sm text-gray-500">
-        © {new Date().getFullYear()} GINDEX
+        © {new Date().getFullYear()} Ginocchi - GGC
       </footer>
     </div>
   );
