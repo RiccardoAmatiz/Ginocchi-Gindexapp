@@ -12,7 +12,8 @@ interface StatusToggleButtonProps {
 const StatusToggleButton: React.FC<StatusToggleButtonProps> = ({ effectName, isActive, onToggle, color }) => {
   const [imageError, setImageError] = useState(false);
   // Use encodeURIComponent to handle spaces in effectName for the URL
-  const iconSrc = `/images/status/${encodeURIComponent(effectName)}.png`;
+  // Corrected path to use /images/Status/ (capital S)
+  const iconSrc = `/images/Status/${encodeURIComponent(effectName)}.png`;
 
   // Reset imageError if effectName changes (e.g., if component is reused in a list and key doesn't change)
   useEffect(() => {
