@@ -75,9 +75,9 @@ const SchedaGinocchioPage: React.FC = () => {
               <tbody>
                 {ginocchio.attacchi.map((attacco: Attacco, index: number) => (
                   <tr key={index} className="border-b border-gray-700 last:border-b-0 hover:bg-gray-750 transition-colors">
-                    <td className="p-2 font-roboto-mono">{attacco.dado}</td>
-                    <td className="p-2">{attacco.nome}</td>
-                    <td className="p-2">{attacco.danno}</td>
+                    <td className="p-2 font-rubik font-bold">{attacco.dado}</td>
+                    <td className="p-2 uppercase">{attacco.nome}</td>
+                    <td className="p-2 font-rubik font-bold">{attacco.danno}</td>
                     <td className="p-2">{attacco.effetto}</td>
                   </tr>
                 ))}

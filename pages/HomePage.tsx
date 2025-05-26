@@ -12,7 +12,7 @@ const HomePage: React.FC = () => {
         alt="Header GINDEX - Bottiglia di gin con occhio" 
         className="mb-8 rounded-lg shadow-xl w-full max-w-2xl object-contain"
       />
-      <h1 className="text-5xl font-rubik mb-4 text-white">GINDEX</h1>
+      <h1 className="text-5xl font-rubik mb-4 text-white">GINDEXAPP</h1>
       <p className="text-xl mb-12 max-w-2xl text-gray-300">
         Colleziona, bevi, combatti!
       </p>
