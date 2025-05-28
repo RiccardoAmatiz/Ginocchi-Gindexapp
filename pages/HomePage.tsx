@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
@@ -46,16 +47,11 @@ const HomePage: React.FC = () => {
           </Button>
         </a>
 
-        <a 
-          href="https://ginocchi-twiubso.gamma.site/regolamento"
-          target="_blank" 
-          rel="noopener noreferrer" 
-          className="w-full"
-        >
+        <Link to="/regolamento" className="w-full"> {/* Modificato qui */}
           <Button variant="category" categoryColor={CATEGORY_COLORS.Bilanciato} className="w-full flex items-center justify-center">
-            Regolamento <ExternalLinkIcon />
+            Regolamento {/* Icona rimossa */}
           </Button>
-        </a>
+        </Link>
         
       </div>
     </div>

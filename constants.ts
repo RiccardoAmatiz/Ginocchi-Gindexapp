@@ -18,6 +18,32 @@ export const CATEGORIES_ORDER: Categoria[] = [
 
 export const APP_TITLE = "GINDEX";
 
+export const PV_QUOTES: Record<number, string> = {
+  21: "Nessuno ti ha ancora picchiato. È solo questione di tempo.",
+  20: "Troppa energia. Sei già insopportabile.",
+  19: "Troppo sano per essere simpatico.",
+  18: "Sei come le emorroidi: difficile da eliminare.",
+  17: "Sei ancora in piedi. Come un coglione.",
+  16: "Sei lucido. Ed è un problema.",
+  15: "Ti senti invincibile ma sei solo patetico.",
+  14: "Hai 14 PV e il cervello di un comodino.",
+  13: "Numero fortunato. Ma non per te.",
+  12: "In compenso, puzzi meno di prima.",
+  11: "Il tuo corpo regge. La tua dignità molto meno.",
+  10: "Sei a metà strada tra l’umiliazione e l’obitorio.",
+  9: "Ogni movimento è un lamento. Ogni respiro un errore.",
+  8: "Un tossico con l’asma fa più paura di te.",
+  7: "Mezzo vivo, mezzo merda.",
+  6: "Hai la vitalità di un Kallax in offerta.",
+  5: "Hai 5 PV. E l’espressione di chi ha appena cagato sangue.",
+  4: "A questo punto potresti esplodere se tossisci.",
+  3: "Ti manca solo la bara e un parente ipocrita.",
+  2: "Sei uno sputo dal baratro. Con il fiatone.",
+  1: "Sei la sigaretta prima del plotone.",
+  0: "Sei morto (coglionə)."
+};
+
+
 // Raw data for Ginocchi PV and Attacks
 const RAW_GINOCCHI_DETAILS_TEXT = `
 1	Punturirma	A	19	Pera di gin	Danno: 4	Tossicodipendenza - Il bersaglio è costretto ad attaccare lo stesso Ginocchio del turno precedente. Se non può, non si attacca.	Bocce stordenti	Danno: 2	Paralisi totale -Il Ginocchio non può muoversi né attaccare al prossimo turno (non cumulabile)	Intubazione pandemica	Danno: 4	Blocca movimento - L'avversario non può muoversi al prossimo turno.	Pasto ospedaliero	Danno: 2	Ammosciamento - L’avversario fa massimo 1 danno al prossimo attacco.	Fascino della divisa	Danno: 3	Danno sesso opposto - Se il giocatore avversario è di sesso diverso dal tuo, fai danno doppio.	Ago nel midollo	Danno: 5	Autolesionismo - Subisci 1 Pv di danno durante l'attacco

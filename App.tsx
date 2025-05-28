@@ -5,6 +5,7 @@ import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import GindexPage from './pages/GindexPage';
 import SchedaGinocchioPage from './pages/SchedaGinocchioPage';
+import RegolamentoPage from './pages/RegolamentoPage'; // Importa la nuova pagina
 import { GinocchiGameplayProvider } from './context/GinocchiGameplayContext';
 
 const App: React.FC = () => {
@@ -16,6 +17,7 @@ const App: React.FC = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/gindex" element={<GindexPage />} />
             <Route path="/ginocchio/:id" element={<SchedaGinocchioPage />} />
+            <Route path="/regolamento" element={<RegolamentoPage />} /> {/* Nuova rotta */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </Layout>

@@ -1,7 +1,8 @@
 
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { ALL_GINOCCHI, CATEGORY_COLORS } from '../constants';
+import { ALL_GINOCCHI, CATEGORY_COLORS, PV_QUOTES } from '../constants'; // PV_QUOTES imported
 import { Ginocchio, Attacco, StatusEffectName, STATUS_EFFECT_NAMES } from '../types';
 import CategoryBadge from '../components/CategoryBadge';
 import PvTracker from '../components/PvTracker';
@@ -11,6 +12,7 @@ import { useGinocchiGameplay } from '../context/GinocchiGameplayContext';
 import Button from '../components/Button';
 import { ArrowLeftIcon } from '../components/icons/ArrowLeftIcon';
 import AttackDetailModal from '../components/AttackDetailModal';
+import { usePvTracker } from '../hooks/usePvTracker'; // Import usePvTracker
 
 // DiceIcon components are no longer imported
 
@@ -20,6 +22,10 @@ const SchedaGinocchioPage: React.FC = () => {
   const ginocchio = ALL_GINOCCHI.find(g => g.id.toString() === id);
   
   const { getGinocchioState, toggleStatusEffect, resetGinocchioState } = useGinocchiGameplay();
+  
+  // Use usePvTracker hook to get currentPv
+  const { currentPv } = usePvTracker(ginocchio);
+
 
   const [selectedAttack, setSelectedAttack] = useState<Attacco | null>(null);
   const [isAttackModalOpen, setIsAttackModalOpen] = useState(false);
@@ -82,6 +88,16 @@ const SchedaGinocchioPage: React.FC = () => {
     }
   };
 
+  // Determine the quote to display based on currentPv
+  let pvQuote = PV_QUOTES[currentPv];
+  if (currentPv <= 0) {
+    pvQuote = PV_QUOTES[0];
+  } else if (currentPv >= 21 && PV_QUOTES[21]) { // Check if 21 exists, otherwise default
+     pvQuote = PV_QUOTES[21];
+  } else if (!pvQuote) { // Fallback for any PV not explicitly listed (e.g. > 21)
+    pvQuote = PV_QUOTES[21] || "Pronto a fare danni!"; // Default or specific high PV quote
+  }
+
 
   return (
     <div className="py-6 flex flex-col items-center">
@@ -114,6 +130,18 @@ const SchedaGinocchioPage: React.FC = () => {
         </div>
 
         <PvTracker ginocchio={ginocchio} />
+
+        {/* Dynamic PV Quote - now uppercase, bold, and category colored */}
+        <p 
+          className={
+            currentPv === 0
+              ? `text-5xl font-rubik font-bold text-center my-4 uppercase`
+              : `text-sm italic text-center my-4 h-10 flex items-center justify-center uppercase font-bold`
+          }
+          style={{ color: ginocchio.colore }}
+        >
+            {pvQuote}
+        </p>
         
         <Accordion title="Attacchi" titleClassName="text-2xl !font-rubik" contentClassName="!bg-gray-850">
           <div className="grid grid-cols-3 sm:grid-cols-3 gap-3 p-2 place-items-center">
