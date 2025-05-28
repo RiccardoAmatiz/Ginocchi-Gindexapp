@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { StatusPlaceholderIcon } from './icons/StatusPlaceholderIcon';
 import { StatusEffectName } from '../types';
@@ -11,11 +12,8 @@ interface StatusToggleButtonProps {
 
 const StatusToggleButton: React.FC<StatusToggleButtonProps> = ({ effectName, isActive, onToggle, color }) => {
   const [imageError, setImageError] = useState(false);
-  // Use encodeURIComponent to handle spaces in effectName for the URL
-  // Corrected path to use /images/Status/ (capital S)
   const iconSrc = `/images/Status/${encodeURIComponent(effectName)}.png`;
 
-  // Reset imageError if effectName changes (e.g., if component is reused in a list and key doesn't change)
   useEffect(() => {
     setImageError(false);
   }, [effectName]);
@@ -27,21 +25,28 @@ const StatusToggleButton: React.FC<StatusToggleButtonProps> = ({ effectName, isA
                   ${isActive ? 'opacity-100' : 'opacity-50 hover:opacity-75 border-gray-600'}
                   ${isActive ? `border-[${color}] shadow-lg` : 'border-gray-700'}`}
       style={isActive ? { borderColor: color } : {}}
-      title={effectName}
+      aria-pressed={isActive}
+      aria-label={`${effectName}${isActive ? ', attivo' : ', non attivo'}`}
     >
       {!imageError ? (
         <img
           src={iconSrc}
-          alt={effectName}
-          className="w-10 h-10 mb-1 object-contain" // Adjusted size for better fit
+          alt="" // Decorative as button has full label, but alt={effectName} is also fine
+          className="w-10 h-10 mb-1 object-contain"
+          aria-hidden="true" // Icon is decorative if button is fully labelled
           onError={() => setImageError(true)}
         />
       ) : (
-        <StatusPlaceholderIcon className="w-10 h-10 mb-1" color={isActive ? color : 'gray'} />
+        <StatusPlaceholderIcon 
+            className="w-10 h-10 mb-1" 
+            color={isActive ? color : 'gray'} 
+            aria-label="Icona segnaposto status effetto" // Default label from component
+        />
       )}
       <span 
         className={`text-xs font-roboto-mono w-full break-words ${isActive ? `text-[${color}]` : 'text-gray-400'}`} 
         style={isActive ? {color: color} : {}}
+        aria-hidden="true" // Text is part of visual presentation; button label is primary
       >
         {effectName}
       </span>

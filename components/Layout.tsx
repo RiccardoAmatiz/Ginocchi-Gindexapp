@@ -10,8 +10,14 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="min-h-screen bg-black text-white font-roboto-mono flex flex-col">
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-white focus:text-black focus:p-3 focus:border-2 focus:border-blue-500 focus:rounded-md focus:shadow-lg focus:w-auto focus:h-auto focus:overflow-auto z-[9999]"
+      >
+        Salta al contenuto principale
+      </a>
       <header className="w-full p-4 bg-gray-900 shadow-md sticky top-0 z-50">
-        <nav className="container mx-auto flex justify-between items-center">
+        <nav className="container mx-auto flex justify-between items-center" aria-label="Navigazione principale">
           <Link to="/" className="flex items-center text-2xl font-rubik hover:text-categories-Bilanciato transition-colors">
             {APP_TITLE}
             <img 
@@ -25,7 +31,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         </nav>
       </header>
       
-      <main className="container mx-auto p-4 flex-grow w-full max-w-4xl">
+      <main id="main-content" className="container mx-auto p-4 flex-grow w-full max-w-4xl">
         {children}
       </main>
 

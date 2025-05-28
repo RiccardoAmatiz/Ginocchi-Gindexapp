@@ -42,11 +42,13 @@ const GindexPage: React.FC = () => {
           className="w-full sm:w-1/2 p-3 bg-gray-700 rounded-md border border-gray-600 focus:ring-2 focus:ring-categories-Speziato focus:border-transparent outline-none"
           value={searchTerm}
           onChange={e => setSearchTerm(e.target.value)}
+          aria-label="Cerca Ginocchio per nome o ID"
         />
         <select
           className="w-full sm:w-1/2 p-3 bg-gray-700 rounded-md border border-gray-600 focus:ring-2 focus:ring-categories-Speziato focus:border-transparent outline-none font-rubik"
           value={selectedCategory}
           onChange={e => setSelectedCategory(e.target.value as Categoria | 'All')}
+          aria-label="Filtra Ginocchi per categoria"
         >
           <option value="All">Tutte le Categorie</option>
           {CATEGORIES_ORDER.map(cat => (

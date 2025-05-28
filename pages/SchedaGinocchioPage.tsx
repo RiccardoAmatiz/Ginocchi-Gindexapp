@@ -1,7 +1,6 @@
 
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-// Fix: Import STATUS_EFFECT_NAMES from '../types'
 import { ALL_GINOCCHI, CATEGORY_COLORS } from '../constants';
 import { Ginocchio, Attacco, StatusEffectName, STATUS_EFFECT_NAMES } from '../types';
 import CategoryBadge from '../components/CategoryBadge';
@@ -10,7 +9,10 @@ import Accordion from '../components/Accordion';
 import StatusToggleButton from '../components/StatusToggleButton';
 import { useGinocchiGameplay } from '../context/GinocchiGameplayContext';
 import Button from '../components/Button';
+import { ArrowLeftIcon } from '../components/icons/ArrowLeftIcon';
+import AttackDetailModal from '../components/AttackDetailModal';
 
+// DiceIcon components are no longer imported
 
 const SchedaGinocchioPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -18,6 +20,50 @@ const SchedaGinocchioPage: React.FC = () => {
   const ginocchio = ALL_GINOCCHI.find(g => g.id.toString() === id);
   
   const { getGinocchioState, toggleStatusEffect, resetGinocchioState } = useGinocchiGameplay();
+
+  const [selectedAttack, setSelectedAttack] = useState<Attacco | null>(null);
+  const [isAttackModalOpen, setIsAttackModalOpen] = useState(false);
+
+  const openAttackModal = useCallback((attack: Attacco) => {
+    setSelectedAttack(attack);
+    setIsAttackModalOpen(true);
+
+    if ('speechSynthesis' in window && attack.nome) {
+      try {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(attack.nome);
+        // utterance.lang = 'it-IT'; 
+        window.speechSynthesis.speak(utterance);
+      } catch (error) {
+        console.error("Errore durante la riproduzione del nome dell'attacco:", error);
+      }
+    } else if (!('speechSynthesis' in window)) {
+        console.warn("L'API SpeechSynthesis non è supportata in questo browser.");
+    }
+  }, []);
+
+  const closeAttackModal = useCallback(() => {
+    setSelectedAttack(null);
+    setIsAttackModalOpen(false);
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+    }
+  }, []);
+
+  useEffect(() => {
+    const handleEsc = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        closeAttackModal();
+      }
+    };
+    if (isAttackModalOpen) {
+      window.addEventListener('keydown', handleEsc);
+    }
+    return () => {
+      window.removeEventListener('keydown', handleEsc);
+    };
+  }, [isAttackModalOpen, closeAttackModal]);
+
 
   if (!ginocchio) {
     return (
@@ -39,7 +85,15 @@ const SchedaGinocchioPage: React.FC = () => {
 
   return (
     <div className="py-6 flex flex-col items-center">
-      <Button onClick={() => navigate(-1)} variant="secondary" className="mb-6 self-start">
+      <button
+        onClick={() => navigate(-1)}
+        className="fixed top-20 left-4 z-[60] p-3 bg-gray-700 hover:bg-gray-600 rounded-full shadow-lg md:hidden focus:outline-none focus:ring-2 focus:ring-white"
+        aria-label="Torna indietro"
+      >
+        <ArrowLeftIcon className="w-5 h-5 text-white" aria-label="Freccia per tornare indietro" />
+      </button>
+
+      <Button onClick={() => navigate(-1)} variant="secondary" className="mb-6 self-start hidden md:inline-flex">
         &larr; Torna Indietro
       </Button>
 
@@ -47,8 +101,8 @@ const SchedaGinocchioPage: React.FC = () => {
         <img 
           src={ginocchio.immagine}
           alt={`Artwork for ${ginocchio.nome}`} 
-          className="w-full aspect-square object-cover rounded-lg mb-6 shadow-lg" // Changed h-64 to aspect-square
-          onError={(e) => (e.currentTarget.src = 'https://picsum.photos/seed/fallback-detail/400/300')} // Fallback if image fails to load
+          className="w-full aspect-square object-cover rounded-lg mb-6 shadow-lg"
+          onError={(e) => (e.currentTarget.src = 'https://picsum.photos/seed/fallback-detail/400/300')}
         />
         
         <h1 className="text-5xl font-rubik mb-2 text-center" style={{ color: ginocchio.colore }}>
@@ -62,27 +116,26 @@ const SchedaGinocchioPage: React.FC = () => {
         <PvTracker ginocchio={ginocchio} />
         
         <Accordion title="Attacchi" titleClassName="text-2xl !font-rubik" contentClassName="!bg-gray-850">
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-max text-left text-sm">
-              <thead className="border-b border-gray-700">
-                <tr>
-                  <th className="p-2 font-rubik" style={{ color: ginocchio.colore }}># Dado</th>
-                  <th className="p-2 font-rubik" style={{ color: ginocchio.colore }}>Nome Attacco</th>
-                  <th className="p-2 font-rubik" style={{ color: ginocchio.colore }}>Danno</th>
-                  <th className="p-2 font-rubik" style={{ color: ginocchio.colore }}>Effetto</th>
-                </tr>
-              </thead>
-              <tbody>
-                {ginocchio.attacchi.map((attacco: Attacco, index: number) => (
-                  <tr key={index} className="border-b border-gray-700 last:border-b-0 hover:bg-gray-750 transition-colors">
-                    <td className="p-2 font-rubik font-bold">{attacco.dado}</td>
-                    <td className="p-2 uppercase">{attacco.nome}</td>
-                    <td className="p-2 font-rubik font-bold">{attacco.danno}</td>
-                    <td className="p-2">{attacco.effetto}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="grid grid-cols-3 sm:grid-cols-3 gap-3 p-2 place-items-center">
+            {ginocchio.attacchi.map((attacco) => {
+              // Removed DieIconComponent
+              return (
+                <button
+                  key={attacco.dado}
+                  onClick={() => openAttackModal(attacco)}
+                  className="w-20 h-20 sm:w-24 sm:h-24 p-2 border-2 rounded-lg flex items-center justify-center transition-transform duration-150 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-opacity-75"
+                  style={{ borderColor: ginocchio.colore, backgroundColor: 'rgba(255,255,255,0.05)' }}
+                  aria-label={`Mostra dettagli attacco ${attacco.dado}: ${attacco.nome}`}
+                >
+                  <img 
+                    src={`/images/dices/Dado${attacco.dado}.png`} 
+                    alt={`Dado faccia ${attacco.dado}`}
+                    className="w-12 h-12 sm:w-14 sm:h-14 object-contain"
+                    onError={(e) => (e.currentTarget.style.display = 'none')} // Optionally hide if image fails
+                  />
+                </button>
+              );
+            })}
           </div>
         </Accordion>
 
@@ -106,6 +159,14 @@ const SchedaGinocchioPage: React.FC = () => {
             </Button>
         </div>
       </div>
+      {isAttackModalOpen && selectedAttack && (
+        <AttackDetailModal 
+          attack={selectedAttack} 
+          isOpen={isAttackModalOpen} 
+          onClose={closeAttackModal} 
+          categoryColor={ginocchio.colore} 
+        />
+      )}
     </div>
   );
 };

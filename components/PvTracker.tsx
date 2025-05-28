@@ -18,10 +18,10 @@ const PvTracker: React.FC<PvTrackerProps> = ({ ginocchio }) => {
       <Button 
         onClick={decrementPv} 
         className="p-2 rounded-full bg-red-600 hover:bg-red-700 disabled:opacity-50" 
-        aria-label="Decrement PV"
+        aria-label="Decrementa PV"
         disabled={currentPv <= 0}
       >
-        <MinusIcon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+        <MinusIcon className="w-6 h-6 sm:w-8 sm:h-8 text-white" aria-label="Rimuovi un PV"/>
       </Button>
       
       <div className="font-roboto-mono text-4xl sm:text-5xl text-center w-32 sm:w-40 tabular-nums">
@@ -32,10 +32,10 @@ const PvTracker: React.FC<PvTrackerProps> = ({ ginocchio }) => {
       <Button 
         onClick={incrementPv} 
         className="p-2 rounded-full bg-green-600 hover:bg-green-700 disabled:opacity-50" 
-        aria-label="Increment PV"
+        aria-label="Incrementa PV"
         disabled={currentPv >= maxPv}
       >
-        <PlusIcon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+        <PlusIcon className="w-6 h-6 sm:w-8 sm:h-8 text-white" aria-label="Aggiungi un PV"/>
       </Button>
     </div>
   );
