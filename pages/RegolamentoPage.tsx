@@ -44,6 +44,22 @@ const RegolamentoPage: React.FC = () => {
   const effectImagePath = (imageName: string) => `/images/Status/${imageName}`;
   const categoryImagePath = (categoria: Categoria) => `/images/categories/${categoria}.png`;
 
+  const effettiSpeciali = [
+    { name: "Paralisi totale", logo: "Paralisi Totale.png", desc: "Il Ginocchio non può muoversi né attaccare al prossimo turno (non cumulabile)." },
+    { name: "Cura", logo: "Cura.png", desc: "Recuperi 2 Punti Vita. Non puoi superare i PV massimi." },
+    { name: "Spinta", logo: "Spinta.png", desc: "Spingi l’avversario di 2 caselle nella direzione dell'attacco. Se sbatte contro una parete, perde 1 PV. Se finisce contro un altro ginocchio, entrambi perdono 1 PV." },
+    { name: "Auto-lesionismo (Recoil)", logo: "Autolesionismo.png", desc: "Ti fai 1 danno dopo aver attaccato." },
+    { name: "Danno doppio sesso opposto", logo: "Danno sesso opposto.png", desc: "Se il giocatore avversario è di sesso diverso dal tuo, fai danno doppio." },
+    { name: "Ammosciamento", logo: "Ammosciamento.png", desc: "L’avversario fa massimo 1 danno al prossimo attacco." },
+    { name: "Tossicodipendenza", logo: "Tossicodipendenza.png", desc: "Il bersaglio è costretto ad attaccare lo stesso Ginocchio del turno precedente. Se non può, non si attacca." },
+    { name: "Spogliato!", logo: "Spogliato.png", desc: "Non può difendersi al prossimo attacco." },
+    { name: "Paura", logo: "Paura.png", desc: "Il bersaglio non può avvicinarsi a te nel prossimo turno, deve stare ad almeno 1 casella di distanza." },
+    { name: "Succhiaggio PV", logo: "Succhiaggio pv.png", desc: "Recuperi PV pari al danno che infliggi." },
+    { name: "Blocca movimento", logo: "Blocco Movimento.png", desc: "Il bersaglio non può muoversi al prossimo turno." },
+    { name: "Blocca attacco", logo: "Blocco Attacco.png", desc: "Il bersaglio non può attaccare al prossimo turno." },
+    { name: "Inverti casella", logo: "Inverti Casella.png", desc: "I bonus della casella diventano malus per l’avversario finché ci resta sopra." }
+  ];
+
 
   return (
     <div className="py-6 px-2">
@@ -94,7 +110,7 @@ const RegolamentoPage: React.FC = () => {
             <li>Attacca, se possibile. Un giocatore che viene attaccato deve difendersi.</li>
             <li>Se non attacchi, bevi.</li>
           </ul>
-          <h3 className="text-xl font-rubik mt-4 mb-2 text-white">MOVIMENTO</h3> {/* Changed from text-yellow-300 */}
+          <h3 className="text-xl font-rubik mt-4 mb-2 text-white">MOVIMENTO</h3>
           <ul className="list-disc list-inside space-y-1">
             <li>Lancia il dado.</li>
             <li>Muovi il Ginocchio di esattamente quel numero di caselle, solo in orizzontale o verticale.</li>
@@ -105,20 +121,20 @@ const RegolamentoPage: React.FC = () => {
             <li>Se il ginocchio non può muoversi in nessuna direzione perchè bloccato da altri ginocchi, può attaccare direttamente.</li>
             <li>Se non riesci ad attaccare, fai un sorso dal tuo gin tonic.</li>
           </ul>
-          <h3 className="text-xl font-rubik mt-4 mb-2 text-white">ATTACCO</h3> {/* Changed from text-yellow-300 */}
+          <h3 className="text-xl font-rubik mt-4 mb-2 text-white">ATTACCO</h3>
           <ul className="list-disc list-inside space-y-1">
             <li>Solo se sei su una casella adiacente (orizzontalmente o verticallmente) ad un avversario.</li>
             <li>Lancia il dado.</li>
             <li>Guarda sul Gindex del tuo ginocchio quale attacco esegui e applicane gli effetti.</li>
             <li>Nota: Il primo giocatore, durante il primo turno, non può attaccare.</li>
           </ul>
-          <h3 className="text-xl font-rubik mt-4 mb-2 text-white">DIFESA</h3> {/* Changed from text-yellow-300 */}
+          <h3 className="text-xl font-rubik mt-4 mb-2 text-white">DIFESA</h3>
           <ul className="list-disc list-inside space-y-1">
             <li>Quando un giocatore viene attaccato, deve lanciare il dado (dopo l'attaccante) per tentare di difendersi e respingere l'attacco.</li>
             <li>Se il giocatore in difesa con il suo tiro, totalizza esattamente lo stesso punteggio dell'avversario, allora l'attacco è respinto al mittente, sia danni che effetto. Nella respinta non si applicano debolezze, resistenze e bonus casella.</li>
             <li>Se il giocatore con il suo tiro in difesa ottiene un lancio diverso da quello dell'attaccante, allora l'attacco va a buon fine.</li>
           </ul>
-           <h3 className="text-xl font-rubik mt-4 mb-2 text-white">TOOLS</h3> {/* Changed from text-yellow-300 */}
+           <h3 className="text-xl font-rubik mt-4 mb-2 text-white">TOOLS</h3>
           <p>Nelle pagine del gindex di ogni ginocchio, nella sezione tools di gioco, sono presenti dei tools per tenere il conto dei PV e per gli status. Usali durante le partite.</p>
         </RuleSection>
 
@@ -135,13 +151,13 @@ const RegolamentoPage: React.FC = () => {
         </RuleSection>
 
         <RuleSection number="6." title="IL TABELLONE">
-          <h3 className="text-xl font-rubik mt-4 mb-2 text-white">Tipi di caselle:</h3> {/* Changed from text-yellow-300 */}
+          <h3 className="text-xl font-rubik mt-4 mb-2 text-white">Tipi di caselle:</h3>
           <div className="overflow-x-auto rounded-lg border border-gray-700">
             <table className="min-w-full divide-y divide-gray-700">
               <thead className="bg-gray-700">
                 <tr>
                   <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Tipo</th>
-                  <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Gusto</th>
+                  {/* Colonna Gusto rimossa */}
                   <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Effetto</th>
                 </tr>
               </thead>
@@ -159,7 +175,7 @@ const RegolamentoPage: React.FC = () => {
                         <span style={{color: CATEGORY_COLORS[item.tipo]}}>{item.tipo}</span>
                       </div>
                     </td>
-                    <td className="px-4 py-3 whitespace-nowrap text-sm" style={{color: CATEGORY_COLORS[item.tipo]}}>{item.tipo}</td>
+                    {/* Cella Gusto rimossa */}
                     <td className="px-4 py-3 text-sm whitespace-pre-line">{item.effetto}</td>
                   </tr>
                 ))}
@@ -191,7 +207,7 @@ const RegolamentoPage: React.FC = () => {
                         target.alt = `Immagine di ${garnish.name} non trovata`;
                         target.style.display = 'none'; 
                         const placeholder = document.createElement('div');
-                        placeholder.className = 'w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center bg-gray-700 text-gray-400 text-xs rounded-md mr-0 sm:mr-4 mb-3 sm:mb-0 border-2 border-gray-600';
+                        placeholder.className = 'w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center bg-gray-700 text-gray-400 text-xs rounded-md mr-0 sm:mr-4 mb-3 sm:mb-0 border-2 border-gray-600 p-2 text-center';
                         placeholder.textContent = garnish.name;
                         if (target.parentNode) {
                             target.parentNode.insertBefore(placeholder, target);
@@ -199,7 +215,7 @@ const RegolamentoPage: React.FC = () => {
                     }}
                 />
                 <div className="flex-1 text-center sm:text-left">
-                  <h4 className="text-lg font-rubik text-white">{garnish.name}</h4> {/* Changed from text-yellow-300 */}
+                  <h4 className="text-lg font-rubik text-white">{garnish.name}</h4>
                   <p className="text-sm whitespace-pre-line">{garnish.effect}</p>
                 </div>
               </div>
@@ -209,56 +225,29 @@ const RegolamentoPage: React.FC = () => {
 
         <RuleSection number="7." title="ATTACCHI E EFFETTI SPECIALI">
           <p>Ogni ginocchio ha 6 attacchi con effetti diversi. Scansiona il QR del tuo ginocchio!</p>
-          <div className="overflow-x-auto mt-4 rounded-lg border border-gray-700">
-            <table className="min-w-full divide-y divide-gray-700">
-              <thead className="bg-gray-700">
-                <tr>
-                  <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Effetto</th>
-                  <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Logo</th>
-                  <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Cosa fa</th>
-                </tr>
-              </thead>
-              <tbody className="bg-gray-800 divide-y divide-gray-700">
-                {[
-                  { name: "Paralisi totale", logo: "Paralisi Totale.png", desc: "Il Ginocchio non può muoversi né attaccare al prossimo turno (non cumulabile)." },
-                  { name: "Cura", logo: "Cura.png", desc: "Recuperi 2 Punti Vita. Non puoi superare i PV massimi." },
-                  { name: "Spinta", logo: "Spinta.png", desc: "Spingi l’avversario di 2 caselle nella direzione dell'attacco. Se sbatte contro una parete, perde 1 PV. Se finisce contro un altro ginocchio, entrambi perdono 1 PV." },
-                  { name: "Auto-lesionismo (Recoil)", logo: "Autolesionismo.png", desc: "Ti fai 1 danno dopo aver attaccato." },
-                  { name: "Danno doppio sesso opposto", logo: "Danno sesso opposto.png", desc: "Se il giocatore avversario è di sesso diverso dal tuo, fai danno doppio." },
-                  { name: "Ammosciamento", logo: "Ammosciamento.png", desc: "L’avversario fa massimo 1 danno al prossimo attacco." },
-                  { name: "Tossicodipendenza", logo: "Tossicodipendenza.png", desc: "Il bersaglio è costretto ad attaccare lo stesso Ginocchio del turno precedente. Se non può, non si attacca." },
-                  { name: "Spogliato!", logo: "Spogliato.png", desc: "Non può difendersi al prossimo attacco." },
-                  { name: "Paura", logo: "Paura.png", desc: "Il bersaglio non può avvicinarsi a te nel prossimo turno, deve stare ad almeno 1 casella di distanza." },
-                  { name: "Succhiaggio PV", logo: "Succhiaggio pv.png", desc: "Recuperi PV pari al danno che infliggi." },
-                  { name: "Blocca movimento", logo: "Blocco Movimento.png", desc: "Il bersaglio non può muoversi al prossimo turno." },
-                  { name: "Blocca attacco", logo: "Blocco Attacco.png", desc: "Il bersaglio non può attaccare al prossimo turno." },
-                  { name: "Inverti casella", logo: "Inverti Casella.png", desc: "I bonus della casella diventano malus per l’avversario finché ci resta sopra." }
-                ].map((eff, index) => (
-                  <tr key={index} className={index % 2 === 0 ? 'bg-gray-800' : 'bg-gray-750'}>
-                    <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-white">{eff.name}</td> {/* Changed from text-yellow-300 */}
-                    <td className="px-4 py-3 whitespace-nowrap">
-                        <img 
-                            src={effectImagePath(eff.logo)} 
-                            alt={`Logo ${eff.name}`} 
-                            className="w-10 h-10 object-contain"
-                            onError={(e) => {
-                                const target = e.target as HTMLImageElement;
-                                target.alt = `Logo per ${eff.name} non trovato`;
-                                target.style.display = 'none'; 
-                                const placeholder = document.createElement('div');
-                                placeholder.className = 'w-10 h-10 flex items-center justify-center bg-gray-700 text-gray-400 text-xs p-1 text-center';
-                                placeholder.textContent = `Logo ${eff.name}`;
-                                 if (target.parentNode) {
-                                    target.parentNode.insertBefore(placeholder, target);
-                                }
-                            }}
-                        />
-                    </td>
-                    <td className="px-4 py-3 text-sm">{eff.desc}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+            {effettiSpeciali.map((eff, index) => (
+              <div key={index} className="p-4 bg-gray-800 rounded-lg border border-gray-700 flex flex-col items-center text-center shadow-lg">
+                <img 
+                    src={effectImagePath(eff.logo)} 
+                    alt={`Logo ${eff.name}`} 
+                    className="w-20 h-20 mb-3 object-contain"
+                    onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.alt = `Logo per ${eff.name} non trovato`;
+                        target.style.display = 'none'; 
+                        const placeholder = document.createElement('div');
+                        placeholder.className = 'w-20 h-20 flex items-center justify-center bg-gray-700 text-gray-400 text-xs rounded-md text-center p-2 mb-3';
+                        placeholder.textContent = `Logo ${eff.name}`;
+                        if (target.parentNode) {
+                            target.parentNode.insertBefore(placeholder, target);
+                        }
+                    }}
+                />
+                <h4 className="text-lg font-rubik text-white mb-1">{eff.name}</h4>
+                <p className="text-sm text-gray-300 leading-relaxed flex-grow">{eff.desc}</p>
+              </div>
+            ))}
           </div>
         </RuleSection>
 

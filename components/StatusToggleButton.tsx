@@ -32,13 +32,13 @@ const StatusToggleButton: React.FC<StatusToggleButtonProps> = ({ effectName, isA
         <img
           src={iconSrc}
           alt="" // Decorative as button has full label, but alt={effectName} is also fine
-          className="w-10 h-10 mb-1 object-contain"
+          className="w-14 h-14 mb-1 object-contain" // Increased size
           aria-hidden="true" // Icon is decorative if button is fully labelled
           onError={() => setImageError(true)}
         />
       ) : (
         <StatusPlaceholderIcon 
-            className="w-10 h-10 mb-1" 
+            className="w-14 h-14 mb-1" // Increased size
             color={isActive ? color : 'gray'} 
             aria-label="Icona segnaposto status effetto" // Default label from component
         />
