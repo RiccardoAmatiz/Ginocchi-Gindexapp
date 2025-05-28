@@ -118,19 +118,18 @@ const SchedaGinocchioPage: React.FC = () => {
         <Accordion title="Attacchi" titleClassName="text-2xl !font-rubik" contentClassName="!bg-gray-850">
           <div className="grid grid-cols-3 sm:grid-cols-3 gap-3 p-2 place-items-center">
             {ginocchio.attacchi.map((attacco) => {
-              // Removed DieIconComponent
               return (
                 <button
                   key={attacco.dado}
                   onClick={() => openAttackModal(attacco)}
-                  className="w-20 h-20 sm:w-24 sm:h-24 p-2 border-2 rounded-lg flex items-center justify-center transition-transform duration-150 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-opacity-75"
+                  className="w-20 h-20 sm:w-24 sm:h-24 p-1 border-2 flex items-center justify-center transition-transform duration-150 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-opacity-75"
                   style={{ borderColor: ginocchio.colore, backgroundColor: 'rgba(255,255,255,0.05)' }}
                   aria-label={`Mostra dettagli attacco ${attacco.dado}: ${attacco.nome}`}
                 >
                   <img 
                     src={`/images/dices/Dado${attacco.dado}.png`} 
                     alt={`Dado faccia ${attacco.dado}`}
-                    className="w-12 h-12 sm:w-14 sm:h-14 object-contain"
+                    className="w-16 h-16 sm:w-20 sm:h-20 object-contain"
                     onError={(e) => (e.currentTarget.style.display = 'none')} // Optionally hide if image fails
                   />
                 </button>
