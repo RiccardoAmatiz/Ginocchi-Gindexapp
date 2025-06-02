@@ -109,7 +109,7 @@ const SchedaGinocchioPage: React.FC = () => {
         &larr; Torna Indietro
       </Button>
 
-      <div className="w-full max-w-2xl bg-gray-800 rounded-xl shadow-2xl p-6 md:p-8">
+      <div className="w-full max-w-2xl bg-gray-800 rounded-xl shadow-2xl p-2 sm:p-4 md:p-6 lg:p-8">
         <img 
           src={ginocchio.immagine}
           alt={`Artwork for ${ginocchio.nome}`} 
@@ -179,13 +179,13 @@ const SchedaGinocchioPage: React.FC = () => {
           title={`Chatta con ${ginocchio.nome}`}
           titleClassName="text-2xl !font-rubik mt-4"
           contentClassName="!bg-gray-850" 
-          defaultOpen={false}
+          defaultOpen={false} 
         >
-          <div className="p-4">
+          <div className="p-0 sm:p-2 md:p-4">
             <iframe
               src={iframeSrc}
               title={`Chatta con ${ginocchio.nome}`}
-              className="w-full" // width="100%"
+              className="w-full" 
               style={{ 
                 height: '650px', 
                 border: 'none', 
