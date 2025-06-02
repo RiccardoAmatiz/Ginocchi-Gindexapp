@@ -7,11 +7,13 @@ import GindexPage from './pages/GindexPage';
 import SchedaGinocchioPage from './pages/SchedaGinocchioPage';
 import RegolamentoPage from './pages/RegolamentoPage'; // Importa la nuova pagina
 import { GinocchiGameplayProvider } from './context/GinocchiGameplayContext';
+import ScrollToTop from './components/ScrollToTop'; // Import the new component
 
 const App: React.FC = () => {
   return (
     <GinocchiGameplayProvider>
       <HashRouter>
+        <ScrollToTop /> {/* Add ScrollToTop component here */}
         <Layout>
           <Routes>
             <Route path="/" element={<HomePage />} />

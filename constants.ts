@@ -159,12 +159,12 @@ const erbaceiData = [
   { id: 12, nome: "Florona" }, { id: 13, nome: "Ran-occhio" }, { id: 14, nome: "Arundizilla" },
   { id: 15, nome: "Gelsosauro" }, { id: 16, nome: "Lavandasma" }, { id: 17, nome: "Salviananda" },
   { id: 18, nome: "Koajhonny" }, { id: 19, nome: "Rosiro" }, { id: 20, nome: "Rosella" },
-  { id: 21, nome: "Cybermint" }, { id: 22, nome: "Rosmaruma" }, { id: 23, nome: "Cetriol​ana ottava" },
+  { id: 21, nome: "Cybermint" }, { id: 22, nome: "Rosmaruma" }, { id: 23, nome: "Cetriolana ottava" }, // Corrected: Removed zero-width space
   { id: 24, nome: "Rosmanguilla" }
 ].map(g => ({ ...g, categoria: Categoria.Erbaceo, colore: CATEGORY_COLORS[Categoria.Erbaceo]}));
 
 const fruttatiData = [
-  { id: 25, nome: "Banona" }, { id: 26, nome: "Tony Ansiolitico" }, { id: 27, nome: "Cervarancio" }, // Corrected name for ID 26
+  { id: 25, nome: "Banona" }, { id: 26, nome: "Tony Ansiolitico" }, { id: 27, nome: "Cervarancio" }, 
   { id: 28, nome: "Merlotta" }, { id: 29, nome: "Corvananas" }, { id: 30, nome: "Fiammaciofo" },
   { id: 31, nome: "Rosa cagnolina" }, { id: 32, nome: "Pipimone" }, { id: 33, nome: "Eremillo" },
   { id: 34, nome: "Mangodillo" }, { id: 35, nome: "Lampolpo" }, { id: 36, nome: "Delfimaru" },
@@ -186,12 +186,12 @@ export const ALL_GINOCCHI: Ginocchio[] = [
     console.warn(`Missing PV/Attack details for Ginocchio ID ${baseGinocchio.id} (${baseGinocchio.nome}). Using defaults.`);
     return {
       ...baseGinocchio,
-      immagine: `/images/ginocchi/${baseGinocchio.id}.png`, // Default to expected path even if details missing
+      immagine: `/images/ginocchi/${baseGinocchio.id}.png`, 
       attacchi: [], 
       pvIniziali: 40, 
     };
   }
-  // Corrected the name for Ginocchio with ID 26 from "Tony Ephedrina" to "Tony Ansiolitico" as per raw data
+  
   const correctedName = baseGinocchio.id === 26 ? "Tony Ansiolitico" : baseGinocchio.nome;
 
   return {

@@ -1,8 +1,8 @@
 
-
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { ALL_GINOCCHI, CATEGORY_COLORS, PV_QUOTES } from '../constants'; // PV_QUOTES imported
+// Removed GoogleGenAI import as it's no longer used here
+import { ALL_GINOCCHI, CATEGORY_COLORS, PV_QUOTES } from '../constants';
 import { Ginocchio, Attacco, StatusEffectName, STATUS_EFFECT_NAMES } from '../types';
 import CategoryBadge from '../components/CategoryBadge';
 import PvTracker from '../components/PvTracker';
@@ -12,9 +12,7 @@ import { useGinocchiGameplay } from '../context/GinocchiGameplayContext';
 import Button from '../components/Button';
 import { ArrowLeftIcon } from '../components/icons/ArrowLeftIcon';
 import AttackDetailModal from '../components/AttackDetailModal';
-import { usePvTracker } from '../hooks/usePvTracker'; // Import usePvTracker
-
-// DiceIcon components are no longer imported
+import { usePvTracker } from '../hooks/usePvTracker';
 
 const SchedaGinocchioPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -22,10 +20,7 @@ const SchedaGinocchioPage: React.FC = () => {
   const ginocchio = ALL_GINOCCHI.find(g => g.id.toString() === id);
   
   const { getGinocchioState, toggleStatusEffect, resetGinocchioState } = useGinocchiGameplay();
-  
-  // Use usePvTracker hook to get currentPv
   const { currentPv } = usePvTracker(ginocchio);
-
 
   const [selectedAttack, setSelectedAttack] = useState<Attacco | null>(null);
   const [isAttackModalOpen, setIsAttackModalOpen] = useState(false);
@@ -33,18 +28,20 @@ const SchedaGinocchioPage: React.FC = () => {
   const openAttackModal = useCallback((attack: Attacco) => {
     setSelectedAttack(attack);
     setIsAttackModalOpen(true);
-
-    if ('speechSynthesis' in window && attack.nome) {
-      try {
-        window.speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(attack.nome);
-        // utterance.lang = 'it-IT'; 
-        window.speechSynthesis.speak(utterance);
-      } catch (error) {
-        console.error("Errore durante la riproduzione del nome dell'attacco:", error);
+    if ('speechSynthesis' in window) {
+      if (attack.nome) {
+        try {
+          window.speechSynthesis.cancel(); // Clear any ongoing speech
+          const utterance = new SpeechSynthesisUtterance(attack.nome);
+          // Consider setting language for better pronunciation if applicable:
+          utterance.lang = 'it-IT'; 
+          window.speechSynthesis.speak(utterance);
+        } catch (error) {
+          console.error("Errore durante la riproduzione del nome dell'attacco:", error);
+        }
       }
-    } else if (!('speechSynthesis' in window)) {
-        console.warn("L'API SpeechSynthesis non è supportata in questo browser.");
+    } else {
+      console.warn("L'API SpeechSynthesis non è supportata in questo browser.");
     }
   }, []);
 
@@ -70,7 +67,6 @@ const SchedaGinocchioPage: React.FC = () => {
     };
   }, [isAttackModalOpen, closeAttackModal]);
 
-
   if (!ginocchio) {
     return (
       <div className="text-center py-10">
@@ -88,16 +84,16 @@ const SchedaGinocchioPage: React.FC = () => {
     }
   };
 
-  // Determine the quote to display based on currentPv
   let pvQuote = PV_QUOTES[currentPv];
   if (currentPv <= 0) {
     pvQuote = PV_QUOTES[0];
-  } else if (currentPv >= 21 && PV_QUOTES[21]) { // Check if 21 exists, otherwise default
+  } else if (currentPv >= 21 && PV_QUOTES[21]) {
      pvQuote = PV_QUOTES[21];
-  } else if (!pvQuote) { // Fallback for any PV not explicitly listed (e.g. > 21)
-    pvQuote = PV_QUOTES[21] || "Pronto a fare danni!"; // Default or specific high PV quote
+  } else if (!pvQuote) {
+    pvQuote = PV_QUOTES[21] || "Pronto a fare danni!";
   }
 
+  const iframeSrc = `https://ginocchi-chatbot.vercel.app/?ginocchio=${encodeURIComponent(ginocchio.nome)}`;
 
   return (
     <div className="py-6 flex flex-col items-center">
@@ -131,7 +127,6 @@ const SchedaGinocchioPage: React.FC = () => {
 
         <PvTracker ginocchio={ginocchio} />
 
-        {/* Dynamic PV Quote - now uppercase, bold, and category colored */}
         <p 
           className={
             currentPv === 0
@@ -158,7 +153,7 @@ const SchedaGinocchioPage: React.FC = () => {
                     src={`/images/dices/Dado${attacco.dado}.png`} 
                     alt={`Dado faccia ${attacco.dado}`}
                     className="w-16 h-16 sm:w-20 sm:h-20 object-contain"
-                    onError={(e) => (e.currentTarget.style.display = 'none')} // Optionally hide if image fails
+                    onError={(e) => (e.currentTarget.style.display = 'none')}
                   />
                 </button>
               );
@@ -177,6 +172,30 @@ const SchedaGinocchioPage: React.FC = () => {
                 color={ginocchio.colore}
               />
             ))}
+          </div>
+        </Accordion>
+
+        <Accordion
+          title={`Chatta con ${ginocchio.nome}`}
+          titleClassName="text-2xl !font-rubik mt-4"
+          contentClassName="!bg-gray-850" 
+          defaultOpen={false}
+        >
+          <div className="p-4">
+            <iframe
+              src={iframeSrc}
+              title={`Chatta con ${ginocchio.nome}`}
+              className="w-full" // width="100%"
+              style={{ 
+                height: '650px', 
+                border: 'none', 
+                borderRadius: '12px', 
+                boxShadow: '0 5px 15px rgba(0,0,0,0.2)' 
+              }}
+              sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+              allow="microphone"
+              loading="lazy"
+            ></iframe>
           </div>
         </Accordion>
         
