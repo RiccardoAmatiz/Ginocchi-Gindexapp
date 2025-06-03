@@ -1,4 +1,5 @@
 
+
 import { Categoria, Ginocchio, Attacco } from './types';
 
 export const CATEGORY_COLORS: Record<Categoria, string> = {
@@ -50,14 +51,6 @@ const CATEGORY_MAP: Record<string, Categoria> = {
   "Speziato": Categoria.Speziato,
 };
 
-const CATEGORY_TO_FOLDER_NAME: Record<Categoria, string> = {
-  [Categoria.Bilanciato]: "Bilanciati",
-  [Categoria.Fruttato]: "Fruttati",
-  [Categoria.Erbaceo]: "Erbacei",
-  [Categoria.Speziato]: "Speziati",
-};
-
-
 const RAW_GINOCCHI_DETAILS_TEXT = `Numero del gindex	Nome	Tipologia	PV	Attacco 1	Potenza 1	EFFETTO 1	Attacco 2	Potenza 2	EFFETTO 2	Attacco 3	Potenza 3	EFFETTO 3	Attacco 4	Potenza 4	EFFETTO 4	Attacco 5	Potenza 5	EFFETTO 5	Attacco 6	Potenza 6	EFFETTO6	Descrizione
 1	Punturirma	Bilanciato	19	Pera di gin	Danno: 4	Alcolismo competitivo - Se il tuo bicchiere contiene meno gin tonic rispetto a quello dell’avversario, infliggi +2 danni.	Bocce stordenti	Danno: 2	Paralisi totale -Il Ginocchio colpito non può muoversi né attaccare al prossimo turno (non cumulabile)	Intubazione pandemica	Danno: 4	Sorso salvifico - Se il tuo bicchiere contiene più gin tonic rispetto a quello dell’avversario, puoi bere un sorso e recuperare 2 Punti Vita.	Pasto ospedaliero	Danno: 2	Ammosciamento - L’avversario fa massimo 1 danno al prossimo attacco.	Fascino della divisa	Danno: 3	Danno sesso opposto - Se il giocatore avversario è di sesso diverso dal tuo, fai danno doppio.	Ago nel midollo	Danno: 5	Autolesionismo - Subisci 1 Pv di danno durante l'attacco	Quando questa maliarda procace, dalle forme sinuose e dagli occhi languidi, posa lo sguardo su di voi, sappiate che la vostra fine sarà inebriante. Nata dalla perversione alchemica di un laboratorio segreto, ella cela dietro un sorriso mellifluo una propensione all'omicidio tramite soluzioni iniettabili a base di gin tonic e veleno ofidico. Vi sussurra con quel suo lessico aulico da Lucrezia Borgia: "Una puntura al giorno toglie il medico di torno", e novecentonovantanove anime hanno già varcato la soglia dell'oblio, inebriate da un'euforia etilica fatale. Preparatevi a un'iniezione di paradiso, prima del vostro hard-reset gastrico.
 2	Roboshop	Bilanciato	18	Carrello di agrumi	Danno: 2	Cura - Recuperi 2 Punti Vita. Non puoi superare i PV massimi.	Penetrazione robotica	Danno: 2	Danno sesso opposto - Se il giocatore avversario è di sesso diverso dal tuo, fai danno doppio.	Assistenza virtuale	Danno: 2	Paura - Il bersaglio non può avvicinarsi a te nel prossimo turno, deve stare ad almeno 1 casella di distanza.	Spesa a domicilio	Danno: 4	Succhiaggio PV - Recuperi PV pari al danno che infliggi.	Vibromassaggiatore assassino	Danno: 3	Spingi l’avversario di 2 caselle nella direzione dell'attacco. Se sbatte contro una parete, perde 1 PV. Se finisce contro un altro ginocchio, entrambi perdono 1 PV.	Upgrade terminale	Danno: 4	Inverti casella - I bonus della casella diventano malus per l’avversario finché ci resta sopra.	Quando Roboshop, frutto di un'ingegneria domestica deviata verso scopi più… intimi, avanza nel supermercato, vi renderete conto della sua duplice natura. Questo gigante muscoloso, con quegli occhi che brillano di una tecnologia seducente, è stato riprogrammato per essere il vostro sex toy definitivo, ma non ha perso il suo tocco commerciale. La sua voce baritonale vi farà cadere in trance mentre, a causa di un bug, vi sentirete bisbigliare: cazzo cibernetico rotante. Ogni volta si fa aggiungere qualche etto in più di mazzancolle dalla signora della pescheria, che lo osserva tra soggezione e desiderio represso.
@@ -98,7 +91,7 @@ const RAW_GINOCCHI_DETAILS_TEXT = `Numero del gindex	Nome	Tipologia	PV	Attacco 1
 37	Pignacano	Fruttato	18	Pinoli volanti	Danno: 3	Danno sesso opposto - Se il giocatore avversario è di sesso diverso dal tuo, fai danno doppio.	Piume ignifughe	Danno: 4	Blocca attacco - Il bersaglio non può attaccare al prossimo turno.	Beccata di tristezza	Danno: 5	Autolesionismo - Subisci 1 Pv di danno durante l'attacco	Seme velenoso	Danno: 4	Alcolismo competitivo - Se il tuo bicchiere contiene meno gin tonic rispetto a quello dell’avversario, infliggi +2 danni.	Radice esplosiva	Danno: 4	Inverti casella - I bonus della casella diventano malus per l’avversario finché ci resta sopra.	Partenogenesi letale	Danno: 4	Cura - Recuperi 2 Punti Vita. Non puoi superare i PV massimi.	Se vi trovate davanti a Pignacano, lui vi guarderà con i suoi occhi tristi e vi sputerà un pinolo in faccia, imprecando con le sue tante parolacce. Questo tragico volatile, metà tucano maledetto e metà scultura di corteccia infestata, non ha organi sessuali e non capisce il piacere fisico. Per riprodursi, deve ingoiare compulsivamente coni di pino e poi sputare pinoli con una precisione da cecchino. Le sue piume sono fatte di squame di legno e dal suo becco trasuda miele, perché l’universo ha deciso di renderlo ancora più disturbante.
 38	Pompecora	Fruttato	19	Aspra lana	Danno: 2	Cura - Recuperi 2 Punti Vita. Non puoi superare i PV massimi.	Sbucciare un esperidio	Danno: 4	Inverti casella - I bonus della casella diventano malus per l’avversario finché ci resta sopra.	Pom-pecorina	Danno: 3	Danno sesso opposto - Se il giocatore avversario è di sesso diverso dal tuo, fai danno doppio.	Tosatura selvaggia	Danno: 2	Spogliato - Non può difendersi al prossimo attacco.	Rutto alcolico	Danno: 3	Paura - Il bersaglio non può avvicinarsi a te nel prossimo turno, deve stare ad almeno 1 casella di distanza.	Zoccolo frantumatore	Danno: Danno: 3	Spingi l’avversario di 2 caselle nella direzione dell'attacco. Se sbatte contro una parete, perde 1 PV. Se finisce contro un altro ginocchio, entrambi perdono 1 PV.	Hic! Burp! Se incontrate Pompecora, lei vi fisserà con occhi che bruciano come la vostra esofagite dopo un succo d'arancia a stomaco vuoto, e vi parlerà come un ubriaco. Lei è la prova vivente che il consumo eccessivo di pompelmo porta alla follia mistica. Le sue giornate passano tra spremiture compulsive, strani rituali alcolici e occasionali sacrifici agli dèi del fermentato artigianale. Il suo "vero" vino di pompelmo va affinato con ossa umane, lacrime di astemi e una bestemmia detta sottovoce. Con la sua "Spremitura Eruttiva", vi sputerà in faccia un getto di succo acido, infliggendovi nausea permanente e la riduzione del 50% della vostra dignità.
 39	Winenot?	Fruttato	16	Sensualità furry	Danno: 3	Danno sesso opposto - Se il giocatore avversario è di sesso diverso dal tuo, fai danno doppio.	Molti bicchieri di vino	Danno: 4	Ammosciamento - L’avversario fa massimo 1 danno al prossimo attacco.	Potenza radical chic	Danno: 3	Spogliato - Non può difendersi al prossimo attacco.	Sorso letale	Danno: 3	Ammosciamento - L’avversario fa massimo 1 danno al prossimo attacco.	Sciabolata da gigolò	Danno: 4	Blocca attacco - Il bersaglio non può attaccare al prossimo turno.	Sbronza assassina	Danno: 5	Autolesionismo - Subisci 1 Pv di danno durante l'attacco	Chèwie, se Winenot vi seduce con il suo lessico forbito, sappiate che è un gigolò trasformato in un pedante connoisseur di vini naturali, che vi parla con la r moscia. Un tempo banale sciupafemmine da salotto, ha scoperto i vini naturali e da allora non parla d'altro. Ogni conversazione si trasforma in un monologo sull'importanza della fermentazione spontanea e sulla superiorità morale del biodinamico, bombardandovi con nomi di viticoltori sloveni mai sentiti. Il suo fascino è inspiegabile, un mix letale tra pelo folto, cultura e sguardo da “so di essere meglio di te” che lo rende irresistibile per chiunque abbia un minimo di autostima da mettere in discussione.
-40	Callista	Speziato	17	Necrofilia indotta	Danno: 4	Danno sesso opposto - Se il giocatore avversario è di sesso diverso dal tuo, fai danno doppio.	Ritorno dalla morte	Danno: 2	Cura - Recuperi 2 Punti Vita. Non puoi superare i PV massimi.	Putrefazione avanzata	Danno: 4	Succhiaggio PV - Recuperi PV pari al danno che infliggi.	Cripto-overdose	Danno: 4	Alcolismo competitivo - Se il tuo bicchiere contiene meno gin tonic rispetto a quello dell’avversario, infliggi +2 danni.	Borsa dritta al cimitero	Danno: 4	Spogliato - Non può difendersi al prossimo attacco.	Morte NFT	Danno: 5	Autolesionismo - Subisci 1 Pv di danno durante l'attacco	Se incontrate Callista, sappiate che un tempo era un'anima pura e solare, raggiante di speranza e positività. Amava i tramonti, le tisane e credeva nell’umanità. Poi ha scoperto le criptovalute. Ora, la sua anima è corrotta oltre ogni possibilità di redenzione, e la sua allegria è maniacale. Non parla d'altro che di NFT, token e rendite passive, e chiunque osi guardarla negli occhi viene ipnotizzato in un vortice di investimenti che non porteranno mai a nulla. La sua voce è un sussurro malevolo che riecheggia nella notte: "Ehi fratello, vuoi guadagnare senza fare un cazzo?", e se rispondete sì, siete fottuti.
+40	Callista	Speziato	17	Necrofilia indotta	Danno: 4	Danno sesso opposto - Se il giocatore avversario è di sesso diverso dal tuo, fai danno doppio.	Ritorno dalla morte	Danno: 2	Cura - Recuperi 2 Punti Vita. Non puoi superare i PV massimi.	Putrefazione avanzata	Danno: 4	Succhiaggio PV - Recuperi PV pari al danno che infliggi.	Cripto-overdose	Danno: 4	Alcolismo competitivo - Se il tuo bicchiere contiene meno gin tonic rispetto a quello dell’avversario, infliggi +2 danni.	Borsa dritta al cimitero	Danno: 4	Spogliato - Non può difendersi al prossimo attacco.	Morte NFT	Danno: 5	Autolesionismo - Subisci 1 Pv di danno durante l'attacco	Se incontrate Callista, sappiate che un tempo era un'anima pura e solare, raggiante di speranza e positività. Amava i tramonti, le tisane e credeva nell’umanità. Poi ha scoperto le criptovalute. Ora, la sua anima è corrotta oltre ogni possibilità di redenzione, e la sua allegria è maniacale. Non parla d'altro che di NFT, token e rendite passive, e chiunque osi guardarla negli occhi viene ipnotizzato in un vortice di investimenti che non porteranno mai a nulla. La sua voce è un sussurro malevolo che riechega nella notte: "Ehi fratello, vuoi guadagnare senza fare un cazzo?", e se rispondete sì, siete fottuti.
 41	Cannellorca	Speziato	20	Affondanavi speziato	Danno: 4	Spingi l’avversario di 2 caselle nella direzione dell'attacco. Se sbatte contro una parete, perde 1 PV. Se finisce contro un altro ginocchio, entrambi perdono 1 PV.	Colpo idrofobo	Danno: 3	Blocca attacco - Il bersaglio non può attaccare al prossimo turno.	Grasso che cola	Danno: 2	Inverti casella - I bonus della casella diventano malus per l’avversario finché ci resta sopra.	Tsunami alla cannella	Danno: 2	Ammosciamento - L’avversario fa massimo 1 danno al prossimo attacco.	Ondata Macellatrice	Danno: 2	Spingi l’avversario di 2 caselle nella direzione dell'attacco. Se sbatte contro una parete, perde 1 PV. Se finisce contro un altro ginocchio, entrambi perdono 1 PV.	Fauci del giovedì	Danno: Danno: 1	Paralisi totale -Il Ginocchio colpito non può muoversi né attaccare al prossimo turno (non cumulabile)	Se sentite il rombo di Cannellorca, preparatevi, perché è il Leviatano Speziato, il flagello dei mari, e la sua minaccia è chiara: "il mare è mio, e a lui va reso tributo". Non è il cazzo di Willy che salta gli scogli, ma un demone delle profondità, sempre cattivo e minaccioso. Ovunque passi, l’oceano si colma di una scia mortifera di sangue e cannella, il vostro ultimo respiro. Le sue fauci grondanti non si chiudono mai senza strappare carne, e le onde si tingono di un rosso speziato. La sua unica debolezza è la cioccolata: un odore di fondente la placa un istante, prima di tornare a macellare ogni cosa a vista.
 42	Anicinzia	Speziato	18	Magia del Rasentin	Danno: 2	Cura - Recuperi 2 Punti Vita. Non puoi superare i PV massimi.	Follia dei ghiacci	Danno: 4	Blocca attacco - Il bersaglio non può attaccare al prossimo turno.	Arcanomanzia balsamica	Danno: 4	Sorso salvifico - Se il tuo bicchiere contiene più gin tonic rispetto a quello dell’avversario, puoi bere un sorso e recuperare 2 Punti Vita.	Ghiacciolo letale	Danno: 2	Paralisi totale -Il Ginocchio colpito non può muoversi né attaccare al prossimo turno (non cumulabile)	Infusione stregata	Danno: 3	Spogliato - Non può difendersi al prossimo attacco.	Sbornia dolce	Danno: Danno: 2	Cura - Recuperi 2 Punti Vita. Non puoi superare i PV massimi.	Anicinzia, la maga veneta e ubriaca, vi fissa con un sorriso inquietante, il bastone d'anice in pugno. Lei è una dannata leggenda che ha trovato la vera fonte del potere nell’anice, ingurgitando così tante bottiglie di pastis e sambuca che il suo corpo è ormai una distilleria ambulante. Il suo sangue è una soluzione alcolica al settanta percento, e il suo respiro potrebbe infiammare un caminetto spento. Se provate a offrirle un drink che non sappia di anisetta e morte, vi guarderà con disprezzo e, senza dire una parola, trasformerà il vostro cocktail in un intruglio a base di anice. I villaggi devastati dopo il suo passaggio sono la prova che Anicinzia non beve mai da sola.
 43	Fumello	Speziato	17	Ganja power	Danno: 2	Cura - Recuperi 2 Punti Vita. Non puoi superare i PV massimi.	Cartina aromatica	Danno: 4	Sorso salvifico - Se il tuo bicchiere contiene più gin tonic rispetto a quello dell’avversario, puoi bere un sorso e recuperare 2 Punti Vita.	Stonamento	Danno: 3	Paralisi totale -Il Ginocchio colpito non può muoversi né attaccare al prossimo turno (non cumulabile)	Bomba spliff	Danno: 4	Inverti casella - I bonus della casella diventano malus per l’avversario finché ci resta sopra.	Teoria del complotto	Danno: 5	Autolesionismo - Subisci 1 Pv di danno durante l'attacco	Abduction aliena	Danno: Danno: 3	Succhiaggio PV - Recuperi PV pari al danno che infliggi.	NAh, mi bredren, se incontrate Fumello, lui è l'incarnazione vivente dello "stay irie", e vi parlerà come un rastafariano. Un'anima che vibra con le onde della natura, un mistico del verde che ha elevato il concetto di "one love" a un livello ultraterreno. Il tempo per lui è un'illusione imposta da Babylon, e il mondo si divide tra chi sa rollare bene e chi deve ancora illuminarsi. "Roll pon di fire, but neva pon di liar" è la sua regola. Chi porta vibrazioni negative nella sua giungla rischia di finire avvolto in una nuvola da cui non si sveglia più.
@@ -111,83 +104,102 @@ const RAW_GINOCCHI_DETAILS_TEXT = `Numero del gindex	Nome	Tipologia	PV	Attacco 1
 50	Fuega	Speziato	18	Piccantezza in straming	Danno: 4	Danno sesso opposto - Se il giocatore avversario è di sesso diverso dal tuo, fai danno doppio.	Orgoglio contadino	Danno: 5	Autolesionismo - Subisci 1 Pv di danno durante l'attacco	10000000000 Punti scorville	Danno: 3	Paura - Il bersaglio non può avvicinarsi a te nel prossimo turno, deve stare ad almeno 1 casella di distanza.	Dildo di fuoco	Danno: 3	Spogliato - Non può difendersi al prossimo attacco.	Tortura piccante	Danno: 5	Autolesionismo - Subisci 1 Pv di danno durante l'attacco	Onlyfans letale	Danno: Danno: 3	Danno sesso opposto - Se il giocatore avversario è di sesso diverso dal tuo, fai danno doppio.	Se i vostri occhi si posano su Fuega, sappiate che state guardando la divinità infuocata del capsicum, nata nelle segrete sperimentali di un laboratorio che produceva salse per OnlyFans. Lei, con la sua chioma ardente e gli occhi che bruciano di una malizia antica e sboccata, è la prova che il piccante può essere una maledizione divina. Ogni peperoncino che brandisce è una promessa di dolore sublime, un'estasi di sudore e bruciore che vi farà implorare pietà. La sua voce, roca e suadente, vi sussurra ricette infernali e segreti di coltivazione proibiti, mentre le sue fiale ribollono di alchemie che promettono di sciogliervi la lingua e l'anima. Preparatevi a pagare per il suo fuoco.
 `;
 
-// Function to parse the new raw text data
-const parseAllGinocchiData = (rawData: string): { ginocchi: Ginocchio[], descriptions: Record<number, string> } => {
-    const lines = rawData.trim().split('\n');
-    const header = lines.shift(); // Remove header line
-    if (!header) return { ginocchi: [], descriptions: {} };
-
-    const parsedGinocchi: Ginocchio[] = [];
-    const descriptionsMap: Record<number, string> = {};
-
-    lines.forEach(line => {
-        const parts = line.split('\t').map(part => part.trim());
-        
-        // Expecting 23 columns: ID, Nome, Tipologia, PV, (Attacco, Potenza, Effetto) x 6, Descrizione
-        if (parts.length < 23) { 
-            console.warn("Skipping malformed line (not enough columns):", line);
-            return;
-        }
-
-        const id = parseInt(parts[0]);
-        const nome = parts[1];
-        const tipologiaStr = parts[2];
-        const categoria = CATEGORY_MAP[tipologiaStr];
-        const pvIniziali = parseInt(parts[3]);
-        const descrizione = parts[22]; // 23rd column is index 22
-
-        if (isNaN(id) || !nome || !categoria || isNaN(pvIniziali) || descrizione === undefined) {
-            console.warn("Skipping line with missing or invalid critical data:", line, {id, nome, tipologiaStr, categoria, pvIniziali});
-            return;
-        }
-
-        const attacchi: Attacco[] = [];
-        for (let i = 0; i < 6; i++) {
-            const attackName = parts[4 + i * 3];
-            let attackDamage = parts[5 + i * 3];
-            const attackEffect = parts[6 + i * 3];
-
-            if (attackDamage) {
-                if (attackDamage.startsWith("Danno: Danno: ")) {
-                    attackDamage = "Danno: " + attackDamage.substring("Danno: Danno: ".length).trim();
-                } else if (attackDamage.match(/^\d+$/)) { // If it's just a number like "4"
-                    attackDamage = "Danno: " + attackDamage;
-                }
-                 // If it's already "Danno: X" or some other text, it's passed as is.
-            } else {
-                attackDamage = "Danno: N/A"; // Default for empty damage string
-            }
-
-            attacchi.push({
-                dado: i + 1, // Dice face (1-6)
-                nome: attackName || "Attacco Sconosciuto", // Default for empty name
-                danno: attackDamage,
-                effetto: attackEffect || "Nessun effetto speciale.", // Default for empty effect
-            });
-        }
-        
-        const folderName = CATEGORY_TO_FOLDER_NAME[categoria];
-        if (!folderName) {
-            console.warn(`Folder name not found for category: ${categoria} for Ginocchio ID ${id}. Defaulting image path.`);
-        }
-
-        parsedGinocchi.push({
-            id,
-            nome,
-            categoria,
-            pvIniziali,
-            attacchi,
-            colore: CATEGORY_COLORS[categoria],
-            immagine: folderName ? `/images/Ginocchi/${folderName}/${id}.png` : `/images/placeholder.png`
-        });
-        descriptionsMap[id] = descrizione;
-    });
-
-    return { ginocchi: parsedGinocchi.sort((a,b) => a.id - b.id), descriptions: descriptionsMap };
+const parseDamageString = (damageStr: string): string => {
+  // Normalize "Danno: Danno: X" to "Danno: X"
+  const doubleDamageRegex = /Danno: (Danno: \d+)/i;
+  const match = doubleDamageRegex.exec(damageStr);
+  if (match && match[1]) {
+    return match[1];
+  }
+  // Ensure "Danno:X" becomes "Danno: X"
+  return damageStr.replace(/Danno:(\d+)/i, 'Danno: $1').trim();
 };
 
+const parseAllGinocchiData = (): { ginocchi: Ginocchio[], descriptions: Record<number, string> } => {
+  const lines = RAW_GINOCCHI_DETAILS_TEXT.trim().split('\n');
+  const header = lines[0].split('\t').map(h => h.trim());
+  const ginocchiArray: Ginocchio[] = [];
+  const descriptionsMap: Record<number, string> = {};
 
-const { ginocchi: ALL_PARSED_GINOCCHI, descriptions: PARSED_DESCRIPTIONS } = parseAllGinocchiData(RAW_GINOCCHI_DETAILS_TEXT);
+  const colIndices = {
+    id: header.indexOf('Numero del gindex'),
+    nome: header.indexOf('Nome'),
+    tipologia: header.indexOf('Tipologia'),
+    pv: header.indexOf('PV'),
+    descrizione: header.indexOf('Descrizione'),
+    attacchi: [] as { nome: number, potenza: number, effetto: number }[]
+  };
 
-export const ALL_GINOCCHI: Ginocchio[] = ALL_PARSED_GINOCCHI;
-export const GINOCCHIO_DESCRIPTIONS: Record<number, string> = PARSED_DESCRIPTIONS;
+  for (let i = 1; i <= 6; i++) {
+    colIndices.attacchi.push({
+      nome: header.indexOf(`Attacco ${i}`),
+      potenza: header.indexOf(`Potenza ${i}`),
+      effetto: header.indexOf(`EFFETTO ${i}`)
+    });
+  }
+
+  for (let i = 1; i < lines.length; i++) {
+    const cells = lines[i].split('\t').map(c => c.trim());
+    if (cells.length < header.length) continue;
+
+    const id = parseInt(cells[colIndices.id], 10);
+    const nome = cells[colIndices.nome];
+    const tipologiaStr = cells[colIndices.tipologia];
+    const pvIniziali = parseInt(cells[colIndices.pv], 10);
+    const descrizione = cells[colIndices.descrizione];
+
+    const categoriaEnum = CATEGORY_MAP[tipologiaStr] || Categoria.Bilanciato; // Fallback
+    
+    // Correct image path construction
+    const immagine = `/images/ginocchi/${id}.png`;
+
+
+    const attacchi: Attacco[] = [];
+    colIndices.attacchi.forEach((attaccoIndices, index) => {
+      const nomeAttacco = cells[attaccoIndices.nome];
+      const potenzaAttacco = cells[attaccoIndices.potenza];
+      const effettoAttacco = cells[attaccoIndices.effetto];
+      if (nomeAttacco && potenzaAttacco && effettoAttacco) {
+        attacchi.push({
+          dado: index + 1,
+          nome: nomeAttacco,
+          danno: parseDamageString(potenzaAttacco),
+          effetto: effettoAttacco
+        });
+      }
+    });
+
+    ginocchiArray.push({
+      id,
+      nome,
+      categoria: categoriaEnum,
+      colore: CATEGORY_COLORS[categoriaEnum],
+      immagine,
+      attacchi,
+      pvIniziali
+    });
+    descriptionsMap[id] = descrizione;
+  }
+  return { ginocchi: ginocchiArray, descriptions: descriptionsMap };
+};
+
+const parsedData = parseAllGinocchiData();
+export const ALL_GINOCCHI: Ginocchio[] = parsedData.ginocchi;
+export const GINOCCHIO_DESCRIPTIONS: Record<number, string> = parsedData.descriptions;
+
+// Specific Ginocchio details for quick access if needed elsewhere
+// export const bilanciatiData = ALL_GINOCCHI.filter(g => g.categoria === Categoria.Bilanciato);
+// export const erbaceiData = ALL_GINOCCHI.filter(g => g.categoria === Categoria.Erbaceo);
+// export const fruttatiData = ALL_GINOCCHI.filter(g => g.categoria === Categoria.Fruttato);
+// export const speziatiData = ALL_GINOCCHI.filter(g => g.categoria === Categoria.Speziato);
+// console.log("ALL_GINOCCHI after parsing:", JSON.stringify(ALL_GINOCCHI, null, 2));
+// console.log("GINOCCHIO_DESCRIPTIONS after parsing:", JSON.stringify(GINOCCHIO_DESCRIPTIONS, null, 2));
+
+// Example of accessing a specific Ginocchio
+// const punturirma = ALL_GINOCCHI.find(g => g.id === 1);
+// console.log("Punturirma:", punturirma);
+// console.log("Descrizione Punturirma:", GINOCCHIO_DESCRIPTIONS[1]);
+// console.log("Tony Ephedrina name for chatbot:", ALL_GINOCCHI.find(g => g.id === 26)?.nome);
+
+// Log all image paths to verify
+// ALL_GINOCCHI.forEach(g => console.log(`Image for ${g.nome}: ${g.immagine}`));
