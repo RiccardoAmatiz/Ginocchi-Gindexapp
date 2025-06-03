@@ -29,7 +29,7 @@ const PvTracker: React.FC<PvTrackerProps> = ({ ginocchio }) => {
   return (
     <div className="my-6 p-4 bg-gray-800 rounded-lg">
       {/* PV Number and Buttons Wrapper */}
-      <div className="flex items-center justify-center space-x-2 sm:space-x-4 mb-3">
+      <div className="flex items-center justify-center space-x-2 sm:space-x-4">
         <Button 
           onClick={decrementPv} 
           className="p-2 rounded-full bg-red-600 hover:bg-red-700 disabled:opacity-50" 
@@ -53,6 +53,15 @@ const PvTracker: React.FC<PvTrackerProps> = ({ ginocchio }) => {
         >
           <PlusIcon className="w-6 h-6 sm:w-8 sm:h-8 text-white" aria-label="Aggiungi un PV"/>
         </Button>
+      </div>
+      
+      {/* PV Label */}
+      <div 
+        className="text-center text-sm font-roboto-mono mt-2 mb-2" // Adjusted margins
+        style={{ color: ginocchio.colore }}
+        aria-hidden="true" 
+      >
+        Punti Vita
       </div>
 
       {/* Health Bar Container */}

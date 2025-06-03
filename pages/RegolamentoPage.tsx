@@ -51,13 +51,15 @@ const RegolamentoPage: React.FC = () => {
     { name: "Auto-lesionismo (Recoil)", logo: "Autolesionismo.png", desc: "Ti fai 1 danno dopo aver attaccato." },
     { name: "Danno doppio sesso opposto", logo: "Danno sesso opposto.png", desc: "Se il giocatore avversario è di sesso diverso dal tuo, fai danno doppio." },
     { name: "Ammosciamento", logo: "Ammosciamento.png", desc: "L’avversario fa massimo 1 danno al prossimo attacco." },
-    { name: "Tossicodipendenza", logo: "Tossicodipendenza.png", desc: "Il bersaglio è costretto ad attaccare lo stesso Ginocchio del turno precedente. Se non può, non si attacca." },
+    // { name: "Tossicodipendenza", logo: "Tossicodipendenza.png", desc: "Il bersaglio è costretto ad attaccare lo stesso Ginocchio del turno precedente. Se non può, non si attacca." }, // Rimosso
     { name: "Spogliato!", logo: "Spogliato.png", desc: "Non può difendersi al prossimo attacco." },
     { name: "Paura", logo: "Paura.png", desc: "Il bersaglio non può avvicinarsi a te nel prossimo turno, deve stare ad almeno 1 casella di distanza." },
     { name: "Succhiaggio PV", logo: "Succhiaggio pv.png", desc: "Recuperi PV pari al danno che infliggi." },
-    { name: "Blocca movimento", logo: "Blocco Movimento.png", desc: "Il bersaglio non può muoversi al prossimo turno." },
+    // { name: "Blocca movimento", logo: "Blocco Movimento.png", desc: "Il bersaglio non può muoversi al prossimo turno." }, // Rimosso
     { name: "Blocca attacco", logo: "Blocco Attacco.png", desc: "Il bersaglio non può attaccare al prossimo turno." },
-    { name: "Inverti casella", logo: "Inverti Casella.png", desc: "I bonus della casella diventano malus per l’avversario finché ci resta sopra." }
+    { name: "Inverti casella", logo: "Inverti Casella.png", desc: "I bonus della casella diventano malus per l’avversario finché ci resta sopra." },
+    { name: "Alcolismo competitivo", logo: "Alcolismo_competitivo.png", desc: "Se il tuo bicchiere contiene meno gin tonic rispetto a quello dell’avversario, infliggi +2 danni." },
+    { name: "Sorso salvifico", logo: "Sorso_salvifico.png", desc: "Se il tuo bicchiere contiene più gin tonic rispetto a quello dell’avversario, puoi bere un sorso e recuperare 2 Punti Vita." }
   ];
 
 

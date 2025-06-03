@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 // Removed GoogleGenAI import as it's no longer used here
-import { ALL_GINOCCHI, CATEGORY_COLORS, PV_QUOTES } from '../constants';
+import { ALL_GINOCCHI, CATEGORY_COLORS, PV_QUOTES, GINOCCHIO_DESCRIPTIONS } from '../constants';
 import { Ginocchio, Attacco, StatusEffectName, STATUS_EFFECT_NAMES } from '../types';
 import CategoryBadge from '../components/CategoryBadge';
 import PvTracker from '../components/PvTracker';
@@ -77,9 +77,10 @@ const SchedaGinocchioPage: React.FC = () => {
   }
   
   const ginocchioState = getGinocchioState(ginocchio.id);
+  const description = GINOCCHIO_DESCRIPTIONS[ginocchio.id];
 
   const handleResetState = () => {
-    if (window.confirm(`Sei sicuro di voler resettare PV e status di ${ginocchio.nome}?`)) {
+    if (window.confirm(`Sei sicuro di voler resettare PV e status di ${ginocchio.nome.toUpperCase()}?`)) {
         resetGinocchioState(ginocchio.id);
     }
   };
@@ -93,7 +94,17 @@ const SchedaGinocchioPage: React.FC = () => {
     pvQuote = PV_QUOTES[21] || "Pronto a fare danni!";
   }
 
-  const iframeSrc = `https://ginocchi-chatbot.vercel.app/?ginocchio=${encodeURIComponent(ginocchio.nome)}`;
+  // Determine the correct name for the chatbot URL parameter
+  let chatbotQueryParamValue: string;
+  if (ginocchio.id === 26) { // Tony Ephedrina (ID 26)
+    chatbotQueryParamValue = encodeURIComponent("Tony Ephedrina"); 
+  } else {
+    // For all other Ginocchi, use their name as defined in constants.ts (original casing)
+    // and apply standard URL encoding.
+    chatbotQueryParamValue = encodeURIComponent(ginocchio.nome); 
+  }
+  const iframeSrc = `https://ginocchi-chatbot.vercel.app/?ginocchio=${chatbotQueryParamValue}`;
+
 
   return (
     <div className="py-6 flex flex-col items-center">
@@ -112,13 +123,13 @@ const SchedaGinocchioPage: React.FC = () => {
       <div className="w-full max-w-2xl bg-gray-800 rounded-xl shadow-2xl p-2 sm:p-4 md:p-6 lg:p-8">
         <img 
           src={ginocchio.immagine}
-          alt={`Artwork for ${ginocchio.nome}`} 
+          alt={`Artwork for ${ginocchio.nome.toUpperCase()}`} 
           className="w-full aspect-square object-cover rounded-lg mb-6 shadow-lg"
           onError={(e) => (e.currentTarget.src = 'https://picsum.photos/seed/fallback-detail/400/300')}
         />
         
         <h1 className="text-5xl font-rubik mb-2 text-center" style={{ color: ginocchio.colore }}>
-          #{ginocchio.id} {ginocchio.nome}
+          #{ginocchio.id} {ginocchio.nome.toUpperCase()}
         </h1>
         
         <div className="flex justify-center mb-6">
@@ -176,7 +187,22 @@ const SchedaGinocchioPage: React.FC = () => {
         </Accordion>
 
         <Accordion
-          title={`Chatta con ${ginocchio.nome}`}
+          title="Caratteristiche"
+          titleClassName="text-2xl !font-rubik mt-4"
+          contentClassName="!bg-gray-850"
+          defaultOpen={false}
+        >
+          <div className="p-4 leading-relaxed">
+            {description ? (
+              <p style={{ color: ginocchio.colore }}>{description}</p>
+            ) : (
+              <p style={{ color: ginocchio.colore }}>Descrizione non disponibile.</p>
+            )}
+          </div>
+        </Accordion>
+
+        <Accordion
+          title={`Chatta con ${ginocchio.nome.toUpperCase()}`}
           titleClassName="text-2xl !font-rubik mt-4"
           contentClassName="!bg-gray-850" 
           defaultOpen={false} 
@@ -184,7 +210,7 @@ const SchedaGinocchioPage: React.FC = () => {
           <div className="p-0 sm:p-2 md:p-4">
             <iframe
               src={iframeSrc}
-              title={`Chatta con ${ginocchio.nome}`}
+              title={`Chatta con ${ginocchio.nome.toUpperCase()}`}
               className="w-full" 
               style={{ 
                 height: '650px', 
@@ -193,7 +219,6 @@ const SchedaGinocchioPage: React.FC = () => {
                 boxShadow: '0 5px 15px rgba(0,0,0,0.2)' 
               }}
               sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-              allow="microphone"
               loading="lazy"
             ></iframe>
           </div>
@@ -218,3 +243,4 @@ const SchedaGinocchioPage: React.FC = () => {
 };
 
 export default SchedaGinocchioPage;
+ 
