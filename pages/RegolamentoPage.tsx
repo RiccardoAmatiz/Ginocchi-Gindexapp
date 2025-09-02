@@ -136,8 +136,6 @@ const RegolamentoPage: React.FC = () => {
             <li>Se il giocatore in difesa con il suo tiro, totalizza esattamente lo stesso punteggio dell'avversario, allora l'attacco è respinto al mittente, sia danni che effetto. Nella respinta non si applicano debolezze, resistenze e bonus casella.</li>
             <li>Se il giocatore con il suo tiro in difesa ottiene un lancio diverso da quello dell'attaccante, allora l'attacco va a buon fine.</li>
           </ul>
-           <h3 className="text-xl font-rubik mt-4 mb-2 text-white">TOOLS</h3>
-          <p>Nelle pagine del gindex di ogni ginocchio, nella sezione tools di gioco, sono presenti dei tools per tenere il conto dei PV e per gli status. Usali durante le partite.</p>
         </RuleSection>
 
         <RuleSection number="5." title="TRIANGOLO DELLE DEBOLEZZE">
