@@ -23,10 +23,8 @@ const AttackDetailModal: React.FC<AttackDetailModalProps> = ({ attack, isOpen, o
     return null;
   }
 
-  // Determine text color for title based on categoryColor luminance
-  const isLightCategoryColor = parseInt(categoryColor.substring(1,3), 16) * 0.299 + parseInt(categoryColor.substring(3,5), 16) * 0.587 + parseInt(categoryColor.substring(5,7), 16) * 0.114 > 186;
-  const titleTextColor = isLightCategoryColor ? 'text-black' : 'text-white';
-
+  // Extract only the value from the damage string (e.g., "Danno: 4" becomes "4")
+  const damageValue = attack.danno.replace(/Danno:\s*/i, '').trim();
 
   return (
     <div 
@@ -53,21 +51,19 @@ const AttackDetailModal: React.FC<AttackDetailModalProps> = ({ attack, isOpen, o
 
         <h2 
             id="attack-modal-title" 
-            className={`text-3xl font-rubik font-bold mb-1 uppercase`}
+            className={`text-3xl font-rubik font-bold mb-6 uppercase text-center`}
             style={{ color: categoryColor }}
         >
-            {attack.nome}
+            {attack.dado}: {attack.nome}
         </h2>
-        <p className="text-sm text-gray-400 mb-4" style={{ color: categoryColor }}>Attacco: Dado {attack.dado}</p>
 
-
-        <div className="space-y-3 text-gray-200">
+        <div className="space-y-4 text-gray-200">
           <div>
-            <h3 className="text-lg font-rubik font-bold" style={{ color: categoryColor }}>Danno:</h3>
-            <p className="text-lg">{attack.danno}</p>
+            <h3 className="text-lg font-rubik font-bold uppercase tracking-wider" style={{ color: categoryColor }}>Danno</h3>
+            <p className="text-4xl font-bold font-roboto-mono" style={{ color: categoryColor }}>{damageValue}</p>
           </div>
           <div>
-            <h3 className="text-lg font-rubik font-bold" style={{ color: categoryColor }}>Effetto:</h3>
+            <h3 className="text-lg font-rubik font-bold uppercase tracking-wider" style={{ color: categoryColor }}>Effetto</h3>
             <p className="leading-relaxed">{attack.effetto}</p>
           </div>
         </div>
@@ -76,7 +72,7 @@ const AttackDetailModal: React.FC<AttackDetailModalProps> = ({ attack, isOpen, o
             onClick={onClose} 
             variant="category"
             categoryColor={categoryColor}
-            className="mt-6 w-full"
+            className="mt-8 w-full"
         >
             Chiudi
         </Button>
