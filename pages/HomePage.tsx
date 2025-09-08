@@ -1,9 +1,8 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
 import { ExternalLinkIcon } from '../components/icons/ExternalLinkIcon';
-import { CATEGORY_COLORS } from '../constants'; // Import CATEGORY_COLORS
+import { CATEGORY_COLORS } from '../constants';
 
 const HomePage: React.FC = () => {
   return (
@@ -18,9 +17,9 @@ const HomePage: React.FC = () => {
         Colleziona, bevi, combatti!
       </p>
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 w-full max-w-4xl">
-        <Link to="/gindex" className="w-full">
-          <Button variant="category" categoryColor={CATEGORY_COLORS.Speziato} className="w-full">
+      <div className="flex flex-wrap items-stretch justify-center gap-6 w-full max-w-5xl">
+        <Link to="/gindex" className="w-full sm:w-[45%] lg:w-[30%]">
+          <Button variant="category" categoryColor={CATEGORY_COLORS.Speziato} className="w-full h-full">
             Tutti i Ginocchi
           </Button>
         </Link>
@@ -29,9 +28,9 @@ const HomePage: React.FC = () => {
           href="https://ginocchi-twiubso.gamma.site/" 
           target="_blank" 
           rel="noopener noreferrer" 
-          className="w-full"
+          className="w-full sm:w-[45%] lg:w-[30%]"
         >
-          <Button variant="category" categoryColor={CATEGORY_COLORS.Erbaceo} className="w-full flex items-center justify-center">
+          <Button variant="category" categoryColor={CATEGORY_COLORS.Erbaceo} className="w-full h-full flex items-center justify-center">
             Sito Ufficiale <ExternalLinkIcon />
           </Button>
         </a>
@@ -40,19 +39,24 @@ const HomePage: React.FC = () => {
           href="https://ginocchi-chatbot.vercel.app/" 
           target="_blank" 
           rel="noopener noreferrer" 
-          className="w-full"
+          className="w-full sm:w-[45%] lg:w-[30%]"
         >
-          <Button variant="category" categoryColor={CATEGORY_COLORS.Fruttato} className="w-full flex items-center justify-center">
+          <Button variant="category" categoryColor={CATEGORY_COLORS.Fruttato} className="w-full h-full flex items-center justify-center">
             Bar dell’Oblio <ExternalLinkIcon />
           </Button>
         </a>
 
-        <Link to="/regolamento" className="w-full"> {/* Modificato qui */}
-          <Button variant="category" categoryColor={CATEGORY_COLORS.Bilanciato} className="w-full flex items-center justify-center">
-            Regolamento {/* Icona rimossa */}
+        <Link to="/regolamento" className="w-full sm:w-[45%] lg:w-[30%]">
+          <Button variant="category" categoryColor={CATEGORY_COLORS.Bilanciato} className="w-full h-full flex items-center justify-center">
+            Regolamento
           </Button>
         </Link>
         
+        <Link to="/regolamento-ubriachi" className="w-full sm:w-[45%] lg:w-[30%]">
+            <Button variant="category" categoryColor={CATEGORY_COLORS.Bilanciato} className="w-full h-full flex items-center justify-center">
+                Regolamento per ubriachi
+            </Button>
+        </Link>
       </div>
     </div>
   );
