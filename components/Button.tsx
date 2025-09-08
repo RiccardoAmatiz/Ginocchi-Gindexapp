@@ -1,4 +1,3 @@
-
 import React, { ReactNode } from 'react';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -9,7 +8,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const Button: React.FC<ButtonProps> = ({ children, variant = 'primary', categoryColor, className = '', ...props }) => {
-  let baseStyle = "px-6 py-3 rounded-lg font-rubik text-lg shadow-md transition-all duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-opacity-50";
+  let baseStyle = "px-6 py-3 rounded-lg font-rubik font-bold text-lg shadow-md transition-all duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-opacity-50";
   
   if (variant === 'primary') {
     baseStyle += " bg-categories-Speziato text-white hover:bg-blue-500 focus:ring-blue-400";

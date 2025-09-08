@@ -1,4 +1,3 @@
-
 import React, { useState, ReactNode, useId } from 'react';
 import { ChevronDownIcon } from './icons/ChevronDownIcon';
 import { ChevronUpIcon } from './icons/ChevronUpIcon';
@@ -24,7 +23,7 @@ const Accordion: React.FC<AccordionProps> = ({ title, children, defaultOpen = fa
     <div className="border border-gray-700 rounded-lg overflow-hidden mb-2">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`w-full flex justify-between items-center p-4 text-left font-rubik text-xl focus:outline-none transition-colors ${titleClassName} ${categoryColor ? '' : 'bg-gray-800 hover:bg-gray-700'}`}
+        className={`w-full flex justify-between items-center p-4 text-left font-rubik font-bold text-xl focus:outline-none transition-colors ${titleClassName} ${categoryColor ? '' : 'bg-gray-800 hover:bg-gray-700'}`}
         style={titleStyle}
         aria-expanded={isOpen}
         aria-controls={contentId}

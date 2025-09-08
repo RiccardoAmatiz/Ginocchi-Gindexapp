@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { Attacco } from '../types';
 import { XIcon } from './icons/XIcon'; // New icon
@@ -54,7 +53,7 @@ const AttackDetailModal: React.FC<AttackDetailModalProps> = ({ attack, isOpen, o
 
         <h2 
             id="attack-modal-title" 
-            className={`text-3xl font-rubik mb-1 uppercase`}
+            className={`text-3xl font-rubik font-bold mb-1 uppercase`}
             style={{ color: categoryColor }}
         >
             {attack.nome}
@@ -64,11 +63,11 @@ const AttackDetailModal: React.FC<AttackDetailModalProps> = ({ attack, isOpen, o
 
         <div className="space-y-3 text-gray-200">
           <div>
-            <h3 className="text-lg font-rubik" style={{ color: categoryColor }}>Danno:</h3>
+            <h3 className="text-lg font-rubik font-bold" style={{ color: categoryColor }}>Danno:</h3>
             <p className="text-lg">{attack.danno}</p>
           </div>
           <div>
-            <h3 className="text-lg font-rubik" style={{ color: categoryColor }}>Effetto:</h3>
+            <h3 className="text-lg font-rubik font-bold" style={{ color: categoryColor }}>Effetto:</h3>
             <p className="leading-relaxed">{attack.effetto}</p>
           </div>
         </div>

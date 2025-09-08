@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Ginocchio } from '../types';
@@ -23,7 +22,7 @@ const GinocchioCard: React.FC<GinocchioCardProps> = ({ ginocchio }) => {
         onError={(e) => (e.currentTarget.src = 'https://picsum.photos/seed/fallback/200/200')} // Fallback if image fails to load
       />
       <div className="p-4">
-        <h3 className="text-xl font-rubik truncate" style={textColorStyle}>
+        <h3 className="text-xl font-rubik font-bold truncate" style={textColorStyle}>
           #{ginocchio.id} {ginocchio.nome.toUpperCase()}
         </h3>
         <p className="text-sm text-gray-400" style={textColorStyle}>{ginocchio.categoria}</p>

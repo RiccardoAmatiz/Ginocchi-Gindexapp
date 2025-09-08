@@ -1,0 +1,21 @@
+{
+  "short_name": "GINDEX",
+  "name": "GINDEX",
+  "description": "An app to browse Ginocchi, track their PV, and manage status effects.",
+  "icons": [
+    {
+      "src": "/images/pittogramma_logo.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/images/pittogramma_logo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#000000"
+}

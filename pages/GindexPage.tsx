@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo } from 'react';
 import { ALL_GINOCCHI, CATEGORIES_ORDER, CATEGORY_COLORS } from '../constants';
 import { Categoria, Ginocchio } from '../types';
@@ -33,7 +32,7 @@ const GindexPage: React.FC = () => {
 
   return (
     <div className="py-6">
-      <h1 className="text-4xl font-rubik mb-8 text-center">Tutti i ginocchi</h1>
+      <h1 className="text-4xl font-rubik font-bold mb-8 text-center">Tutti i ginocchi</h1>
       
       <div className="mb-8 p-4 bg-gray-800 rounded-lg shadow flex flex-col sm:flex-row gap-4 items-center">
         <input
@@ -45,7 +44,7 @@ const GindexPage: React.FC = () => {
           aria-label="Cerca Ginocchio per nome o ID"
         />
         <select
-          className="w-full sm:w-1/2 p-3 bg-gray-700 rounded-md border border-gray-600 focus:ring-2 focus:ring-categories-Speziato focus:border-transparent outline-none font-rubik"
+          className="w-full sm:w-1/2 p-3 bg-gray-700 rounded-md border border-gray-600 focus:ring-2 focus:ring-categories-Speziato focus:border-transparent outline-none font-roboto-mono"
           value={selectedCategory}
           onChange={e => setSelectedCategory(e.target.value as Categoria | 'All')}
           aria-label="Filtra Ginocchi per categoria"

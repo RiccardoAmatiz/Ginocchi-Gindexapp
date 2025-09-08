@@ -11,7 +11,7 @@ interface RuleSectionProps {
 
 const RuleSection: React.FC<RuleSectionProps> = ({ title, number, children, titleClassName }) => (
   <section className="mb-10">
-    <h2 className={`text-3xl font-rubik mb-4 text-white ${titleClassName}`}> {/* Changed from text-yellow-400 */}
+    <h2 className={`text-3xl font-rubik font-bold mb-4 text-white ${titleClassName}`}> {/* Changed from text-yellow-400 */}
       {number && <span className="mr-2">{number}</span>}
       {title}
     </h2>
@@ -32,7 +32,7 @@ const TriangoloItem: React.FC<TriangoloItemProps> = ({ type, receivesPlus1From, 
     className="p-4 rounded-lg text-center text-sm md:text-base" 
     style={{ backgroundColor: CATEGORY_COLORS[type], color: parseInt(CATEGORY_COLORS[type].substring(1,3), 16) * 0.299 + parseInt(CATEGORY_COLORS[type].substring(3,5), 16) * 0.587 + parseInt(CATEGORY_COLORS[type].substring(5,7), 16) * 0.114 > 186 ? '#000000' : '#FFFFFF' }}
   >
-    <h4 className="font-bold text-lg md:text-xl uppercase mb-1">{type}</h4>
+    <h4 className="font-rubik font-bold text-lg md:text-xl uppercase mb-1">{type}</h4>
     <p>Riceve +1 danno da {receivesPlus1From}.</p>
     <p>Riceve -1 danno da {receivesMinus1From}.</p>
   </div>
@@ -111,7 +111,7 @@ const RegolamentoPage: React.FC = () => {
             <li>Attacca, se possibile. Un giocatore che viene attaccato deve difendersi.</li>
             <li>Se non attacchi, bevi.</li>
           </ul>
-          <h3 className="text-xl font-rubik mt-4 mb-2 text-white">MOVIMENTO</h3>
+          <h3 className="text-xl font-rubik font-bold mt-4 mb-2 text-white">MOVIMENTO</h3>
           <ul className="list-disc list-inside space-y-1">
             <li>Lancia il dado.</li>
             <li>Muovi il Ginocchio di esattamente quel numero di caselle, solo in orizzontale o verticale.</li>
@@ -122,14 +122,14 @@ const RegolamentoPage: React.FC = () => {
             <li>Se il ginocchio non può muoversi in nessuna direzione perchè bloccato da altri ginocchi, può attaccare direttamente.</li>
             <li>Se non riesci ad attaccare, fai un sorso dal tuo gin tonic.</li>
           </ul>
-          <h3 className="text-xl font-rubik mt-4 mb-2 text-white">ATTACCO</h3>
+          <h3 className="text-xl font-rubik font-bold mt-4 mb-2 text-white">ATTACCO</h3>
           <ul className="list-disc list-inside space-y-1">
             <li>Solo se sei su una casella adiacente (orizzontalmente o verticallmente) ad un avversario.</li>
             <li>Lancia il dado.</li>
             <li>Guarda sul Gindex del tuo ginocchio quale attacco esegui e applicane gli effetti.</li>
             <li>Nota: Il primo giocatore, durante il primo turno, non può attaccare.</li>
           </ul>
-          <h3 className="text-xl font-rubik mt-4 mb-2 text-white">DIFESA</h3>
+          <h3 className="text-xl font-rubik font-bold mt-4 mb-2 text-white">DIFESA</h3>
           <ul className="list-disc list-inside space-y-1">
             <li>Quando un giocatore viene attaccato, deve lanciare il dado (dopo l'attaccante) per tentare di difendersi e respingere l'attacco.</li>
             <li>Se il giocatore in difesa con il suo tiro, totalizza esattamente lo stesso punteggio dell'avversario, allora l'attacco è respinto al mittente, sia danni che effetto. Nella respinta non si applicano debolezze, resistenze e bonus casella.</li>
@@ -144,13 +144,13 @@ const RegolamentoPage: React.FC = () => {
             <TriangoloItem type={Categoria.Speziato} receivesPlus1From="Erbaceo" receivesMinus1From="Fruttato" />
           </div>
           <div className="p-4 rounded-lg text-center text-sm md:text-base" style={{ backgroundColor: CATEGORY_COLORS.Bilanciato, color: '#000000' }}>
-            <h4 className="font-bold text-lg md:text-xl uppercase mb-1">{Categoria.Bilanciato}</h4>
+            <h4 className="font-rubik font-bold text-lg md:text-xl uppercase mb-1">{Categoria.Bilanciato}</h4>
             <p>Non ha debolezze o resistenze.</p>
           </div>
         </RuleSection>
 
         <RuleSection number="6." title="IL TABELLONE">
-          <h3 className="text-xl font-rubik mt-4 mb-2 text-white">Tipi di caselle:</h3>
+          <h3 className="text-xl font-rubik font-bold mt-4 mb-2 text-white">Tipi di caselle:</h3>
           <div className="overflow-x-auto rounded-lg border border-gray-700">
             <table className="min-w-full divide-y divide-gray-700">
               <thead className="bg-gray-700">
@@ -214,7 +214,7 @@ const RegolamentoPage: React.FC = () => {
                     }}
                 />
                 <div className="flex-1 text-center sm:text-left">
-                  <h4 className="text-lg font-rubik text-white">{garnish.name}</h4>
+                  <h4 className="text-lg font-rubik font-bold text-white">{garnish.name}</h4>
                   <p className="text-sm whitespace-pre-line">{garnish.effect}</p>
                 </div>
               </div>
@@ -243,7 +243,7 @@ const RegolamentoPage: React.FC = () => {
                         }
                     }}
                 />
-                <h4 className="text-lg font-rubik text-white mb-1">{eff.name}</h4>
+                <h4 className="text-lg font-rubik font-bold text-white mb-1">{eff.name}</h4>
                 <p className="text-sm text-gray-300 leading-relaxed flex-grow">{eff.desc}</p>
               </div>
             ))}

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 // Removed GoogleGenAI import as it's no longer used here
@@ -128,7 +127,7 @@ const SchedaGinocchioPage: React.FC = () => {
           onError={(e) => (e.currentTarget.src = 'https://picsum.photos/seed/fallback-detail/400/300')}
         />
         
-        <h1 className="text-5xl font-rubik mb-2 text-center" style={{ color: ginocchio.colore }}>
+        <h1 className="text-5xl font-rubik font-bold mb-2 text-center" style={{ color: ginocchio.colore }}>
           #{ginocchio.id} {ginocchio.nome.toUpperCase()}
         </h1>
         
@@ -141,8 +140,8 @@ const SchedaGinocchioPage: React.FC = () => {
         <p 
           className={
             currentPv === 0
-              ? `text-5xl font-rubik font-bold text-center my-4 uppercase`
-              : `text-sm italic text-center my-4 h-10 flex items-center justify-center uppercase font-bold`
+              ? `text-5xl font-roboto-mono font-bold text-center my-4 uppercase`
+              : `text-sm italic text-center my-4 h-10 flex items-center justify-center uppercase font-bold font-roboto-mono`
           }
           style={{ color: ginocchio.colore }}
         >
@@ -243,4 +242,3 @@ const SchedaGinocchioPage: React.FC = () => {
 };
 
 export default SchedaGinocchioPage;
- 
