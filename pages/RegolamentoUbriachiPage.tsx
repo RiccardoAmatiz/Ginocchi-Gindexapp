@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -11,17 +10,17 @@ interface DrunkRuleProps {
 const DrunkRule: React.FC<DrunkRuleProps> = ({ title, imageName, children }) => {
     const imagePath = `/images/regolamento_ubriachi/${imageName}`;
     return (
-        <section className="mb-12 text-center">
-            <h2 className="text-3xl font-rubik uppercase font-bold mb-4 text-white">
+        <section className="mb-12">
+            <h2 className="text-3xl font-rubik uppercase font-bold mb-4 text-white text-left">
                 {title}
             </h2>
             <img 
                 src={imagePath} 
                 alt={title} 
-                className="w-full max-w-md mx-auto mb-4 rounded-lg shadow-lg border-4 border-gray-700"
+                className="w-full mb-4 rounded-lg shadow-lg border-4 border-gray-700"
                 onError={(e) => (e.currentTarget.style.display = 'none')} 
             />
-            <div className="text-xl text-gray-200 leading-relaxed max-w-xl mx-auto">
+            <div className="text-lg font-roboto-mono text-gray-300 leading-relaxed text-left">
                 {children}
             </div>
         </section>
@@ -52,8 +51,8 @@ const RegolamentoUbriachiPage: React.FC = () => {
       />
 
       <div className="max-w-3xl mx-auto">
-        <section className="mb-12 text-center">
-            <p className="text-lg text-gray-300">
+        <section className="mb-12 text-left">
+            <p className="text-lg text-gray-300 font-roboto-mono">
                 Versione ridotta del regolamento, per ridotti stati di percezione.
                 <br/>
                 Nel caso si ponesse DAVVERO qualche dubbio, andate a vedere il regolamento esteso:

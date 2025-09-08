@@ -48,7 +48,7 @@ const HomePage: React.FC = () => {
 
         <Link to="/regolamento" className="w-full sm:w-[45%] lg:w-[30%]">
           <Button variant="category" categoryColor={CATEGORY_COLORS.Bilanciato} className="w-full h-full flex items-center justify-center">
-            Regolamento
+            Regolamento completo
           </Button>
         </Link>
         
