@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { CATEGORY_COLORS } from '../constants';
 import { Categoria } from '../types';
@@ -66,7 +65,7 @@ const RegolamentoPage: React.FC = () => {
   return (
     <div className="py-6 px-2">
       <img 
-        src="/images/header_regolamento.png" 
+        src="/images/header_regolamento.jpg" 
         alt="Header Regolamento Ginocchi" 
         className="w-full max-w-3xl mx-auto mb-10 rounded-lg shadow-lg"
         onError={(e) => (e.currentTarget.style.display = 'none')} 

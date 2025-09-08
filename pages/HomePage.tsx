@@ -8,7 +8,7 @@ const HomePage: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center text-center py-10">
       <img 
-        src="/images/HEADER.png"
+        src="/images/HEADER.jpg"
         alt="Header GINDEX - Bottiglia di gin con occhio" 
         className="mb-8 rounded-lg shadow-xl w-full max-w-2xl object-contain"
       />
