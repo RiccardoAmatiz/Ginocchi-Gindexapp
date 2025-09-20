@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
-import { ExternalLinkIcon } from '../components/icons/ExternalLinkIcon';
 import { CATEGORY_COLORS } from '../constants';
 
 const HomePage: React.FC = () => {
@@ -20,7 +19,7 @@ const HomePage: React.FC = () => {
       <div className="flex flex-wrap items-stretch justify-center gap-6 w-full max-w-5xl">
         <Link to="/gindex" className="w-full sm:w-[45%] lg:w-[30%]">
           <Button variant="category" categoryColor={CATEGORY_COLORS.Speziato} className="w-full h-full">
-            Tutti i <strong className="font-bold">GIN</strong>occhi
+            {'Tutti i '}<strong className="font-bold">GIN</strong>occhi
           </Button>
         </Link>
 
@@ -29,20 +28,18 @@ const HomePage: React.FC = () => {
           className="w-full sm:w-[45%] lg:w-[30%]"
         >
           <Button variant="category" categoryColor={CATEGORY_COLORS.Erbaceo} className="w-full h-full flex items-center justify-center">
-            Cosa sono i <strong className="font-bold">GIN</strong>occhi?
+            {'Cosa sono i '}<strong className="font-bold">GIN</strong>occhi?
           </Button>
         </Link>
         
-        <a 
-          href="https://ginocchi-chatbot.vercel.app/" 
-          target="_blank" 
-          rel="noopener noreferrer" 
+        <Link 
+          to="/gin"
           className="w-full sm:w-[45%] lg:w-[30%]"
         >
           <Button variant="category" categoryColor={CATEGORY_COLORS.Fruttato} className="w-full h-full flex items-center justify-center">
-            Bar dell’Oblio <ExternalLinkIcon />
+            Il Gin
           </Button>
-        </a>
+        </Link>
 
         <Link to="/regolamento" className="w-full sm:w-[45%] lg:w-[30%]">
           <Button variant="category" categoryColor={CATEGORY_COLORS.Bilanciato} className="w-full h-full flex items-center justify-center">
