@@ -16,7 +16,7 @@ const HomePage: React.FC = () => {
         alt="Header GINDEX - Bottiglia di gin con occhio" 
         className="mb-8 rounded-lg shadow-xl w-full max-w-2xl object-contain"
       />
-      <p className="text-xl mb-12 max-w-2xl text-gray-300">
+      <p className="text-lg mb-12 max-w-2xl text-gray-300">
         Colleziona, bevi, combatti!
       </p>
       
@@ -34,7 +34,7 @@ const HomePage: React.FC = () => {
           className="w-full sm:w-[45%] lg:w-[30%]"
         >
           <Button className={infoButtonStyle}>
-            Cosa sono i <strong className="font-bold">GIN</strong>occhi?
+            Cos'è{' '}<strong className="font-bold">GIN</strong>occhi?
           </Button>
         </Link>
         
