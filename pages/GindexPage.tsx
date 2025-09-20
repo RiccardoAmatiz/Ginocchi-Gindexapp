@@ -32,7 +32,7 @@ const GindexPage: React.FC = () => {
 
   return (
     <div className="py-6">
-      <h1 className="text-4xl font-rubik font-bold mb-8 text-center">Tutti i <strong className="font-bold">GIN</strong>occhi</h1>
+      <h1 className="text-4xl font-rubik font-bold mb-8 text-center">GINDEX</h1>
       
       <div className="mb-8 p-4 bg-gray-800 rounded-lg shadow flex flex-col sm:flex-row gap-4 items-center">
         <input

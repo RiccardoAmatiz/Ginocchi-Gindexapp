@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import { APP_TITLE } from '../constants';
 
 interface LayoutProps {
   children: ReactNode;
@@ -17,12 +16,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       </a>
       <header className="w-full p-4 bg-gray-900 shadow-md sticky top-0 z-50">
         <nav className="container mx-auto flex justify-between items-center" aria-label="Navigazione principale">
-          <Link to="/" className="flex items-center text-2xl font-rubik hover:text-categories-Bilanciato transition-colors">
-            {APP_TITLE}
+          <Link 
+            to="/" 
+            className="p-1 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75 hover:bg-gray-700 transition-colors"
+            aria-label="Torna alla Home page"
+          >
             <img 
               src="/images/pittogramma_logo.png" 
               alt="GINocchi Pittogramma" 
-              className="h-8 w-8 ml-3 object-contain flex-shrink-0" 
+              className="h-10 w-10 object-contain" 
               onError={(e) => (e.currentTarget.style.display = 'none')} 
             />
           </Link>
