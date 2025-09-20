@@ -49,8 +49,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       {/* Sezione per il Logo Completo sopra il Footer */}
       <div className="w-full container mx-auto px-4 py-8 flex justify-center">
         <img
-          src="/images/logo_completo_footer.png" // Updated to use the specific footer logo
-          alt="GINocchi Gioco di Gin Collezionabili Logo" // Updated alt text
+          src={isHomePage ? "/images/pittogramma_home.png" : "/images/logo_completo_footer.png"}
+          alt="GINocchi Gioco di Gin Collezionabili Logo"
           className="w-full max-w-lg object-contain" 
           onError={(e) => (e.currentTarget.style.display = 'none')} 
         />
