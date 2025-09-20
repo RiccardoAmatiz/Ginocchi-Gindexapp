@@ -140,7 +140,7 @@ const SchedaGinocchioPage: React.FC = () => {
         <p 
           className={
             currentPv === 0
-              ? `text-5xl font-roboto-mono font-bold text-center my-4 uppercase`
+              ? `text-5xl font-roboto-mono font-bold text-center my-4`
               : `text-sm italic text-center my-4 h-10 flex items-center justify-center uppercase font-bold font-roboto-mono`
           }
           style={{ color: ginocchio.colore }}
