@@ -1,4 +1,3 @@
-
 import React, { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { APP_TITLE } from '../constants';
@@ -22,7 +21,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             {APP_TITLE}
             <img 
               src="/images/pittogramma_logo.png" 
-              alt="GINDEX Pittogramma" 
+              alt="GINocchi Pittogramma" 
               className="h-8 w-8 ml-3 object-contain flex-shrink-0" 
               onError={(e) => (e.currentTarget.style.display = 'none')} 
             />

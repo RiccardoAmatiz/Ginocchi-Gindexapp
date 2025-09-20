@@ -29,7 +29,7 @@ const HomePage: React.FC = () => {
           className="w-full sm:w-[45%] lg:w-[30%]"
         >
           <Button variant="category" categoryColor={CATEGORY_COLORS.Erbaceo} className="w-full h-full flex items-center justify-center">
-            Cosa sono i{' '}<strong className="font-bold">GIN</strong>occhi?
+            Cosa sono i <strong className="font-bold">GIN</strong>occhi?
           </Button>
         </Link>
         
