@@ -31,14 +31,14 @@ const DrunkRule: React.FC<DrunkRuleProps> = ({ title, imageName, children }) => 
 const RegolamentoUbriachiPage: React.FC = () => {
     const rules = [
         { title: "Regola Aurea - Meglio un figlio in guerra che l’alcol per terra", imageName: "RU1.jpg", caption: "Se rovesci un gin tonic (tuo o degli altri) hai perso." },
-        { title: "Preparazione", imageName: "RU2.jpg", caption: "Mettete due ginocchi sul tavolo, sceglietene uno per giocare e con l’altro fateci un gin tonic." },
+        { title: "Preparazione", imageName: "RU2.jpg", caption: <>Mettete due <strong className="font-bold">GIN</strong>occhi sul tavolo, sceglietene uno per giocare e con l’altro fateci un gin tonic.</> },
         { title: "Brindisi e Inizio Partita", imageName: "RU3.jpg", caption: <>Brindate insieme urlando: "Vaffanculo Miserabili!". Chi appoggia il bicchiere per primo, inizia.</> },
-        { title: "Scatena il tuo ginocchio", imageName: "RU4.jpg", caption: "Scansiona il QR code del tuo ginocchio in campo e scatena la sua vera potenza." },
+        { title: "Scatena il tuo ginocchio", imageName: "RU4.jpg", caption: <>Scansiona il QR code del tuo <strong className="font-bold">GIN</strong>occhio in campo e scatena la sua vera potenza.</> },
         { title: "Movimento e Penalità", imageName: "RU5.jpg", caption: "Lancia il dado e muoviti del numero esatto di caselle. Se non attacchi dopo esserti spostato, bevi." },
         { title: "Attacco", imageName: "RU6.jpg", caption: "Lancia il dado, vedi a quale attacco corrisponde nella pagina del ginocchio e urlalo fortissimo in faccia al tuo avversario." },
         { title: "Difesa", imageName: "RU7.jpg", caption: "Per difenderti lancia un dado, se esce lo stesso numero del dado d’attacco dell’avversario, respingi indietro attacco ed effetto." },
-        { title: "Interazione tra i gusti", imageName: "RU8.jpg", caption: "Sfrutta debolezze e resistenze dei ginocchi e se sei sulla casella della tua tipologia, hai un bonus +1 in attacco e in difesa. Fruttato +1> Erbaceo +1 > Speziato +1> Fruttato. I ginocchi bilanciati sono neutrali." },
-        { title: "Sconfiggi tutti", imageName: "RU9.jpg", caption: "Se sconfiggi un avversario ti porti a casa il suo ginocchio. L'ultimo che resta vince. Se sei morto, ma hai finito il tuo gin tonic, puoi fartene un altro e ricominciare la partita con un altro ginocchio (FORTEMENTE SCONSIGLIATO)." },
+        { title: "Interazione tra i gusti", imageName: "RU8.jpg", caption: <>Sfrutta debolezze e resistenze dei <strong className="font-bold">GIN</strong>occhi e se sei sulla casella della tua tipologia, hai un bonus +1 in attacco e in difesa. Fruttato +1> Erbaceo +1 > Speziato +1> Fruttato. I <strong className="font-bold">GIN</strong>occhi bilanciati sono neutrali.</> },
+        { title: "Sconfiggi tutti", imageName: "RU9.jpg", caption: <>Se sconfiggi un avversario ti porti a casa il suo <strong className="font-bold">GIN</strong>occhio. L'ultimo che resta vince. Se sei morto, ma hai finito il tuo gin tonic, puoi fartene un altro e ricominciare la partita con un altro <strong className="font-bold">GIN</strong>occhio (FORTEMENTE SCONSIGLIATO).</> },
     ];
 
   return (

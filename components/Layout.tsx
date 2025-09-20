@@ -39,14 +39,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <div className="w-full container mx-auto px-4 py-8 flex justify-center">
         <img
           src="/images/logo_completo_footer.png" // Updated to use the specific footer logo
-          alt="Ginocchi Gioco di Gin Collezionabili Logo" // Updated alt text
+          alt="GINocchi Gioco di Gin Collezionabili Logo" // Updated alt text
           className="w-full max-w-lg object-contain" 
           onError={(e) => (e.currentTarget.style.display = 'none')} 
         />
       </div>
 
       <footer className="w-full p-4 text-center text-sm text-gray-500">
-        © {new Date().getFullYear()} Ginocchi - GGC
+        © {new Date().getFullYear()} <strong className="font-bold">GIN</strong>occhi - GGC
       </footer>
     </div>
   );

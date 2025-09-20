@@ -32,7 +32,7 @@ const GindexPage: React.FC = () => {
 
   return (
     <div className="py-6">
-      <h1 className="text-4xl font-rubik font-bold mb-8 text-center">Tutti i ginocchi</h1>
+      <h1 className="text-4xl font-rubik font-bold mb-8 text-center">Tutti i <strong className="font-bold">GIN</strong>occhi</h1>
       
       <div className="mb-8 p-4 bg-gray-800 rounded-lg shadow flex flex-col sm:flex-row gap-4 items-center">
         <input
@@ -41,13 +41,13 @@ const GindexPage: React.FC = () => {
           className="w-full sm:w-1/2 p-3 bg-gray-700 rounded-md border border-gray-600 focus:ring-2 focus:ring-categories-Speziato focus:border-transparent outline-none"
           value={searchTerm}
           onChange={e => setSearchTerm(e.target.value)}
-          aria-label="Cerca Ginocchio per nome o ID"
+          aria-label="Cerca GINocchio per nome o ID"
         />
         <select
           className="w-full sm:w-1/2 p-3 bg-gray-700 rounded-md border border-gray-600 focus:ring-2 focus:ring-categories-Speziato focus:border-transparent outline-none font-roboto-mono"
           value={selectedCategory}
           onChange={e => setSelectedCategory(e.target.value as Categoria | 'All')}
-          aria-label="Filtra Ginocchi per categoria"
+          aria-label="Filtra GINocchi per categoria"
         >
           <option value="All">Tutte le Categorie</option>
           {CATEGORIES_ORDER.map(cat => (
@@ -83,13 +83,13 @@ const GindexPage: React.FC = () => {
                 ))}
               </div>
             ) : (
-              <p className="text-gray-400 text-center py-4">Nessun Ginocchio trovato per questa categoria con i filtri attuali.</p>
+              <p className="text-gray-400 text-center py-4">Nessun <strong className="font-bold">GIN</strong>occhio trovato per questa categoria con i filtri attuali.</p>
             )}
           </Accordion>
         );
       })}
        {filteredGinocchi.length === 0 && (
-        <p className="text-gray-300 text-2xl text-center py-10">Nessun Ginocchio trovato. Prova a modificare la ricerca o i filtri.</p>
+        <p className="text-gray-300 text-2xl text-center py-10">Nessun <strong className="font-bold">GIN</strong>occhio trovato. Prova a modificare la ricerca o i filtri.</p>
       )}
     </div>
   );

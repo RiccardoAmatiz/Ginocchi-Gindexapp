@@ -20,20 +20,18 @@ const HomePage: React.FC = () => {
       <div className="flex flex-wrap items-stretch justify-center gap-6 w-full max-w-5xl">
         <Link to="/gindex" className="w-full sm:w-[45%] lg:w-[30%]">
           <Button variant="category" categoryColor={CATEGORY_COLORS.Speziato} className="w-full h-full">
-            Tutti i Ginocchi
+            Tutti i <strong className="font-bold">GIN</strong>occhi
           </Button>
         </Link>
 
-        <a 
-          href="https://ginocchi-twiubso.gamma.site/" 
-          target="_blank" 
-          rel="noopener noreferrer" 
+        <Link 
+          to="/lore"
           className="w-full sm:w-[45%] lg:w-[30%]"
         >
           <Button variant="category" categoryColor={CATEGORY_COLORS.Erbaceo} className="w-full h-full flex items-center justify-center">
-            Sito Ufficiale <ExternalLinkIcon />
+            Cosa sono i{' '}<strong className="font-bold">GIN</strong>occhi?
           </Button>
-        </a>
+        </Link>
         
         <a 
           href="https://ginocchi-chatbot.vercel.app/" 

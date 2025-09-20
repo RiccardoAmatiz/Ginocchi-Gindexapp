@@ -44,7 +44,7 @@ const RegolamentoPage: React.FC = () => {
   const categoryImagePath = (categoria: Categoria) => `/images/categories/${categoria}.png`;
 
   const effettiSpeciali = [
-    { name: "Paralisi totale", logo: "Paralisi Totale.png", desc: "Il Ginocchio non può muoversi né attaccare al prossimo turno (non cumulabile)." },
+    { name: "Paralisi totale", logo: "Paralisi Totale.png", desc: "Il GINocchio non può muoversi né attaccare al prossimo turno (non cumulabile)." },
     { name: "Cura", logo: "Cura.png", desc: "Recuperi 2 Punti Vita. Non puoi superare i PV massimi." },
     { name: "Spinta", logo: "Spinta.png", desc: "Spingi l’avversario di 2 caselle nella direzione dell'attacco. Se sbatte contro una parete, perde 1 PV. Se finisce contro un altro ginocchio, entrambi perdono 1 PV." },
     { name: "Auto-lesionismo (Recoil)", logo: "Autolesionismo.png", desc: "Ti fai 1 danno dopo aver attaccato." },
@@ -66,14 +66,14 @@ const RegolamentoPage: React.FC = () => {
     <div className="py-6 px-2">
       <img 
         src="/images/header_regolamento.jpg" 
-        alt="Header Regolamento Ginocchi" 
+        alt="Header Regolamento GINocchi" 
         className="w-full max-w-3xl mx-auto mb-10 rounded-lg shadow-lg"
         onError={(e) => (e.currentTarget.style.display = 'none')} 
       />
 
       <div className="max-w-3xl mx-auto">
         <RuleSection number="1." title="OBIETTIVO DEL GIOCO">
-          <p>Il tuo obiettivo è eliminare tutti gli altri Ginocchi e rimanere l’unico in vita sul tabellone. In alternativa, la partita finisce quando tutti i giocatori hanno terminato il loro gin tonic.</p>
+          <p>Il tuo obiettivo è eliminare tutti gli altri <strong className="font-bold">GIN</strong>occhi e rimanere l’unico in vita sul tabellone. In alternativa, la partita finisce quando tutti i giocatori hanno terminato il loro gin tonic.</p>
           <p className="mt-3 p-3 bg-yellow-900 bg-opacity-30 border-l-4 border-yellow-500 text-yellow-300 italic rounded-r-md">
             <strong>Regola Aurea:</strong> Meglio un figlio in guerra che l'alcol per terra: se rovesci il tuo gin tonic o quello di un avversario hai perso!
           </p>
@@ -82,7 +82,7 @@ const RegolamentoPage: React.FC = () => {
         <RuleSection number="2." title="COSA SERVE PER GIOCARE">
           <ul className="list-disc list-inside space-y-1">
             <li>Da 2 a 4 giocatori.</li>
-            <li>2 bottiglie mignon di Ginocchi per ogni giocatore (una si beve, una si usa per giocare mettendola in palio).</li>
+            <li>2 bottiglie mignon di <strong className="font-bold">GIN</strong>occhi per ogni giocatore (una si beve, una si usa per giocare mettendola in palio).</li>
             <li>1 bicchiere, 1 tonica da 200 ml e ghiaccio per ogni giocatore.</li>
             <li>Quattro garnish (facoltativi): Pepe Nero, Pepe Rosa, Ginepro o Cardamomo.</li>
             <li>Tabellone da gioco con 25 caselle (5x5).</li>
@@ -91,7 +91,7 @@ const RegolamentoPage: React.FC = () => {
         </RuleSection>
 
         <RuleSection number="3." title="COME PREPARARE LA PARTITA">
-          <p>Ogni giocatore mostra le sue 2 bottiglie di Ginocchi. Una verrà usata per bere, l’altra per giocare.</p>
+          <p>Ogni giocatore mostra le sue 2 bottiglie di <strong className="font-bold">GIN</strong>occhi. Una verrà usata per bere, l’altra per giocare.</p>
           <p>Prepara il gin tonic con la bottiglia che non si userà nel gioco:</p>
           <ul className="list-disc list-inside ml-4 my-2 space-y-1">
             <li>Metti il ghiaccio nel bicchiere.</li>
@@ -99,34 +99,34 @@ const RegolamentoPage: React.FC = () => {
             <li>Aggiungi la tonica.</li>
             <li>Se vuoi, metti un garnish (ti darà un’abilità speciale).</li>
           </ul>
-          <p>Posiziona il Ginocchio da gioco in uno dei quattro angoli del tabellone, nella casella Occhio più vicina a te.</p>
-          <p>Scansiona il QR Code del Ginocchio o guarda sul Gindex la potenza del ginocchio.</p>
+          <p>Posiziona il <strong className="font-bold">GIN</strong>occhio da gioco in uno dei quattro angoli del tabellone, nella casella Occhio più vicina a te.</p>
+          <p>Scansiona il QR Code del <strong className="font-bold">GIN</strong>occhio o guarda sul Gindex la potenza del <strong className="font-bold">GIN</strong>occhio.</p>
           <p>Fai un brindisi di inizio urlando "Vaffanculo miserabili". Tutti bevono un sorso. Chi appoggia il bicchiere per primo inizia. Poi si continua in senso orario.</p>
         </RuleSection>
 
         <RuleSection number="4." title="TURNO DI GIOCO">
           <p>Ogni giocatore compie due azioni nel suo turno:</p>
           <ul className="list-disc list-inside my-2 space-y-1">
-            <li>Muove il Ginocchio.</li>
+            <li>Muove il <strong className="font-bold">GIN</strong>occhio.</li>
             <li>Attacca, se possibile. Un giocatore che viene attaccato deve difendersi.</li>
             <li>Se non attacchi, bevi.</li>
           </ul>
           <h3 className="text-xl font-rubik font-bold mt-4 mb-2 text-white">MOVIMENTO</h3>
           <ul className="list-disc list-inside space-y-1">
             <li>Lancia il dado.</li>
-            <li>Muovi il Ginocchio di esattamente quel numero di caselle, solo in orizzontale o verticale.</li>
+            <li>Muovi il <strong className="font-bold">GIN</strong>occhio di esattamente quel numero di caselle, solo in orizzontale o verticale.</li>
             <li>Non puoi muoverti in diagonale.</li>
-            <li>Non puoi entrare in una casella occupata da un altro Ginocchio.</li>
+            <li>Non puoi entrare in una casella occupata da un altro <strong className="font-bold">GIN</strong>occhio.</li>
             <li>Non puoi passare due volte sulla stessa casella durante lo stesso turno.</li>
             <li>Se non ci sono avversari adiacenti, il turno finisce.</li>
-            <li>Se il ginocchio non può muoversi in nessuna direzione perchè bloccato da altri ginocchi, può attaccare direttamente.</li>
+            <li>Se il <strong className="font-bold">GIN</strong>occhio non può muoversi in nessuna direzione perchè bloccato da altri <strong className="font-bold">GIN</strong>occhi, può attaccare direttamente.</li>
             <li>Se non riesci ad attaccare, fai un sorso dal tuo gin tonic.</li>
           </ul>
           <h3 className="text-xl font-rubik font-bold mt-4 mb-2 text-white">ATTACCO</h3>
           <ul className="list-disc list-inside space-y-1">
             <li>Solo se sei su una casella adiacente (orizzontalmente o verticallmente) ad un avversario.</li>
             <li>Lancia il dado.</li>
-            <li>Guarda sul Gindex del tuo ginocchio quale attacco esegui e applicane gli effetti.</li>
+            <li>Guarda sul Gindex del tuo <strong className="font-bold">GIN</strong>occhio quale attacco esegui e applicane gli effetti.</li>
             <li>Nota: Il primo giocatore, durante il primo turno, non può attaccare.</li>
           </ul>
           <h3 className="text-xl font-rubik font-bold mt-4 mb-2 text-white">DIFESA</h3>
@@ -162,10 +162,10 @@ const RegolamentoPage: React.FC = () => {
               </thead>
               <tbody className="bg-gray-800 divide-y divide-gray-700">
                 {[
-                  { tipo: Categoria.Erbaceo, effetto: "+1 danno se attacchi con un Ginocchio Erbaceo.\nSubisci -1 danno se vieni attaccato e sei un Ginocchio Erbaceo." },
-                  { tipo: Categoria.Speziato, effetto: "+1 danno se attacchi con un Ginocchio Speziato.\nSubisci -1 danno se vieni attaccato e sei un Ginocchio Speziato." },
-                  { tipo: Categoria.Fruttato, effetto: "+1 danno se attacchi con un Ginocchio Fruttato.\nSubisci -1 danno se vieni attaccato e sei un Ginocchio Fruttato." },
-                  { tipo: Categoria.Bilanciato, effetto: "+1 danno se attacchi con un Ginocchio Bilanciato.\nSubisci -1 danno se vieni attaccato e sei un Ginocchio Bilanciato." }
+                  { tipo: Categoria.Erbaceo, effetto: "+1 danno se attacchi con un GINocchio Erbaceo.\nSubisci -1 danno se vieni attaccato e sei un GINocchio Erbaceo." },
+                  { tipo: Categoria.Speziato, effetto: "+1 danno se attacchi con un GINocchio Speziato.\nSubisci -1 danno se vieni attaccato e sei un GINocchio Speziato." },
+                  { tipo: Categoria.Fruttato, effetto: "+1 danno se attacchi con un GINocchio Fruttato.\nSubisci -1 danno se vieni attaccato e sei un GINocchio Fruttato." },
+                  { tipo: Categoria.Bilanciato, effetto: "+1 danno se attacchi con un GINocchio Bilanciato.\nSubisci -1 danno se vieni attaccato e sei un GINocchio Bilanciato." }
                 ].map((item, index) => (
                   <tr key={index} className={index % 2 === 0 ? 'bg-gray-800' : 'bg-gray-750'}>
                     <td className="px-4 py-3 whitespace-nowrap">
@@ -192,7 +192,7 @@ const RegolamentoPage: React.FC = () => {
           <div className="space-y-6 mt-4">
             {[
               { name: "Pepe Nero", img: "Garnish_pepenero.png", effect: "6 (Buff) ⇒ Infliggi +3 danni con questo attacco.\n1 (Debuff) ⇒ Dopo aver risolto l’attacco, perdi 2 Punti Vita." },
-              { name: "Pepe Rosa", img: "Garnish_peperosa.png", effect: "6 (Buff) ⇒ Scegli tu quale attacco del tuo Ginocchio utilizzerai in questo turno.\n1 (Debuff) ⇒ L’avversario sceglie quale attacco del tuo Ginocchio utilizzerai in questo turno." },
+              { name: "Pepe Rosa", img: "Garnish_peperosa.png", effect: "6 (Buff) ⇒ Scegli tu quale attacco del tuo GINocchio utilizzerai in questo turno.\n1 (Debuff) ⇒ L’avversario sceglie quale attacco del tuo GINocchio utilizzerai in questo turno." },
               { name: "Ginepro", img: "Garnish_ginepro.png", effect: "6 (Buff) ⇒ Dopo aver risolto l’attacco, recuperi 3 Punti Vita.\n1 (Debuff) ⇒ Questo attacco infligge –2 danni." },
               { name: "Cardamomo", img: "Garnish_cardamomo.png", effect: "6 (Buff) ⇒ Dopo aver risolto l’attacco, spostati in qualsiasi casella del tabellone.\n1 (Debuff) ⇒ Dopo aver risolto l’attacco, l’avversario sceglie in quale casella del tabellone spostarti." }
             ].map((garnish, index) => (
@@ -223,7 +223,7 @@ const RegolamentoPage: React.FC = () => {
         </RuleSection>
 
         <RuleSection number="7." title="ATTACCHI E EFFETTI SPECIALI">
-          <p>Ogni ginocchio ha 6 attacchi con effetti diversi. Scansiona il QR del tuo ginocchio!</p>
+          <p>Ogni <strong className="font-bold">GIN</strong>occhio ha 6 attacchi con effetti diversi. Scansiona il QR del tuo <strong className="font-bold">GIN</strong>occhio!</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
             {effettiSpeciali.map((eff, index) => (
               <div key={index} className="p-4 bg-gray-800 rounded-lg border border-gray-700 flex flex-col items-center text-center shadow-lg">
@@ -252,8 +252,8 @@ const RegolamentoPage: React.FC = () => {
 
         <RuleSection number="8." title="VINCITORE">
           <ul className="list-disc list-inside space-y-1">
-            <li>Vince chi elimina tutti gli altri Ginocchi.</li>
-            <li>Ogni volta che un giocatore elimina un ginocchio avversario ne vince il possesso.</li>
+            <li>Vince chi elimina tutti gli altri <strong className="font-bold">GIN</strong>occhi.</li>
+            <li>Ogni volta che un giocatore elimina un <strong className="font-bold">GIN</strong>occhio avversario ne vince il possesso.</li>
             <li>In caso di pareggio, si procede con una gara di rutti. Il pareggio può avvenire in varie situazioni, la gara di rutti è sempre la soluzione. (Valutata in base all'ovazione dei presenti).</li>
           </ul>
         </RuleSection>
@@ -262,8 +262,8 @@ const RegolamentoPage: React.FC = () => {
           <p className="text-orange-400 font-semibold">Modalità opzionale solo per i veri eroi delle avventure alcoliche.</p>
           <p className="text-red-500 font-bold">CALDAMENTE SCONSIGLIATA</p>
           <ul className="list-disc list-inside mt-2 space-y-1">
-            <li>Se un giocatore perde tutti i PV del proprio Ginocchio e ha terminato tutto il proprio gin tonic, può prepararne un'altro con un ulteriore Ginocchio e rientrare in gioco.</li>
-            <li>L'unico limite è la resistenza alcolica (e il numero di ginocchi in possesso ovviamente).</li>
+            <li>Se un giocatore perde tutti i PV del proprio <strong className="font-bold">GIN</strong>occhio e ha terminato tutto il proprio gin tonic, può prepararne un'altro con un ulteriore <strong className="font-bold">GIN</strong>occhio e rientrare in gioco.</li>
+            <li>L'unico limite è la resistenza alcolica (e il numero di <strong className="font-bold">GIN</strong>occhi in possesso ovviamente).</li>
           </ul>
         </RuleSection>
       </div>

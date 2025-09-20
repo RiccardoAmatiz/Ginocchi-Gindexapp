@@ -69,7 +69,7 @@ const SchedaGinocchioPage: React.FC = () => {
   if (!ginocchio) {
     return (
       <div className="text-center py-10">
-        <h1 className="text-3xl font-rubik text-red-500">Ginocchio non trovato!</h1>
+        <h1 className="text-3xl font-rubik text-red-500"><strong className="font-bold">GIN</strong>occhio non trovato!</h1>
         <Link to="/gindex" className="text-blue-400 hover:underline mt-4 inline-block">Torna al Gindex</Link>
       </div>
     );
@@ -186,7 +186,7 @@ const SchedaGinocchioPage: React.FC = () => {
         </Accordion>
 
         <Accordion
-          title="Caratteristiche"
+          title="Profilo"
           titleClassName="text-2xl !font-rubik mt-4"
           contentClassName="!bg-gray-850"
           defaultOpen={false}
