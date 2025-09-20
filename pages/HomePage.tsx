@@ -10,7 +10,7 @@ const HomePage: React.FC = () => {
   const regolamentoButtonStyle = "w-full h-full !bg-black !text-white border-2 border-white hover:!bg-gray-800 focus:!ring-gray-400";
   
   return (
-    <div className="flex flex-col items-center justify-center text-center py-10">
+    <div className="flex flex-col items-center justify-center text-center">
       <img 
         src="/images/HEADER.jpg"
         alt="Header GINDEX - Bottiglia di gin con occhio" 

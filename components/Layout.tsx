@@ -1,11 +1,14 @@
 import React, { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 interface LayoutProps {
   children: ReactNode;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
   return (
     <div className="min-h-screen bg-black text-white font-roboto-mono flex flex-col">
       <a 
@@ -14,25 +17,32 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       >
         Salta al contenuto principale
       </a>
-      <header className="w-full p-4 bg-gray-900 shadow-md sticky top-0 z-50">
-        <nav className="container mx-auto flex justify-between items-center" aria-label="Navigazione principale">
-          <Link 
-            to="/" 
-            className="p-1 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75 hover:bg-gray-700 transition-colors"
-            aria-label="Torna alla Home page"
-          >
-            <img 
-              src="/images/pittogramma_logo.png" 
-              alt="GINocchi Pittogramma" 
-              className="h-10 w-10 object-contain" 
-              onError={(e) => (e.currentTarget.style.display = 'none')} 
-            />
-          </Link>
-          {/* Navigation links removed as per request */}
-        </nav>
-      </header>
+
+      {!isHomePage && (
+        <header className="w-full p-4 bg-gray-900 shadow-md sticky top-0 z-50">
+          <nav className="container mx-auto flex justify-between items-center" aria-label="Navigazione principale">
+            <Link 
+              to="/" 
+              className="p-1 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75 hover:bg-gray-700 transition-colors"
+              aria-label="Torna alla Home page"
+            >
+              <img 
+                src="/images/pittogramma_logo.png" 
+                alt="GINocchi Pittogramma" 
+                className="h-10 w-10 object-contain" 
+                onError={(e) => (e.currentTarget.style.display = 'none')} 
+              />
+            </Link>
+          </nav>
+        </header>
+      )}
       
-      <main id="main-content" className="container mx-auto p-4 flex-grow w-full max-w-4xl">
+      <main 
+        id="main-content" 
+        className={isHomePage 
+          ? "flex-grow w-full" 
+          : "container mx-auto p-4 flex-grow w-full max-w-4xl"}
+      >
         {children}
       </main>
 
