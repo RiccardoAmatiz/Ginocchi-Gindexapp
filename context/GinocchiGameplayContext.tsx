@@ -1,4 +1,3 @@
-
 import React, { createContext, useState, useEffect, useContext, useCallback, ReactNode } from 'react';
 import { GinocchioGameplayState, GinocchiGameplayContextType, StatusEffectName } from '../types';
 import { ALL_GINOCCHI } from '../constants';
@@ -6,6 +5,9 @@ import { ALL_GINOCCHI } from '../constants';
 const GinocchiGameplayContext = createContext<GinocchiGameplayContextType | undefined>(undefined);
 
 const LOCAL_STORAGE_KEY = 'ginocchiGameState';
+
+// By defining the empty array outside, we ensure it's the same reference every time.
+const EMPTY_STATUS_EFFECTS: StatusEffectName[] = [];
 
 interface GinocchiProviderProps {
   children: ReactNode;
@@ -36,7 +38,7 @@ export const GinocchiGameplayProvider: React.FC<GinocchiProviderProps> = ({ chil
     const ginocchio = ALL_GINOCCHI.find(g => g.id === id);
     return {
       pv: ginocchio?.pvIniziali ?? 0,
-      activeStatusEffects: [],
+      activeStatusEffects: EMPTY_STATUS_EFFECTS, // Use the constant empty array
     };
   }, []);
   
