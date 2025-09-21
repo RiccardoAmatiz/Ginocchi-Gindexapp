@@ -46,7 +46,7 @@ const RegolamentoPage: React.FC = () => {
     { name: "Spogliato", logo: "Spogliato.png", desc: "Chi si difende non potrà difendersi al prossimo attacco." },
     { name: "Paura", logo: "Paura.png", desc: "Chi si difende, nel prossimo turno non potrà avvicinarsi a chi ha attaccato, dovrà rimanere ad almeno una casella di distanza." },
     { name: "Succhiaggio PV", logo: "Succhiaggio pv.png", desc: "Chi attacca recupera PV pari al danno che infligge." },
-    { name: "Alcolismo competitivo", logo: "Alcolismo_competitivo.png", desc: "Se il bicchiere di chi attacca contiene meno gin tonic di quello di chi si difende, chi attacca infligge danno +2." },
+    { name: "Alcolismo competitivo", logo: "Alcolismo_competitivo.png", desc: "Se il bicchiere di chi attacca contiene meno gin tonic di quello di chi si defende, chi attacca infligge danno +2." },
     { name: "Blocca attacco", logo: "Blocco Attacco.png", desc: "Chi si difende non potrà attaccare al prossimo turno." },
     { name: "Inverti casella", logo: "Inverti Casella.png", desc: "Per chi si difende, il bonus “gioco in casa” (se applicabile) diventa un malus di pari valore." }
   ];
@@ -72,10 +72,12 @@ const RegolamentoPage: React.FC = () => {
         <RuleSection number="1." title="Obiettivo">
           <p>Il tuo obiettivo è eliminare gli altri giocatori e rimanere l’unico in vita sul tabellone.</p>
           <p>In alternativa, la partita finisce quando tutti i giocatori hanno terminato il loro gin tonic.</p>
-          <h3 className="text-xl font-rubik font-bold mt-4 mb-2 text-white">1.1) Regola Aurea</h3>
-          <p className="mt-3 p-3 bg-yellow-900 bg-opacity-30 border-l-4 border-yellow-500 text-yellow-300 italic rounded-r-md">
-            Meglio un figlio in guerra che l'alcol per terra: se rovesci il tuo gin tonic o quello di un avversario hai perso.
-          </p>
+          <div className="mt-3 p-3 bg-yellow-900 bg-opacity-30 border-l-4 border-yellow-500 text-yellow-300 rounded-r-md">
+            <h3 className="text-xl font-rubik font-bold mb-2 text-yellow-500 not-italic">1.1 Regola Aurea</h3>
+            <p className="italic">
+              Meglio un figlio in guerra che l'alcol per terra: se rovesci il tuo gin tonic o quello di un avversario hai perso.
+            </p>
+          </div>
         </RuleSection>
         
         <RuleSection number="2." title="GINocchi web app">
@@ -147,7 +149,7 @@ const RegolamentoPage: React.FC = () => {
             <li>Attacca, se possibile. Ogni giocatore attaccato deve difendersi;</li>
             <li>Se non attacca, beve.</li>
           </ul>
-          <h3 className="text-xl font-rubik font-bold mt-4 mb-2 text-white">6.1) Movimento</h3>
+          <h3 className="text-xl font-rubik font-bold mt-4 mb-2 text-white">6.1 Movimento</h3>
           <ul className="list-disc list-inside space-y-1 ml-4">
             <li>Lancia il dado;</li>
             <li>Muovi la tua pedina, spostandoti solo in orizzontale o verticale. Non puoi spostarti in diagonale;</li>
@@ -156,14 +158,14 @@ const RegolamentoPage: React.FC = () => {
             <li>Se non ci sono avversari adiacenti, bevi e passa il turno al giocatore successivo;</li>
             <li>Se il giocatore in turno non può muoversi in nessuna direzione perchè bloccato da altri giocatori, può attaccare direttamente uno dei giocatori adiacenti.</li>
           </ul>
-          <h3 className="text-xl font-rubik font-bold mt-4 mb-2 text-white">6.2) Attacco</h3>
+          <h3 className="text-xl font-rubik font-bold mt-4 mb-2 text-white">6.2 Attacco</h3>
           <ul className="list-disc list-inside space-y-1 ml-4">
             <li>L’attacco è composto da danno ed effetto;</li>
             <li>Se sei in turno puoi attaccare solo posizionandoti su una casella adiacente (orizzontalmente o verticalmente) a un avversario.</li>
             <li>Dopo esserti spostato, lancia il dado per attaccare.</li>
             <li>Alza il volume del tuo smartphone, scegli l’attacco dalla scheda di gioco dell’app GINocchi (scegliendo il dado corrispondente) e dichiara danno ed effetto al tuo avversario prima che lui si difenda.</li>
           </ul>
-          <h3 className="text-xl font-rubik font-bold mt-4 mb-2 text-white">6.3) Difesa</h3>
+          <h3 className="text-xl font-rubik font-bold mt-4 mb-2 text-white">6.3 Difesa</h3>
           <ul className="list-disc list-inside space-y-1 ml-4">
             <li>Sei vieni attaccato, devi difenderti;</li>
             <li>Dopo aver ricevuto l’attacco dell’avversario, lancia il dado per difenderti e respingere l’attacco.</li>
@@ -174,7 +176,7 @@ const RegolamentoPage: React.FC = () => {
             <h4 className="font-bold text-lg">Scola o muori!</h4>
             <p className="italic">In caso di attacco letale, hai un’ultima chance: puoi bere il tuo gin tonic fino all’ultima goccia per annullare l’attacco dell’avversario, sia danno che effetto. Il turno si conclude e passa al giocatore successivo.</p>
           </div>
-          <h3 className="text-xl font-rubik font-bold mt-4 mb-2 text-white">6.4) Risoluzione</h3>
+          <h3 className="text-xl font-rubik font-bold mt-4 mb-2 text-white">6.4 Risoluzione</h3>
           <p>Al termine della fase di attacco e difesa, i giocatori aggiornano PV e status sulla propria scheda di gioco.</p>
         </RuleSection>
 
@@ -242,7 +244,7 @@ const RegolamentoPage: React.FC = () => {
         <RuleSection number="10." title="Abisso Etilico">
           <p className="text-orange-400 font-semibold">Modalità opzionale solo per i veri eroi delle avventure alcoliche.</p>
           <ul className="list-disc list-inside mt-2 space-y-1 ml-4">
-            <li>Se un giocatore termina sia i PV che il proprio gin tonic, può prepararne un'altro (vedi punto 5) con un ulteriore bottiglia di GINocchi in suo possesso e rientrare in gioco.</li>
+            <li>Se un giocatore termina sia i PV che il proprio gin tonic, può prepararne un altro (vedi punto 5) con un ulteriore bottiglia di GINocchi in suo possesso e rientrare in gioco.</li>
             <li>Gli unici limiti sono la resistenza alcolica e il numero di bottiglie piene a disposizione del giocatore.</li>
           </ul>
         </RuleSection>
