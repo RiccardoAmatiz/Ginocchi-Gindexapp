@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ALL_GINOCCHI, CATEGORY_COLORS, PV_QUOTES, GINOCCHIO_DESCRIPTIONS } from '../constants';
@@ -157,12 +158,12 @@ const SchedaGinocchioPage: React.FC = () => {
   return (
     <div className="py-6 flex flex-col items-center">
       
-      <div className="w-full max-w-2xl bg-gray-800 rounded-xl shadow-2xl p-2 sm:p-4 md:p-6 lg:p-8">
+      <div className="w-full max-w-2xl bg-gray-900 rounded-xl shadow-2xl p-2 sm:p-4 md:p-6 lg:p-8">
         
         {/* Top Navigation */}
         <div className="w-full flex justify-between items-center mb-4 pt-2">
             {previousGinocchio ? (
-                <Link to={`/ginocchio/${previousGinocchio.id}`} className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-gray-700 w-1/3" aria-label={`Vai a ${previousGinocchio.nome}`}>
+                <Link to={`/ginocchio/${previousGinocchio.id}`} className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors p-2 rounded-lg w-1/3" aria-label={`Vai a ${previousGinocchio.nome}`}>
                     <ArrowLeftIcon className="w-8 h-8 flex-shrink-0" />
                     <div className="text-left">
                         <span className="text-sm font-bold block" style={{color: previousGinocchio.colore}}>#{previousGinocchio.id}</span>
@@ -178,7 +179,7 @@ const SchedaGinocchioPage: React.FC = () => {
             </div>
 
             {nextGinocchio ? (
-                 <Link to={`/ginocchio/${nextGinocchio.id}`} className="flex items-center justify-end space-x-3 text-gray-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-gray-700 w-1/3" aria-label={`Vai a ${nextGinocchio.nome}`}>
+                 <Link to={`/ginocchio/${nextGinocchio.id}`} className="flex items-center justify-end space-x-3 text-gray-400 hover:text-white transition-colors p-2 rounded-lg w-1/3" aria-label={`Vai a ${nextGinocchio.nome}`}>
                      <div className="text-right">
                         <span className="text-sm font-bold block" style={{color: nextGinocchio.colore}}>#{nextGinocchio.id}</span>
                         <span className="text-xs block truncate">{nextGinocchio.nome}</span>
@@ -219,7 +220,7 @@ const SchedaGinocchioPage: React.FC = () => {
         <Accordion 
           title="Attacchi" 
           titleClassName="text-2xl !font-rubik" 
-          contentClassName="!bg-gray-850"
+          contentClassName="!bg-gray-900"
           categoryColor={ginocchio.colore}
         >
           <div className="grid grid-cols-3 sm:grid-cols-3 gap-3 p-2 place-items-center">
@@ -248,7 +249,7 @@ const SchedaGinocchioPage: React.FC = () => {
           <Accordion 
             title="Status" 
             titleClassName="text-2xl !font-rubik" 
-            contentClassName="!bg-gray-850"
+            contentClassName="!bg-gray-900"
             categoryColor={ginocchio.colore}
           >
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 place-items-center">
@@ -269,7 +270,7 @@ const SchedaGinocchioPage: React.FC = () => {
           <Accordion
             title="Profilo"
             titleClassName="text-2xl !font-rubik"
-            contentClassName="!bg-gray-850"
+            contentClassName="!bg-gray-900"
             defaultOpen={false}
           >
             <div className="p-4 leading-relaxed">
@@ -286,7 +287,7 @@ const SchedaGinocchioPage: React.FC = () => {
           <Accordion
             title={`Chatta con ${ginocchio.nome.toUpperCase()}`}
             titleClassName="text-2xl !font-rubik"
-            contentClassName="!bg-gray-850" 
+            contentClassName="!bg-gray-900" 
             defaultOpen={false} 
           >
             <div className="p-0 sm:p-2 md:p-4">

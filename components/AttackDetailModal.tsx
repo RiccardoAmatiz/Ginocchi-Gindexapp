@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import { Attacco } from '../types';
 import { XIcon } from './icons/XIcon'; // New icon
@@ -37,7 +38,7 @@ const AttackDetailModal: React.FC<AttackDetailModalProps> = ({ attack, isOpen, o
       <div
         ref={modalRef}
         tabIndex={-1} // Make it focusable
-        className="bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-md relative transform transition-all"
+        className="bg-gray-900 p-6 rounded-lg shadow-xl w-full max-w-md relative transform transition-all"
         onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside modal
         style={{ borderTop: `4px solid ${categoryColor}` }}
       >

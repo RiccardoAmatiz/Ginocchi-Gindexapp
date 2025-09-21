@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo } from 'react';
 import { ALL_GINOCCHI, CATEGORIES_ORDER, CATEGORY_COLORS } from '../constants';
 import { Categoria, Ginocchio } from '../types';
@@ -34,7 +35,7 @@ const GindexPage: React.FC = () => {
     <div className="py-6">
       <h1 className="text-4xl font-rubik font-bold mb-8 text-center">GINDEX</h1>
       
-      <div className="mb-8 p-4 bg-gray-800 rounded-lg shadow flex flex-col sm:flex-row gap-4 items-center">
+      <div className="mb-8 p-4 bg-gray-900 rounded-lg shadow flex flex-col sm:flex-row gap-4 items-center">
         <input
           type="text"
           placeholder="Cerca per nome o ID..."
@@ -75,6 +76,7 @@ const GindexPage: React.FC = () => {
             defaultOpen={selectedCategory === 'All' || selectedCategory === categoria}
             categoryColor={CATEGORY_COLORS[categoria]}
             titleClassName="text-2xl"
+            contentClassName="!bg-gray-900"
           >
             {ginocchiInCategory.length > 0 ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">

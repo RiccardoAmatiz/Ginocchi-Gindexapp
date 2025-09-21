@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { CATEGORY_COLORS } from '../constants';
 import { Categoria } from '../types';
@@ -160,14 +161,14 @@ const RegolamentoPage: React.FC = () => {
                   <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Effetto</th>
                 </tr>
               </thead>
-              <tbody className="bg-gray-800 divide-y divide-gray-700">
+              <tbody className="bg-gray-900 divide-y divide-gray-700">
                 {[
                   { tipo: Categoria.Erbaceo, effetto: "+1 danno se attacchi con un GINocchio Erbaceo.\nSubisci -1 danno se vieni attaccato e sei un GINocchio Erbaceo." },
                   { tipo: Categoria.Speziato, effetto: "+1 danno se attacchi con un GINocchio Speziato.\nSubisci -1 danno se vieni attaccato e sei un GINocchio Speziato." },
                   { tipo: Categoria.Fruttato, effetto: "+1 danno se attacchi con un GINocchio Fruttato.\nSubisci -1 danno se vieni attaccato e sei un GINocchio Fruttato." },
                   { tipo: Categoria.Bilanciato, effetto: "+1 danno se attacchi con un GINocchio Bilanciato.\nSubisci -1 danno se vieni attaccato e sei un GINocchio Bilanciato." }
                 ].map((item, index) => (
-                  <tr key={index} className={index % 2 === 0 ? 'bg-gray-800' : 'bg-gray-750'}>
+                  <tr key={index} className={index % 2 === 0 ? 'bg-gray-900' : 'bg-gray-800'}>
                     <td className="px-4 py-3 whitespace-nowrap">
                       <div className="flex items-center">
                         <img src={categoryImagePath(item.tipo)} alt={item.tipo} className="w-5 h-5 mr-2" onError={(e) => (e.currentTarget.style.display = 'none')}/>
@@ -196,7 +197,7 @@ const RegolamentoPage: React.FC = () => {
               { name: "Ginepro", img: "Garnish_ginepro.png", effect: "6 (Buff) ⇒ Dopo aver risolto l’attacco, recuperi 3 Punti Vita.\n1 (Debuff) ⇒ Questo attacco infligge –2 danni." },
               { name: "Cardamomo", img: "Garnish_cardamomo.png", effect: "6 (Buff) ⇒ Dopo aver risolto l’attacco, spostati in qualsiasi casella del tabellone.\n1 (Debuff) ⇒ Dopo aver risolto l’attacco, l’avversario sceglie in quale casella del tabellone spostarti." }
             ].map((garnish, index) => (
-              <div key={index} className="flex flex-col sm:flex-row items-center p-3 bg-gray-800 rounded-lg border border-gray-700">
+              <div key={index} className="flex flex-col sm:flex-row items-center p-3 bg-gray-900 rounded-lg border border-gray-700">
                 <img 
                     src={garnishImagePath(garnish.img)} 
                     alt={garnish.name} 
@@ -226,7 +227,7 @@ const RegolamentoPage: React.FC = () => {
           <p>Ogni <strong className="font-bold">GIN</strong>occhio ha 6 attacchi con effetti diversi. Scansiona il QR del tuo <strong className="font-bold">GIN</strong>occhio!</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
             {effettiSpeciali.map((eff, index) => (
-              <div key={index} className="p-4 bg-gray-800 rounded-lg border border-gray-700 flex flex-col items-center text-center shadow-lg">
+              <div key={index} className="p-4 bg-gray-900 rounded-lg border border-gray-700 flex flex-col items-center text-center shadow-lg">
                 <img 
                     src={effectImagePath(eff.logo)} 
                     alt={`Logo ${eff.name}`} 

@@ -27,7 +27,7 @@ const PvTracker: React.FC<PvTrackerProps> = ({ ginocchio }) => {
   }
 
   return (
-    <div className="my-6 p-4 bg-gray-800 rounded-lg">
+    <div className="my-6 p-4 bg-gray-900 rounded-lg">
       {/* PV Number and Buttons Wrapper */}
       <div className="flex items-center justify-center space-x-2 sm:space-x-4">
         <Button 
