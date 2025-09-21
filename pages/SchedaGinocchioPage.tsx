@@ -160,7 +160,7 @@ const SchedaGinocchioPage: React.FC = () => {
       <div className="w-full max-w-2xl bg-gray-800 rounded-xl shadow-2xl p-2 sm:p-4 md:p-6 lg:p-8">
         
         {/* Top Navigation */}
-        <div className="w-full flex justify-between items-center mb-4">
+        <div className="w-full flex justify-between items-center mb-4 pt-2">
             {previousGinocchio ? (
                 <Link to={`/ginocchio/${previousGinocchio.id}`} className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-gray-700 w-1/3" aria-label={`Vai a ${previousGinocchio.nome}`}>
                     <ArrowLeftIcon className="w-8 h-8 flex-shrink-0" />
@@ -172,7 +172,7 @@ const SchedaGinocchioPage: React.FC = () => {
             ) : <div className="w-1/3"></div> /* Spacer */}
             
             <div className="w-1/3 text-center flex-shrink-0">
-                <p className="text-4xl font-rubik font-black text-gray-900" style={{ textShadow: `2px 2px 0 ${ginocchio.colore}, -2px -2px 0 ${ginocchio.colore}, 2px -2px 0 ${ginocchio.colore}, -2px 2px 0 ${ginocchio.colore}` }}>
+                <p className="relative -top-5 text-4xl font-rubik font-black text-gray-900" style={{ textShadow: `2px 2px 0 ${ginocchio.colore}, -2px -2px 0 ${ginocchio.colore}, 2px -2px 0 ${ginocchio.colore}, -2px 2px 0 ${ginocchio.colore}` }}>
                   #{String(ginocchio.id).padStart(2, '0')}
                 </p>
             </div>
@@ -311,29 +311,6 @@ const SchedaGinocchioPage: React.FC = () => {
             <Button onClick={handleResetState} variant="category" categoryColor={CATEGORY_COLORS.Fruttato}>
                 Resetta PV & Status
             </Button>
-        </div>
-
-        {/* Bottom Navigation */}
-        <div className="mt-12 flex justify-between items-start">
-            {previousGinocchio ? (
-                <Link to={`/ginocchio/${previousGinocchio.id}`} className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-gray-700 w-1/3" aria-label={`Vai a ${previousGinocchio.nome}`}>
-                    <ArrowLeftIcon className="w-8 h-8 flex-shrink-0" />
-                    <div className="text-left">
-                        <span className="text-sm font-bold block" style={{color: previousGinocchio.colore}}>#{previousGinocchio.id}</span>
-                        <span className="text-xs block">{previousGinocchio.nome}</span>
-                    </div>
-                </Link>
-            ) : <div className="w-1/3"></div> /* Spacer */}
-            
-            {nextGinocchio ? (
-                <Link to={`/ginocchio/${nextGinocchio.id}`} className="flex items-center justify-end space-x-3 text-gray-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-gray-700 w-1/3" aria-label={`Vai a ${nextGinocchio.nome}`}>
-                     <div className="text-right">
-                        <span className="text-sm font-bold block" style={{color: nextGinocchio.colore}}>#{nextGinocchio.id}</span>
-                        <span className="text-xs block">{nextGinocchio.nome}</span>
-                    </div>
-                    <ArrowRightIcon className="w-8 h-8 flex-shrink-0" />
-                </Link>
-            ) : <div className="w-1/3"></div> /* Spacer */}
         </div>
 
       </div>
