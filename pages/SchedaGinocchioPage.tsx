@@ -14,6 +14,7 @@ import AttackDetailModal from '../components/AttackDetailModal';
 import { usePvTracker } from '../hooks/usePvTracker';
 import { useHeaderUI } from '../context/HeaderUIContext';
 import { useGinocchioMetadata } from '../hooks/usePageMetadata';
+import { VolumeUpIcon } from '../components/icons/VolumeUpIcon';
 
 const SchedaGinocchioPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -157,6 +158,15 @@ const SchedaGinocchioPage: React.FC = () => {
       nameSizeClass = 'text-4xl';
   }
 
+  const attacksAccordionTitle = (
+    <div className="flex items-center gap-3">
+      <span>Attacchi</span>
+      <div title="Alza il volume per ascoltare il nome dell'attacco!" className="text-current opacity-80">
+        <VolumeUpIcon className="w-6 h-6" />
+      </div>
+    </div>
+  );
+
   return (
     <div className="py-6 flex flex-col items-center">
       
@@ -220,7 +230,7 @@ const SchedaGinocchioPage: React.FC = () => {
         </p>
         
         <Accordion 
-          title="Attacchi" 
+          title={attacksAccordionTitle}
           titleClassName="text-2xl !font-rubik" 
           contentClassName="!bg-gray-900"
           categoryColor={ginocchio.colore}

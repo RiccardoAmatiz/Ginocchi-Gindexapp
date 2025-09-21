@@ -12,7 +12,7 @@ interface RuleSectionProps {
 
 const RuleSection: React.FC<RuleSectionProps> = ({ title, number, children, titleClassName }) => (
   <section className="mb-10">
-    <h2 className={`text-3xl font-rubik font-bold mb-4 text-white ${titleClassName}`}> {/* Changed from text-yellow-400 */}
+    <h2 className={`text-3xl font-rubik font-bold mb-4 text-white ${titleClassName}`}>
       {number && <span className="mr-2">{number}</span>}
       {title}
     </h2>
@@ -20,23 +20,6 @@ const RuleSection: React.FC<RuleSectionProps> = ({ title, number, children, titl
       {children}
     </div>
   </section>
-);
-
-interface TriangoloItemProps {
-  type: Categoria;
-  receivesPlus1From: string;
-  receivesMinus1From: string;
-}
-
-const TriangoloItem: React.FC<TriangoloItemProps> = ({ type, receivesPlus1From, receivesMinus1From }) => (
-  <div 
-    className="p-4 rounded-lg text-center text-sm md:text-base" 
-    style={{ backgroundColor: CATEGORY_COLORS[type], color: parseInt(CATEGORY_COLORS[type].substring(1,3), 16) * 0.299 + parseInt(CATEGORY_COLORS[type].substring(3,5), 16) * 0.587 + parseInt(CATEGORY_COLORS[type].substring(5,7), 16) * 0.114 > 186 ? '#000000' : '#FFFFFF' }}
-  >
-    <h4 className="font-rubik font-bold text-lg md:text-xl uppercase mb-1">{type}</h4>
-    <p>Riceve +1 danno da {receivesPlus1From}.</p>
-    <p>Riceve -1 danno da {receivesMinus1From}.</p>
-  </div>
 );
 
 const RegolamentoPage: React.FC = () => {
@@ -51,24 +34,28 @@ const RegolamentoPage: React.FC = () => {
 
   const garnishImagePath = (imageName: string) => `/images/Garnish/${imageName}`;
   const effectImagePath = (imageName: string) => `/images/Status/${imageName}`;
-  const categoryImagePath = (categoria: Categoria) => `/images/categories/${categoria}.png`;
 
   const effettiSpeciali = [
-    { name: "Paralisi totale", logo: "Paralisi Totale.png", desc: "Il GINocchio non può muoversi né attaccare al prossimo turno (non cumulabile)." },
-    { name: "Cura", logo: "Cura.png", desc: "Recuperi 2 Punti Vita. Non puoi superare i PV massimi." },
-    { name: "Spinta", logo: "Spinta.png", desc: "Spingi l’avversario di 2 caselle nella direzione dell'attacco. Se sbatte contro una parete, perde 1 PV. Se finisce contro un altro ginocchio, entrambi perdono 1 PV." },
-    { name: "Auto-lesionismo (Recoil)", logo: "Autolesionismo.png", desc: "Ti fai 1 danno dopo aver attaccato." },
-    { name: "Danno doppio sesso opposto", logo: "Danno sesso opposto.png", desc: "Se il giocatore avversario è di sesso diverso dal tuo, fai danno doppio." },
-    { name: "Ammosciamento", logo: "Ammosciamento.png", desc: "L’avversario fa massimo 1 danno al prossimo attacco." },
-    // { name: "Tossicodipendenza", logo: "Tossicodipendenza.png", desc: "Il bersaglio è costretto ad attaccare lo stesso Ginocchio del turno precedente. Se non può, non si attacca." }, // Rimosso
-    { name: "Spogliato!", logo: "Spogliato.png", desc: "Non può difendersi al prossimo attacco." },
-    { name: "Paura", logo: "Paura.png", desc: "Il bersaglio non può avvicinarsi a te nel prossimo turno, deve stare ad almeno 1 casella di distanza." },
-    { name: "Succhiaggio PV", logo: "Succhiaggio pv.png", desc: "Recuperi PV pari al danno che infliggi." },
-    // { name: "Blocca movimento", logo: "Blocco Movimento.png", desc: "Il bersaglio non può muoversi al prossimo turno." }, // Rimosso
-    { name: "Blocca attacco", logo: "Blocco Attacco.png", desc: "Il bersaglio non può attaccare al prossimo turno." },
-    { name: "Inverti casella", logo: "Inverti Casella.png", desc: "I bonus della casella diventano malus per l’avversario finché ci resta sopra." },
-    { name: "Alcolismo competitivo", logo: "Alcolismo_competitivo.png", desc: "Se il tuo bicchiere contiene meno gin tonic rispetto a quello dell’avversario, infliggi +2 danni." },
-    { name: "Sorso salvifico", logo: "Sorso_salvifico.png", desc: "Se il tuo bicchiere contiene più gin tonic rispetto a quello dell’avversario, puoi bere un sorso e recuperare 2 Punti Vita." }
+    { name: "Paralisi totale", logo: "Paralisi Totale.png", desc: "Chi si difende non puoi muoversi né attaccare al prossimo turno." },
+    { name: "Cura", logo: "Cura.png", desc: "Chi attacca recupera 2 PV." },
+    { name: "Spinta", logo: "Spinta.png", desc: "Chi attacca spinge l’avversario di 2 caselle nella direzione dell'attacco.\nSe l’avversario sbatte contro una parete del campo da gioco, perde 1 PV.\nSe l’avversario sbatte contro un altro personaggio in gioco, entrambi perdono 1 PV." },
+    { name: "Autolesionismo", logo: "Autolesionismo.png", desc: "Chi attacca subisce danno +2." },
+    { name: "Vilipendio", logo: "Danno sesso opposto.png", desc: "Chi si difende, se di sesso diverso da chi attacca, subisce danno doppio." },
+    { name: "Ammosciamento", logo: "Ammosciamento.png", desc: "Chi si difende infliggerà danno massimo 1 al prossimo attacco." },
+    { name: "Sorso salvifico", logo: "Sorso_salvifico.png", desc: "Se il bicchiere di chi attacca contiene più gin tonic di quello di chi si difende, l’attaccante può bere un sorso e recuperare 2 PV." },
+    { name: "Spogliato", logo: "Spogliato.png", desc: "Chi si difende non potrà difendersi al prossimo attacco." },
+    { name: "Paura", logo: "Paura.png", desc: "Chi si difende, nel prossimo turno non potrà avvicinarsi a chi ha attaccato, dovrà rimanere ad almeno una casella di distanza." },
+    { name: "Succhiaggio PV", logo: "Succhiaggio pv.png", desc: "Chi attacca recupera PV pari al danno che infligge." },
+    { name: "Alcolismo competitivo", logo: "Alcolismo_competitivo.png", desc: "Se il bicchiere di chi attacca contiene meno gin tonic di quello di chi si difende, chi attacca infligge danno +2." },
+    { name: "Blocca attacco", logo: "Blocco Attacco.png", desc: "Chi si difende non potrà attaccare al prossimo turno." },
+    { name: "Inverti casella", logo: "Inverti Casella.png", desc: "Per chi si difende, il bonus “gioco in casa” (se applicabile) diventa un malus di pari valore." }
+  ];
+
+  const garnishItems = [
+      { name: "Pepe Nero", img: "Garnish_pepenero.png", effect: "6 (Buff) ⇒ Infliggi ulteriore danno +3 con questo attacco.\n1 (Debuff) ⇒ Dopo la risoluzione di questo attacco perdi 2 PV." },
+      { name: "Pepe Rosa", img: "Garnish_peperosa.png", effect: "6 (Buff) ⇒ L’attaccante sceglie quale attacco del tuo personaggio utilizzerà in questo turno.\n1 (Debuff) ⇒ Il difensore sceglie quale attacco del tuo personaggio utilizzerai in questo turno." },
+      { name: "Ginepro", img: "Garnish_ginepro.png", effect: "6 (Buff) ⇒ Dopo la risoluzione dell’attacco recuperi 3 PV.\n1 (Debuff) ⇒ Infliggi ulteriore danno -2 con questo attacco." },
+      { name: "Cardamomo", img: "Garnish_cardamomo.png", effect: "6 (Buff) ⇒ Dopo la risoluzione dell’attacco puoi spostarti in qualsiasi casella del tabellone.\n1 (Debuff) ⇒ Dopo la risoluzione dell’attacco, chi si è difeso sceglierà in quale casella del tabellone spostarti." }
   ];
 
 
@@ -82,130 +69,192 @@ const RegolamentoPage: React.FC = () => {
       />
 
       <div className="max-w-3xl mx-auto">
-        <RuleSection number="1." title="OBIETTIVO DEL GIOCO">
-          <p>Il tuo obiettivo è eliminare tutti gli altri <strong className="font-bold">GIN</strong>occhi e rimanere l’unico in vita sul tabellone. In alternativa, la partita finisce quando tutti i giocatori hanno terminato il loro gin tonic.</p>
+        <RuleSection number="1." title="Obiettivo">
+          <p>Il tuo obiettivo è eliminare gli altri giocatori e rimanere l’unico in vita sul tabellone.</p>
+          <p>In alternativa, la partita finisce quando tutti i giocatori hanno terminato il loro gin tonic.</p>
+          <h3 className="text-xl font-rubik font-bold mt-4 mb-2 text-white">1.1) Regola Aurea</h3>
           <p className="mt-3 p-3 bg-yellow-900 bg-opacity-30 border-l-4 border-yellow-500 text-yellow-300 italic rounded-r-md">
-            <strong>Regola Aurea:</strong> Meglio un figlio in guerra che l'alcol per terra: se rovesci il tuo gin tonic o quello di un avversario hai perso!
+            Meglio un figlio in guerra che l'alcol per terra: se rovesci il tuo gin tonic o quello di un avversario hai perso.
           </p>
         </RuleSection>
-
-        <RuleSection number="2." title="COSA SERVE PER GIOCARE">
-          <ul className="list-disc list-inside space-y-1">
-            <li>Da 2 a 4 giocatori.</li>
-            <li>2 bottiglie mignon di <strong className="font-bold">GIN</strong>occhi per ogni giocatore (una si beve, una si usa per giocare mettendola in palio).</li>
-            <li>1 bicchiere, 1 tonica da 200 ml e ghiaccio per ogni giocatore.</li>
-            <li>Quattro garnish (facoltativi): Pepe Nero, Pepe Rosa, Ginepro o Cardamomo.</li>
-            <li>Tabellone da gioco con 25 caselle (5x5).</li>
-            <li>1 dado a 6 facce.</li>
+        
+        <RuleSection number="2." title="GINocchi web app">
+          <p>Nell’app web di GINocchi (www.ginocchi-ggc.it) troverai:</p>
+          <ul className="list-disc list-inside space-y-1 my-2 ml-4">
+              <li>il Gindex</li>
+              <li>Cos’è GINocchi</li>
+              <li>Il gin</li>
+              <li>Il regolamento completo (dove sei ora)</li>
+              <li>Il regolamento per ubriachi (dove sarai a breve)</li>
           </ul>
+          <p>Scansionando il QR Code presente sulle bottiglie, o consultando il Gindex, troverai la scheda di gioco del tuo personaggio. Qui potrai tenere sotto controllo punti vita, attacchi e status, da utilizzare durante la partita. In più, potrai approfondire la storia dei personaggi e farci amicizia, a tuo rischio e pericolo, chattando con loro.</p>
         </RuleSection>
 
-        <RuleSection number="3." title="COME PREPARARE LA PARTITA">
-          <p>Ogni giocatore mostra le sue 2 bottiglie di <strong className="font-bold">GIN</strong>occhi. Una verrà usata per bere, l’altra per giocare.</p>
-          <p>Prepara il gin tonic con la bottiglia che non si userà nel gioco:</p>
+        <RuleSection number="3." title="Occorrente">
+          <ul className="list-disc list-inside space-y-1">
+            <li>2 o più giocatori;</li>
+            <li>Tabellone da gioco oppure almeno 25 casellotti;</li>
+            <li>Dado a 6 facce;</li>
+            <li>Garnish: pepe nero, pepe rosa, ginepro o cardamomo (opzionale).</li>
+          </ul>
+          <p className="font-bold my-2">Per ogni giocatore:</p>
+          <ul className="list-disc list-inside space-y-1 ml-4">
+            <li>2 bottiglie mignon GINocchi (una da bere e una da giocare)*;</li>
+            <li>200ml di acqua tonica;</li>
+            <li>Ghiaccio;</li>
+            <li>Bicchiere da 330ml;</li>
+            <li>Uno smartphone.</li>
+          </ul>
+          <p className="text-sm italic mt-2">* La bottiglia piena è in palio e verrà usata come pedina, il giocatore dovrà consegnarla all’avversario che gli infliggerà l’attacco letale.</p>
+        </RuleSection>
+        
+        <RuleSection number="4." title="Tabellone">
+          <p>Il pack GINocchi XL include il tabellone ufficiale GINocchi: una griglia 5x5, ottimale da 2 a 4 giocatori.</p>
+          <p>Il pack GINocchi XS include 25 casellotti (stickers adesivi), con cui comporre il proprio tabellone personalizzato. Segui la griglia consigliata oppure scatena la fantasia!</p>
+          <p>Vuoi assicurarti un gioco equilibrato? Da 2 a 4 giocatori utilizza 4 caselle rosse, 4 verdi, 4 blu e 5 gialle. Per ogni giocatore che si unisce dopo il quarto, aggiungi 8 caselle (due per ogni tipologia).</p>
+          <h3 className="text-xl font-rubik font-bold mt-4 mb-2 text-white">4.1) Gioco in casa</h3>
+          <p>Le caselle rappresentano le tipologie di GINocchi: bilanciato (giallo), erbaceo (verde), fruttato (rosso) e speziato (blu).</p>
+          <p>Durante il gioco, se un giocatore si trova sulla casella della propria categoria ottiene un bonus +1 in attacco e difesa per “gioco in casa”.</p>
+          <div className="mt-2 p-3 bg-gray-800 rounded-lg text-sm">
+              <p><strong className="font-bold">Esempio:</strong></p>
+              <p>Un GINocchio Bilanciato si posiziona su una casella Bilanciata e attacca. Al valore di danno del suo attacco si somma +1 per gioco in casa.</p>
+              <p>Un GINocchio Bilanciato posizionato su una casella Bilanciata e viene attaccato. Al valore di danno subito si somma -1 per gioco in casa.</p>
+              <p>Questo vale per tutte le tipologie.</p>
+          </div>
+        </RuleSection>
+
+        <RuleSection number="5." title="Preparazione">
+          <p>Ogni giocatore mostra le 2 bottiglie di GINocchi scelte per la partita. Una verrà usata per bere, l’altra per giocare.</p>
+          <p>Ogni giocatore prepara il suo gin tonic con la prima bottiglia (che non userà per giocare).</p>
           <ul className="list-disc list-inside ml-4 my-2 space-y-1">
-            <li>Metti il ghiaccio nel bicchiere.</li>
-            <li>Versa tutto il gin da 50 ml. Tutti i giocatori svolgono questo passo contemporaneamente.</li>
-            <li>Aggiungi la tonica.</li>
-            <li>Se vuoi, metti un garnish (ti darà un’abilità speciale).</li>
+            <li>Riempire il bicchiere di ghiaccio;</li>
+            <li>Aggiungere il contenuto della mignon (tutto!). I giocatori svolgono questa azione contemporaneamente;</li>
+            <li>Aggiungere l’acqua tonica;</li>
+            <li>Opzionale: aggiungere garnish (vedi punto 10).</li>
           </ul>
-          <p>Posiziona il <strong className="font-bold">GIN</strong>occhio da gioco in uno dei quattro angoli del tabellone, nella casella Occhio più vicina a te.</p>
-          <p>Scansiona il QR Code del <strong className="font-bold">GIN</strong>occhio o guarda sul Gindex la potenza del <strong className="font-bold">GIN</strong>occhio.</p>
-          <p>Fai un brindisi di inizio urlando "Vaffanculo miserabili". Tutti bevono un sorso. Chi appoggia il bicchiere per primo inizia. Poi si continua in senso orario.</p>
+          <p>Ogni giocatore posiziona la seconda bottiglia (piena) in una casella di partenza del tabellone. Prima di iniziare, scansiona il QR Code del personaggio in campo per visualizzare la sua scheda di gioco nella web app.</p>
+          <p>Tutti i giocatori fanno un brindisi d’inizio, al grido di "Vaffanculo miserabili!".</p>
+          <p>Tutti bevono un sorso.</p>
+          <p>Il primo giocatore che appoggia il bicchiere sul tavolo inizierà il turno*.</p>
+          <p>Il gioco continua in senso orario.</p>
+          <p className="text-sm italic mt-2">*Il primo giocatore, durante il primo turno, non può attaccare ma solo spostarsi.</p>
         </RuleSection>
-
-        <RuleSection number="4." title="TURNO DI GIOCO">
-          <p>Ogni giocatore compie due azioni nel suo turno:</p>
-          <ul className="list-disc list-inside my-2 space-y-1">
-            <li>Muove il <strong className="font-bold">GIN</strong>occhio.</li>
-            <li>Attacca, se possibile. Un giocatore che viene attaccato deve difendersi.</li>
-            <li>Se non attacchi, bevi.</li>
+        
+        <RuleSection number="6." title="Turno di gioco">
+          <p>Durante il proprio turno, ogni giocatore:</p>
+          <ul className="list-disc list-inside my-2 space-y-1 ml-4">
+            <li>Si muove;</li>
+            <li>Attacca, se possibile. Ogni giocatore attaccato deve difendersi;</li>
+            <li>Se non attacca, beve.</li>
           </ul>
-          <h3 className="text-xl font-rubik font-bold mt-4 mb-2 text-white">MOVIMENTO</h3>
-          <ul className="list-disc list-inside space-y-1">
-            <li>Lancia il dado.</li>
-            <li>Muovi il <strong className="font-bold">GIN</strong>occhio di esattamente quel numero di caselle, solo in orizzontale o verticale.</li>
-            <li>Non puoi muoverti in diagonale.</li>
-            <li>Non puoi entrare in una casella occupata da un altro <strong className="font-bold">GIN</strong>occhio.</li>
-            <li>Non puoi passare due volte sulla stessa casella durante lo stesso turno.</li>
-            <li>Se non ci sono avversari adiacenti, il turno finisce.</li>
-            <li>Se il <strong className="font-bold">GIN</strong>occhio non può muoversi in nessuna direzione perchè bloccato da altri <strong className="font-bold">GIN</strong>occhi, può attaccare direttamente.</li>
-            <li>Se non riesci ad attaccare, fai un sorso dal tuo gin tonic.</li>
+          <h3 className="text-xl font-rubik font-bold mt-4 mb-2 text-white">6.1) Movimento</h3>
+          <ul className="list-disc list-inside space-y-1 ml-4">
+            <li>Lancia il dado;</li>
+            <li>Muovi la tua pedina, spostandoti solo in orizzontale o verticale. Non puoi spostarti in diagonale;</li>
+            <li>Non puoi entrare in una casella occupata da un altro giocatore;</li>
+            <li>Non puoi passare due volte sulla stessa casella durante lo stesso turno;</li>
+            <li>Se non ci sono avversari adiacenti, bevi e passa il turno al giocatore successivo;</li>
+            <li>Se il giocatore in turno non può muoversi in nessuna direzione perchè bloccato da altri giocatori, può attaccare direttamente uno dei giocatori adiacenti.</li>
           </ul>
-          <h3 className="text-xl font-rubik font-bold mt-4 mb-2 text-white">ATTACCO</h3>
-          <ul className="list-disc list-inside space-y-1">
-            <li>Solo se sei su una casella adiacente (orizzontalmente o verticallmente) ad un avversario.</li>
-            <li>Lancia il dado.</li>
-            <li>Guarda sul Gindex del tuo <strong className="font-bold">GIN</strong>occhio quale attacco esegui e applicane gli effetti.</li>
-            <li>Nota: Il primo giocatore, durante il primo turno, non può attaccare.</li>
+          <h3 className="text-xl font-rubik font-bold mt-4 mb-2 text-white">6.2) Attacco</h3>
+          <ul className="list-disc list-inside space-y-1 ml-4">
+            <li>L’attacco è composto da danno ed effetto;</li>
+            <li>Se sei in turno puoi attaccare solo posizionandoti su una casella adiacente (orizzontalmente o verticalmente) a un avversario.</li>
+            <li>Dopo esserti spostato, lancia il dado per attaccare.</li>
+            <li>Alza il volume del tuo smartphone, scegli l’attacco dalla scheda di gioco dell’app GINocchi (scegliendo il dado corrispondente) e dichiara danno ed effetto al tuo avversario prima che lui si difenda.</li>
           </ul>
-          <h3 className="text-xl font-rubik font-bold mt-4 mb-2 text-white">DIFESA</h3>
-          <ul className="list-disc list-inside space-y-1">
-            <li>Quando un giocatore viene attaccato, deve lanciare il dado (dopo l'attaccante) per tentare di difendersi e respingere l'attacco.</li>
-            <li>Se il giocatore in difesa con il suo tiro, totalizza esattamente lo stesso punteggio dell'avversario, allora l'attacco è respinto al mittente, sia danni che effetto. Nella respinta non si applicano debolezze, resistenze e bonus casella.</li>
-            <li>Se il giocatore con il suo tiro in difesa ottiene un lancio diverso da quello dell'attaccante, allora l'attacco va a buon fine.</li>
+          <h3 className="text-xl font-rubik font-bold mt-4 mb-2 text-white">6.3) Difesa</h3>
+          <ul className="list-disc list-inside space-y-1 ml-4">
+            <li>Sei vieni attaccato, devi difenderti;</li>
+            <li>Dopo aver ricevuto l’attacco dell’avversario, lancia il dado per difenderti e respingere l’attacco.</li>
+            <li>Se il numero ottenuto corriponde al numero del lancio di attacco, il danno e gli effetti vengono inflitti all’accattante (inclusi debolezze e gioco in casa)</li>
+            <li>Se il numero ottenuto non corrisponde al numero del lancio di attacco, il danno e l’effetto viengono inflitti al difensore (inclusi debolezze e gioco in casa)</li>
           </ul>
-        </RuleSection>
-
-        <RuleSection number="5." title="TRIANGOLO DELLE DEBOLEZZE">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-            <TriangoloItem type={Categoria.Fruttato} receivesPlus1From="Speziato" receivesMinus1From="Erbaceo" />
-            <TriangoloItem type={Categoria.Erbaceo} receivesPlus1From="Fruttato" receivesMinus1From="Speziato" />
-            <TriangoloItem type={Categoria.Speziato} receivesPlus1From="Erbaceo" receivesMinus1From="Fruttato" />
+          <div className="mt-4 p-3 bg-orange-900 bg-opacity-40 border-l-4 border-orange-500 text-orange-300 rounded-r-md">
+            <h4 className="font-bold text-lg">Scola o muori!</h4>
+            <p className="italic">In caso di attacco letale, hai un’ultima chance: puoi bere il tuo gin tonic fino all’ultima goccia per annullare l’attacco dell’avversario, sia danno che effetto. Il turno si conclude e passa al giocatore successivo.</p>
           </div>
-          <div className="p-4 rounded-lg text-center text-sm md:text-base" style={{ backgroundColor: CATEGORY_COLORS.Bilanciato, color: '#000000' }}>
-            <h4 className="font-rubik font-bold text-lg md:text-xl uppercase mb-1">{Categoria.Bilanciato}</h4>
-            <p>Non ha debolezze o resistenze.</p>
-          </div>
+          <h3 className="text-xl font-rubik font-bold mt-4 mb-2 text-white">6.4) Risoluzione</h3>
+          <p>Al termine della fase di attacco e difesa, i giocatori aggiornano PV e status sulla propria scheda di gioco.</p>
         </RuleSection>
 
-        <RuleSection number="6." title="IL TABELLONE">
-          <h3 className="text-xl font-rubik font-bold mt-4 mb-2 text-white">Tipi di caselle:</h3>
-          <div className="overflow-x-auto rounded-lg border border-gray-700">
-            <table className="min-w-full divide-y divide-gray-700">
-              <thead className="bg-gray-700">
-                <tr>
-                  <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Tipo</th>
-                  {/* Colonna Gusto rimossa */}
-                  <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Effetto</th>
-                </tr>
-              </thead>
-              <tbody className="bg-gray-900 divide-y divide-gray-700">
-                {[
-                  { tipo: Categoria.Erbaceo, effetto: "+1 danno se attacchi con un GINocchio Erbaceo.\nSubisci -1 danno se vieni attaccato e sei un GINocchio Erbaceo." },
-                  { tipo: Categoria.Speziato, effetto: "+1 danno se attacchi con un GINocchio Speziato.\nSubisci -1 danno se vieni attaccato e sei un GINocchio Speziato." },
-                  { tipo: Categoria.Fruttato, effetto: "+1 danno se attacchi con un GINocchio Fruttato.\nSubisci -1 danno se vieni attaccato e sei un GINocchio Fruttato." },
-                  { tipo: Categoria.Bilanciato, effetto: "+1 danno se attacchi con un GINocchio Bilanciato.\nSubisci -1 danno se vieni attaccato e sei un GINocchio Bilanciato." }
-                ].map((item, index) => (
-                  <tr key={index} className={index % 2 === 0 ? 'bg-gray-900' : 'bg-gray-800'}>
-                    <td className="px-4 py-3 whitespace-nowrap">
-                      <div className="flex items-center">
-                        <img src={categoryImagePath(item.tipo)} alt={item.tipo} className="w-5 h-5 mr-2" onError={(e) => (e.currentTarget.style.display = 'none')}/>
-                        <span style={{color: CATEGORY_COLORS[item.tipo]}}>{item.tipo}</span>
-                      </div>
-                    </td>
-                    {/* Cella Gusto rimossa */}
-                    <td className="px-4 py-3 text-sm whitespace-pre-line">{item.effetto}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+        <RuleSection number="7." title="Triangolo delle debolezze">
+          <div className="space-y-4">
+            <div className="p-4 rounded-lg" style={{ backgroundColor: CATEGORY_COLORS.Fruttato, color: '#FFFFFF' }}>
+                <h4 className="font-rubik font-bold text-lg uppercase mb-1">{Categoria.Fruttato}</h4>
+                <p>Se attaccato da Speziato riceve ulteriore danno +1.</p>
+                <p>Se attaccato da Erbaceo riceve ulteriore danno -1.</p>
+            </div>
+            <div className="p-4 rounded-lg" style={{ backgroundColor: CATEGORY_COLORS.Erbaceo, color: '#FFFFFF' }}>
+                <h4 className="font-rubik font-bold text-lg uppercase mb-1">{Categoria.Erbaceo}</h4>
+                <p>Se attaccato da Fruttato riceve ulteriore danno +1.</p>
+                <p>Se attaccato da Speziato riceve ulteriore danno -1.</p>
+            </div>
+            <div className="p-4 rounded-lg" style={{ backgroundColor: CATEGORY_COLORS.Speziato, color: '#FFFFFF' }}>
+                <h4 className="font-rubik font-bold text-lg uppercase mb-1">{Categoria.Speziato}</h4>
+                <p>Se attaccato da Erbaceo riceve ulteriore danno +1.</p>
+                <p>Se attaccato da Fruttato riceve ulteriore danno -1.</p>
+            </div>
+            <div className="p-4 rounded-lg" style={{ backgroundColor: CATEGORY_COLORS.Bilanciato, color: '#000000' }}>
+                <h4 className="font-rubik font-bold text-lg uppercase mb-1">{Categoria.Bilanciato}</h4>
+                <p>Non ha debolezze né resistenze.</p>
+            </div>
           </div>
         </RuleSection>
 
-        <RuleSection number="6." title="GUARNIZIONI (ABILITÀ PASSIVE)">
-          <p>Scegli un garnish quando prepari il tuo gin tonic. Ogni garnish ti garantirà un bonus o un malus in base al lancio di attacco.</p>
-          <ul className="list-disc list-inside my-2 space-y-1">
-              <li><strong>6 (Buff)</strong> ⇒ si attiva l’effetto positivo del garnish.</li>
-              <li><strong>1 (Debuff)</strong> ⇒ si attiva l’effetto negativo del garnish.</li>
+        <RuleSection number="8." title="Effetti">
+          <p>Ogni personaggio ha a disposizione 6 attacchi con diversi danni ed effetti.</p>
+          <p>Gli effetti sono condizioni associate all’attacco e si applicano al giocatore sconfitto durante il turno.</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+            {effettiSpeciali.map((eff, index) => (
+              <div key={index} className="p-4 bg-gray-900 rounded-lg border border-gray-700 flex flex-col items-center text-center shadow-lg">
+                <img 
+                    src={effectImagePath(eff.logo)} 
+                    alt={`Logo ${eff.name}`} 
+                    className="w-20 h-20 mb-3 object-contain"
+                    onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.alt = `Logo per ${eff.name} non trovato`;
+                        target.style.display = 'none'; 
+                        const placeholder = document.createElement('div');
+                        placeholder.className = 'w-20 h-20 flex items-center justify-center bg-gray-700 text-gray-400 text-xs rounded-md text-center p-2 mb-3';
+                        placeholder.textContent = `Logo ${eff.name}`;
+                        if (target.parentNode) {
+                            target.parentNode.insertBefore(placeholder, target);
+                        }
+                    }}
+                />
+                <h4 className="text-lg font-rubik font-bold text-white mb-1">{eff.name}</h4>
+                <p className="text-sm text-gray-300 leading-relaxed flex-grow whitespace-pre-line">{eff.desc}</p>
+              </div>
+            ))}
+          </div>
+        </RuleSection>
+
+        <RuleSection number="9." title="Vittoria">
+          <ul className="list-disc list-inside space-y-1 ml-4">
+            <li>Il vincitore della partita è l’ultimo superstite.</li>
+            <li>Ogni volta che un giocatore elimina un giocatore avversario, vince la sua bottiglia di GINocchi in palio.</li>
+            <li>In caso di pareggio, si procede con una gara di rutti.</li>
+          </ul>
+        </RuleSection>
+
+        <RuleSection number="10." title="Abisso Etilico">
+          <p className="text-orange-400 font-semibold">Modalità opzionale solo per i veri eroi delle avventure alcoliche.</p>
+          <ul className="list-disc list-inside mt-2 space-y-1 ml-4">
+            <li>Se un giocatore termina sia i PV che il proprio gin tonic, può prepararne un'altro (vedi punto 5) con un ulteriore bottiglia di GINocchi in suo possesso e rientrare in gioco.</li>
+            <li>Gli unici limiti sono la resistenza alcolica e il numero di bottiglie piene a disposizione del giocatore.</li>
+          </ul>
+        </RuleSection>
+
+        <RuleSection number="11." title="Garnish* (opzionale)">
+          <p>Per aggiungere (letteralmente) un pò di pepe alla partita, i giocatori hanno a disposizone 4 garnish. Ogni garnish garantisce un bonus o un malus in base al lancio di attacco.</p>
+          <ul className="list-disc list-inside my-2 space-y-1 ml-4">
+              <li>Se il lancio di attacco dà il numero <strong>6</strong> si ottiene un Buff che attiva l’effetto positivo tipico del garnish usato.</li>
+              <li>Se il lancio di attacco dà il numero <strong>1</strong> si ottiene un Debuff che attiva l’effetto negativo tipico del garnish usato.</li>
           </ul>
           <div className="space-y-6 mt-4">
-            {[
-              { name: "Pepe Nero", img: "Garnish_pepenero.png", effect: "6 (Buff) ⇒ Infliggi +3 danni con questo attacco.\n1 (Debuff) ⇒ Dopo aver risolto l’attacco, perdi 2 Punti Vita." },
-              { name: "Pepe Rosa", img: "Garnish_peperosa.png", effect: "6 (Buff) ⇒ Scegli tu quale attacco del tuo GINocchio utilizzerai in questo turno.\n1 (Debuff) ⇒ L’avversario sceglie quale attacco del tuo GINocchio utilizzerai in questo turno." },
-              { name: "Ginepro", img: "Garnish_ginepro.png", effect: "6 (Buff) ⇒ Dopo aver risolto l’attacco, recuperi 3 Punti Vita.\n1 (Debuff) ⇒ Questo attacco infligge –2 danni." },
-              { name: "Cardamomo", img: "Garnish_cardamomo.png", effect: "6 (Buff) ⇒ Dopo aver risolto l’attacco, spostati in qualsiasi casella del tabellone.\n1 (Debuff) ⇒ Dopo aver risolto l’attacco, l’avversario sceglie in quale casella del tabellone spostarti." }
-            ].map((garnish, index) => (
+            {garnishItems.map((garnish, index) => (
               <div key={index} className="flex flex-col sm:flex-row items-center p-3 bg-gray-900 rounded-lg border border-gray-700">
                 <img 
                     src={garnishImagePath(garnish.img)} 
@@ -230,52 +279,9 @@ const RegolamentoPage: React.FC = () => {
               </div>
             ))}
           </div>
+          <p className="text-sm italic mt-4">* I garnish sono decorazioni da cocktail che ne completano l'esperienza sensoriale, non solo estetica. I garnish GINocchi vanno inseriti direttamente nel drink durante la sua preparazione all’inizio della partita.</p>
         </RuleSection>
 
-        <RuleSection number="7." title="ATTACCHI E EFFETTI SPECIALI">
-          <p>Ogni <strong className="font-bold">GIN</strong>occhio ha 6 attacchi con effetti diversi. Scansiona il QR del tuo <strong className="font-bold">GIN</strong>occhio!</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
-            {effettiSpeciali.map((eff, index) => (
-              <div key={index} className="p-4 bg-gray-900 rounded-lg border border-gray-700 flex flex-col items-center text-center shadow-lg">
-                <img 
-                    src={effectImagePath(eff.logo)} 
-                    alt={`Logo ${eff.name}`} 
-                    className="w-20 h-20 mb-3 object-contain"
-                    onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.alt = `Logo per ${eff.name} non trovato`;
-                        target.style.display = 'none'; 
-                        const placeholder = document.createElement('div');
-                        placeholder.className = 'w-20 h-20 flex items-center justify-center bg-gray-700 text-gray-400 text-xs rounded-md text-center p-2 mb-3';
-                        placeholder.textContent = `Logo ${eff.name}`;
-                        if (target.parentNode) {
-                            target.parentNode.insertBefore(placeholder, target);
-                        }
-                    }}
-                />
-                <h4 className="text-lg font-rubik font-bold text-white mb-1">{eff.name}</h4>
-                <p className="text-sm text-gray-300 leading-relaxed flex-grow">{eff.desc}</p>
-              </div>
-            ))}
-          </div>
-        </RuleSection>
-
-        <RuleSection number="8." title="VINCITORE">
-          <ul className="list-disc list-inside space-y-1">
-            <li>Vince chi elimina tutti gli altri <strong className="font-bold">GIN</strong>occhi.</li>
-            <li>Ogni volta che un giocatore elimina un <strong className="font-bold">GIN</strong>occhio avversario ne vince il possesso.</li>
-            <li>In caso di pareggio, si procede con una gara di rutti. Il pareggio può avvenire in varie situazioni, la gara di rutti è sempre la soluzione. (Valutata in base all'ovazione dei presenti).</li>
-          </ul>
-        </RuleSection>
-
-        <RuleSection number="9." title="MODALITÀ ABISSO ETILICO">
-          <p className="text-orange-400 font-semibold">Modalità opzionale solo per i veri eroi delle avventure alcoliche.</p>
-          <p className="text-red-500 font-bold">CALDAMENTE SCONSIGLIATA</p>
-          <ul className="list-disc list-inside mt-2 space-y-1">
-            <li>Se un giocatore perde tutti i PV del proprio <strong className="font-bold">GIN</strong>occhio e ha terminato tutto il proprio gin tonic, può prepararne un'altro con un ulteriore <strong className="font-bold">GIN</strong>occhio e rientrare in gioco.</li>
-            <li>L'unico limite è la resistenza alcolica (e il numero di <strong className="font-bold">GIN</strong>occhi in possesso ovviamente).</li>
-          </ul>
-        </RuleSection>
       </div>
     </div>
   );
