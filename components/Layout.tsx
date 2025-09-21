@@ -8,7 +8,7 @@ const StatusIcon: React.FC<{ effectName: string }> = ({ effectName }) => {
   const iconSrc = `/images/Status/${encodeURIComponent(effectName)}.png`;
 
   if (error) {
-    return <StatusPlaceholderIcon className="w-6 h-6 text-gray-400" aria-label={effectName} />;
+    return <StatusPlaceholderIcon className="w-8 h-8 text-gray-400" aria-label={effectName} />;
   }
 
   return (
@@ -16,7 +16,7 @@ const StatusIcon: React.FC<{ effectName: string }> = ({ effectName }) => {
         src={iconSrc}
         alt={effectName}
         title={effectName}
-        className="w-6 h-6 object-contain"
+        className="w-8 h-8 object-contain"
         onError={() => setError(true)}
     />
   );
@@ -45,6 +45,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     healthBarColorClass = 'bg-red-600';
   }
 
+  const hasTooManyStatuses = headerInfo && headerInfo.activeStatusEffects.length > 2;
 
   return (
     <div className="min-h-screen bg-black text-white font-roboto-mono flex flex-col">
@@ -74,7 +75,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
             {/* Ginocchio Status in Header */}
             {headerInfo && headerInfo.maxPv > 0 && (
-              <div className="flex items-center gap-3" aria-label="Stato Ginocchio attuale">
+              <div 
+                className={`flex ${hasTooManyStatuses ? 'flex-col items-end gap-2' : 'items-center gap-3'}`} 
+                aria-label="Stato Ginocchio attuale"
+              >
                   {/* PV Bar */}
                   <div 
                     className="w-32 h-3 bg-gray-600 rounded-full overflow-hidden"
@@ -91,7 +95,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     />
                   </div>
                   {/* Status Icons */}
-                  <div className="flex items-center gap-1.5">
+                  <div className="flex items-center gap-2 flex-wrap justify-end">
                       {headerInfo.activeStatusEffects.map(effect => (
                           <StatusIcon key={effect} effectName={effect} />
                       ))}
