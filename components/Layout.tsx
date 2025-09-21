@@ -7,18 +7,27 @@ const StatusIcon: React.FC<{ effectName: string }> = ({ effectName }) => {
   const [error, setError] = useState(false);
   const iconSrc = `/images/Status/${encodeURIComponent(effectName)}.png`;
 
+  const wrapperClasses = "p-1 bg-black border-2 border-white rounded-md";
+  const iconClasses = "w-10 h-10 object-contain";
+
   if (error) {
-    return <StatusPlaceholderIcon className="w-8 h-8 text-gray-400" aria-label={effectName} />;
+    return (
+        <div className={wrapperClasses}>
+            <StatusPlaceholderIcon className={`${iconClasses} text-gray-400`} aria-label={effectName} />
+        </div>
+    );
   }
 
   return (
-    <img
-        src={iconSrc}
-        alt={effectName}
-        title={effectName}
-        className="w-8 h-8 object-contain"
-        onError={() => setError(true)}
-    />
+    <div className={wrapperClasses}>
+        <img
+            src={iconSrc}
+            alt={effectName}
+            title={effectName}
+            className={iconClasses}
+            onError={() => setError(true)}
+        />
+    </div>
   );
 };
 
@@ -95,7 +104,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     />
                   </div>
                   {/* Status Icons */}
-                  <div className="flex items-center gap-2 flex-wrap justify-end">
+                  <div className="flex items-center gap-2 flex-wrap justify-end max-w-[180px]">
                       {headerInfo.activeStatusEffects.map(effect => (
                           <StatusIcon key={effect} effectName={effect} />
                       ))}

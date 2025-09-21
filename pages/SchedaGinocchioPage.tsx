@@ -10,6 +10,7 @@ import StatusToggleButton from '../components/StatusToggleButton';
 import { useGinocchiGameplay } from '../context/GinocchiGameplayContext';
 import Button from '../components/Button';
 import { ArrowLeftIcon } from '../components/icons/ArrowLeftIcon';
+import { ArrowRightIcon } from '../components/icons/ArrowRightIcon';
 import AttackDetailModal from '../components/AttackDetailModal';
 import { usePvTracker } from '../hooks/usePvTracker';
 import { useHeaderUI } from '../context/HeaderUIContext';
@@ -25,6 +26,26 @@ const SchedaGinocchioPage: React.FC = () => {
 
   const [selectedAttack, setSelectedAttack] = useState<Attacco | null>(null);
   const [isAttackModalOpen, setIsAttackModalOpen] = useState(false);
+
+  const currentIndex = useMemo(() => {
+    if (!ginocchio) return -1;
+    return ALL_GINOCCHI.findIndex(g => g.id === ginocchio.id);
+  }, [ginocchio]);
+
+  const previousGinocchio = useMemo(() => {
+    if (currentIndex > 0) {
+      return ALL_GINOCCHI[currentIndex - 1];
+    }
+    return null;
+  }, [currentIndex]);
+
+  const nextGinocchio = useMemo(() => {
+    if (currentIndex !== -1 && currentIndex < ALL_GINOCCHI.length - 1) {
+      return ALL_GINOCCHI[currentIndex + 1];
+    }
+    return null;
+  }, [currentIndex]);
+
 
   const openAttackModal = useCallback((attack: Attacco) => {
     setSelectedAttack(attack);
@@ -139,15 +160,19 @@ const SchedaGinocchioPage: React.FC = () => {
       </Button>
 
       <div className="w-full max-w-2xl bg-gray-800 rounded-xl shadow-2xl p-2 sm:p-4 md:p-6 lg:p-8">
+        <p className="text-5xl font-rubik font-black text-center text-gray-900" style={{ textShadow: `2px 2px 0 ${ginocchio.colore}, -2px -2px 0 ${ginocchio.colore}, 2px -2px 0 ${ginocchio.colore}, -2px 2px 0 ${ginocchio.colore}` }}>
+          #{String(ginocchio.id).padStart(2, '0')}
+        </p>
+        
         <img 
           src={ginocchio.immagine}
           alt={`Artwork for ${ginocchio.nome.toUpperCase()}`} 
-          className="w-full aspect-square object-cover rounded-lg mb-6 shadow-lg"
+          className="w-full aspect-square object-cover rounded-lg my-4 shadow-lg"
           onError={(e) => (e.currentTarget.src = 'https://picsum.photos/seed/fallback-detail/400/300')}
         />
         
         <h1 className="text-5xl font-rubik font-bold mb-2 text-center" style={{ color: ginocchio.colore }}>
-          #{ginocchio.id} {ginocchio.nome.toUpperCase()}
+          {ginocchio.nome.toUpperCase()}
         </h1>
         
         <div className="flex justify-center mb-6">
@@ -160,7 +185,8 @@ const SchedaGinocchioPage: React.FC = () => {
           className={
             currentPv === 0
               ? `text-5xl font-['"Roboto_Mono"',_system-ui,_monospace] font-bold text-center my-4`
-              : `text-sm italic text-center my-4 h-10 flex items-center justify-center uppercase font-bold font-['"Roboto_Mono"',_system-ui,_monospace]`
+              // Removed fixed height to allow content to flow naturally
+              : `text-sm italic text-center my-4 flex items-center justify-center uppercase font-bold font-['"Roboto_Mono"',_system-ui,_monospace]`
           }
           style={{ color: ginocchio.colore }}
         >
@@ -257,6 +283,30 @@ const SchedaGinocchioPage: React.FC = () => {
                 Resetta PV & Status
             </Button>
         </div>
+
+        {/* Navigation Arrows */}
+        <div className="mt-12 flex justify-between items-start">
+            {previousGinocchio ? (
+                <Link to={`/ginocchio/${previousGinocchio.id}`} className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-gray-700 w-1/3" aria-label={`Vai a ${previousGinocchio.nome}`}>
+                    <ArrowLeftIcon className="w-8 h-8 flex-shrink-0" />
+                    <div className="text-left">
+                        <span className="text-sm font-bold block" style={{color: previousGinocchio.colore}}>#{previousGinocchio.id}</span>
+                        <span className="text-xs block">{previousGinocchio.nome}</span>
+                    </div>
+                </Link>
+            ) : <div className="w-1/3"></div> /* Spacer */}
+            
+            {nextGinocchio ? (
+                <Link to={`/ginocchio/${nextGinocchio.id}`} className="flex items-center justify-end space-x-3 text-gray-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-gray-700 w-1/3" aria-label={`Vai a ${nextGinocchio.nome}`}>
+                     <div className="text-right">
+                        <span className="text-sm font-bold block" style={{color: nextGinocchio.colore}}>#{nextGinocchio.id}</span>
+                        <span className="text-xs block">{nextGinocchio.nome}</span>
+                    </div>
+                    <ArrowRightIcon className="w-8 h-8 flex-shrink-0" />
+                </Link>
+            ) : <div className="w-1/3"></div> /* Spacer */}
+        </div>
+
       </div>
       {isAttackModalOpen && selectedAttack && (
         <AttackDetailModal 
