@@ -1,7 +1,7 @@
-
 import React from 'react';
 import { CATEGORY_COLORS } from '../constants';
 import { Categoria } from '../types';
+import usePageMetadata from '../hooks/usePageMetadata';
 
 interface RuleSectionProps {
   title: string;
@@ -40,6 +40,15 @@ const TriangoloItem: React.FC<TriangoloItemProps> = ({ type, receivesPlus1From, 
 );
 
 const RegolamentoPage: React.FC = () => {
+  usePageMetadata({
+    title: 'Regolamento Completo | Ginocchi GGC',
+    description: 'Impara tutte le regole di Ginocchi GGC. Scopri come muoverti, attaccare, difenderti e sfruttare le debolezze dei Ginocchi.',
+    keywords: 'regolamento, regole, come giocare, Ginocchi, GGC, gioco da tavolo, gioco alcolico',
+    og: {
+        url: 'https://www.ginocchi-ggc.it/#/regolamento',
+    }
+  });
+
   const garnishImagePath = (imageName: string) => `/images/Garnish/${imageName}`;
   const effectImagePath = (imageName: string) => `/images/Status/${imageName}`;
   const categoryImagePath = (categoria: Categoria) => `/images/categories/${categoria}.png`;

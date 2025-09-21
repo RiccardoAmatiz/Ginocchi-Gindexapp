@@ -1,6 +1,16 @@
 import React from 'react';
+import usePageMetadata from '../hooks/usePageMetadata';
 
 const LorePage: React.FC = () => {
+  usePageMetadata({
+    title: 'La Lore di Ginocchi | Ginocchi GGC',
+    description: 'Scopri la storia distorta del mondo di Ginocchi GGC. Un futuro dominato dall\'Algoritmo dove il gin tonic è l\'ultima resistenza.',
+    keywords: 'lore, storia, ambientazione, Algoritmo, Ginocchi, GGC',
+    og: {
+        url: 'https://www.ginocchi-ggc.it/#/lore',
+    }
+  });
+
   return (
     <div className="py-6 max-w-3xl mx-auto text-gray-200 font-roboto-mono">
       

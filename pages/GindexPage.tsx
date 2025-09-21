@@ -1,11 +1,20 @@
-
 import React, { useState, useMemo } from 'react';
 import { ALL_GINOCCHI, CATEGORIES_ORDER, CATEGORY_COLORS } from '../constants';
 import { Categoria, Ginocchio } from '../types';
 import GinocchioCard from '../components/GinocchioCard';
 import Accordion from '../components/Accordion';
+import usePageMetadata from '../hooks/usePageMetadata';
 
 const GindexPage: React.FC = () => {
+  usePageMetadata({
+    title: 'GINDEX | Lista Completa dei Ginocchi',
+    description: 'Esplora il Gindex completo di tutti i Ginocchi. Filtra per categoria, cerca per nome o ID e scopri le creature del mondo GGC.',
+    keywords: 'Gindex, lista Ginocchi, tutti i Ginocchi, Bilanciato, Erbaceo, Fruttato, Speziato, GGC, Gin collezionabili',
+    og: {
+        url: 'https://www.ginocchi-ggc.it/#/gindex',
+    }
+  });
+
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<Categoria | 'All'>('All');
 

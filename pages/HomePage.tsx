@@ -2,8 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
 import { CATEGORY_COLORS } from '../constants';
+import usePageMetadata from '../hooks/usePageMetadata';
 
 const HomePage: React.FC = () => {
+  usePageMetadata({
+    title: 'Ginocchi GGC - Gioco di Gin Collezionabili',
+    description: 'Benvenuto in Ginocchi GGC, il gioco di gin collezionabili. Un mondo distorto dove il gin tonic è l\'unica arma contro la tirannia dell\'IA. Colleziona, bevi, combatti!',
+    keywords: 'Ginocchi, Ginocchi GGC, GGC, Gioco di gin collezionabili, Gin collezionabili, Vaffanculo miserabili, gin, distilled gin, gin premium, gin italiano, homepage',
+    og: {
+        url: 'https://www.ginocchi-ggc.it/',
+    }
+  });
+
   // Definisci i diversi stili per i pulsanti
   const gindexButtonStyle = `w-full h-full !bg-[${CATEGORY_COLORS.Bilanciato}] !text-black hover:!opacity-90 focus:!ring-yellow-400`;
   const infoButtonStyle = "w-full h-full !bg-white !text-black hover:!bg-gray-300 focus:!ring-gray-500";

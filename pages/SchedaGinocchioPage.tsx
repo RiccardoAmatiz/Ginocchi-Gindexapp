@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ALL_GINOCCHI, CATEGORY_COLORS, PV_QUOTES, GINOCCHIO_DESCRIPTIONS } from '../constants';
@@ -14,6 +13,7 @@ import { ArrowRightIcon } from '../components/icons/ArrowRightIcon';
 import AttackDetailModal from '../components/AttackDetailModal';
 import { usePvTracker } from '../hooks/usePvTracker';
 import { useHeaderUI } from '../context/HeaderUIContext';
+import { useGinocchioMetadata } from '../hooks/usePageMetadata';
 
 const SchedaGinocchioPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -52,6 +52,11 @@ const SchedaGinocchioPage: React.FC = () => {
 
   const [selectedAttack, setSelectedAttack] = useState<Attacco | null>(null);
   const [isAttackModalOpen, setIsAttackModalOpen] = useState(false);
+
+  const description = useMemo(() => ginocchio ? GINOCCHIO_DESCRIPTIONS[ginocchio.id] : undefined, [ginocchio]);
+  
+  // SEO Metadata Hook
+  useGinocchioMetadata(ginocchio, description);
 
   const openAttackModal = useCallback((attack: Attacco) => {
     setSelectedAttack(attack);
@@ -119,9 +124,6 @@ const SchedaGinocchioPage: React.FC = () => {
         clearHeaderInfo();
     };
   }, [ginocchio, currentPv, ginocchioState.activeStatusEffects, setHeaderInfo, clearHeaderInfo]);
-
-
-  const description = GINOCCHIO_DESCRIPTIONS[ginocchio.id];
 
   const handleResetState = () => {
     if (window.confirm(`Sei sicuro di voler resettare PV e status di ${ginocchio.nome.toUpperCase()}?`)) {

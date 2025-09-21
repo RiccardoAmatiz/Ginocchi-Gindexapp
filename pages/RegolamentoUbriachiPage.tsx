@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import usePageMetadata from '../hooks/usePageMetadata';
 
 interface DrunkRuleProps {
   title: string;
@@ -29,6 +30,15 @@ const DrunkRule: React.FC<DrunkRuleProps> = ({ title, imageName, children }) => 
 
 
 const RegolamentoUbriachiPage: React.FC = () => {
+    usePageMetadata({
+        title: 'Regolamento per Ubriachi | Ginocchi GGC',
+        description: 'La versione semplice e diretta del regolamento di Ginocchi GGC, per quando la mente è annebbiata ma la sete di vittoria è forte.',
+        keywords: 'regolamento ubriachi, regole facili, Ginocchi, GGC, gioco da tavolo, gioco alcolico',
+        og: {
+            url: 'https://www.ginocchi-ggc.it/#/regolamento-ubriachi',
+        }
+    });
+
     const rules = [
         { title: "Regola Aurea - Meglio un figlio in guerra che l’alcol per terra", imageName: "RU1.jpg", caption: "Se rovesci un gin tonic (tuo o degli altri) hai perso." },
         { title: "Preparazione", imageName: "RU2.jpg", caption: <>Mettete due <strong className="font-bold">GIN</strong>occhi sul tavolo, sceglietene uno per giocare e con l’altro fateci un gin tonic.</> },
