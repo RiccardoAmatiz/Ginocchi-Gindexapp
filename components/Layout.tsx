@@ -54,7 +54,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     healthBarColorClass = 'bg-red-600';
   }
 
-  const hasTooManyStatuses = headerInfo && headerInfo.activeStatusEffects.length > 2;
+  const hasTooManyStatuses = headerInfo && headerInfo.activeStatusEffects.length > 1;
 
   return (
     <div className="min-h-screen bg-black text-white font-roboto-mono flex flex-col">
@@ -85,7 +85,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             {/* Ginocchio Status in Header */}
             {headerInfo && headerInfo.maxPv > 0 && (
               <div 
-                className={`flex ${hasTooManyStatuses ? 'flex-col items-end gap-2' : 'items-center gap-3'}`} 
+                className={`flex flex-col items-end gap-2 sm:flex-row sm:items-center sm:gap-3 ${hasTooManyStatuses ? 'sm:!flex-col sm:!items-end' : ''}`}
                 aria-label="Stato Ginocchio attuale"
               >
                   {/* PV Bar */}
@@ -104,11 +104,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     />
                   </div>
                   {/* Status Icons */}
-                  <div className="flex items-center gap-2 flex-wrap justify-end max-w-[180px]">
-                      {headerInfo.activeStatusEffects.map(effect => (
-                          <StatusIcon key={effect} effectName={effect} />
-                      ))}
-                  </div>
+                  {headerInfo.activeStatusEffects.length > 0 && (
+                    <div className="flex items-center gap-2 flex-wrap justify-end max-w-[180px]">
+                        {headerInfo.activeStatusEffects.map(effect => (
+                            <StatusIcon key={effect} effectName={effect} />
+                        ))}
+                    </div>
+                  )}
               </div>
             )}
           </nav>

@@ -39,9 +39,9 @@ const PvTracker: React.FC<PvTrackerProps> = ({ ginocchio }) => {
           <MinusIcon className="w-6 h-6 sm:w-8 sm:h-8 text-white" aria-label="Rimuovi un PV"/>
         </Button>
         
-        <div className="font-roboto-mono text-4xl sm:text-5xl text-center w-32 sm:w-40 tabular-nums">
+        <div className="font-roboto-mono text-3xl text-center w-32 sm:w-40 tabular-nums">
           <span style={{ color: ginocchio.colore }}>{currentPv}</span>
-          <span className="text-2xl sm:text-3xl text-gray-400"> / </span>
+          <span className="text-xl text-gray-400"> / </span>
           <span style={{ color: ginocchio.colore }}>{maxPv}</span>
         </div>
 
