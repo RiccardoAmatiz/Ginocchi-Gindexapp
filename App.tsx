@@ -11,6 +11,7 @@ import ScrollToTop from './components/ScrollToTop';
 import AgeVerificationModal from './components/AgeVerificationModal';
 import LorePage from './pages/LorePage';
 import GinPage from './pages/GinPage'; // Importa la nuova pagina
+import { HeaderUIProvider } from './context/HeaderUIContext';
 
 const App: React.FC = () => {
   // Controlla il localStorage nello stato iniziale per evitare sfarfallii
@@ -40,23 +41,25 @@ const App: React.FC = () => {
   
   // Altrimenti, renderizza l'intera applicazione
   return (
-    <GinocchiGameplayProvider>
-      <HashRouter>
-        <ScrollToTop />
-        <Layout>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/gindex" element={<GindexPage />} />
-            <Route path="/ginocchio/:id" element={<SchedaGinocchioPage />} />
-            <Route path="/regolamento" element={<RegolamentoPage />} />
-            <Route path="/regolamento-ubriachi" element={<RegolamentoUbriachiPage />} />
-            <Route path="/lore" element={<LorePage />} />
-            <Route path="/gin" element={<GinPage />} /> {/* Aggiunta la nuova rotta */}
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </Layout>
-      </HashRouter>
-    </GinocchiGameplayProvider>
+    <HeaderUIProvider>
+      <GinocchiGameplayProvider>
+        <HashRouter>
+          <ScrollToTop />
+          <Layout>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/gindex" element={<GindexPage />} />
+              <Route path="/ginocchio/:id" element={<SchedaGinocchioPage />} />
+              <Route path="/regolamento" element={<RegolamentoPage />} />
+              <Route path="/regolamento-ubriachi" element={<RegolamentoUbriachiPage />} />
+              <Route path="/lore" element={<LorePage />} />
+              <Route path="/gin" element={<GinPage />} /> {/* Aggiunta la nuova rotta */}
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </Layout>
+        </HashRouter>
+      </GinocchiGameplayProvider>
+    </HeaderUIProvider>
   );
 };
 

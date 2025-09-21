@@ -12,6 +12,7 @@ import Button from '../components/Button';
 import { ArrowLeftIcon } from '../components/icons/ArrowLeftIcon';
 import AttackDetailModal from '../components/AttackDetailModal';
 import { usePvTracker } from '../hooks/usePvTracker';
+import { useHeaderUI } from '../context/HeaderUIContext';
 
 const SchedaGinocchioPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -20,6 +21,7 @@ const SchedaGinocchioPage: React.FC = () => {
   
   const { getGinocchioState, toggleStatusEffect, resetGinocchioState } = useGinocchiGameplay();
   const { currentPv } = usePvTracker(ginocchio);
+  const { setHeaderInfo, clearHeaderInfo } = useHeaderUI();
 
   const [selectedAttack, setSelectedAttack] = useState<Attacco | null>(null);
   const [isAttackModalOpen, setIsAttackModalOpen] = useState(false);
@@ -52,6 +54,17 @@ const SchedaGinocchioPage: React.FC = () => {
     }
   }, []);
 
+  if (!ginocchio) {
+    return (
+      <div className="text-center py-10">
+        <h1 className="text-3xl font-rubik text-red-500"><strong className="font-bold">GIN</strong>occhio non trovato!</h1>
+        <Link to="/gindex" className="text-blue-400 hover:underline mt-4 inline-block">Torna al Gindex</Link>
+      </div>
+    );
+  }
+  
+  const ginocchioState = getGinocchioState(ginocchio.id);
+
   useEffect(() => {
     const handleEsc = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -66,16 +79,22 @@ const SchedaGinocchioPage: React.FC = () => {
     };
   }, [isAttackModalOpen, closeAttackModal]);
 
-  if (!ginocchio) {
-    return (
-      <div className="text-center py-10">
-        <h1 className="text-3xl font-rubik text-red-500"><strong className="font-bold">GIN</strong>occhio non trovato!</h1>
-        <Link to="/gindex" className="text-blue-400 hover:underline mt-4 inline-block">Torna al Gindex</Link>
-      </div>
-    );
-  }
-  
-  const ginocchioState = getGinocchioState(ginocchio.id);
+  useEffect(() => {
+    if (ginocchio) {
+        setHeaderInfo({
+            pv: currentPv,
+            maxPv: ginocchio.pvIniziali,
+            activeStatusEffects: ginocchioState.activeStatusEffects as StatusEffectName[],
+            categoryColor: ginocchio.colore,
+        });
+    }
+
+    return () => {
+        clearHeaderInfo();
+    };
+  }, [ginocchio, currentPv, ginocchioState.activeStatusEffects, setHeaderInfo, clearHeaderInfo]);
+
+
   const description = GINOCCHIO_DESCRIPTIONS[ginocchio.id];
 
   const handleResetState = () => {
@@ -148,7 +167,12 @@ const SchedaGinocchioPage: React.FC = () => {
             {pvQuote}
         </p>
         
-        <Accordion title="Attacchi" titleClassName="text-2xl !font-rubik" contentClassName="!bg-gray-850">
+        <Accordion 
+          title="Attacchi" 
+          titleClassName="text-2xl !font-rubik" 
+          contentClassName="!bg-gray-850"
+          categoryColor={ginocchio.colore}
+        >
           <div className="grid grid-cols-3 sm:grid-cols-3 gap-3 p-2 place-items-center">
             {ginocchio.attacchi.map((attacco) => {
               return (
@@ -171,7 +195,12 @@ const SchedaGinocchioPage: React.FC = () => {
           </div>
         </Accordion>
 
-        <Accordion title="Status" titleClassName="text-2xl !font-rubik mt-4" contentClassName="!bg-gray-850">
+        <Accordion 
+          title="Status" 
+          titleClassName="text-2xl !font-rubik mt-4" 
+          contentClassName="!bg-gray-850"
+          categoryColor={ginocchio.colore}
+        >
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 place-items-center">
             {STATUS_EFFECT_NAMES.map((effectName) => (
               <StatusToggleButton

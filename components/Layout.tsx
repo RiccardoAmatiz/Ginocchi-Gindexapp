@@ -1,5 +1,27 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useHeaderUI } from '../context/HeaderUIContext';
+import { StatusPlaceholderIcon } from './icons/StatusPlaceholderIcon';
+
+const StatusIcon: React.FC<{ effectName: string }> = ({ effectName }) => {
+  const [error, setError] = useState(false);
+  const iconSrc = `/images/Status/${encodeURIComponent(effectName)}.png`;
+
+  if (error) {
+    return <StatusPlaceholderIcon className="w-6 h-6 text-gray-400" aria-label={effectName} />;
+  }
+
+  return (
+    <img
+        src={iconSrc}
+        alt={effectName}
+        title={effectName}
+        className="w-6 h-6 object-contain"
+        onError={() => setError(true)}
+    />
+  );
+};
+
 
 interface LayoutProps {
   children: ReactNode;
@@ -8,6 +30,21 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
+  const { headerInfo } = useHeaderUI();
+
+  const healthPercentage = headerInfo && headerInfo.maxPv > 0 ? (headerInfo.pv / headerInfo.maxPv) * 100 : 0;
+  let healthBarColorClass = '';
+
+  if (healthPercentage > 70) {
+    healthBarColorClass = 'bg-green-500';
+  } else if (healthPercentage > 40) {
+    healthBarColorClass = 'bg-yellow-400';
+  } else if (healthPercentage > 15) {
+    healthBarColorClass = 'bg-orange-500';
+  } else {
+    healthBarColorClass = 'bg-red-600';
+  }
+
 
   return (
     <div className="min-h-screen bg-black text-white font-roboto-mono flex flex-col">
@@ -23,16 +60,44 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <nav className="container mx-auto flex justify-between items-center" aria-label="Navigazione principale">
             <Link 
               to="/" 
-              className="p-1 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75 hover:bg-gray-700 transition-colors"
+              className="flex items-center space-x-3 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75 hover:bg-gray-700 transition-colors"
               aria-label="Torna alla Home page"
             >
               <img 
                 src="/images/pittogramma_logo.png" 
-                alt="GINocchi Pittogramma" 
+                alt="" 
                 className="h-10 w-10 object-contain" 
                 onError={(e) => (e.currentTarget.style.display = 'none')} 
               />
+              <span className="text-white font-rubik font-bold text-xl uppercase">Home</span>
             </Link>
+
+            {/* Ginocchio Status in Header */}
+            {headerInfo && headerInfo.maxPv > 0 && (
+              <div className="flex items-center gap-3" aria-label="Stato Ginocchio attuale">
+                  {/* PV Bar */}
+                  <div 
+                    className="w-32 h-3 bg-gray-600 rounded-full overflow-hidden"
+                    role="progressbar"
+                    aria-valuenow={headerInfo.pv}
+                    aria-valuemin={0}
+                    aria-valuemax={headerInfo.maxPv}
+                    aria-label={`Punti Vita: ${headerInfo.pv} di ${headerInfo.maxPv}`}
+                    title={`PV: ${headerInfo.pv} / ${headerInfo.maxPv}`}
+                  >
+                    <div 
+                      className={`h-full rounded-full transition-all duration-300 ease-linear ${healthBarColorClass}`}
+                      style={{ width: `${healthPercentage}%` }}
+                    />
+                  </div>
+                  {/* Status Icons */}
+                  <div className="flex items-center gap-1.5">
+                      {headerInfo.activeStatusEffects.map(effect => (
+                          <StatusIcon key={effect} effectName={effect} />
+                      ))}
+                  </div>
+              </div>
+            )}
           </nav>
         </header>
       )}
