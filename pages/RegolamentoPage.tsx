@@ -114,7 +114,7 @@ const RegolamentoPage: React.FC = () => {
           <p>Il pack GINocchi XL include il tabellone ufficiale GINocchi: una griglia 5x5, ottimale da 2 a 4 giocatori.</p>
           <p>Il pack GINocchi XS include 25 casellotti (stickers adesivi), con cui comporre il proprio tabellone personalizzato. Segui la griglia consigliata oppure scatena la fantasia!</p>
           <p>Vuoi assicurarti un gioco equilibrato? Da 2 a 4 giocatori utilizza 4 caselle rosse, 4 verdi, 4 blu e 5 gialle. Per ogni giocatore che si unisce dopo il quarto, aggiungi 8 caselle (due per ogni tipologia).</p>
-          <h3 className="text-xl font-rubik font-bold mt-4 mb-2 text-white">4.1) Gioco in casa</h3>
+          <h3 className="text-xl font-rubik font-bold mt-4 mb-2 text-white">4.1 Gioco in casa</h3>
           <p>Le caselle rappresentano le tipologie di GINocchi: bilanciato (giallo), erbaceo (verde), fruttato (rosso) e speziato (blu).</p>
           <p>Durante il gioco, se un giocatore si trova sulla casella della propria categoria ottiene un bonus +1 in attacco e difesa per “gioco in casa”.</p>
           <div className="mt-2 p-3 bg-gray-800 rounded-lg text-sm">
@@ -132,7 +132,7 @@ const RegolamentoPage: React.FC = () => {
             <li>Riempire il bicchiere di ghiaccio;</li>
             <li>Aggiungere il contenuto della mignon (tutto!). I giocatori svolgono questa azione contemporaneamente;</li>
             <li>Aggiungere l’acqua tonica;</li>
-            <li>Opzionale: aggiungere garnish (vedi punto 10).</li>
+            <li>Opzionale: aggiungere garnish (vedi punto 11).</li>
           </ul>
           <p>Ogni giocatore posiziona la seconda bottiglia (piena) in una casella di partenza del tabellone. Prima di iniziare, scansiona il QR Code del personaggio in campo per visualizzare la sua scheda di gioco nella web app.</p>
           <p>Tutti i giocatori fanno un brindisi d’inizio, al grido di "Vaffanculo miserabili!".</p>
