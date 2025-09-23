@@ -3,13 +3,15 @@ import usePageMetadata from '../hooks/usePageMetadata';
 
 const LorePage: React.FC = () => {
   usePageMetadata({
-    title: 'La Lore | GINocchi - GGC',
+    title: 'La lore | GINocchi - GGC',
     description: 'Scopri la storia distorta del mondo di GINocchi - GGC. Un futuro dominato dall\'Algoritmo dove il gin tonic è l\'ultima resistenza.',
     keywords: 'lore, storia, ambientazione, Algoritmo, Ginocchi, GINocchi - GGC',
     og: {
         url: 'https://www.ginocchi-ggc.it/#/lore',
     }
   });
+
+  const imageClass = "w-full rounded-lg shadow-lg my-8 border-2 border-gray-700";
 
   return (
     <div className="py-6 max-w-3xl mx-auto text-gray-200 font-roboto-mono text-left">
@@ -19,6 +21,8 @@ const LorePage: React.FC = () => {
         <p>Benvenuti nel mondo distorto di GINocchi, dove l'IA regna sovrana e il gin tonic è l'unica arma contro la sua tirannia. Preparati a un'esperienza immersiva, glitchata e alcolicamente profonda.</p>
       </section>
       
+      <img src="/images/lore/lore1.jpg" alt="Il mondo distorto di GINocchi" className={imageClass} />
+
       <section className="mb-12 space-y-4 leading-relaxed text-lg">
         <h2 className="text-3xl font-rubik font-bold mb-4 text-white">Il futuro? Probabilmente fa schifo.</h2>
         <p>Non una merda romantica, ma una merda silenziosa. Liscia e ottimizzata.</p>
@@ -28,6 +32,8 @@ const LorePage: React.FC = () => {
         <p>Perché investire tempo nell’umanità, quando un sistema può offrirti tutto?</p>
         <p>E così, uno scroll dopo l’altro, l’umanità si è dissolta in un flusso di niente.</p>
       </section>
+
+      <img src="/images/lore/lore2.jpg" alt="L'Algoritmo ha preso il controllo" className={imageClass} />
 
       <section className="mb-12 space-y-4 leading-relaxed text-lg">
         <h2 className="text-3xl font-rubik font-bold mb-4 text-white">GINocchi: l’intelligenza artificiale è ubriaca</h2>
@@ -55,11 +61,15 @@ const LorePage: React.FC = () => {
         <p>Quando bevi gin il tuo cervello si allenta. Le difese si abbassano... E tu, finalmente, li vedi.</p>
       </section>
 
+      <img src="/images/lore/lore3.jpg" alt="Un Ginocchio emerge dal caos" className={imageClass} />
+
       <section className="mb-12 space-y-4 leading-relaxed text-lg">
         <h2 className="text-3xl font-rubik font-bold mb-4 text-white">Buio senziente</h2>
         <p>Ciò che vedi dopo un gin tonic non è un’allucinazione. Non sono personaggi di fantasia, sono esseri senzienti, vivi e coscienti di sé e di te.</p>
         <p>Non vogliono vincere né redimersi, non hanno una missione. Si nutrono solo della tua angoscia, della tua ansia, del buio che senti mentre li affronti. E più soffri, più diventano reali. Si fanno spazio e non hanno bisogno del tuo permesso. Lì dove i tuoi sensi si spezzano e la logica vacilla. Lì si muovono. Ti testano. Ti confondono. Solo chi ha bevuto abbastanza può davvero scorgerli.</p>
       </section>
+      
+      <img src="/images/lore/lore4.jpg" alt="Affronta le tue paure" className={imageClass} />
 
       <section className="mb-12 space-y-4 leading-relaxed text-lg">
         <h2 className="text-3xl font-rubik font-bold mb-4 text-white">L’ultima resistenza</h2>
