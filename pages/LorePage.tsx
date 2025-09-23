@@ -3,9 +3,9 @@ import usePageMetadata from '../hooks/usePageMetadata';
 
 const LorePage: React.FC = () => {
   usePageMetadata({
-    title: 'La Lore di Ginocchi | Ginocchi GGC',
-    description: 'Scopri la storia distorta del mondo di Ginocchi GGC. Un futuro dominato dall\'Algoritmo dove il gin tonic è l\'ultima resistenza.',
-    keywords: 'lore, storia, ambientazione, Algoritmo, Ginocchi, GGC',
+    title: 'La Lore di Ginocchi | GINocchi - GGC',
+    description: 'Scopri la storia distorta del mondo di GINocchi - GGC. Un futuro dominato dall\'Algoritmo dove il gin tonic è l\'ultima resistenza.',
+    keywords: 'lore, storia, ambientazione, Algoritmo, Ginocchi, GINocchi - GGC',
     og: {
         url: 'https://www.ginocchi-ggc.it/#/lore',
     }

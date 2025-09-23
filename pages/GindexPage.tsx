@@ -7,9 +7,9 @@ import usePageMetadata from '../hooks/usePageMetadata';
 
 const GindexPage: React.FC = () => {
   usePageMetadata({
-    title: 'GINDEX | Lista Completa dei Ginocchi',
-    description: 'Esplora il Gindex completo di tutti i Ginocchi. Filtra per categoria, cerca per nome o ID e scopri le creature del mondo GGC.',
-    keywords: 'Gindex, lista Ginocchi, tutti i Ginocchi, Bilanciato, Erbaceo, Fruttato, Speziato, GGC, Gin collezionabili',
+    title: 'GINDEX | GINocchi - GGC',
+    description: 'Esplora il Gindex completo di tutti i Ginocchi. Filtra per categoria, cerca per nome o ID e scopri le creature del mondo GINocchi - GGC.',
+    keywords: 'Gindex, lista Ginocchi, tutti i Ginocchi, Bilanciato, Erbaceo, Fruttato, Speziato, GINocchi - GGC, Gin collezionabili',
     og: {
         url: 'https://www.ginocchi-ggc.it/#/gindex',
     }

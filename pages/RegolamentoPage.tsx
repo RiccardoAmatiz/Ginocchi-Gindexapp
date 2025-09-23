@@ -24,9 +24,9 @@ const RuleSection: React.FC<RuleSectionProps> = ({ title, number, children, titl
 
 const RegolamentoPage: React.FC = () => {
   usePageMetadata({
-    title: 'Regolamento Completo | Ginocchi GGC',
-    description: 'Impara tutte le regole di Ginocchi GGC. Scopri come muoverti, attaccare, difenderti e sfruttare le debolezze dei Ginocchi.',
-    keywords: 'regolamento, regole, come giocare, Ginocchi, GGC, gioco da tavolo, gioco alcolico',
+    title: 'Regolamento Completo | GINocchi - GGC',
+    description: 'Impara tutte le regole di GINocchi - GGC. Scopri come muoverti, attaccare, difenderti e sfruttare le debolezze dei Ginocchi.',
+    keywords: 'regolamento, regole, come giocare, Ginocchi, GINocchi - GGC, gioco da tavolo, gioco alcolico',
     og: {
         url: 'https://www.ginocchi-ggc.it/#/regolamento',
     }

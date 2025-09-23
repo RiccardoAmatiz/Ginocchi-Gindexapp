@@ -3,9 +3,9 @@ import usePageMetadata from '../hooks/usePageMetadata';
 
 const GinPage: React.FC = () => {
   usePageMetadata({
-    title: 'Il Gin | Ginocchi GGC',
-    description: 'Scopri le quattro tipologie di Ginocchi distilled gin: Bilanciato, Erbaceo, Fruttato e Speziato. Un\'esperienza sensoriale che va oltre il bicchiere.',
-    keywords: 'gin, distilled gin, gin premium, gin italiano, botaniche, Bilanciato, Erbaceo, Fruttato, Speziato',
+    title: 'Il Gin | GINocchi - GGC',
+    description: 'Scopri le quattro tipologie di GINocchi - GGC distilled gin: Bilanciato, Erbaceo, Fruttato e Speziato. Un\'esperienza sensoriale che va oltre il bicchiere.',
+    keywords: 'gin, distilled gin, gin premium, gin italiano, botaniche, Bilanciato, Erbaceo, Fruttato, Speziato, GINocchi - GGC',
     og: {
         url: 'https://www.ginocchi-ggc.it/#/gin',
     }

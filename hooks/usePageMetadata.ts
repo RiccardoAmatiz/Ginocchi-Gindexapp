@@ -2,9 +2,9 @@ import { useEffect, useMemo } from 'react';
 import { Ginocchio } from '../types';
 
 const BASE_URL = 'https://www.ginocchi-ggc.it';
-const SITE_NAME = 'GINocchi GGC';
-const DEFAULT_DESCRIPTION = 'GINocchi GGC - Il gioco di gin collezionabili. Un mondo distorto dove il gin tonic è l\'unica arma contro la tirannia dell\'IA. Colleziona, bevi, combatti!';
-const DEFAULT_KEYWORDS = 'Ginocchi, Ginocchi GGC, GGC, Gioco di gin collezionabili, Gin collezionabili, Vaffanculo miserabili, gin, distilled gin, gin premium, gin italiano';
+const SITE_NAME = 'GINocchi - GGC';
+const DEFAULT_DESCRIPTION = 'GINocchi - GGC | Il gioco di gin collezionabili. Un mondo distorto dove il gin tonic è l\'unica arma contro la tirannia dell\'IA. Colleziona, bevi, combatti!';
+const DEFAULT_KEYWORDS = 'Ginocchi, GINocchi - GGC, GGC, Gioco di gin collezionabili, Gin collezionabili, Vaffanculo miserabili, gin, distilled gin, gin premium, gin italiano';
 const DEFAULT_IMAGE = `${BASE_URL}/images/og_image.png`; // Immagine generica per la condivisione social
 
 interface Metadata {
@@ -82,8 +82,8 @@ export const useGinocchioMetadata = (ginocchio: Ginocchio | undefined, descripti
 
         return {
             title: `${ginocchio.nome} | ${SITE_NAME}`,
-            description: `${ginocchio.nome} (${ginocchio.categoria}). ${description.substring(0, 150)}... Scopri attacchi, PV e lore su Ginocchi GGC.`,
-            keywords: `${ginocchio.nome}, ${ginocchio.categoria}, Ginocchi GGC, Gin collezionabili, ${DEFAULT_KEYWORDS}`,
+            description: `${ginocchio.nome} (${ginocchio.categoria}). ${description.substring(0, 150)}... Scopri attacchi, PV e lore su GINocchi - GGC.`,
+            keywords: `${ginocchio.nome}, ${ginocchio.categoria}, GINocchi - GGC, Gin collezionabili, ${DEFAULT_KEYWORDS}`,
             og: {
                 title: `${ginocchio.nome} | ${SITE_NAME}`,
                 description: `Scopri ${ginocchio.nome}, il Ginocchio di categoria ${ginocchio.categoria} del Gioco di Gin Collezionabili.`,

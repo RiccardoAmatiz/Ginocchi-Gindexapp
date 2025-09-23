@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import usePageMetadata from '../hooks/usePageMetadata';
+import Button from '../components/Button';
 
 interface DrunkRuleProps {
   title: string;
@@ -31,24 +32,23 @@ const DrunkRule: React.FC<DrunkRuleProps> = ({ title, imageName, children }) => 
 
 const RegolamentoUbriachiPage: React.FC = () => {
     usePageMetadata({
-        title: 'Regolamento per Ubriachi | Ginocchi GGC',
-        description: 'La versione semplice e diretta del regolamento di Ginocchi GGC, per quando la mente è annebbiata ma la sete di vittoria è forte.',
-        keywords: 'regolamento ubriachi, regole facili, Ginocchi, GGC, gioco da tavolo, gioco alcolico',
+        title: 'Regolamento per Ubriachi | GINocchi - GGC',
+        description: 'La versione semplice e diretta del regolamento di GINocchi - GGC, per quando la mente è annebbiata ma la sete di vittoria è forte.',
+        keywords: 'regolamento ubriachi, regole facili, Ginocchi, GINocchi - GGC, gioco da tavolo, gioco alcolico',
         og: {
             url: 'https://www.ginocchi-ggc.it/#/regolamento-ubriachi',
         }
     });
 
     const rules = [
-        { title: "Regola Aurea - Meglio un figlio in guerra che l’alcol per terra", imageName: "RU1.jpg", caption: "Se rovesci un gin tonic (tuo o degli altri) hai perso." },
-        { title: "Preparazione", imageName: "RU2.jpg", caption: <>Mettete due <strong className="font-bold">GIN</strong>occhi sul tavolo, sceglietene uno per giocare e con l’altro fateci un gin tonic.</> },
-        { title: "Brindisi e Inizio Partita", imageName: "RU3.jpg", caption: <>Brindate insieme urlando: "Vaffanculo Miserabili!". Chi appoggia il bicchiere per primo, inizia.</> },
-        { title: "Scatena il tuo ginocchio", imageName: "RU4.jpg", caption: <>Scansiona il QR code del tuo <strong className="font-bold">GIN</strong>occhio in campo e scatena la sua vera potenza.</> },
-        { title: "Movimento e Penalità", imageName: "RU5.jpg", caption: "Lancia il dado e muoviti del numero esatto di caselle. Se non attacchi dopo esserti spostato, bevi." },
-        { title: "Attacco", imageName: "RU6.jpg", caption: "Lancia il dado, vedi a quale attacco corrisponde nella pagina del ginocchio e urlalo fortissimo in faccia al tuo avversario." },
-        { title: "Difesa", imageName: "RU7.jpg", caption: "Per difenderti lancia un dado, se esce lo stesso numero del dado d’attacco dell’avversario, respingi indietro attacco ed effetto." },
-        { title: "Interazione tra i gusti", imageName: "RU8.jpg", caption: <>Sfrutta debolezze e resistenze dei <strong className="font-bold">GIN</strong>occhi e se sei sulla casella della tua tipologia, hai un bonus +1 in attacco e in difesa. Fruttato +1 &gt; Erbaceo +1 &gt; Speziato +1 &gt; Fruttato. I <strong className="font-bold">GIN</strong>occhi bilanciati sono neutrali.</> },
-        { title: "Sconfiggi tutti", imageName: "RU9.jpg", caption: <>Se sconfiggi un avversario ti porti a casa il suo <strong className="font-bold">GIN</strong>occhio. L'ultimo che resta vince. Se sei morto, ma hai finito il tuo gin tonic, puoi fartene un altro e ricominciare la partita con un altro <strong className="font-bold">GIN</strong>occhio (FORTEMENTE SCONSIGLIATO).</> },
+        { title: "Regola Aurea: meglio un figlio in guerra che l’alcol per terra", imageName: "RU1.jpg", caption: "Se rovesci un gin tonic (tuo o di un avversario) hai perso." },
+        { title: "Preparazione", imageName: "RU4.jpg", caption: "Scegli due bottiglie di GINocchi e mettile sul tavolo, una per giocare e l’altra per fare un gin tonic. Prepara il gin tonic e scansiona il QR code del tuo personaggio in campo per avere tutto sotto controllo." },
+        { title: "Inizio partita", imageName: "RU3.jpg", caption: "Brinda insieme ai tuoi avversari urlando “Vaffanculo miserabili!”. Il primo a poggiare il bicchiere sul tavolo inizierà la partita." },
+        { title: "Movimento", imageName: "RU5.jpg", caption: "Lancia il dado e muoviti sul tabellone. Se dopo esserti spostato non attacchi, bevi." },
+        { title: "Attacco", imageName: "RU6.jpg", caption: "Lancia il dado, trova l’attacco corrispondente nella scheda di gioco e gridalo al tuo avversario!" },
+        { title: "Difesa", imageName: "RU7.jpg", caption: "Se vieni attaccato, lancia un dado. Se ottieni lo stesso numero del dado di attacco, danno ed effetto verranno inflitti al tuo avversario." },
+        { title: "Interazione", imageName: "RU8.jpg", caption: <>Sfrutta debolezze e resistenze: se il tuo personaggio si posiziona sulla casella della propria tipologia, ottieni un bonus +1 in attacco e in difesa.<br/>Inoltre: Fruttato +1 &gt; Erbaceo +1 &gt; Speziato +1 &gt; Fruttato. I GINocchi bilanciati, invece, sono neutrali.</> },
+        { title: "Vittoria & Co.", imageName: "RU9.jpg", caption: "Sconfiggendo un avversario, vincerai la sua bottiglia di GINocchi in campo. L’ultimo superstite vince la partita. Se sei morto, ma hai anche finito il tuo gin tonic, puoi farne un altro e rientrare in campo con un altra bottiglia di GINocchi a tua disposizione, a tuo rischio e pericolo!" },
     ];
 
   return (
@@ -65,12 +65,15 @@ const RegolamentoUbriachiPage: React.FC = () => {
             <p className="text-lg text-gray-300">
                 Versione ridotta del regolamento, per ridotti stati di percezione.
                 <br/>
-                Nel caso si ponesse DAVVERO qualche dubbio, andate a vedere il regolamento esteso:
-                <br/>
-                <Link to="/regolamento" className="text-blue-400 hover:underline break-all">
-                    https://ginocchi-gindexapp.vercel.app/#/regolamento
-                </Link>
+                Nel caso avessi qualche dubbio, da lucido, puoi consultare il regolamento integrale:
             </p>
+            <div className="mt-4">
+                <Link to="/regolamento">
+                    <Button className="!bg-black !text-white border-2 border-white hover:!bg-gray-800 focus:!ring-gray-400 w-full sm:w-auto">
+                        Regolamento completo
+                    </Button>
+                </Link>
+            </div>
         </section>
 
         {rules.map(rule => (

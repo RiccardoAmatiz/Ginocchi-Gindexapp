@@ -1,7 +1,7 @@
 {
-  "short_name": "GINDEX",
-  "name": "GINDEX",
-  "description": "An app to browse Ginocchi, track their PV, and manage status effects.",
+  "short_name": "GINocchi",
+  "name": "GINocchi",
+  "description": "L'app ufficiale di GINocchi - GGC. Sfoglia il Gindex, tieni traccia dei PV e gestisci gli effetti di stato.",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
