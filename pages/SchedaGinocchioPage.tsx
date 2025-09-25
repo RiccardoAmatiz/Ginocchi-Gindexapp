@@ -15,7 +15,6 @@ import { usePvTracker } from '../hooks/usePvTracker';
 import { useHeaderUI } from '../context/HeaderUIContext';
 import { useSeo } from '../hooks/usePageMetadata';
 import { VolumeUpIcon } from '../components/icons/VolumeUpIcon';
-import Breadcrumbs from '../components/Breadcrumbs';
 
 const SchedaGinocchioPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -60,28 +59,6 @@ const SchedaGinocchioPage: React.FC = () => {
     const pageUrl = `https://www.ginocchi-ggc.it/#/personaggi/${ginocchio.slug}`;
     const imageUrl = `https://www.ginocchi-ggc.it${ginocchio.immagine}`;
 
-    const faqSchema = {
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": `Come si sconfigge ${ginocchio.nome} nel gioco GINocchi?`,
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": `Per sconfiggere ${ginocchio.nome}, sfrutta le debolezze della sua categoria (${ginocchio.categoria}) e fai attenzione ai suoi attacchi speciali. Una buona strategia è essenziale.`
-                }
-            },
-            {
-                "@type": "Question",
-                "name": `Quanti Punti Vita (PV) ha ${ginocchio.nome}?`,
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": `${ginocchio.nome} parte con ${ginocchio.pvIniziali} Punti Vita (PV) all'inizio della partita.`
-                }
-            }
-        ]
-    };
-
     return {
         title: `${ginocchio.nome} - Scheda Personaggio | GINocchi GGC`,
         description: `Scopri la scheda di ${ginocchio.nome} (#${ginocchio.id}), personaggio di tipo ${ginocchio.categoria} del gioco da tavolo GINocchi. Statistiche, attacchi, lore e strategie.`,
@@ -96,37 +73,25 @@ const SchedaGinocchioPage: React.FC = () => {
         twitter: {
             image: imageUrl,
         },
-        schema: [
-            {
-                "@context": "https://schema.org",
-                "@type": "BreadcrumbList",
-                "itemListElement": [
-                    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.ginocchi-ggc.it/" },
-                    { "@type": "ListItem", "position": 2, "name": "Gindex", "item": "https://www.ginocchi-ggc.it/#/gindex" },
-                    { "@type": "ListItem", "position": 3, "name": ginocchio.nome }
-                ]
+        schema: {
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "name": `${ginocchio.nome} - GINocchi Personaggio`,
+            "image": imageUrl,
+            "description": description,
+            "sku": `GGC-P-${ginocchio.id}`,
+            "brand": {
+                "@type": "Brand",
+                "name": "GINocchi - GGC"
             },
-            {
-                "@context": "https://schema.org",
-                "@type": "Product",
-                "name": `${ginocchio.nome} - GINocchi Personaggio`,
-                "image": imageUrl,
-                "description": description,
-                "sku": `GGC-P-${ginocchio.id}`,
-                "brand": {
-                    "@type": "Brand",
-                    "name": "GINocchi - GGC"
-                },
-                "category": ginocchio.categoria,
-                 "offers": {
-                    "@type": "Offer",
-                    "price": "0.00", // Placeholder
-                    "priceCurrency": "EUR",
-                    "availability": "https://schema.org/InStock"
-                }
-            },
-            faqSchema
-        ]
+            "category": ginocchio.categoria,
+             "offers": {
+                "@type": "Offer",
+                "price": "0.00", // Placeholder
+                "priceCurrency": "EUR",
+                "availability": "https://schema.org/InStock"
+            }
+        }
     };
   }, [ginocchio, description]));
 
@@ -212,14 +177,6 @@ const SchedaGinocchioPage: React.FC = () => {
 
   return (
     <div className="py-6 flex flex-col items-center">
-      <div className="w-full max-w-2xl">
-        <Breadcrumbs items={[
-          { label: 'Home', path: '/' },
-          { label: 'Gindex', path: '/gindex' },
-          { label: ginocchio.nome, path: `/personaggi/${ginocchio.slug}` }
-        ]} />
-      </div>
-      
       <div className="w-full max-w-2xl bg-gray-900 rounded-xl shadow-2xl p-2 sm:p-4 md:p-6 lg:p-8 mt-4">
         
         <div className="w-full flex justify-between items-center mb-4 pt-2">
@@ -293,21 +250,6 @@ const SchedaGinocchioPage: React.FC = () => {
         <div className="mt-4">
           <Accordion title="Profilo" titleClassName="text-2xl !font-rubik" defaultOpen={false}>
             <div className="p-4 leading-relaxed" style={{ color: ginocchio.colore }}>{description || "Descrizione non disponibile."}</div>
-          </Accordion>
-        </div>
-
-        <div className="mt-4">
-          <Accordion title={`FAQ su ${ginocchio.nome}`} titleClassName="text-2xl !font-rubik" defaultOpen={false}>
-              <div className="p-4 space-y-4 text-gray-300">
-                  <div>
-                      <h3 className="font-bold text-lg" style={{ color: ginocchio.colore }}>Come si contrasta {ginocchio.nome}?</h3>
-                      <p>La strategia migliore è sfruttare il triangolo delle debolezze. Essendo di tipo {ginocchio.categoria}, {ginocchio.nome} è più vulnerabile a certi tipi di Ginocchi. Controlla il <Link to="/regolamento" className="underline hover:text-white">regolamento</Link> per i dettagli!</p>
-                  </div>
-                   <div>
-                      <h3 className="font-bold text-lg" style={{ color: ginocchio.colore }}>Qual è l'attacco più pericoloso di {ginocchio.nome}?</h3>
-                      <p>Dipende dalla situazione! Alcuni attacchi fanno più danno, altri applicano status debilitanti come la Paralisi Totale. Studia bene la sua scheda per prepararti.</p>
-                  </div>
-              </div>
           </Accordion>
         </div>
 
