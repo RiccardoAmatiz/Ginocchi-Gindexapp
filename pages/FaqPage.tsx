@@ -7,14 +7,14 @@ import Button from '../components/Button';
 const faqData = [
     {
         question: "Cos'è esattamente GINocchi?",
-        answer: "GINocchi è un universo che unisce un gioco da tavolo strategico a un gin artigianale italiano da collezione. Ogni personaggio del gioco, chiamato Ginocchio, è rappresentato da un'etichetta su una bottiglia mignon di gin da 0,05 L.",
-        answerText: "GINocchi è un universo che unisce un gioco da tavolo strategico a un gin artigianale italiano da collezione. Ogni personaggio del gioco, chiamato Ginocchio, è rappresentato da un'etichetta su una bottiglia mignon di gin da 0,05 L."
+        answer: "GINocchi è un universo che unisce una collezione di gin artigianale italiano con un gioco da tavolo strategico da condividere con gli amici. Ogni personaggio del gioco, chiamato Ginocchio, è rappresentato da una bottiglia mignon di gin da 0,05 L. Colleziona, bevi e combatti!",
+        answerText: "GINocchi è un universo che unisce una collezione di gin artigianale italiano con un gioco da tavolo strategico da condividere con gli amici. Ogni personaggio del gioco, chiamato Ginocchio, è rappresentato da una bottiglia mignon di gin da 0,05 L. Colleziona, bevi e combatti!"
     },
     {
         question: "Come si gioca?",
         answer: (
             <>
-                L'obiettivo è eliminare gli avversari in un'arena di gioco. Ogni giocatore controlla un Ginocchio con Punti Vita (PV), attacchi e abilità uniche. Il movimento e gli attacchi sono decisi dal lancio di un dado a 6 facce. Puoi trovare tutte le regole dettagliate nella pagina del regolamento.
+                Con degli amici e un gin tonic in mano! L'obiettivo è eliminare gli avversari in un'arena di gioco. Ogni giocatore controlla un Ginocchio con Punti Vita (PV), attacchi e abilità uniche. Il movimento e gli attacchi sono decisi dal lancio di un dado a 6 facce. Puoi trovare tutte le regole dettagliate nella pagina del regolamento.
                 <div className="mt-4">
                     <Link to="/regolamento">
                         <Button variant="secondary" className="!py-1 !px-3 !text-sm">Regolamento Completo</Button>
@@ -22,13 +22,13 @@ const faqData = [
                 </div>
             </>
         ),
-        answerText: "L'obiettivo è eliminare gli avversari in un'arena di gioco. Ogni giocatore controlla un Ginocchio con Punti Vita (PV), attacchi e abilità uniche. Il movimento e gli attacchi sono decisi dal lancio di un dado a 6 facce. Puoi trovare tutte le regole dettagliate nella pagina del regolamento completo."
+        answerText: "Con degli amici e un gin tonic in mano! L'obiettivo è eliminare gli avversari in un'arena di gioco. Ogni giocatore controlla un Ginocchio con Punti Vita (PV), attacchi e abilità uniche. Il movimento e gli attacchi sono decisi dal lancio di un dado a 6 facce. Puoi trovare tutte le regole dettagliate nella pagina del regolamento completo."
     },
     {
         question: "Dove trovo le schede dei personaggi?",
         answer: (
              <>
-                Tutte le schede dei 50 Ginocchi si trovano nel Gindex, la nostra enciclopedia digitale. Puoi filtrare per categoria, cercare per nome e tenere traccia dei PV e degli status durante il gioco.
+                Tutte le schede dei 50 Ginocchi si trovano nel Gindex, la nostra enciclopedia digitale. All'interno della pagina troverai gli strumenti per giocare (PV, attacchi e status), il loro profilo e la chat diretta con loro per farci amicizia! (Questa chat utilizza un sistema di intelligenza artificiale. Le risposte dei Ginocchi sono generate automaticamente, possono risultare strane, disturbanti o imprecise, e non rappresentano la realtà. Non prendere sul serio i contenuti: è solo intrattenimento.)
                 <div className="mt-4">
                     <Link to="/gindex">
                         <Button variant="secondary" className="!py-1 !px-3 !text-sm">Vai al Gindex</Button>
@@ -36,7 +36,7 @@ const faqData = [
                 </div>
             </>
         ),
-        answerText: "Tutte le schede dei 50 Ginocchi si trovano nel Gindex, la nostra enciclopedia digitale. Puoi filtrare per categoria, cercare per nome e tenere traccia dei PV e degli status durante il gioco."
+        answerText: "Tutte le schede dei 50 Ginocchi si trovano nel Gindex, la nostra enciclopedia digitale. All'interno della pagina troverai gli strumenti per giocare (PV, attacchi e status), il loro profilo e la chat diretta con loro per farci amicizia! (Questa chat utilizza un sistema di intelligenza artificiale. Le risposte dei Ginocchi sono generate automaticamente, possono risultare strane, disturbanti o imprecise, e non rappresentano la realtà. Non prendere sul serio i contenuti: è solo intrattenimento.)"
     },
     {
         question: "Che tipo di gin producete?",
@@ -54,8 +54,8 @@ const faqData = [
     },
     {
         question: "Il gioco è adatto a tutti?",
-        answer: "GINocchi è un gioco che include il consumo di alcolici ed è quindi riservato a un pubblico maggiorenne. Raccomandiamo sempre di bere responsabilmente.",
-        answerText: "GINocchi è un gioco che include il consumo di alcolici ed è quindi riservato a un pubblico maggiorenne. Raccomandiamo sempre di bere responsabilmente."
+        answer: "GINocchi è un gioco che include il consumo di alcolici e tematiche adulte quindi è riservato a un pubblico maggiorenne. Raccomandiamo sempre di bere responsabilmente.",
+        answerText: "GINocchi è un gioco che include il consumo di alcolici e tematiche adulte quindi è riservato a un pubblico maggiorenne. Raccomandiamo sempre di bere responsabilmente."
     },
     {
         question: "Posso giocare senza bere alcolici?",

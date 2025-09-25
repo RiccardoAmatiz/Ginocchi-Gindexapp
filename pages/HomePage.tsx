@@ -36,6 +36,7 @@ const HomePage: React.FC = () => {
   const gindexButtonStyle = `w-full h-full !bg-[${CATEGORY_COLORS.Bilanciato}] !text-black hover:!opacity-90 focus:!ring-yellow-400`;
   const infoButtonStyle = "w-full h-full !bg-white !text-black hover:!bg-gray-300 focus:!ring-gray-500";
   const regolamentoButtonStyle = "w-full h-full !bg-black !text-white border-2 border-white hover:!bg-gray-800 focus:!ring-gray-400";
+  const compraButtonStyle = `w-full h-full !py-4 !text-xl !font-black !text-white border-2 border-white bg-gradient-to-r from-categories-Bilanciato via-categories-Speziato via-categories-Erbaceo to-categories-Fruttato hover:opacity-90 focus:!ring-white`;
   
   return (
     <div className="flex flex-col items-center justify-center text-center">
@@ -65,6 +66,13 @@ const HomePage: React.FC = () => {
             Il Gin
           </Button>
         </Link>
+
+        <Link to="/acquista" className="w-full">
+          <Button className={compraButtonStyle}>
+            COMPRA I GINOCCHI!
+          </Button>
+        </Link>
+
         <Link to="/regolamento" className="w-full sm:w-[45%] lg:w-[30%]">
           <Button className={regolamentoButtonStyle}>
             Regolamento completo

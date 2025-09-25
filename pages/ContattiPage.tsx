@@ -28,8 +28,8 @@ const ContattiPage: React.FC = () => {
                         Per qualsiasi domanda sul gioco, sulla lore o sul nostro gin, o se semplicemente vuoi condividere il tuo odio per l'universo, puoi scriverci all'indirizzo email qui sotto.
                     </p>
                     <div className="mt-4">
-                        <a href="mailto:[TODO: inserire email]" className="text-lg font-roboto-mono text-yellow-400 hover:text-yellow-300 underline inline-flex items-center">
-                            info@ginocchi-ggc.it [TODO]
+                        <a href="mailto:info@ginocchi-ggc.it" className="text-lg font-roboto-mono text-yellow-400 hover:text-yellow-300 underline inline-flex items-center">
+                            info@ginocchi-ggc.it
                         </a>
                     </div>
                 </section>
@@ -40,20 +40,10 @@ const ContattiPage: React.FC = () => {
                         Sei un content creator, un giornalista o un'entità altrettanto disturbata e vuoi collaborare con noi? Scrivici per proposte, materiali per la stampa o interviste.
                     </p>
                     <div className="mt-4">
-                         <a href="mailto:[TODO: inserire email]" className="text-lg font-roboto-mono text-yellow-400 hover:text-yellow-300 underline inline-flex items-center">
-                            press@ginocchi-ggc.it [TODO]
+                         <a href="mailto:info@ginocchi-ggc.it" className="text-lg font-roboto-mono text-yellow-400 hover:text-yellow-300 underline inline-flex items-center">
+                            info@ginocchi-ggc.it
                         </a>
                     </div>
-                </section>
-                
-                <section>
-                    <h2 className="text-2xl font-rubik font-bold mb-4 text-white">Dati Aziendali</h2>
-                    <p className="leading-relaxed font-roboto-mono text-gray-400">
-                        GINocchi - GGC [TODO]<br/>
-                        Via del Delirio, 42 [TODO]<br/>
-                        00100, Roma (RM), Italia [TODO]<br/>
-                        P.IVA: IT12345678901 [TODO]
-                    </p>
                 </section>
             </div>
         </div>
