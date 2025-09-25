@@ -82,11 +82,11 @@ export const useGinocchioMetadata = (ginocchio: Ginocchio | undefined, descripti
 
         return {
             title: `${ginocchio.nome} | ${SITE_NAME}`,
-            description: `${ginocchio.nome} (${ginocchio.categoria}). ${description.substring(0, 150)}... Scopri attacchi, PV e lore su GINocchi - GGC.`,
+            description: `Scheda di ${ginocchio.nome}, Ginocchio di tipo ${ginocchio.categoria}. Scopri attacchi, PV e la sua storia nel gioco da tavolo GINocchi.`,
             keywords: `${ginocchio.nome}, ${ginocchio.categoria}, GINocchi - GGC, Gin collezionabili, ${DEFAULT_KEYWORDS}`,
             og: {
                 title: `${ginocchio.nome} | ${SITE_NAME}`,
-                description: `Scopri ${ginocchio.nome}, il Ginocchio di categoria ${ginocchio.categoria} del Gioco di Gin Collezionabili.`,
+                description: `Scopri ${ginocchio.nome}, il Ginocchio di tipo ${ginocchio.categoria} del gioco da tavolo GINocchi.`,
                 image: `${BASE_URL}${ginocchio.immagine}`,
                 url: `${BASE_URL}/#/ginocchio/${ginocchio.id}`,
             },

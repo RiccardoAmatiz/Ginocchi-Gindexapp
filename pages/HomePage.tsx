@@ -6,9 +6,9 @@ import usePageMetadata from '../hooks/usePageMetadata';
 
 const HomePage: React.FC = () => {
   usePageMetadata({
-    title: 'GINocchi - GGC | Gioco di Gin Collezionabili',
-    description: 'Benvenuto in GINocchi - GGC, il gioco di gin collezionabili. Un mondo distorto dove il gin tonic è l\'unica arma contro la tirannia dell\'IA. Colleziona, bevi, combatti!',
-    keywords: 'Ginocchi, GINocchi - GGC, GGC, Gioco di gin collezionabili, Gin collezionabili, Vaffanculo miserabili, gin, distilled gin, gin premium, gin italiano, homepage',
+    title: 'GINocchi - gioco di gin collezionabili',
+    description: 'Benvenuto in GINocchi, il gioco da tavolo con gin collezionabili. In un mondo distorto dove il gin tonic è l\'unica arma. Colleziona, bevi e combatti!',
+    keywords: 'Ginocchi, GINocchi, GGC, gioco di gin collezionabili, gioco da tavolo, etichette mignon, gin collezionabili, Vaffanculo miserabili, gin, distilled gin, gin premium, gin italiano',
     og: {
         url: 'https://www.ginocchi-ggc.it/',
     }
