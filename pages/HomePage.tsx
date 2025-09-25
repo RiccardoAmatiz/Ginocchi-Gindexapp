@@ -5,6 +5,7 @@ import { CATEGORY_COLORS } from '../constants';
 import { useSeo } from '../hooks/usePageMetadata';
 import { InstagramIcon } from '../components/icons/InstagramIcon';
 import { DiscordIcon } from '../components/icons/DiscordIcon';
+import { YoutubeIcon } from '../components/icons/YoutubeIcon';
 
 const HomePage: React.FC = () => {
   useSeo({
@@ -91,13 +92,16 @@ const HomePage: React.FC = () => {
       </div>
 
       <div className="mt-16 text-center">
-        <h2 className="text-xl font-rubik font-bold mb-4 text-white">Seguici nel delirio</h2>
+        <h2 className="text-xl font-rubik font-bold mb-4 text-white">Seguici miserabile</h2>
         <div className="flex justify-center items-center space-x-6">
           <div className="cursor-not-allowed opacity-50" title="Instagram (presto disponibile)">
             <InstagramIcon className="w-10 h-10 text-gray-400" />
           </div>
           <div className="cursor-not-allowed opacity-50" title="Discord (presto disponibile)">
             <DiscordIcon className="w-10 h-10 text-gray-400" />
+          </div>
+          <div className="cursor-not-allowed opacity-50" title="YouTube (presto disponibile)">
+            <YoutubeIcon className="w-10 h-10 text-gray-400" />
           </div>
         </div>
       </div>

@@ -41,29 +41,29 @@ const AcquistaPage: React.FC = () => {
     });
 
     const bundleXsItems = [
-        "6 ginocchi",
-        "25 casellotti"
+        "6 GINocchi: 6 bottiglie di gin premium da 50 ml selezionate in maniera casuale",
+        "25 stickers per andare a creare il tuo tabellone"
     ];
 
     const bundleXlItems = [
-        "8 ginocchi",
-        "4 garnish da gioco",
+        "8 GINocchi: 8 bottiglie di gin premium da 50 ml selezionate in maniera casuale",
+        "I 4 garnish da gioco: pepe nero, pepe rosa, cardamomo e ginepro.",
         "1 tabellone",
         "1 dado"
     ];
 
     return (
         <div className="py-6 max-w-5xl mx-auto text-center">
-            <h1 className="text-4xl sm:text-5xl font-rubik font-bold mb-12 text-white">Spendi ora i tuoi danari!</h1>
+            <h1 className="text-4xl sm:text-5xl font-rubik font-bold mb-12 text-white">Caca i soldi!</h1>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 text-left">
                 <BundleCard 
-                    title="GINOCCHI XS"
+                    title="GINocchi XS"
                     imageName="xspack.jpg"
                     items={bundleXsItems}
                 />
                 <BundleCard
-                    title="Ginocchi XL"
+                    title="GINocchi XL"
                     imageName="xlpack.jpg"
                     items={bundleXlItems}
                 />
