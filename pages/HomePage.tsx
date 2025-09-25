@@ -42,7 +42,7 @@ const HomePage: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center text-center">
       <img 
-        src="/images/HEADER.jpg"
+        src="/images/HEADER.webp"
         alt="Header GINDEX - Bottiglia di gin con occhio" 
         className="mb-8 rounded-lg shadow-xl w-full max-w-2xl object-contain"
       />

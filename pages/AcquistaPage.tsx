@@ -59,12 +59,12 @@ const AcquistaPage: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 text-left">
                 <BundleCard 
                     title="GINocchi XS"
-                    imageName="xspack.jpg"
+                    imageName="xspack.webp"
                     items={bundleXsItems}
                 />
                 <BundleCard
                     title="GINocchi XL"
-                    imageName="xlpack.jpg"
+                    imageName="xlpack.webp"
                     items={bundleXlItems}
                 />
             </div>

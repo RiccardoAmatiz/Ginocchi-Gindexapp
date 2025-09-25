@@ -52,32 +52,32 @@ const RegolamentoPage: React.FC = () => {
   const effectImagePath = (imageName: string) => `/images/Status/${imageName}`;
 
   const effettiSpeciali = [
-    { name: "Paralisi totale", logo: "Paralisi Totale.png", desc: "Chi si difende non puoi muoversi né attaccare al prossimo turno." },
-    { name: "Cura", logo: "Cura.png", desc: "Chi attacca recupera 2 PV." },
-    { name: "Spinta", logo: "Spinta.png", desc: "Chi attacca spinge l’avversario di 2 caselle nella direzione dell'attacco.\nSe l’avversario sbatte contro una parete del campo da gioco, perde 1 PV.\nSe l’avversario sbatte contro un altro personaggio in gioco, entrambi perdono 1 PV." },
-    { name: "Autolesionismo", logo: "Autolesionismo.png", desc: "Chi attacca subisce danno +2." },
-    { name: "Vilipendio", logo: "Danno sesso opposto.png", desc: "Chi si difende, se di sesso diverso da chi attacca, subisce danno doppio." },
-    { name: "Ammosciamento", logo: "Ammosciamento.png", desc: "Chi si difende infliggerà danno massimo 1 al prossimo attacco." },
-    { name: "Sorso salvifico", logo: "Sorso_salvifico.png", desc: "Se il bicchiere di chi attacca contiene più gin tonic di quello di chi si difende, l’attaccante può bere un sorso e recuperare 2 PV." },
-    { name: "Spogliato", logo: "Spogliato.png", desc: "Chi si difende non potrà difendersi al prossimo attacco." },
-    { name: "Paura", logo: "Paura.png", desc: "Chi si difende, nel prossimo turno non potrà avvicinarsi a chi ha attaccato, dovrà rimanere ad almeno una casella di distanza." },
-    { name: "Succhiaggio PV", logo: "Succhiaggio pv.png", desc: "Chi attacca recupera PV pari al danno che infligge." },
-    { name: "Alcolismo competitivo", logo: "Alcolismo_competitivo.png", desc: "Se il bicchiere di chi attacca contiene meno gin tonic di quello di chi si defende, chi attacca infligge danno +2." },
-    { name: "Blocca attacco", logo: "Blocco Attacco.png", desc: "Chi si difende non potrà attaccare al prossimo turno." },
-    { name: "Inverti casella", logo: "Inverti Casella.png", desc: "Per chi si difende, il bonus “gioco in casa” (se applicabile) diventa un malus di pari valore." }
+    { name: "Paralisi totale", logo: "Paralisi Totale.webp", desc: "Chi si difende non puoi muoversi né attaccare al prossimo turno." },
+    { name: "Cura", logo: "Cura.webp", desc: "Chi attacca recupera 2 PV." },
+    { name: "Spinta", logo: "Spinta.webp", desc: "Chi attacca spinge l’avversario di 2 caselle nella direzione dell'attacco.\nSe l’avversario sbatte contro una parete del campo da gioco, perde 1 PV.\nSe l’avversario sbatte contro un altro personaggio in gioco, entrambi perdono 1 PV." },
+    { name: "Autolesionismo", logo: "Autolesionismo.webp", desc: "Chi attacca subisce danno +2." },
+    { name: "Vilipendio", logo: "Danno sesso opposto.webp", desc: "Chi si difende, se di sesso diverso da chi attacca, subisce danno doppio." },
+    { name: "Ammosciamento", logo: "Ammosciamento.webp", desc: "Chi si difende infliggerà danno massimo 1 al prossimo attacco." },
+    { name: "Sorso salvifico", logo: "Sorso_salvifico.webp", desc: "Se il bicchiere di chi attacca contiene più gin tonic di quello di chi si defende, l’attaccante può bere un sorso e recuperare 2 PV." },
+    { name: "Spogliato", logo: "Spogliato.webp", desc: "Chi si difende non potrà difendersi al prossimo attacco." },
+    { name: "Paura", logo: "Paura.webp", desc: "Chi si difende, nel prossimo turno non potrà avvicinarsi a chi ha attaccato, dovrà rimanere ad almeno una casella di distanza." },
+    { name: "Succhiaggio PV", logo: "Succhiaggio pv.webp", desc: "Chi attacca recupera PV pari al danno che infligge." },
+    { name: "Alcolismo competitivo", logo: "Alcolismo_competitivo.webp", desc: "Se il bicchiere di chi attacca contiene meno gin tonic di quello di chi si defende, chi attacca infligge danno +2." },
+    { name: "Blocca attacco", logo: "Blocco Attacco.webp", desc: "Chi si difende non potrà attaccare al prossimo turno." },
+    { name: "Inverti casella", logo: "Inverti Casella.webp", desc: "Per chi si difende, il bonus “gioco in casa” (se applicabile) diventa un malus di pari valore." }
   ];
 
   const garnishItems = [
-      { name: "Pepe Nero", img: "Garnish_pepenero.png", effect: "6 (Buff) ⇒ Infliggi ulteriore danno +3 con questo attacco.\n1 (Debuff) ⇒ Dopo la risoluzione di questo attacco perdi 2 PV." },
-      { name: "Pepe Rosa", img: "Garnish_peperosa.png", effect: "6 (Buff) ⇒ L’attaccante sceglie quale attacco del tuo personaggio utilizzerà in questo turno.\n1 (Debuff) ⇒ Il difensore sceglie quale attacco del tuo personaggio utilizzerai in questo turno." },
-      { name: "Ginepro", img: "Garnish_ginepro.png", effect: "6 (Buff) ⇒ Dopo la risoluzione dell’attacco recuperi 3 PV.\n1 (Debuff) ⇒ Infliggi ulteriore danno -2 con questo attacco." },
-      { name: "Cardamomo", img: "Garnish_cardamomo.png", effect: "6 (Buff) ⇒ Dopo la risoluzione dell’attacco puoi spostarti in qualsiasi casella del tabellone.\n1 (Debuff) ⇒ Dopo la risoluzione dell’attacco, chi si è difeso sceglierà in quale casella del tabellone spostarti." }
+      { name: "Pepe Nero", img: "Garnish_pepenero.webp", effect: "6 (Buff) ⇒ Infliggi ulteriore danno +3 con questo attacco.\n1 (Debuff) ⇒ Dopo la risoluzione di questo attacco perdi 2 PV." },
+      { name: "Pepe Rosa", img: "Garnish_peperosa.webp", effect: "6 (Buff) ⇒ L’attaccante sceglie quale attacco del tuo personaggio utilizzerà in questo turno.\n1 (Debuff) ⇒ Il difensore sceglie quale attacco del tuo personaggio utilizzerai in questo turno." },
+      { name: "Ginepro", img: "Garnish_ginepro.webp", effect: "6 (Buff) ⇒ Dopo la risoluzione dell’attacco recuperi 3 PV.\n1 (Debuff) ⇒ Infliggi ulteriore danno -2 con questo attacco." },
+      { name: "Cardamomo", img: "Garnish_cardamomo.webp", effect: "6 (Buff) ⇒ Dopo la risoluzione dell’attacco puoi spostarti in qualsiasi casella del tabellone.\n1 (Debuff) ⇒ Dopo la risoluzione dell’attacco, chi si è difeso sceglierà in quale casella del tabellone spostarti." }
   ];
 
   return (
     <div className="py-6 px-2">
       <img 
-        src="/images/header_regolamento.jpg" 
+        src="/images/header_regolamento.webp" 
         alt="Header Regolamento GINocchi" 
         className="w-full max-w-3xl mx-auto mb-10 rounded-lg shadow-lg"
       />
@@ -182,7 +182,7 @@ const RegolamentoPage: React.FC = () => {
           <h3 className="text-xl font-rubik font-bold mt-4 mb-2 text-white">6.3 Difesa</h3>
           <ul className="list-disc list-inside space-y-1 ml-4">
             <li>Sei vieni attaccato, devi difenderti;</li>
-            <li>Dopo aver ricevuto l’attacco dell’avversario, lancia il dado per difenderti e respingere l’attacco.</li>
+            <li>Dopo aver ricevuto l’attacco dell’avversario, lancia il dado per difendersi e respingere l’attacco.</li>
             <li>Se il numero ottenuto corriponde al numero del lancio di attacco, il danno e gli effetti vengono inflitti all’accattante (inclusi debolezze e gioco in casa)</li>
             <li>Se il numero ottenuto non corrisponde al numero del lancio di attacco, il danno e l’effetto viengono inflitti al difensore (inclusi debolezze e gioco in casa)</li>
           </ul>

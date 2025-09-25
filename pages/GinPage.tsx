@@ -16,14 +16,14 @@ const GinPage: React.FC = () => {
             "@type": "Organization",
             "name": "GINocchi - GGC"
         },
-        "image": "https://www.ginocchi-ggc.it/images/gin/gin1.jpg"
+        "image": "https://www.ginocchi-ggc.it/images/gin/gin1.webp"
     }
   });
 
   return (
     <div className="py-6 max-w-3xl mx-auto text-gray-200 font-roboto-mono">
       
-      <img src="/images/gin/gin1.jpg" alt="Il Gin dei Ginocchi" className="w-full rounded-lg shadow-lg my-8 border-2 border-gray-700" />
+      <img src="/images/gin/gin1.webp" alt="Il Gin dei Ginocchi" className="w-full rounded-lg shadow-lg my-8 border-2 border-gray-700" />
       
       <section className="mb-12">
         <h1 className="text-4xl font-rubik font-bold mb-4 text-white">Il Gin</h1>
@@ -32,7 +32,7 @@ const GinPage: React.FC = () => {
         </p>
       </section>
 
-      <img src="/images/gin/gin2.jpg" alt="GINocchi Fruttato" className="w-full rounded-lg shadow-lg my-8 border-2 border-gray-700" />
+      <img src="/images/gin/gin2.webp" alt="GINocchi Fruttato" className="w-full rounded-lg shadow-lg my-8 border-2 border-gray-700" />
 
       <section className="mb-12 space-y-4 leading-relaxed text-lg">
         <h2 className="text-3xl font-rubik font-bold mb-4 text-white"><strong className="font-bold">GIN</strong>occhi Fruttato</h2>
@@ -41,7 +41,7 @@ const GinPage: React.FC = () => {
         <p><strong className="text-white">Profilo:</strong> fresco, agrumato, un succoso cuore tropicale che vi conquisterà.</p>
       </section>
 
-      <img src="/images/gin/gin3.jpg" alt="GINocchi Bilanciato" className="w-full rounded-lg shadow-lg my-8 border-2 border-gray-700" />
+      <img src="/images/gin/gin3.webp" alt="GINocchi Bilanciato" className="w-full rounded-lg shadow-lg my-8 border-2 border-gray-700" />
 
        <section className="mb-12 space-y-4 leading-relaxed text-lg">
         <h2 className="text-3xl font-rubik font-bold mb-4 text-white"><strong className="font-bold">GIN</strong>occhi Bilanciato</h2>
@@ -50,7 +50,7 @@ const GinPage: React.FC = () => {
         <p><strong className="text-white">Profilo:</strong> note erbacee, agrumate, speziate e balsamiche si uniscono nell’equilibrio perfetto.</p>
       </section>
 
-      <img src="/images/gin/gin4.jpg" alt="GINocchi Erbaceo" className="w-full rounded-lg shadow-lg my-8 border-2 border-gray-700" />
+      <img src="/images/gin/gin4.webp" alt="GINocchi Erbaceo" className="w-full rounded-lg shadow-lg my-8 border-2 border-gray-700" />
 
       <section className="mb-12 space-y-4 leading-relaxed text-lg">
         <h2 className="text-3xl font-rubik font-bold mb-4 text-white"><strong className="font-bold">GIN</strong>occhi Erbaceo</h2>
@@ -59,7 +59,7 @@ const GinPage: React.FC = () => {
         <p><strong className="text-white">Profilo:</strong> intenso, fresco, dominato da note che esplodono in un finale verde e balsamico.</p>
       </section>
       
-      <img src="/images/gin/gin5.jpg" alt="GINocchi Speziato" className="w-full rounded-lg shadow-lg my-8 border-2 border-gray-700" />
+      <img src="/images/gin/gin5.webp" alt="GINocchi Speziato" className="w-full rounded-lg shadow-lg my-8 border-2 border-gray-700" />
 
        <section className="mb-12 space-y-4 leading-relaxed text-lg">
         <h2 className="text-3xl font-rubik font-bold mb-4 text-white"><strong className="font-bold">GIN</strong>occhi Speziato</h2>
@@ -68,7 +68,7 @@ const GinPage: React.FC = () => {
         <p><strong className="text-white">Profilo:</strong> speziato e pungente, un calore persistente che riempie il palato di aromi orientali.</p>
       </section>
 
-      <img src="/images/gin/gin6.jpg" alt="Perché bere GINocchi?" className="w-full rounded-lg shadow-lg my-8 border-2 border-gray-700" />
+      <img src="/images/gin/gin6.webp" alt="Perché bere GINocchi?" className="w-full rounded-lg shadow-lg my-8 border-2 border-gray-700" />
 
       <section className="mb-12 space-y-4 leading-relaxed text-lg">
         <h2 className="text-3xl font-rubik font-bold mb-4 text-white">Perché bere <strong className="font-bold">GIN</strong>occhi? Perché è buono!</h2>

@@ -32,14 +32,14 @@ const LorePage: React.FC = () => {
   return (
     <div className="py-6 max-w-3xl mx-auto text-gray-200 font-roboto-mono text-left">
       
-      <img src="/images/lore/lore1.jpg" alt="L'abisso di GINocchi" className={imageClass} />
+      <img src="/images/lore/lore1.webp" alt="L'abisso di GINocchi" className={imageClass} />
 
       <section className="mb-12 space-y-4 leading-relaxed text-lg">
         <h1 className="text-3xl font-rubik font-bold mb-4 text-white">L’abisso</h1>
         <p>Benvenuti nel mondo distorto di GINocchi, dove l'IA regna sovrana e il gin tonic è l'unica arma contro la sua tirannia. Preparati a un'esperienza immersiva, glitchata e alcolicamente profonda.</p>
       </section>
       
-      <img src="/images/lore/lore2.jpg" alt="Un mondo controllato dall'Algoritmo" className={imageClass} />
+      <img src="/images/lore/lore2.webp" alt="Un mondo controllato dall'Algoritmo" className={imageClass} />
 
       <section className="mb-12 space-y-4 leading-relaxed text-lg">
         <h2 className="text-3xl font-rubik font-bold mb-4 text-white">Il futuro? Probabilmente fa schifo.</h2>
@@ -51,7 +51,7 @@ const LorePage: React.FC = () => {
         <p>E così, uno scroll dopo l’altro, l’umanità si è dissolta in un flusso di niente.</p>
       </section>
 
-      <img src="/images/lore/lore3.jpg" alt="L'intelligenza artificiale ubriaca crea mostri" className={imageClass} />
+      <img src="/images/lore/lore3.webp" alt="L'intelligenza artificiale ubriaca crea mostri" className={imageClass} />
 
       <section className="mb-12 space-y-4 leading-relaxed text-lg">
         <h2 className="text-3xl font-rubik font-bold mb-4 text-white">GINocchi: l’intelligenza artificiale è ubriaca</h2>
@@ -68,7 +68,7 @@ const LorePage: React.FC = () => {
         <p>Non dovrebbero, ma esistono. Vivono nel quanto e nel tuo gin tonic.</p>
         <p>Esistono, ma in un piano a metà tra simulazione e verità tra carne, caos e codice.</p>
 
-        <div className="my-6 p-4 border-l-4 border-gray-500 bg-gray-800 bg-opacity-50 rounded-r-lg italic">
+        <div className="my-6 p-4 border-l-4 border-gray-500 bg-gray-800 bg-opacity-50 italic">
             <p>Una giovane ambientalista guerrafondaia.</p>
             <p>Un delfino ninja in cerca di vendetta per la sua piantagione di arance.</p>
             <p>Un verme culturista in perenne erezione.</p>
@@ -79,7 +79,7 @@ const LorePage: React.FC = () => {
         <p>Quando bevi gin il tuo cervello si allenta. Le difese si abbassano... E tu, finalmente, li vedi.</p>
       </section>
 
-      <img src="/images/lore/lore5.jpg" alt="Un essere senziente emerge dall'oscurità" className={imageClass} />
+      <img src="/images/lore/lore5.webp" alt="Un essere senziente emerge dall'oscurità" className={imageClass} />
 
       <section className="mb-12 space-y-4 leading-relaxed text-lg">
         <h2 className="text-3xl font-rubik font-bold mb-4 text-white">Buio senziente</h2>
@@ -87,7 +87,7 @@ const LorePage: React.FC = () => {
         <p>Non vogliono vincere né redimersi, non hanno una missione. Si nutrono solo della tua angoscia, della tua ansia, del buio che senti mentre li affronti. E più soffri, più diventano reali. Si fanno spazio e non hanno bisogno del tuo permesso. Lì dove i tuoi sensi si spezzano e la logica vacilla. Lì si muovono. Ti testano. Ti confondono. Solo chi ha bevuto abbastanza può davvero scorgerli.</p>
       </section>
       
-      <img src="/images/lore/lore4.jpg" alt="La resistenza alcolica contro il sistema" className={imageClass} />
+      <img src="/images/lore/lore4.webp" alt="La resistenza alcolica contro il sistema" className={imageClass} />
 
       <section className="mb-12 space-y-4 leading-relaxed text-lg">
         <h2 className="text-3xl font-rubik font-bold mb-4 text-white">L’ultima resistenza</h2>
@@ -98,7 +98,7 @@ const LorePage: React.FC = () => {
         <p>E ricorda: "il cucchiaio non esiste". Ma il gin sì.</p>
       </section>
       
-      <img src="/images/lore/lore6.jpg" alt="Il gin è l'unica verità" className={imageClass} />
+      <img src="/images/lore/lore6.webp" alt="Il gin è l'unica verità" className={imageClass} />
 
     </div>
   );

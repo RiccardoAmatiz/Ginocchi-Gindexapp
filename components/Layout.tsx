@@ -5,7 +5,7 @@ import { StatusPlaceholderIcon } from './icons/StatusPlaceholderIcon';
 
 const StatusIcon: React.FC<{ effectName: string }> = ({ effectName }) => {
   const [error, setError] = useState(false);
-  const iconSrc = `/images/Status/${encodeURIComponent(effectName)}.png`;
+  const iconSrc = `/images/Status/${encodeURIComponent(effectName)}.webp`;
 
   const wrapperClasses = "p-1 bg-black border-2 border-white rounded-md";
   const iconClasses = "w-10 h-10 object-contain";
@@ -74,7 +74,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               aria-label="Torna alla Home page"
             >
               <img 
-                src="/images/pittogramma_logo.png" 
+                src="/images/pittogramma_logo.webp" 
                 alt="" 
                 className="h-10 w-10 object-contain" 
                 onError={(e) => (e.currentTarget.style.display = 'none')} 
@@ -129,7 +129,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       {/* Sezione per il Logo Completo sopra il Footer */}
       <div className="w-full container mx-auto px-4 py-8 flex justify-center">
         <img
-          src={isHomePage ? "/images/pittogramma_home.png" : "/images/logo_completo_footer.png"}
+          src={isHomePage ? "/images/pittogramma_home.webp" : "/images/logo_completo_footer.webp"}
           alt="GINocchi Gioco di Gin Collezionabili Logo"
           className="w-full max-w-lg object-contain" 
           onError={(e) => (e.currentTarget.style.display = 'none')} 

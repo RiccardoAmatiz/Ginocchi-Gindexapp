@@ -11,7 +11,7 @@ interface CategoryBadgeProps {
 const CategoryBadge: React.FC<CategoryBadgeProps> = ({ categoria, size = 'md' }) => {
   const [imageError, setImageError] = useState(false);
   const color = CATEGORY_COLORS[categoria];
-  const iconSrc = `/images/categories/${categoria}.png`;
+  const iconSrc = `/images/categories/${categoria}.webp`;
   
   let textSize = "text-sm";
   let iconSizeClass = "w-4 h-4"; // Renamed to avoid conflict with actual size props if any

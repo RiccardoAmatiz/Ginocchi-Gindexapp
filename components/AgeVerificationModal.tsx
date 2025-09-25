@@ -19,7 +19,7 @@ const AgeVerificationModal: React.FC<AgeVerificationModalProps> = ({ onVerified 
         style={{ borderColor: CATEGORY_COLORS.Bilanciato }}
       >
         <img 
-          src="/images/pittogramma_logo.png" 
+          src="/images/pittogramma_logo.webp" 
           alt="GINDEX Logo" 
           className="h-16 w-16 mx-auto mb-4" 
         />
