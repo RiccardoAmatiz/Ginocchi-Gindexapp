@@ -10,15 +10,23 @@ import { GinocchiGameplayProvider } from './context/GinocchiGameplayContext';
 import ScrollToTop from './components/ScrollToTop';
 import AgeVerificationModal from './components/AgeVerificationModal';
 import LorePage from './pages/LorePage';
-import GinPage from './pages/GinPage'; // Importa la nuova pagina
+import GinPage from './pages/GinPage';
+import FaqPage from './pages/FaqPage';
+import ContattiPage from './pages/ContattiPage';
 import { HeaderUIProvider } from './context/HeaderUIContext';
 
 const App: React.FC = () => {
   // Controlla il localStorage nello stato iniziale per evitare sfarfallii
   const [isAgeVerified, setIsAgeVerified] = useState(() => {
+    // Bypass age verification for crawlers to allow indexing
+    const isCrawler = /bot|googlebot|crawler|spider|crawling/i.test(navigator.userAgent);
+    if (isCrawler) {
+        return true;
+    }
     try {
       return localStorage.getItem('age_verified') === 'true';
-    } catch (error) {
+    } catch (error)
+      {
       console.error("Impossibile accedere al localStorage:", error);
       // Imposta come non verificato se il localStorage non è disponibile
       return false; 
@@ -49,11 +57,16 @@ const App: React.FC = () => {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/gindex" element={<GindexPage />} />
-              <Route path="/ginocchio/:id" element={<SchedaGinocchioPage />} />
+              <Route path="/personaggi/:slug" element={<SchedaGinocchioPage />} />
               <Route path="/regolamento" element={<RegolamentoPage />} />
               <Route path="/regolamento-ubriachi" element={<RegolamentoUbriachiPage />} />
               <Route path="/lore" element={<LorePage />} />
-              <Route path="/gin" element={<GinPage />} /> {/* Aggiunta la nuova rotta */}
+              <Route path="/gin" element={<GinPage />} />
+              <Route path="/faq" element={<FaqPage />} />
+              <Route path="/contatti" element={<ContattiPage />} />
+
+              {/* Redirect legacy ID-based URLs */}
+              <Route path="/ginocchio/:id" element={<Navigate to="/" replace />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </Layout>

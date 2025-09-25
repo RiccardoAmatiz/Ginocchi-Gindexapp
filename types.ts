@@ -15,6 +15,7 @@ export interface Attacco {
 export interface Ginocchio {
   id: number;
   nome: string;
+  slug: string;
   categoria: Categoria;
   colore: string;
   immagine: string; // Placeholder "placeholder.png", UI will use dynamic images

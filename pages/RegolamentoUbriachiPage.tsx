@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import usePageMetadata from '../hooks/usePageMetadata';
+import { useSeo } from '../hooks/usePageMetadata';
 import Button from '../components/Button';
 
 interface DrunkRuleProps {
@@ -31,13 +31,11 @@ const DrunkRule: React.FC<DrunkRuleProps> = ({ title, imageName, children }) => 
 
 
 const RegolamentoUbriachiPage: React.FC = () => {
-    usePageMetadata({
+    useSeo({
         title: 'Regolamento per Ubriachi | GINocchi - GGC',
         description: 'La versione semplice e diretta del regolamento di GINocchi - GGC, per quando la mente è annebbiata ma la sete di vittoria è forte.',
+        canonical: 'https://www.ginocchi-ggc.it/#/regolamento-ubriachi',
         keywords: 'regolamento ubriachi, regole facili, Ginocchi, GINocchi - GGC, gioco da tavolo, gioco alcolico',
-        og: {
-            url: 'https://www.ginocchi-ggc.it/#/regolamento-ubriachi',
-        }
     });
 
     const rules = [
@@ -57,7 +55,6 @@ const RegolamentoUbriachiPage: React.FC = () => {
         src="/images/regolamento_per_ubriachi.jpg" 
         alt="Header Regolamento per ubriachi" 
         className="w-full max-w-3xl mx-auto mb-10 rounded-lg shadow-lg"
-        onError={(e) => (e.currentTarget.style.display = 'none')} 
       />
 
       <div className="max-w-3xl mx-auto">

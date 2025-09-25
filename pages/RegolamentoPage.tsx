@@ -1,7 +1,7 @@
 import React from 'react';
 import { CATEGORY_COLORS } from '../constants';
 import { Categoria } from '../types';
-import usePageMetadata from '../hooks/usePageMetadata';
+import { useSeo } from '../hooks/usePageMetadata';
 
 interface RuleSectionProps {
   title: string;
@@ -23,12 +23,28 @@ const RuleSection: React.FC<RuleSectionProps> = ({ title, number, children, titl
 );
 
 const RegolamentoPage: React.FC = () => {
-  usePageMetadata({
+  useSeo({
     title: 'Regolamento Completo | GINocchi - GGC',
-    description: 'Impara tutte le regole di GINocchi - GGC. Scopri come muoverti, attaccare, difenderti e sfruttare le debolezze dei Ginocchi.',
+    description: 'Impara tutte le regole di GINocchi - GGC. Scopri come muoverti, attaccare, difenderti e sfruttare le debolezze dei Ginocchi in questo gioco da tavolo unico.',
+    canonical: 'https://www.ginocchi-ggc.it/#/regolamento',
     keywords: 'regolamento, regole, come giocare, Ginocchi, GINocchi - GGC, gioco da tavolo, gioco alcolico',
-    og: {
-        url: 'https://www.ginocchi-ggc.it/#/regolamento',
+    schema: {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Regolamento Completo del Gioco da Tavolo GINocchi",
+        "author": {
+            "@type": "Organization",
+            "name": "GINocchi - GGC"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "GINocchi - GGC",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.ginocchi-ggc.it/images/logo_completo_footer.png"
+            }
+        },
+        "description": "La guida completa con tutte le regole per giocare a GINocchi, incluse le fasi di movimento, attacco, difesa, effetti speciali e il triangolo delle debolezze."
     }
   });
 
@@ -58,14 +74,12 @@ const RegolamentoPage: React.FC = () => {
       { name: "Cardamomo", img: "Garnish_cardamomo.png", effect: "6 (Buff) ⇒ Dopo la risoluzione dell’attacco puoi spostarti in qualsiasi casella del tabellone.\n1 (Debuff) ⇒ Dopo la risoluzione dell’attacco, chi si è difeso sceglierà in quale casella del tabellone spostarti." }
   ];
 
-
   return (
     <div className="py-6 px-2">
       <img 
         src="/images/header_regolamento.jpg" 
         alt="Header Regolamento GINocchi" 
         className="w-full max-w-3xl mx-auto mb-10 rounded-lg shadow-lg"
-        onError={(e) => (e.currentTarget.style.display = 'none')} 
       />
 
       <div className="max-w-3xl mx-auto">
@@ -210,22 +224,7 @@ const RegolamentoPage: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
             {effettiSpeciali.map((eff, index) => (
               <div key={index} className="p-4 bg-gray-900 rounded-lg border border-gray-700 flex flex-col items-center text-center shadow-lg">
-                <img 
-                    src={effectImagePath(eff.logo)} 
-                    alt={`Logo ${eff.name}`} 
-                    className="w-20 h-20 mb-3 object-contain"
-                    onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.alt = `Logo per ${eff.name} non trovato`;
-                        target.style.display = 'none'; 
-                        const placeholder = document.createElement('div');
-                        placeholder.className = 'w-20 h-20 flex items-center justify-center bg-gray-700 text-gray-400 text-xs rounded-md text-center p-2 mb-3';
-                        placeholder.textContent = `Logo ${eff.name}`;
-                        if (target.parentNode) {
-                            target.parentNode.insertBefore(placeholder, target);
-                        }
-                    }}
-                />
+                <img src={effectImagePath(eff.logo)} alt={`Logo ${eff.name}`} className="w-20 h-20 mb-3 object-contain" onError={(e) => { const target = e.target as HTMLImageElement; target.style.display = 'none'; }} />
                 <h4 className="text-lg font-rubik font-bold text-white mb-1">{eff.name}</h4>
                 <p className="text-sm text-gray-300 leading-relaxed flex-grow whitespace-pre-line">{eff.desc}</p>
               </div>
@@ -258,22 +257,7 @@ const RegolamentoPage: React.FC = () => {
           <div className="space-y-6 mt-4">
             {garnishItems.map((garnish, index) => (
               <div key={index} className="flex flex-col sm:flex-row items-center p-3 bg-gray-900 rounded-lg border border-gray-700">
-                <img 
-                    src={garnishImagePath(garnish.img)} 
-                    alt={garnish.name} 
-                    className="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-md mr-0 sm:mr-4 mb-3 sm:mb-0 border-2 border-gray-600" 
-                    onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.alt = `Immagine di ${garnish.name} non trovata`;
-                        target.style.display = 'none'; 
-                        const placeholder = document.createElement('div');
-                        placeholder.className = 'w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center bg-gray-700 text-gray-400 text-xs rounded-md mr-0 sm:mr-4 mb-3 sm:mb-0 border-2 border-gray-600 p-2 text-center';
-                        placeholder.textContent = garnish.name;
-                        if (target.parentNode) {
-                            target.parentNode.insertBefore(placeholder, target);
-                        }
-                    }}
-                />
+                <img src={garnishImagePath(garnish.img)} alt={garnish.name} className="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-md mr-0 sm:mr-4 mb-3 sm:mb-0 border-2 border-gray-600" onError={(e) => { const target = e.target as HTMLImageElement; target.style.display = 'none'; }} />
                 <div className="flex-1 text-center sm:text-left">
                   <h4 className="text-lg font-rubik font-bold text-white">{garnish.name}</h4>
                   <p className="text-sm whitespace-pre-line">{garnish.effect}</p>
@@ -283,7 +267,6 @@ const RegolamentoPage: React.FC = () => {
           </div>
           <p className="text-sm italic mt-4">* I garnish sono decorazioni da cocktail che ne completano l'esperienza sensoriale, non solo estetica. I garnish GINocchi vanno inseriti direttamente nel drink durante la sua preparazione all’inizio della partita.</p>
         </RuleSection>
-
       </div>
     </div>
   );

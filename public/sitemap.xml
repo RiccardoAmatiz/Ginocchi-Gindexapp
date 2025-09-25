@@ -2,76 +2,92 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.ginocchi-ggc.it/</loc>
+    <lastmod>2024-05-20T10:00:00+00:00</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
     <loc>https://www.ginocchi-ggc.it/#/gindex</loc>
+    <lastmod>2024-05-20T10:00:00+00:00</lastmod>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://www.ginocchi-ggc.it/#/lore</loc>
+    <lastmod>2024-05-20T10:00:00+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://www.ginocchi-ggc.it/#/gin</loc>
+    <lastmod>2024-05-20T10:00:00+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://www.ginocchi-ggc.it/#/regolamento</loc>
+    <lastmod>2024-05-20T10:00:00+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://www.ginocchi-ggc.it/#/regolamento-ubriachi</loc>
+    <lastmod>2024-05-20T10:00:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/1</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/2</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/3</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/4</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/5</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/6</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/7</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/8</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/9</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/10</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/11</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/12</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/13</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/14</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/15</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/16</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/17</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/18</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/19</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/20</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/21</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/22</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/23</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/24</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/25</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/26</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/27</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/28</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/29</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/30</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/31</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/32</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/33</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/34</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/35</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/36</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/37</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/38</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/39</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/40</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/41</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/42</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/43</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/44</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/45</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/46</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/47</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/48</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/49</loc><priority>0.9</priority></url>
-  <url><loc>https://www.ginocchi-ggc.it/#/ginocchio/50</loc><priority>0.9</priority></url>
+  <url>
+    <loc>https://www.ginocchi-ggc.it/#/faq</loc>
+    <lastmod>2024-05-20T10:00:00+00:00</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.ginocchi-ggc.it/#/contatti</loc>
+    <lastmod>2024-05-20T10:00:00+00:00</lastmod>
+    <priority>0.60</priority>
+  </url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/punturirma-1</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/roboshop-2</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/robinario-3</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/prepezio-4</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/gorettore-5</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/guerraniglio-6</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/tossicozza-7</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/scarabarman-8</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/sborniadrago-9</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/tigrallo-10</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/roboraffa-11</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/florona-12</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/ran-occhio-13</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/arundizilla-14</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/gelsosauro-15</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/lavandasma-16</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/salviananda-17</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/koajhonny-18</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/rosiro-19</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/rosella-20</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/cybermint-21</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/rosmaruma-22</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/cetriolana-ottava-23</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/rosmanguilla-24</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/banona-25</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/tony-ephedrina-26</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/cervarancio-27</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/merlotta-28</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/corvananas-29</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/fiammaciofo-30</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/rosa-cagnolina-31</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/pipimone-32</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/eremillo-33</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/mangodillo-34</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/lampolpo-35</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/delfimaru-36</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/pignacano-37</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/pompecora-38</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/winenot-39</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/callista-40</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/cannellorca-41</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/anicinzia-42</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/fumello-43</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/peperonbro-44</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/blobaffe-45</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/speziatopo-46</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/borghesiglio-47</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/teabear-48</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/tzatzikeye-49</loc><priority>0.9</priority></url>
+  <url><loc>https://www.ginocchi-ggc.it/#/personaggi/fuega-50</loc><priority>0.9</priority></url>
 </urlset>

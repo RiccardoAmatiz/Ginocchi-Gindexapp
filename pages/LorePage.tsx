@@ -1,13 +1,29 @@
 import React from 'react';
-import usePageMetadata from '../hooks/usePageMetadata';
+import { useSeo } from '../hooks/usePageMetadata';
 
 const LorePage: React.FC = () => {
-  usePageMetadata({
-    title: 'La lore | GINocchi - GGC',
-    description: 'Scopri la storia distorta del mondo di GINocchi - GGC. Un futuro dominato dall\'Algoritmo dove il gin tonic è l\'ultima resistenza.',
+  useSeo({
+    title: 'La Lore del Mondo GINocchi | GINocchi - GGC',
+    description: 'Scopri la storia distorta del mondo di GINocchi - GGC. Un futuro dominato dall\'Algoritmo dove il gin tonic è l\'ultima, caotica resistenza.',
+    canonical: 'https://www.ginocchi-ggc.it/#/lore',
     keywords: 'lore, storia, ambientazione, Algoritmo, Ginocchi, GINocchi - GGC',
-    og: {
-        url: 'https://www.ginocchi-ggc.it/#/lore',
+    schema: {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "La Lore di GINocchi: Un Futuro Distorto dall'Algoritmo",
+        "author": {
+            "@type": "Organization",
+            "name": "GINocchi - GGC"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "GINocchi - GGC",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.ginocchi-ggc.it/images/logo_completo_footer.png"
+            }
+        },
+        "description": "Immergiti nella lore di GINocchi. Un'IA onnipresente ha ottimizzato l'umanità fino all'estinzione, ma un'anomalia alcolica ha generato mostri..."
     }
   });
 
@@ -19,7 +35,7 @@ const LorePage: React.FC = () => {
       <img src="/images/lore/lore1.jpg" alt="L'abisso di GINocchi" className={imageClass} />
 
       <section className="mb-12 space-y-4 leading-relaxed text-lg">
-        <h2 className="text-3xl font-rubik font-bold mb-4 text-white">L’abisso</h2>
+        <h1 className="text-3xl font-rubik font-bold mb-4 text-white">L’abisso</h1>
         <p>Benvenuti nel mondo distorto di GINocchi, dove l'IA regna sovrana e il gin tonic è l'unica arma contro la sua tirannia. Preparati a un'esperienza immersiva, glitchata e alcolicamente profonda.</p>
       </section>
       

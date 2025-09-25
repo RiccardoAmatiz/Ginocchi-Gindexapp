@@ -11,7 +11,7 @@ const GinocchioCard: React.FC<GinocchioCardProps> = ({ ginocchio }) => {
 
   return (
     <Link 
-      to={`/ginocchio/${ginocchio.id}`} 
+      to={`/personaggi/${ginocchio.slug}`} 
       className="block bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden transform hover:scale-105"
       aria-label={`Visualizza dettagli di ${ginocchio.nome.toUpperCase()}, numero ${ginocchio.id}`}
     >

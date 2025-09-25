@@ -1,13 +1,22 @@
 import React from 'react';
-import usePageMetadata from '../hooks/usePageMetadata';
+import { useSeo } from '../hooks/usePageMetadata';
 
 const GinPage: React.FC = () => {
-  usePageMetadata({
-    title: 'Il Gin | GINocchi - GGC',
+  useSeo({
+    title: 'Il Gin GINocchi | Distillato Premium Italiano',
     description: 'Scopri i 4 distilled gin GINocchi: Bilanciato, Erbaceo, Fruttato e Speziato. Un gin premium italiano che unisce un gusto unico al mondo del gioco.',
+    canonical: 'https://www.ginocchi-ggc.it/#/gin',
     keywords: 'gin, distilled gin, gin premium, gin italiano, botaniche, Bilanciato, Erbaceo, Fruttato, Speziato, GINocchi - GGC, gioco da tavolo gin, etichette mignon',
-    og: {
-        url: 'https://www.ginocchi-ggc.it/#/gin',
+    schema: {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "GINocchi Distilled Gin",
+        "description": "GINocchi è un distilled gin premium italiano disponibile in quattro profili aromatici unici: Bilanciato, Erbaceo, Fruttato e Speziato. Ogni bottiglia è un'esperienza sensoriale e una chiave per il mondo del gioco GINocchi.",
+        "brand": {
+            "@type": "Organization",
+            "name": "GINocchi - GGC"
+        },
+        "image": "https://www.ginocchi-ggc.it/images/gin/gin1.jpg"
     }
   });
 
@@ -19,7 +28,7 @@ const GinPage: React.FC = () => {
       <section className="mb-12">
         <h1 className="text-4xl font-rubik font-bold mb-4 text-white">Il Gin</h1>
         <p className="text-lg leading-relaxed">
-          <strong className="font-bold">GIN</strong>occhi è un distilled gin premium, prodotto interamente in Italia con materie prime di alta qualità. La formula è essenziale: acqua purissima, ginepro selezionato e alcol di cereali di prima scelta. Su questa solida base si sviluppano i profili aromatici del mondo <strong className="font-bold">GIN</strong>occhi: bilanciato, erbaceo, fruttato e speziato. La definizione delle quattro ricette va dallo studio delle singole botaniche nella loro essenza alla costruzione di bouquet completi dove la singola nota lascia spazio alla melodia. Ognuna delle quattro tipologie ha il suo gusto, che racconta una storia diversa e una forte identità. Il risultato è un distillato in grado di trasformare il semplice gesto di bere in un rito più ampio, un’esperienza sensoriale che va oltre il bicchiere e stimola l’immaginazione. <strong className="font-bold">GIN</strong>occhi non è solo un gioco, non è solo gin: è un mondo!
+          <strong className="font-bold">GIN</strong>occhi è un distilled gin premium, prodotto interamente in Italia con materie prime di alta qualità. La formula è essenziale: acqua purissima, ginepro selezionato e alcol di cereali di prima scelta. Su questa solida base si sviluppano i profili aromatici del mondo <strong className="font-bold">GIN</strong>occhi: bilanciato, erbaceo, fruttato e speziato. La definizione delle quattro ricette va dallo studio delle singole botaniche nella loro essenza alla costruzione di bouquet completi where la singola nota lascia spazio alla melodia. Ognuna delle quattro tipologie ha il suo gusto, che racconta una storia diversa e una forte identità. Il risultato è un distillato in grado di trasformare il semplice gesto di bere in un rito più ampio, un’esperienza sensoriale che va oltre il bicchiere e stimola l’immaginazione. <strong className="font-bold">GIN</strong>occhi non è solo un gioco, non è solo gin: è un mondo!
         </p>
       </section>
 
