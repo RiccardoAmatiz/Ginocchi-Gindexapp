@@ -70,7 +70,7 @@ const HomePage: React.FC = () => {
 
         <Link to="/acquista" className="w-full">
           <Button className={compraButtonStyle}>
-            COMPRA I GINOCCHI!
+            Compra GINocchi
           </Button>
         </Link>
 
