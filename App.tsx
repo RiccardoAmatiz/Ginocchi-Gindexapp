@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate, useParams } from 'react-router-dom';
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import GindexPage from './pages/GindexPage';
@@ -10,8 +10,26 @@ import { GinocchiGameplayProvider } from './context/GinocchiGameplayContext';
 import ScrollToTop from './components/ScrollToTop';
 import AgeVerificationModal from './components/AgeVerificationModal';
 import LorePage from './pages/LorePage';
-import GinPage from './pages/GinPage'; // Importa la nuova pagina
+import GinPage from './pages/GinPage';
 import { HeaderUIProvider } from './context/HeaderUIContext';
+import { slugify } from './utils';
+import { ALL_GINOCCHI } from './constants';
+
+const GinocchioRedirect: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  if (!id) return <Navigate to="/gindex" replace />;
+
+  const numericId = parseInt(id, 10);
+  if (isNaN(numericId)) return <Navigate to="/gindex" replace />;
+  
+  const ginocchio = ALL_GINOCCHI.find(g => g.id === numericId);
+  if (!ginocchio) {
+    return <Navigate to="/gindex" replace />;
+  }
+  
+  const slug = `${slugify(ginocchio.nome)}-${ginocchio.id}`;
+  return <Navigate to={`/personaggi/${slug}`} replace />;
+};
 
 const App: React.FC = () => {
   // Controlla il localStorage nello stato iniziale per evitare sfarfallii
@@ -55,7 +73,8 @@ const App: React.FC = () => {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/gindex" element={<GindexPage />} />
-              <Route path="/ginocchio/:id" element={<SchedaGinocchioPage />} />
+              <Route path="/personaggi/:slug" element={<SchedaGinocchioPage />} />
+              <Route path="/ginocchio/:id" element={<GinocchioRedirect />} />
               <Route path="/regolamento" element={<RegolamentoPage />} />
               <Route path="/regolamento-ubriachi" element={<RegolamentoUbriachiPage />} />
               <Route path="/lore" element={<LorePage />} />

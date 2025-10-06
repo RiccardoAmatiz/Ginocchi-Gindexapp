@@ -15,13 +15,17 @@ import { usePvTracker } from '../hooks/usePvTracker';
 import { useHeaderUI } from '../context/HeaderUIContext';
 import { useGinocchioMetadata } from '../hooks/usePageMetadata';
 import { VolumeUpIcon } from '../components/icons/VolumeUpIcon';
+import { slugify } from '../utils';
 
 const SchedaGinocchioPage: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
+  const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
 
-  // Refactored logic to be more robust and prevent stale state issues with navigation
-  const numericId = useMemo(() => parseInt(id || '', 10), [id]);
+  const numericId = useMemo(() => {
+      if (!slug) return NaN;
+      const idPart = slug.split('-').pop();
+      return parseInt(idPart || '', 10);
+  }, [slug]);
 
   const currentIndex = useMemo(() => {
       if (isNaN(numericId)) return -1;
@@ -85,6 +89,12 @@ const SchedaGinocchioPage: React.FC = () => {
         window.speechSynthesis.cancel();
     }
   }, []);
+
+  useEffect(() => {
+    if (!ginocchio && slug) {
+        navigate('/gindex', { replace: true });
+    }
+  }, [ginocchio, slug, navigate]);
 
   if (!ginocchio) {
     return (
@@ -175,7 +185,7 @@ const SchedaGinocchioPage: React.FC = () => {
         {/* Top Navigation */}
         <div className="w-full flex justify-between items-center mb-4 pt-2">
             {previousGinocchio ? (
-                <Link to={`/ginocchio/${previousGinocchio.id}`} className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors p-2 rounded-lg w-1/3" aria-label={`Vai a ${previousGinocchio.nome}`}>
+                <Link to={`/personaggi/${slugify(previousGinocchio.nome)}-${previousGinocchio.id}`} className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors p-2 rounded-lg w-1/3" aria-label={`Vai a ${previousGinocchio.nome}`}>
                     <ArrowLeftIcon className="w-8 h-8 flex-shrink-0" />
                     <div className="text-left">
                         <span className="text-sm font-bold block" style={{color: previousGinocchio.colore}}>#{previousGinocchio.id}</span>
@@ -191,7 +201,7 @@ const SchedaGinocchioPage: React.FC = () => {
             </div>
 
             {nextGinocchio ? (
-                 <Link to={`/ginocchio/${nextGinocchio.id}`} className="flex items-center justify-end space-x-3 text-gray-400 hover:text-white transition-colors p-2 rounded-lg w-1/3" aria-label={`Vai a ${nextGinocchio.nome}`}>
+                 <Link to={`/personaggi/${slugify(nextGinocchio.nome)}-${nextGinocchio.id}`} className="flex items-center justify-end space-x-3 text-gray-400 hover:text-white transition-colors p-2 rounded-lg w-1/3" aria-label={`Vai a ${nextGinocchio.nome}`}>
                      <div className="text-right">
                         <span className="text-sm font-bold block" style={{color: nextGinocchio.colore}}>#{nextGinocchio.id}</span>
                         <span className="text-xs block truncate">{nextGinocchio.nome}</span>

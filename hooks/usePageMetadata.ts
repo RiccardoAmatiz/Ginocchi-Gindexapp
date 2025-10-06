@@ -1,5 +1,6 @@
 import { useEffect, useMemo } from 'react';
 import { Ginocchio } from '../types';
+import { slugify } from '../utils';
 
 const BASE_URL = 'https://www.ginocchi-ggc.it';
 const SITE_NAME = 'GINocchi - Gioco di Gin Collezionabili';
@@ -81,6 +82,7 @@ export const useGinocchioMetadata = (ginocchio: Ginocchio | undefined, descripti
         }
 
         const pageTitle = `${ginocchio.nome} | ${SITE_NAME}`;
+        const ginocchioSlug = `${slugify(ginocchio.nome)}-${ginocchio.id}`;
 
         return {
             title: pageTitle,
@@ -90,7 +92,7 @@ export const useGinocchioMetadata = (ginocchio: Ginocchio | undefined, descripti
                 title: pageTitle,
                 description: `Scopri ${ginocchio.nome}, il Ginocchio di tipo ${ginocchio.categoria} del gioco da tavolo GINocchi.`,
                 image: `${BASE_URL}${ginocchio.immagine}`,
-                url: `${BASE_URL}/#/ginocchio/${ginocchio.id}`,
+                url: `${BASE_URL}/#/personaggi/${ginocchioSlug}`,
             },
         };
     }, [ginocchio, description]);

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Ginocchio } from '../types';
+import { slugify } from '../utils';
 
 interface GinocchioCardProps {
   ginocchio: Ginocchio;
@@ -8,10 +9,11 @@ interface GinocchioCardProps {
 
 const GinocchioCard: React.FC<GinocchioCardProps> = ({ ginocchio }) => {
   const textColorStyle = { color: ginocchio.colore };
+  const ginocchioSlug = `${slugify(ginocchio.nome)}-${ginocchio.id}`;
 
   return (
     <Link 
-      to={`/ginocchio/${ginocchio.id}`} 
+      to={`/personaggi/${ginocchioSlug}`} 
       className="block bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden transform hover:scale-105"
       aria-label={`Visualizza dettagli di ${ginocchio.nome.toUpperCase()}, numero ${ginocchio.id}`}
     >
