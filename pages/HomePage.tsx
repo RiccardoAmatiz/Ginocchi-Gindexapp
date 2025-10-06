@@ -5,14 +5,16 @@ import { CATEGORY_COLORS } from '../constants';
 import usePageMetadata from '../hooks/usePageMetadata';
 
 const HomePage: React.FC = () => {
+  const newDescription = `"Chi lotta contro i mostri deve fare attenzione a non diventare lui stesso un mostro. E se tu guarderai a lungo in un Gin tonic, anche il Gin tonic vorrà guardare dentro di te."`;
+
   usePageMetadata({
     title: 'GINocchi - Gioco di Gin Collezionabili',
-    description: 'Colleziona, bevi, combatti! Scopri GINocchi, il gioco da tavolo con etichette di gin mignon collezionabili.',
+    description: newDescription,
     keywords: 'GINocchi, Ginocchi, gioco di gin, gin collezionabili, gioco da tavolo gin, etichette mignon, gin artigianale, gin italiano, distilled gin, GGC',
     og: {
         url: 'https://www.ginocchi-ggc.it/',
         title: 'GINocchi - Gioco di Gin Collezionabili',
-        description: 'Colleziona, bevi, combatti! Scopri GINocchi, il gioco da tavolo con etichette di gin mignon collezionabili.'
+        description: newDescription
     }
   });
 
@@ -28,8 +30,8 @@ const HomePage: React.FC = () => {
         alt="Header GINDEX - Bottiglia di gin con occhio" 
         className="mb-8 rounded-lg shadow-xl w-full max-w-2xl object-contain"
       />
-      <p className="text-lg mb-12 max-w-2xl text-gray-300">
-        Colleziona, bevi, combatti!
+      <p className="text-lg mb-12 max-w-2xl text-gray-300 italic">
+        {newDescription}
       </p>
       
       <div className="flex flex-wrap items-stretch justify-center gap-6 w-full max-w-5xl">
