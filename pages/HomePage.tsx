@@ -5,7 +5,7 @@ import { CATEGORY_COLORS } from '../constants';
 import usePageMetadata from '../hooks/usePageMetadata';
 
 const HomePage: React.FC = () => {
-  const newDescription = `"Chi lotta contro i mostri deve fare attenzione a non diventare lui stesso un mostro. E se tu guarderai a lungo in un Gin tonic, anche il Gin tonic vorrà guardare dentro di te."`;
+  const newDescription = "Chi lotta contro i mostri deve fare attenzione a non diventare lui stesso un mostro. E se tu guarderai a lungo in un Gin tonic, anche il Gin tonic vorrà guardare dentro di te.";
 
   usePageMetadata({
     title: 'GINocchi - Gioco di Gin Collezionabili',
@@ -30,7 +30,7 @@ const HomePage: React.FC = () => {
         alt="Header GINDEX - Bottiglia di gin con occhio" 
         className="mb-8 rounded-lg shadow-xl w-full max-w-2xl object-contain"
       />
-      <p className="text-lg mb-12 max-w-2xl text-gray-300 italic">
+      <p className="text-base sm:text-lg mb-12 max-w-2xl text-gray-300 italic">
         {newDescription}
       </p>
       
