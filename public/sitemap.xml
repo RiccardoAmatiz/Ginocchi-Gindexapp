@@ -2,27 +2,43 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.ginocchi-ggc.it/</loc>
+    <lastmod>2024-05-20T10:00:00+00:00</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
     <loc>https://www.ginocchi-ggc.it/#/gindex</loc>
+    <lastmod>2024-05-20T10:00:00+00:00</lastmod>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://www.ginocchi-ggc.it/#/lore</loc>
+    <lastmod>2024-05-20T10:00:00+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://www.ginocchi-ggc.it/#/gin</loc>
+    <lastmod>2024-05-20T10:00:00+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://www.ginocchi-ggc.it/#/regolamento</loc>
+    <lastmod>2024-05-20T10:00:00+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://www.ginocchi-ggc.it/#/regolamento-ubriachi</loc>
+    <lastmod>2024-05-20T10:00:00+00:00</lastmod>
     <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.ginocchi-ggc.it/#/faq</loc>
+    <lastmod>2024-05-20T10:00:00+00:00</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.ginocchi-ggc.it/#/contatti</loc>
+    <lastmod>2024-05-20T10:00:00+00:00</lastmod>
+    <priority>0.60</priority>
   </url>
   <url><loc>https://www.ginocchi-ggc.it/#/personaggi/punturirma-1</loc><priority>0.9</priority></url>
   <url><loc>https://www.ginocchi-ggc.it/#/personaggi/roboshop-2</loc><priority>0.9</priority></url>

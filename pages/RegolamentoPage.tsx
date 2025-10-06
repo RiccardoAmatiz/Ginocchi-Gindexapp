@@ -1,7 +1,7 @@
 import React from 'react';
 import { CATEGORY_COLORS } from '../constants';
 import { Categoria } from '../types';
-import usePageMetadata from '../hooks/usePageMetadata';
+import { useSeo } from '../hooks/usePageMetadata';
 
 interface RuleSectionProps {
   title: string;
@@ -23,12 +23,28 @@ const RuleSection: React.FC<RuleSectionProps> = ({ title, number, children, titl
 );
 
 const RegolamentoPage: React.FC = () => {
-  usePageMetadata({
-    title: 'Regolamento Completo | GINocchi - Gioco di Gin Collezionabili',
-    description: 'Impara tutte le regole di GINocchi - GGC. Scopri come muoverti, attaccare, difenderti e sfruttare le debolezze dei Ginocchi.',
+  useSeo({
+    title: 'Regolamento Completo | GINocchi - GGC',
+    description: 'Impara tutte le regole di GINocchi - GGC. Scopri come muoverti, attaccare, difenderti e sfruttare le debolezze dei Ginocchi in questo gioco da tavolo unico.',
+    canonical: 'https://www.ginocchi-ggc.it/#/regolamento',
     keywords: 'regolamento, regole, come giocare, Ginocchi, GINocchi - GGC, gioco da tavolo, gioco alcolico',
-    og: {
-        url: 'https://www.ginocchi-ggc.it/#/regolamento',
+    schema: {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Regolamento Completo del Gioco da Tavolo GINocchi",
+        "author": {
+            "@type": "Organization",
+            "name": "GINocchi - GGC"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "GINocchi - GGC",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.ginocchi-ggc.it/images/logo_completo_footer.png"
+            }
+        },
+        "description": "La guida completa con tutte le regole per giocare a GINocchi, incluse le fasi di movimento, attacco, difesa, effetti speciali e il triangolo delle debolezze."
     }
   });
 
@@ -36,36 +52,34 @@ const RegolamentoPage: React.FC = () => {
   const effectImagePath = (imageName: string) => `/images/Status/${imageName}`;
 
   const effettiSpeciali = [
-    { name: "Paralisi totale", logo: "Paralisi Totale.png", desc: "Chi si difende non puoi muoversi né attaccare al prossimo turno." },
-    { name: "Cura", logo: "Cura.png", desc: "Chi attacca recupera 2 PV." },
-    { name: "Spinta", logo: "Spinta.png", desc: "Chi attacca spinge l’avversario di 2 caselle nella direzione dell'attacco.\nSe l’avversario sbatte contro una parete del campo da gioco, perde 1 PV.\nSe l’avversario sbatte contro un altro personaggio in gioco, entrambi perdono 1 PV." },
-    { name: "Autolesionismo", logo: "Autolesionismo.png", desc: "Chi attacca subisce danno +2." },
-    { name: "Vilipendio", logo: "Danno sesso opposto.png", desc: "Chi si difende, se di sesso diverso da chi attacca, subisce danno doppio." },
-    { name: "Ammosciamento", logo: "Ammosciamento.png", desc: "Chi si difende infliggerà danno massimo 1 al prossimo attacco." },
-    { name: "Sorso salvifico", logo: "Sorso_salvifico.png", desc: "Se il bicchiere di chi attacca contiene più gin tonic di quello di chi si difende, l’attaccante può bere un sorso e recuperare 2 PV." },
-    { name: "Spogliato", logo: "Spogliato.png", desc: "Chi si difende non potrà difendersi al prossimo attacco." },
-    { name: "Paura", logo: "Paura.png", desc: "Chi si difende, nel prossimo turno non potrà avvicinarsi a chi ha attaccato, dovrà rimanere ad almeno una casella di distanza." },
-    { name: "Succhiaggio PV", logo: "Succhiaggio pv.png", desc: "Chi attacca recupera PV pari al danno che infligge." },
-    { name: "Alcolismo competitivo", logo: "Alcolismo_competitivo.png", desc: "Se il bicchiere di chi attacca contiene meno gin tonic di quello di chi si defende, chi attacca infligge danno +2." },
-    { name: "Blocca attacco", logo: "Blocco Attacco.png", desc: "Chi si difende non potrà attaccare al prossimo turno." },
-    { name: "Inverti casella", logo: "Inverti Casella.png", desc: "Per chi si difende, il bonus “gioco in casa” (se applicabile) diventa un malus di pari valore." }
+    { name: "Paralisi totale", logo: "Paralisi Totale.webp", desc: "Chi si difende non puoi muoversi né attaccare al prossimo turno." },
+    { name: "Cura", logo: "Cura.webp", desc: "Chi attacca recupera 2 PV." },
+    { name: "Spinta", logo: "Spinta.webp", desc: "Chi attacca spinge l’avversario di 2 caselle nella direzione dell'attacco.\nSe l’avversario sbatte contro una parete del campo da gioco, perde 1 PV.\nSe l’avversario sbatte contro un altro personaggio in gioco, entrambi perdono 1 PV." },
+    { name: "Autolesionismo", logo: "Autolesionismo.webp", desc: "Chi attacca subisce danno +2." },
+    { name: "Vilipendio", logo: "Danno sesso opposto.webp", desc: "Chi si difende, se di sesso diverso da chi attacca, subisce danno doppio." },
+    { name: "Ammosciamento", logo: "Ammosciamento.webp", desc: "Chi si difende infliggerà danno massimo 1 al prossimo attacco." },
+    { name: "Sorso salvifico", logo: "Sorso_salvifico.webp", desc: "Se il bicchiere di chi attacca contiene più gin tonic di quello di chi si defende, l’attaccante può bere un sorso e recuperare 2 PV." },
+    { name: "Spogliato", logo: "Spogliato.webp", desc: "Chi si difende non potrà difendersi al prossimo attacco." },
+    { name: "Paura", logo: "Paura.webp", desc: "Chi si difende, nel prossimo turno non potrà avvicinarsi a chi ha attaccato, dovrà rimanere ad almeno una casella di distanza." },
+    { name: "Succhiaggio PV", logo: "Succhiaggio pv.webp", desc: "Chi attacca recupera PV pari al danno che infligge." },
+    { name: "Alcolismo competitivo", logo: "Alcolismo_competitivo.webp", desc: "Se il bicchiere di chi attacca contiene meno gin tonic di quello di chi si defende, chi attacca infligge danno +2." },
+    { name: "Blocca attacco", logo: "Blocco Attacco.webp", desc: "Chi si difende non potrà attaccare al prossimo turno." },
+    { name: "Inverti casella", logo: "Inverti Casella.webp", desc: "Per chi si difende, il bonus “gioco in casa” (se applicabile) diventa un malus di pari valore." }
   ];
 
   const garnishItems = [
-      { name: "Pepe Nero", img: "Garnish_pepenero.png", effect: "6 (Buff) ⇒ Infliggi ulteriore danno +3 con questo attacco.\n1 (Debuff) ⇒ Dopo la risoluzione di questo attacco perdi 2 PV." },
-      { name: "Pepe Rosa", img: "Garnish_peperosa.png", effect: "6 (Buff) ⇒ L’attaccante sceglie quale attacco del tuo personaggio utilizzerà in questo turno.\n1 (Debuff) ⇒ Il difensore sceglie quale attacco del tuo personaggio utilizzerai in questo turno." },
-      { name: "Ginepro", img: "Garnish_ginepro.png", effect: "6 (Buff) ⇒ Dopo la risoluzione dell’attacco recuperi 3 PV.\n1 (Debuff) ⇒ Infliggi ulteriore danno -2 con questo attacco." },
-      { name: "Cardamomo", img: "Garnish_cardamomo.png", effect: "6 (Buff) ⇒ Dopo la risoluzione dell’attacco puoi spostarti in qualsiasi casella del tabellone.\n1 (Debuff) ⇒ Dopo la risoluzione dell’attacco, chi si è difeso sceglierà in quale casella del tabellone spostarti." }
+      { name: "Pepe Nero", img: "Garnish_pepenero.webp", effect: "6 (Buff) ⇒ Infliggi ulteriore danno +3 con questo attacco.\n1 (Debuff) ⇒ Dopo la risoluzione di questo attacco perdi 2 PV." },
+      { name: "Pepe Rosa", img: "Garnish_peperosa.webp", effect: "6 (Buff) ⇒ L’attaccante sceglie quale attacco del tuo personaggio utilizzerà in questo turno.\n1 (Debuff) ⇒ Il difensore sceglie quale attacco del tuo personaggio utilizzerai in questo turno." },
+      { name: "Ginepro", img: "Garnish_ginepro.webp", effect: "6 (Buff) ⇒ Dopo la risoluzione dell’attacco recuperi 3 PV.\n1 (Debuff) ⇒ Infliggi ulteriore danno -2 con questo attacco." },
+      { name: "Cardamomo", img: "Garnish_cardamomo.webp", effect: "6 (Buff) ⇒ Dopo la risoluzione dell’attacco puoi spostarti in qualsiasi casella del tabellone.\n1 (Debuff) ⇒ Dopo la risoluzione dell’attacco, chi si è difeso sceglierà in quale casella del tabellone spostarti." }
   ];
-
 
   return (
     <div className="py-6 px-2">
       <img 
-        src="/images/header_regolamento.jpg" 
+        src="/images/header_regolamento.webp" 
         alt="Header Regolamento GINocchi" 
         className="w-full max-w-3xl mx-auto mb-10 rounded-lg shadow-lg"
-        onError={(e) => (e.currentTarget.style.display = 'none')} 
       />
 
       <div className="max-w-3xl mx-auto">
@@ -168,7 +182,7 @@ const RegolamentoPage: React.FC = () => {
           <h3 className="text-xl font-rubik font-bold mt-4 mb-2 text-white">6.3 Difesa</h3>
           <ul className="list-disc list-inside space-y-1 ml-4">
             <li>Sei vieni attaccato, devi difenderti;</li>
-            <li>Dopo aver ricevuto l’attacco dell’avversario, lancia il dado per difenderti e respingere l’attacco.</li>
+            <li>Dopo aver ricevuto l’attacco dell’avversario, lancia il dado per difendersi e respingere l’attacco.</li>
             <li>Se il numero ottenuto corriponde al numero del lancio di attacco, il danno e gli effetti vengono inflitti all’accattante (inclusi debolezze e gioco in casa)</li>
             <li>Se il numero ottenuto non corrisponde al numero del lancio di attacco, il danno e l’effetto viengono inflitti al difensore (inclusi debolezze e gioco in casa)</li>
           </ul>
@@ -210,22 +224,7 @@ const RegolamentoPage: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
             {effettiSpeciali.map((eff, index) => (
               <div key={index} className="p-4 bg-gray-900 rounded-lg border border-gray-700 flex flex-col items-center text-center shadow-lg">
-                <img 
-                    src={effectImagePath(eff.logo)} 
-                    alt={`Logo ${eff.name}`} 
-                    className="w-20 h-20 mb-3 object-contain"
-                    onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.alt = `Logo per ${eff.name} non trovato`;
-                        target.style.display = 'none'; 
-                        const placeholder = document.createElement('div');
-                        placeholder.className = 'w-20 h-20 flex items-center justify-center bg-gray-700 text-gray-400 text-xs rounded-md text-center p-2 mb-3';
-                        placeholder.textContent = `Logo ${eff.name}`;
-                        if (target.parentNode) {
-                            target.parentNode.insertBefore(placeholder, target);
-                        }
-                    }}
-                />
+                <img src={effectImagePath(eff.logo)} alt={`Logo ${eff.name}`} className="w-20 h-20 mb-3 object-contain" onError={(e) => { const target = e.target as HTMLImageElement; target.style.display = 'none'; }} />
                 <h4 className="text-lg font-rubik font-bold text-white mb-1">{eff.name}</h4>
                 <p className="text-sm text-gray-300 leading-relaxed flex-grow whitespace-pre-line">{eff.desc}</p>
               </div>
@@ -258,22 +257,7 @@ const RegolamentoPage: React.FC = () => {
           <div className="space-y-6 mt-4">
             {garnishItems.map((garnish, index) => (
               <div key={index} className="flex flex-col sm:flex-row items-center p-3 bg-gray-900 rounded-lg border border-gray-700">
-                <img 
-                    src={garnishImagePath(garnish.img)} 
-                    alt={garnish.name} 
-                    className="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-md mr-0 sm:mr-4 mb-3 sm:mb-0 border-2 border-gray-600" 
-                    onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.alt = `Immagine di ${garnish.name} non trovata`;
-                        target.style.display = 'none'; 
-                        const placeholder = document.createElement('div');
-                        placeholder.className = 'w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center bg-gray-700 text-gray-400 text-xs rounded-md mr-0 sm:mr-4 mb-3 sm:mb-0 border-2 border-gray-600 p-2 text-center';
-                        placeholder.textContent = garnish.name;
-                        if (target.parentNode) {
-                            target.parentNode.insertBefore(placeholder, target);
-                        }
-                    }}
-                />
+                <img src={garnishImagePath(garnish.img)} alt={garnish.name} className="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-md mr-0 sm:mr-4 mb-3 sm:mb-0 border-2 border-gray-600" onError={(e) => { const target = e.target as HTMLImageElement; target.style.display = 'none'; }} />
                 <div className="flex-1 text-center sm:text-left">
                   <h4 className="text-lg font-rubik font-bold text-white">{garnish.name}</h4>
                   <p className="text-sm whitespace-pre-line">{garnish.effect}</p>
@@ -283,7 +267,6 @@ const RegolamentoPage: React.FC = () => {
           </div>
           <p className="text-sm italic mt-4">* I garnish sono decorazioni da cocktail che ne completano l'esperienza sensoriale, non solo estetica. I garnish GINocchi vanno inseriti direttamente nel drink durante la sua preparazione all’inizio della partita.</p>
         </RuleSection>
-
       </div>
     </div>
   );

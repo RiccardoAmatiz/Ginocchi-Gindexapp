@@ -3,17 +3,20 @@ import { ALL_GINOCCHI, CATEGORIES_ORDER, CATEGORY_COLORS } from '../constants';
 import { Categoria, Ginocchio } from '../types';
 import GinocchioCard from '../components/GinocchioCard';
 import Accordion from '../components/Accordion';
-import usePageMetadata from '../hooks/usePageMetadata';
+import { useSeo } from '../hooks/usePageMetadata';
 
 const GindexPage: React.FC = () => {
-  usePageMetadata({
-    title: 'Gindex | GINocchi - Gioco di Gin Collezionabili',
-    description: 'Colleziona, bevi, combatti! Esplora il Gindex e scopri tutti i personaggi del gioco da tavolo GINocchi.',
+  useSeo({
+    title: 'Gindex - Tutti i Personaggi | GINocchi GGC',
+    description: 'Esplora il Gindex completo di tutti i 50 Ginocchi. Filtra per categoria, cerca per nome o ID e scopri le creature del mondo GINocchi - GGC.',
+    canonical: 'https://www.ginocchi-ggc.it/#/gindex',
     keywords: 'Gindex, lista Ginocchi, tutti i Ginocchi, Bilanciato, Erbaceo, Fruttato, Speziato, GINocchi - GGC, Gin collezionabili',
-    og: {
-        url: 'https://www.ginocchi-ggc.it/#/gindex',
-        title: 'Gindex | GINocchi - Gioco di Gin Collezionabili',
-        description: 'Colleziona, bevi, combatti! Esplora il Gindex e scopri tutti i personaggi del gioco da tavolo GINocchi.'
+    schema: {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Gindex - Tutti i Personaggi GINocchi",
+        "description": "Elenco completo e filtrabile di tutti i 50 personaggi collezionabili del gioco da tavolo GINocchi.",
+        "url": "https://www.ginocchi-ggc.it/#/gindex"
     }
   });
 
@@ -73,12 +76,11 @@ const GindexPage: React.FC = () => {
       {CATEGORIES_ORDER.map(categoria => {
         const ginocchiInCategory = ginocchiByCategoria[categoria];
         if (ginocchiInCategory.length === 0 && (selectedCategory !== 'All' && selectedCategory !== categoria)) {
-          return null; // Don't show empty categories if filters are active and don't match
+          return null;
         }
         if (ginocchiInCategory.length === 0 && searchTerm !== '' && selectedCategory === 'All') {
-             return null; // Don't show category if search term results in no items for this category
+             return null;
         }
-
 
         return (
           <Accordion 

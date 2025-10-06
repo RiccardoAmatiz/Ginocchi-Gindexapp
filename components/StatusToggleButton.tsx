@@ -12,7 +12,7 @@ interface StatusToggleButtonProps {
 
 const StatusToggleButton: React.FC<StatusToggleButtonProps> = ({ effectName, isActive, onToggle, color }) => {
   const [imageError, setImageError] = useState(false);
-  const iconSrc = `/images/Status/${encodeURIComponent(effectName)}.png`;
+  const iconSrc = `/images/Status/${encodeURIComponent(effectName)}.webp`;
 
   useEffect(() => {
     setImageError(false);
