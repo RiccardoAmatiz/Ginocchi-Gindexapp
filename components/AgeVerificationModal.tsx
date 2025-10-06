@@ -30,18 +30,12 @@ const AgeVerificationModal: React.FC<AgeVerificationModalProps> = ({ onVerified 
         >
           CONFERMA LA TUA ETÀ
         </h2>
-        
-        <div className="text-sm text-gray-300 mb-8 text-left space-y-2 leading-relaxed">
-          <p className="font-bold text-white text-base mb-3">⚠️ Avvertenza Legale</p>
-          <p>L’accesso a questo sito è consentito solo a maggiorenni (18+).</p>
-          <p>I contenuti riguardano alcolici e devono essere fruiti in modo responsabile.</p>
-          <p>Il sito e la chat possono includere linguaggio esplicito, immagini disturbanti e personaggi con tratti sessualizzati o volgari, non adatti a minori o a persone sensibili.</p>
-          <p>La chat è gestita da un’Intelligenza Artificiale, che può generare testi ironici o surreali.</p>
-          <p className="!mt-4 font-semibold">
-              Cliccando su “Ho più di 18 anni” confermi di avere l’età legale per il consumo di alcolici nel tuo Paese e accetti queste condizioni.
-          </p>
-        </div>
-        
+        <p className="text-base text-gray-300 mb-6 leading-relaxed">
+          Per accedere a questo sito devi avere l'età legale per il consumo di alcolici nel tuo paese di residenza.
+        </p>
+        <p className="text-sm text-gray-400 mb-8 font-bold uppercase">
+          BEVI RESPONSABILMENTE
+        </p>
         <Button 
           onClick={onVerified}
           variant="category"

@@ -1,98 +1,101 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
+import { Ginocchio } from '../types';
 
-const SEO_SCRIPT_ID = 'seo-structured-data';
+const BASE_URL = 'https://www.ginocchi-ggc.it';
+const SITE_NAME = 'GINocchi - Gioco di Gin Collezionabili';
+const DEFAULT_DESCRIPTION = 'GINocchi - GGC | Il gioco di gin collezionabili. Un mondo distorto dove il gin tonic è l\'unica arma contro la tirannia dell\'IA. Colleziona, bevi, combatti!';
+const DEFAULT_KEYWORDS = 'Ginocchi, GINocchi - GGC, GGC, Gioco di gin collezionabili, Gin collezionabili, Vaffanculo miserabili, gin, distilled gin, gin premium, gin italiano';
+const DEFAULT_IMAGE = `${BASE_URL}/images/og_image.png`; // Immagine generica per la condivisione social
 
-type SeoProps = {
+interface Metadata {
   title: string;
   description: string;
-  canonical: string;
-  keywords?: string;
+  keywords: string;
   og?: {
     title?: string;
     description?: string;
     image?: string;
-    type?: string;
-    site_name?: string;
+    url?: string;
   };
-  twitter?: {
-    card?: string;
-    title?: string;
-    description?: string;
-    image?: string;
-  };
-  schema?: Record<string, any> | Array<Record<string, any>>;
 }
 
-export const useSeo = (props: SeoProps) => {
+// Hook principale per aggiornare i metadati su qualsiasi pagina
+const usePageMetadata = (metadata: Metadata) => {
   useEffect(() => {
-    const { title, description, canonical, keywords, og, twitter, schema } = props;
+    // --- Tag SEO Standard ---
+    document.title = metadata.title;
+    
+    // Funzione di utilità per impostare il contenuto di un meta tag
+    const setMetaTag = (attrName: 'name' | 'property', attrValue: string, content: string) => {
+      let element = document.querySelector(`meta[${attrName}="${attrValue}"]`);
+      if (element) {
+        element.setAttribute('content', content);
+      }
+    };
+    
+    // Funzione di utilità per i tag link
+    const setLinkTag = (rel: string, href: string) => {
+      let element = document.querySelector(`link[rel="${rel}"]`);
+      if (element) {
+        element.setAttribute('href', href);
+      }
+    };
 
-    // --- Standard Meta Tags ---
-    document.title = title;
-    setMeta('description', description);
-    if (keywords) {
-      setMeta('keywords', keywords);
-    }
+    setMetaTag('name', 'description', metadata.description);
+    setMetaTag('name', 'keywords', metadata.keywords);
+    
+    // Poiché si tratta di una SPA con HashRouter, l'URL canonico dovrebbe essere pulito
+    const canonicalUrl = metadata.og?.url ? metadata.og.url.split('#')[0] : window.location.href.split('#')[0];
+    setLinkTag('canonical', canonicalUrl);
 
-    // --- Link Tags ---
-    setLink('canonical', canonical);
-
-    // --- Open Graph (Facebook, etc.) ---
-    setMeta('og:title', og?.title || title, 'property');
-    setMeta('og:description', og?.description || description, 'property');
-    setMeta('og:url', canonical, 'property');
-    setMeta('og:type', og?.type || 'website', 'property');
-    setMeta('og:site_name', og?.site_name || 'GINocchi - GGC', 'property');
-    if (og?.image) {
-      setMeta('og:image', og.image, 'property');
-    }
+    // --- Open Graph (per Facebook, WhatsApp, ecc.) ---
+    setMetaTag('property', 'og:title', metadata.og?.title || metadata.title);
+    setMetaTag('property', 'og:description', metadata.og?.description || metadata.description);
+    setMetaTag('property', 'og:url', metadata.og?.url || window.location.href);
+    setMetaTag('property', 'og:image', metadata.og?.image || DEFAULT_IMAGE);
+    setMetaTag('property', 'og:site_name', 'GINocchi');
+    setMetaTag('property', 'og:type', 'website');
 
     // --- Twitter Card ---
-    setMeta('twitter:card', twitter?.card || 'summary_large_image');
-    setMeta('twitter:title', twitter?.title || title);
-    setMeta('twitter:description', twitter?.description || description);
-    if (twitter?.image || og?.image) {
-        setMeta('twitter:image', twitter?.image || og!.image!);
-    }
-    
-    // --- Structured Data (JSON-LD) ---
-    const scriptElement = document.getElementById(SEO_SCRIPT_ID) as HTMLScriptElement | null;
-    if (schema) {
-      if (scriptElement) {
-        scriptElement.textContent = JSON.stringify(schema);
-      } else {
-        const newScript = document.createElement('script');
-        newScript.id = SEO_SCRIPT_ID;
-        newScript.type = 'application/ld+json';
-        newScript.textContent = JSON.stringify(schema);
-        document.head.appendChild(newScript);
-      }
-    } else if (scriptElement) {
-      // If no schema is provided but the script tag exists, remove it.
-      scriptElement.remove();
-    }
-    
-  }, [props]);
+    setMetaTag('name', 'twitter:card', 'summary_large_image');
+    setMetaTag('name', 'twitter:title', metadata.og?.title || metadata.title);
+    setMetaTag('name', 'twitter:description', metadata.og?.description || metadata.description);
+    setMetaTag('name', 'twitter:image', metadata.og?.image || DEFAULT_IMAGE);
+
+  }, [metadata]);
 };
 
-// Helper function to set or create meta tags
-function setMeta(name: string, content: string, attr: 'name' | 'property' = 'name') {
-  let element = document.querySelector(`meta[${attr}='${name}']`);
-  if (!element) {
-    element = document.createElement('meta');
-    element.setAttribute(attr, name);
-    document.head.appendChild(element);
-  }
-  element.setAttribute('content', content);
-}
+// Hook specializzato per la pagina di dettaglio del Ginocchio per metadati dinamici
+export const useGinocchioMetadata = (ginocchio: Ginocchio | undefined, description: string | undefined) => {
+    const metadata = useMemo(() => {
+        if (!ginocchio || !description) {
+            return {
+                title: SITE_NAME,
+                description: DEFAULT_DESCRIPTION,
+                keywords: DEFAULT_KEYWORDS,
+                og: {
+                    url: BASE_URL,
+                    image: DEFAULT_IMAGE,
+                }
+            };
+        }
 
-// Helper function to set or create link tags
-function setLink(rel: string, href: string) {
-  let element = document.querySelector(`link[rel='${rel}']`);
-  if (!element) {
-    element = document.createElement('link');
-    element.setAttribute('rel', rel);
-    document.head.appendChild(element);
-  }
-  element.setAttribute('href', href);
-}
+        const pageTitle = `${ginocchio.nome} | ${SITE_NAME}`;
+
+        return {
+            title: pageTitle,
+            description: `Scheda di ${ginocchio.nome}, Ginocchio di tipo ${ginocchio.categoria}. Scopri attacchi, PV e la sua storia nel gioco da tavolo GINocchi.`,
+            keywords: `${ginocchio.nome}, ${ginocchio.categoria}, GINocchi - GGC, Gin collezionabili, ${DEFAULT_KEYWORDS}`,
+            og: {
+                title: pageTitle,
+                description: `Scopri ${ginocchio.nome}, il Ginocchio di tipo ${ginocchio.categoria} del gioco da tavolo GINocchi.`,
+                image: `${BASE_URL}${ginocchio.immagine}`,
+                url: `${BASE_URL}/#/ginocchio/${ginocchio.id}`,
+            },
+        };
+    }, [ginocchio, description]);
+
+    usePageMetadata(metadata);
+};
+
+export default usePageMetadata;

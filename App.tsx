@@ -10,11 +10,8 @@ import { GinocchiGameplayProvider } from './context/GinocchiGameplayContext';
 import ScrollToTop from './components/ScrollToTop';
 import AgeVerificationModal from './components/AgeVerificationModal';
 import LorePage from './pages/LorePage';
-import GinPage from './pages/GinPage';
-import FaqPage from './pages/FaqPage';
-import ContattiPage from './pages/ContattiPage';
+import GinPage from './pages/GinPage'; // Importa la nuova pagina
 import { HeaderUIProvider } from './context/HeaderUIContext';
-import AcquistaPage from './pages/AcquistaPage';
 
 const App: React.FC = () => {
   // Controlla il localStorage nello stato iniziale per evitare sfarfallii
@@ -58,17 +55,11 @@ const App: React.FC = () => {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/gindex" element={<GindexPage />} />
-              <Route path="/personaggi/:slug" element={<SchedaGinocchioPage />} />
+              <Route path="/ginocchio/:id" element={<SchedaGinocchioPage />} />
               <Route path="/regolamento" element={<RegolamentoPage />} />
               <Route path="/regolamento-ubriachi" element={<RegolamentoUbriachiPage />} />
               <Route path="/lore" element={<LorePage />} />
-              <Route path="/gin" element={<GinPage />} />
-              <Route path="/faq" element={<FaqPage />} />
-              <Route path="/contatti" element={<ContattiPage />} />
-              <Route path="/acquista" element={<AcquistaPage />} />
-
-              {/* Redirect legacy ID-based URLs */}
-              <Route path="/ginocchio/:id" element={<Navigate to="/" replace />} />
+              <Route path="/gin" element={<GinPage />} /> {/* Aggiunta la nuova rotta */}
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </Layout>
