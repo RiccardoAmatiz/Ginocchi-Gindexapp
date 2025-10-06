@@ -42,12 +42,12 @@ const HomePage: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center text-center">
       <img 
-        src="/images/header_regolamento.webp"
+        src="/images/HEADER.webp"
         alt="GINocchi - Gioco di Gin Collezionabili" 
         className="mb-8 rounded-lg shadow-xl w-full max-w-2xl object-contain"
       />
       <h1 className="sr-only">GINocchi - Gioco di Gin Collezionabili</h1>
-      <p className="text-base mb-10 max-w-2xl text-gray-300 italic">
+      <p className="text-sm mb-10 max-w-2xl text-gray-300 italic">
         Chi lotta contro i mostri deve fare attenzione a non diventare lui stesso un mostro. E se tu guarderai a lungo in un Gin tonic, anche il Gin tonic vorrà guardare dentro di te.
       </p>
       
