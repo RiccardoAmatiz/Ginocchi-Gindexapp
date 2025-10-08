@@ -1,11 +1,11 @@
-
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useHeaderUI } from '../context/HeaderUIContext';
 import { StatusPlaceholderIcon } from './icons/StatusPlaceholderIcon';
+import HeaderMenu from './HeaderMenu';
 
 const StatusIcon: React.FC<{ effectName: string }> = ({ effectName }) => {
-  const [error, setError] = useState(false);
+  const [error, setError] = React.useState(false);
   const iconSrc = `/images/Status/${encodeURIComponent(effectName)}.webp`;
 
   const wrapperClasses = "p-1 bg-black border-2 border-white rounded-md";
@@ -41,6 +41,18 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
   const { headerInfo } = useHeaderUI();
+
+  const pagesWithMenu = [
+    '/gindex', 
+    '/lore', 
+    '/gin', 
+    '/acquista', 
+    '/regolamento', 
+    '/regolamento-ubriachi', 
+    '/faq', 
+    '/contatti'
+  ];
+  const showMenu = pagesWithMenu.includes(location.pathname);
 
   const healthPercentage = headerInfo && headerInfo.maxPv > 0 ? (headerInfo.pv / headerInfo.maxPv) * 100 : 0;
   let healthBarColorClass = '';
@@ -84,37 +96,42 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               <span className="font-rubik font-bold text-lg uppercase">HOME</span>
             </Link>
 
-            {/* Ginocchio Status in Header */}
-            {headerInfo && headerInfo.maxPv > 0 && (
-              <div 
-                className={`flex flex-col items-end gap-2 sm:flex-row sm:items-center sm:gap-3 ${hasTooManyStatuses ? 'sm:!flex-col sm:!items-end' : ''}`}
-                aria-label="Stato Ginocchio attuale"
-              >
-                  {/* PV Bar */}
-                  <div 
-                    className="w-32 h-3 bg-gray-600 rounded-full overflow-hidden"
-                    role="progressbar"
-                    aria-valuenow={headerInfo.pv}
-                    aria-valuemin={0}
-                    aria-valuemax={headerInfo.maxPv}
-                    aria-label={`Punti Vita: ${headerInfo.pv} di ${headerInfo.maxPv}`}
-                    title={`PV: ${headerInfo.pv} / ${headerInfo.maxPv}`}
-                  >
+            <div className="flex items-center gap-4">
+              {/* Ginocchio Status in Header */}
+              {headerInfo && headerInfo.maxPv > 0 && (
+                <div 
+                  className={`flex flex-col items-end gap-2 sm:flex-row sm:items-center sm:gap-3 ${hasTooManyStatuses ? 'sm:!flex-col sm:!items-end' : ''}`}
+                  aria-label="Stato Ginocchio attuale"
+                >
+                    {/* PV Bar */}
                     <div 
-                      className={`h-full rounded-full transition-all duration-300 ease-linear ${healthBarColorClass}`}
-                      style={{ width: `${healthPercentage}%` }}
-                    />
-                  </div>
-                  {/* Status Icons */}
-                  {headerInfo.activeStatusEffects.length > 0 && (
-                    <div className="flex items-center gap-2 flex-wrap justify-end max-w-[180px]">
-                        {headerInfo.activeStatusEffects.map(effect => (
-                            <StatusIcon key={effect} effectName={effect} />
-                        ))}
+                      className="w-32 h-3 bg-gray-600 rounded-full overflow-hidden"
+                      role="progressbar"
+                      aria-valuenow={headerInfo.pv}
+                      aria-valuemin={0}
+                      aria-valuemax={headerInfo.maxPv}
+                      aria-label={`Punti Vita: ${headerInfo.pv} di ${headerInfo.maxPv}`}
+                      title={`PV: ${headerInfo.pv} / ${headerInfo.maxPv}`}
+                    >
+                      <div 
+                        className={`h-full rounded-full transition-all duration-300 ease-linear ${healthBarColorClass}`}
+                        style={{ width: `${healthPercentage}%` }}
+                      />
                     </div>
-                  )}
-              </div>
-            )}
+                    {/* Status Icons */}
+                    {headerInfo.activeStatusEffects.length > 0 && (
+                      <div className="flex items-center gap-2 flex-wrap justify-end max-w-[180px]">
+                          {headerInfo.activeStatusEffects.map(effect => (
+                              <StatusIcon key={effect} effectName={effect} />
+                          ))}
+                      </div>
+                    )}
+                </div>
+              )}
+              
+              {showMenu && <HeaderMenu />}
+            </div>
+
           </nav>
         </header>
       )}
