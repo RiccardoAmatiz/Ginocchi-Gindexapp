@@ -70,16 +70,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <nav className="container mx-auto flex justify-between items-center" aria-label="Navigazione principale">
             <Link 
               to="/" 
-              className="flex items-center space-x-3 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75 hover:bg-gray-700 transition-colors"
+              className="p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75 hover:bg-gray-700 transition-colors"
               aria-label="Torna alla Home page"
             >
               <img 
-                src="/images/pittogramma_logo.png" 
-                alt="" 
-                className="h-10 w-10 object-contain" 
+                src="/images/pittogramma_home.png" 
+                alt="GINocchi Home" 
+                className="h-10 w-auto object-contain" 
                 onError={(e) => (e.currentTarget.style.display = 'none')} 
               />
-              <span className="text-white font-rubik font-bold text-xl uppercase">Home</span>
             </Link>
 
             {/* Ginocchio Status in Header */}
