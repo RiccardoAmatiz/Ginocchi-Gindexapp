@@ -49,6 +49,15 @@ const GindexPage: React.FC = () => {
     <div className="py-6">
       <h1 className="text-4xl font-rubik font-bold mb-8 text-center">GINDEX</h1>
       
+      <div className="mb-8 text-center text-gray-300 font-roboto-mono max-w-2xl mx-auto px-4 leading-relaxed">
+        <p>
+          Qui trovi tutte le schede dei GINocchi, con le informazioni essenziali per giocare: Punti Vita, attacchi unici, effetti e status aggiornabili in tempo reale.
+        </p>
+        <p className="mt-4">
+          Le schede sono strumento di gioco interattivo: servono tenere traccia della partita, leggere la descrizione del tuo Ginocchio e persino chattare con lui (a tuo rischio e pericolo).
+        </p>
+      </div>
+
       <div className="mb-8 p-4 bg-gray-900 rounded-lg shadow flex flex-col sm:flex-row gap-4 items-center">
         <input
           type="text"

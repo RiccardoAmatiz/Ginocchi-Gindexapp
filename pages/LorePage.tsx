@@ -32,10 +32,17 @@ const LorePage: React.FC = () => {
   return (
     <div className="py-6 max-w-3xl mx-auto text-gray-200 font-roboto-mono text-left">
       
+      <section className="mb-12 space-y-4">
+        <h1 className="text-3xl font-rubik font-bold mb-4 text-white">Che cos'è GINocchi?</h1>
+        <p className="text-2xl font-rubik font-bold text-gray-200 leading-relaxed">
+            GINocchi è il primo gioco di Gin collezionabili al mondo: 50 bottiglie mignon, ognuna legata a una creatura unica chiamata Ginocchio. Colleziona, bevi e sfida i tuoi amici in un’esperienza unica.
+        </p>
+      </section>
+
       <img src="/images/lore/lore1.webp" alt="L'abisso di GINocchi" className={imageClass} />
 
       <section className="mb-12 space-y-4 leading-relaxed text-lg">
-        <h1 className="text-3xl font-rubik font-bold mb-4 text-white">L’abisso</h1>
+        <h2 className="text-3xl font-rubik font-bold mb-4 text-white">L’abisso</h2>
         <p>Benvenuti nel mondo distorto di GINocchi, dove l'IA regna sovrana e il gin tonic è l'unica arma contro la sua tirannia. Preparati a un'esperienza immersiva, glitchata e alcolicamente profonda.</p>
       </section>
       
