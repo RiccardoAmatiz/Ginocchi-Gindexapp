@@ -129,23 +129,23 @@ const SchedaGinocchioPage: React.FC = () => {
     }
   }, [ginocchio, slug, navigate]);
 
-  if (!ginocchio) {
-    return null; // or a loading spinner
-  }
-  
-  const ginocchioState = getGinocchioState(ginocchio.id);
+  const ginocchioState = ginocchio ? getGinocchioState(ginocchio.id) : null;
 
   const handleToggleStatus = (effectName: StatusEffectName) => {
-    // Check if the effect is NOT currently active, meaning it's about to be activated
-    if (!ginocchioState.activeStatusEffects.includes(effectName)) {
+    if (!ginocchio) return;
+    if (ginocchioState && !ginocchioState.activeStatusEffects.includes(effectName)) {
         const effectDetails = SPECIAL_EFFECTS_LIST.find(e => e.name === effectName);
         if (effectDetails) {
             setToastEffect(effectDetails);
         }
     }
-    // Toggle the status in the context regardless
     toggleStatusEffect(ginocchio.id, effectName);
   };
+
+  const toggleableStatusEffects = useMemo(() => {
+    const toggleableNames = new Set(STATUS_EFFECT_NAMES);
+    return SPECIAL_EFFECTS_LIST.filter(effect => toggleableNames.has(effect.name as StatusEffectName));
+  }, []);
 
 
   useEffect(() => {
@@ -157,14 +157,20 @@ const SchedaGinocchioPage: React.FC = () => {
   }, [isAttackModalOpen, closeAttackModal]);
 
   useEffect(() => {
-    setHeaderInfo({
-      pv: currentPv,
-      maxPv: ginocchio.pvIniziali,
-      activeStatusEffects: ginocchioState.activeStatusEffects as StatusEffectName[],
-      categoryColor: ginocchio.colore,
-    });
+    if (ginocchio && ginocchioState) {
+        setHeaderInfo({
+            pv: currentPv,
+            maxPv: ginocchio.pvIniziali,
+            activeStatusEffects: ginocchioState.activeStatusEffects as StatusEffectName[],
+            categoryColor: ginocchio.colore,
+        });
+    }
     return () => clearHeaderInfo();
-  }, [ginocchio, currentPv, ginocchioState.activeStatusEffects, setHeaderInfo, clearHeaderInfo]);
+  }, [ginocchio, currentPv, ginocchioState, setHeaderInfo, clearHeaderInfo]);
+  
+  if (!ginocchio || !ginocchioState) {
+    return null; // or a loading spinner
+  }
 
   const handleResetState = () => {
     if (window.confirm(`Sei sicuro di voler resettare PV e status di ${ginocchio.nome.toUpperCase()}?`)) {
@@ -255,8 +261,14 @@ const SchedaGinocchioPage: React.FC = () => {
         <div className="mt-4">
           <Accordion title="Status" titleClassName="text-2xl !font-rubik" categoryColor={ginocchio.colore}>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 place-items-center">
-              {STATUS_EFFECT_NAMES.map((effectName) => (
-                <StatusToggleButton key={effectName} effectName={effectName} isActive={ginocchioState.activeStatusEffects.includes(effectName)} onToggle={() => handleToggleStatus(effectName)} color={ginocchio.colore} />
+              {toggleableStatusEffects.map((effect) => (
+                <StatusToggleButton 
+                    key={effect.name} 
+                    effect={effect} 
+                    isActive={ginocchioState.activeStatusEffects.includes(effect.name)} 
+                    onToggle={() => handleToggleStatus(effect.name as StatusEffectName)} 
+                    color={ginocchio.colore} 
+                />
               ))}
             </div>
           </Accordion>
