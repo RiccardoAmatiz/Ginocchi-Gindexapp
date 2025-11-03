@@ -68,9 +68,9 @@ const HeaderMenu: React.FC = () => {
               <div className="cursor-not-allowed opacity-50" title="Discord (presto disponibile)">
                 <DiscordIcon className="w-8 h-8 text-gray-400" />
               </div>
-              <div className="cursor-not-allowed opacity-50" title="YouTube (presto disponibile)">
-                <YoutubeIcon className="w-8 h-8 text-gray-400" />
-              </div>
+              <a href="https://www.youtube.com/channel/UCSN8EGoUmmQjxWt14LJtNZg" target="_blank" rel="noopener noreferrer" title="Visita il nostro canale YouTube" className="text-gray-400 hover:text-white transition-colors">
+                <YoutubeIcon className="w-8 h-8" />
+              </a>
             </div>
           </div>
         </div>
