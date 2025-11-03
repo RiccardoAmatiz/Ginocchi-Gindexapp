@@ -1,12 +1,13 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useHeaderUI } from '../context/HeaderUIContext';
 import { StatusPlaceholderIcon } from './icons/StatusPlaceholderIcon';
 import HeaderMenu from './HeaderMenu';
+import { SPECIAL_EFFECTS_LIST, SpecialEffect } from '../constants';
 
-const StatusIcon: React.FC<{ effectName: string }> = ({ effectName }) => {
+const StatusIcon: React.FC<{ effect: SpecialEffect }> = ({ effect }) => {
   const [error, setError] = React.useState(false);
-  const iconSrc = `/images/Status/${encodeURIComponent(effectName)}.webp`;
+  const iconSrc = `/images/Status/${encodeURIComponent(effect.logo)}`;
 
   const wrapperClasses = "p-1 bg-black border-2 border-white rounded-md";
   const iconClasses = "w-10 h-10 object-contain";
@@ -14,7 +15,7 @@ const StatusIcon: React.FC<{ effectName: string }> = ({ effectName }) => {
   if (error) {
     return (
         <div className={wrapperClasses}>
-            <StatusPlaceholderIcon className={`${iconClasses} text-gray-400`} aria-label={effectName} />
+            <StatusPlaceholderIcon className={`${iconClasses} text-gray-400`} aria-label={effect.name} />
         </div>
     );
   }
@@ -23,8 +24,8 @@ const StatusIcon: React.FC<{ effectName: string }> = ({ effectName }) => {
     <div className={wrapperClasses}>
         <img
             src={iconSrc}
-            alt={effectName}
-            title={effectName}
+            alt={effect.name}
+            title={effect.name}
             className={iconClasses}
             onError={() => setError(true)}
         />
@@ -41,6 +42,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
   const { headerInfo } = useHeaderUI();
+
+  const effectsMap = useMemo(() => 
+    new Map(SPECIAL_EFFECTS_LIST.map(effect => [effect.name, effect])), 
+    []
+  );
 
   const pagesWithMenu = [
     '/gindex', 
@@ -121,9 +127,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     {/* Status Icons */}
                     {headerInfo.activeStatusEffects.length > 0 && (
                       <div className="flex items-center gap-2 flex-wrap justify-end max-w-[180px]">
-                          {headerInfo.activeStatusEffects.map(effect => (
-                              <StatusIcon key={effect} effectName={effect} />
-                          ))}
+                          {headerInfo.activeStatusEffects.map(effectName => {
+                              const effect = effectsMap.get(effectName);
+                              if (!effect) return null;
+                              return <StatusIcon key={effect.name} effect={effect} />;
+                          })}
                       </div>
                     )}
                 </div>
