@@ -42,6 +42,37 @@ export const PV_QUOTES: Record<number, string> = {
   0: "SEI MORTO (COGLIONƏ)."
 };
 
+// --- SINGLE SOURCE OF TRUTH FOR SPECIAL EFFECTS ---
+export interface SpecialEffect {
+  name: string;
+  description: string;
+  logo: string;
+}
+
+export const SPECIAL_EFFECTS_LIST: SpecialEffect[] = [
+    { name: "Paralisi totale", logo: "Paralisi Totale.webp", description: "Chi si difende non può muoversi né attaccare al prossimo turno." },
+    { name: "Cura", logo: "Cura.webp", description: "Chi attacca recupera 2 PV." },
+    { name: "Spinta", logo: "Spinta.webp", description: "Chi attacca spinge l’avversario di 2 caselle nella direzione dell'attacco.\nSe l’avversario sbatte contro una parete del campo da gioco, perde 1 PV.\nSe l’avversario sbatte contro un altro personaggio in gioco, entrambi perdono 1 PV." },
+    { name: "Autolesionismo", logo: "Autolesionismo.webp", description: "Chi attacca subisce danno +2." },
+    { name: "Vilipendio", logo: "Danno sesso opposto.webp", description: "Chi si difende, se di sesso diverso da chi attacca, subisce danno doppio." },
+    { name: "Ammosciamento", logo: "Ammosciamento.webp", description: "Chi si difende infliggerà danno massimo 1 al prossimo attacco." },
+    { name: "Sorso salvifico", logo: "Sorso_salvifico.webp", description: "Se il bicchiere di chi attacca contiene più gin tonic di quello di chi si difende, l’attaccante può bere un sorso e recuperare 2 PV." },
+    { name: "Spogliato", logo: "Spogliato.webp", description: "Chi si difende non potrà difendersi al prossimo attacco." },
+    { name: "Paura", logo: "Paura.webp", description: "Chi si difende, nel prossimo turno non potrà avvicinarsi a chi ha attaccato, dovrà rimanere ad almeno una casella di distanza." },
+    { name: "Succhiaggio PV", logo: "Succhiaggio pv.webp", description: "Chi attacca recupera PV pari al danno che infligge." },
+    { name: "Alcolismo competitivo", logo: "Alcolismo_competitivo.webp", description: "Se il bicchiere di chi attacca contiene meno gin tonic di quello di chi si defende, chi attacca infligge danno +2." },
+    { name: "Blocca attacco", logo: "Blocco Attacco.webp", description: "Chi si difende non potrà attaccare al prossimo turno." },
+    { name: "Inverti casella", logo: "Inverti Casella.webp", description: "Per chi si difende, il bonus “gioco in casa” (se applicabile) diventa un malus di pari valore." }
+];
+
+// Create a map for quick lookups during parsing
+export const SPECIAL_EFFECTS_DEFINITIONS: Record<string, Omit<SpecialEffect, 'name'>> = 
+  SPECIAL_EFFECTS_LIST.reduce((acc, effect) => {
+    acc[effect.name] = { description: effect.description, logo: effect.logo };
+    return acc;
+  }, {} as Record<string, Omit<SpecialEffect, 'name'>>);
+
+
 const CATEGORY_MAP: Record<string, Categoria> = {
   "Bilanciato": Categoria.Bilanciato,
   "Fruttato": Categoria.Fruttato,
@@ -188,17 +219,28 @@ const parseAllGinocchiData = (): { ginocchi: Ginocchio[], descriptions: Record<n
 
       const nomeAttacco = cells[attaccoIndices.nome];
       const potenzaAttacco = cells[attaccoIndices.potenza];
-      const effettoAttacco = cells[attaccoIndices.effetto];
+      const rawEffectString = cells[attaccoIndices.effetto];
       
-      if (nomeAttacco && potenzaAttacco && effettoAttacco) {
+      if (nomeAttacco && potenzaAttacco && rawEffectString) {
+        // --- Centralized Effect Logic ---
+        // Extract the effect name (e.g., "Paralisi totale")
+        const effectName = rawEffectString.split(' - ')[0].trim();
+        // Look up the canonical definition
+        const canonicalDefinition = SPECIAL_EFFECTS_DEFINITIONS[effectName];
+        
+        // Use the canonical description if found, otherwise fallback to the raw string
+        const finalEffectString = canonicalDefinition
+            ? `${effectName} - ${canonicalDefinition.description}`
+            : rawEffectString;
+
         attacchi.push({
           dado: index + 1,
           nome: nomeAttacco,
           danno: parseDamageString(potenzaAttacco),
-          effetto: effettoAttacco
+          effetto: finalEffectString
         });
       } else {
-        // console.warn(`Missing data for Ginocchio ID ${id}, Attack ${index + 1}: Nome='${nomeAttacco}', Potenza='${potenzaAttacco}', Effetto='${effettoAttacco}'`);
+        // console.warn(`Missing data for Ginocchio ID ${id}, Attack ${index + 1}: Nome='${nomeAttacco}', Potenza='${potenzaAttacco}', Effetto='${rawEffectString}'`);
       }
     });
     

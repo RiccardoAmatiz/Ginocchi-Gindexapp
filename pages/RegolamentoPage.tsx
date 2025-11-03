@@ -1,5 +1,5 @@
 import React from 'react';
-import { CATEGORY_COLORS } from '../constants';
+import { CATEGORY_COLORS, SPECIAL_EFFECTS_LIST } from '../constants';
 import { Categoria } from '../types';
 import { useSeo } from '../hooks/usePageMetadata';
 
@@ -50,22 +50,6 @@ const RegolamentoPage: React.FC = () => {
 
   const garnishImagePath = (imageName: string) => `/images/Garnish/${imageName}`;
   const effectImagePath = (imageName: string) => `/images/Status/${imageName}`;
-
-  const effettiSpeciali = [
-    { name: "Paralisi totale", logo: "Paralisi Totale.webp", desc: "Chi si difende non puoi muoversi né attaccare al prossimo turno." },
-    { name: "Cura", logo: "Cura.webp", desc: "Chi attacca recupera 2 PV." },
-    { name: "Spinta", logo: "Spinta.webp", desc: "Chi attacca spinge l’avversario di 2 caselle nella direzione dell'attacco.\nSe l’avversario sbatte contro una parete del campo da gioco, perde 1 PV.\nSe l’avversario sbatte contro un altro personaggio in gioco, entrambi perdono 1 PV." },
-    { name: "Autolesionismo", logo: "Autolesionismo.webp", desc: "Chi attacca subisce danno +2." },
-    { name: "Vilipendio", logo: "Danno sesso opposto.webp", desc: "Chi si difende, se di sesso diverso da chi attacca, subisce danno doppio." },
-    { name: "Ammosciamento", logo: "Ammosciamento.webp", desc: "Chi si difende infliggerà danno massimo 1 al prossimo attacco." },
-    { name: "Sorso salvifico", logo: "Sorso_salvifico.webp", desc: "Se il bicchiere di chi attacca contiene più gin tonic di quello di chi si defende, l’attaccante può bere un sorso e recuperare 2 PV." },
-    { name: "Spogliato", logo: "Spogliato.webp", desc: "Chi si difende non potrà difendersi al prossimo attacco." },
-    { name: "Paura", logo: "Paura.webp", desc: "Chi si difende, nel prossimo turno non potrà avvicinarsi a chi ha attaccato, dovrà rimanere ad almeno una casella di distanza." },
-    { name: "Succhiaggio PV", logo: "Succhiaggio pv.webp", desc: "Chi attacca recupera PV pari al danno che infligge." },
-    { name: "Alcolismo competitivo", logo: "Alcolismo_competitivo.webp", desc: "Se il bicchiere di chi attacca contiene meno gin tonic di quello di chi si defende, chi attacca infligge danno +2." },
-    { name: "Blocca attacco", logo: "Blocco Attacco.webp", desc: "Chi si difende non potrà attaccare al prossimo turno." },
-    { name: "Inverti casella", logo: "Inverti Casella.webp", desc: "Per chi si difende, il bonus “gioco in casa” (se applicabile) diventa un malus di pari valore." }
-  ];
 
   const garnishItems = [
       { name: "Pepe Nero", img: "Garnish_pepenero.webp", effect: "6 (Buff) ⇒ Infliggi ulteriore danno +3 con questo attacco.\n1 (Debuff) ⇒ Dopo la risoluzione di questo attacco perdi 2 PV." },
@@ -181,10 +165,10 @@ const RegolamentoPage: React.FC = () => {
           </ul>
           <h3 className="text-xl font-rubik font-bold mt-4 mb-2 text-white">6.3 Difesa</h3>
           <ul className="list-disc list-inside space-y-1 ml-4">
-            <li>Sei vieni attaccato, devi difenderti;</li>
+            <li>Se vieni attaccato, devi difenderti;</li>
             <li>Dopo aver ricevuto l’attacco dell’avversario, lancia il dado per difendersi e respingere l’attacco.</li>
-            <li>Se il numero ottenuto corriponde al numero del lancio di attacco, il danno e gli effetti vengono inflitti all’accattante (inclusi debolezze e gioco in casa)</li>
-            <li>Se il numero ottenuto non corrisponde al numero del lancio di attacco, il danno e l’effetto viengono inflitti al difensore (inclusi debolezze e gioco in casa)</li>
+            <li>Se il numero ottenuto corrisponde al numero del lancio di attacco, il danno e gli effetti vengono inflitti all’attaccante (inclusi debolezze e gioco in casa)</li>
+            <li>Se il numero ottenuto non corrisponde al numero del lancio di attacco, il danno e l’effetto vengono inflitti al difensore (inclusi debolezze e gioco in casa)</li>
           </ul>
           <div className="mt-4 p-3 bg-orange-900 bg-opacity-40 border-l-4 border-orange-500 text-orange-300 rounded-r-md">
             <h4 className="font-bold text-lg">Scola o muori!</h4>
@@ -222,11 +206,11 @@ const RegolamentoPage: React.FC = () => {
           <p>Ogni personaggio ha a disposizione 6 attacchi con diversi danni ed effetti.</p>
           <p>Gli effetti sono condizioni associate all’attacco e si applicano al giocatore sconfitto durante il turno.</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
-            {effettiSpeciali.map((eff, index) => (
+            {SPECIAL_EFFECTS_LIST.map((eff, index) => (
               <div key={index} className="p-4 bg-gray-900 rounded-lg border border-gray-700 flex flex-col items-center text-center shadow-lg">
                 <img src={effectImagePath(eff.logo)} alt={`Logo ${eff.name}`} className="w-20 h-20 mb-3 object-contain" onError={(e) => { const target = e.target as HTMLImageElement; target.style.display = 'none'; }} />
                 <h4 className="text-lg font-rubik font-bold text-white mb-1">{eff.name}</h4>
-                <p className="text-sm text-gray-300 leading-relaxed flex-grow whitespace-pre-line">{eff.desc}</p>
+                <p className="text-sm text-gray-300 leading-relaxed flex-grow whitespace-pre-line">{eff.description}</p>
               </div>
             ))}
           </div>

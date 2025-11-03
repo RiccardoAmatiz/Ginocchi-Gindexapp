@@ -28,7 +28,7 @@ const GinPage: React.FC = () => {
       <section className="mb-12">
         <h1 className="text-4xl font-rubik font-bold mb-4 text-white">Il Gin</h1>
         <p className="text-lg leading-relaxed">
-          <strong className="font-bold">GIN</strong>occhi è un distilled gin premium, prodotto interamente in Italia con materie prime di alta qualità. La formula è essenziale: acqua purissima, ginepro selezionato e alcol di cereali di prima scelta. Su questa solida base si sviluppano i profili aromatici del mondo <strong className="font-bold">GIN</strong>occhi: bilanciato, erbaceo, fruttato e speziato. La definizione delle quattro ricette va dallo studio delle singole botaniche nella loro essenza alla costruzione di bouquet completi where la singola nota lascia spazio alla melodia. Ognuna delle quattro tipologie ha il suo gusto, che racconta una storia diversa e una forte identità. Il risultato è un distillato in grado di trasformare il semplice gesto di bere in un rito più ampio, un’esperienza sensoriale che va oltre il bicchiere e stimola l’immaginazione. <strong className="font-bold">GIN</strong>occhi non è solo un gioco, non è solo gin: è un mondo!
+          <strong className="font-bold">GIN</strong>occhi è un distilled gin premium, prodotto interamente in Italia con materie prime di alta qualità. La formula è essenziale: acqua purissima, ginepro selezionato e alcol di cereali di prima scelta. Su questa solida base si sviluppano i profili aromatici del mondo <strong className="font-bold">GIN</strong>occhi: bilanciato, erbaceo, fruttato e speziato. La definizione delle quattro ricette va dallo studio delle singole botaniche nella loro essenza alla costruzione di bouquet completi dove la singola nota lascia spazio alla melodia. Ognuna delle quattro tipologie ha il suo gusto, che racconta una storia diversa e una forte identità. Il risultato è un distillato in grado di trasformare il semplice gesto di bere in un rito più ampio, un’esperienza sensoriale che va oltre il bicchiere e stimola l’immaginazione. <strong className="font-bold">GIN</strong>occhi non è solo un gioco, non è solo gin: è un mondo!
         </p>
       </section>
 
@@ -55,7 +55,7 @@ const GinPage: React.FC = () => {
       <section className="mb-12 space-y-4 leading-relaxed text-lg">
         <h2 className="text-3xl font-rubik font-bold mb-4 text-white"><strong className="font-bold">GIN</strong>occhi Erbaceo</h2>
         <p>Verde, selvaggio e inarrestabile affonda le radici nella tua bocca. Senti il fruscio delle foglie? È <strong className="font-bold">GIN</strong>occhi erbaceo. Questa forza della natura è un richiamo ancestrale che germoglia dentro di te e non lascia scampo.</p>
-        <p><strong className="text-white">Botaniche:</strong> ginepro, rosmarino, timo, menta piperita, finocchietto selvanico e salvia.</p>
+        <p><strong className="text-white">Botaniche:</strong> ginepro, rosmarino, timo, menta piperita, finocchietto selvatico e salvia.</p>
         <p><strong className="text-white">Profilo:</strong> intenso, fresco, dominato da note che esplodono in un finale verde e balsamico.</p>
       </section>
       

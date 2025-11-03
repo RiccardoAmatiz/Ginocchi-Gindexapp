@@ -37,14 +37,12 @@ export type GinocchiGameplayContextType = {
 
 // Updated status effect names based on the provided images
 export const STATUS_EFFECT_NAMES = [
-  "Ammosciamento", 
-  "Paura", 
-  // "Blocco Movimento", // Rimosso
-  "Blocco Attacco",
-  "Spogliato", 
-  // "Tossicodipendenza", // Rimosso
-  "Paralisi Totale", 
-  "Inverti Casella"
+  "Ammosciamento",
+  "Paura",
+  "Blocca attacco",
+  "Spogliato",
+  "Paralisi totale",
+  "Inverti casella"
 ] as const;
 
 export type StatusEffectName = typeof STATUS_EFFECT_NAMES[number];

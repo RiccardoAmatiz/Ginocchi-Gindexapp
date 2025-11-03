@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { ALL_GINOCCHI, CATEGORY_COLORS, PV_QUOTES, GINOCCHIO_DESCRIPTIONS } from '../constants';
+import { ALL_GINOCCHI, CATEGORY_COLORS, PV_QUOTES, GINOCCHIO_DESCRIPTIONS, SPECIAL_EFFECTS_LIST, SpecialEffect } from '../constants';
 import { Ginocchio, Attacco, StatusEffectName, STATUS_EFFECT_NAMES } from '../types';
 import CategoryBadge from '../components/CategoryBadge';
 import PvTracker from '../components/PvTracker';
@@ -15,6 +15,7 @@ import { usePvTracker } from '../hooks/usePvTracker';
 import { useHeaderUI } from '../context/HeaderUIContext';
 import { useSeo } from '../hooks/usePageMetadata';
 import { VolumeUpIcon } from '../components/icons/VolumeUpIcon';
+import StatusEffectToast from '../components/StatusEffectToast';
 
 const SchedaGinocchioPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -48,6 +49,7 @@ const SchedaGinocchioPage: React.FC = () => {
 
   const [selectedAttack, setSelectedAttack] = useState<Attacco | null>(null);
   const [isAttackModalOpen, setIsAttackModalOpen] = useState(false);
+  const [toastEffect, setToastEffect] = useState<SpecialEffect | null>(null);
 
   const description = useMemo(() => ginocchio ? GINOCCHIO_DESCRIPTIONS[ginocchio.id] : undefined, [ginocchio]);
   
@@ -132,6 +134,19 @@ const SchedaGinocchioPage: React.FC = () => {
   }
   
   const ginocchioState = getGinocchioState(ginocchio.id);
+
+  const handleToggleStatus = (effectName: StatusEffectName) => {
+    // Check if the effect is NOT currently active, meaning it's about to be activated
+    if (!ginocchioState.activeStatusEffects.includes(effectName)) {
+        const effectDetails = SPECIAL_EFFECTS_LIST.find(e => e.name === effectName);
+        if (effectDetails) {
+            setToastEffect(effectDetails);
+        }
+    }
+    // Toggle the status in the context regardless
+    toggleStatusEffect(ginocchio.id, effectName);
+  };
+
 
   useEffect(() => {
     const handleEsc = (event: KeyboardEvent) => {
@@ -241,7 +256,7 @@ const SchedaGinocchioPage: React.FC = () => {
           <Accordion title="Status" titleClassName="text-2xl !font-rubik" categoryColor={ginocchio.colore}>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 place-items-center">
               {STATUS_EFFECT_NAMES.map((effectName) => (
-                <StatusToggleButton key={effectName} effectName={effectName} isActive={ginocchioState.activeStatusEffects.includes(effectName)} onToggle={() => toggleStatusEffect(ginocchio.id, effectName)} color={ginocchio.colore} />
+                <StatusToggleButton key={effectName} effectName={effectName} isActive={ginocchioState.activeStatusEffects.includes(effectName)} onToggle={() => handleToggleStatus(effectName)} color={ginocchio.colore} />
               ))}
             </div>
           </Accordion>
@@ -270,6 +285,13 @@ const SchedaGinocchioPage: React.FC = () => {
       </div>
       {isAttackModalOpen && selectedAttack && (
         <AttackDetailModal attack={selectedAttack} isOpen={isAttackModalOpen} onClose={closeAttackModal} categoryColor={ginocchio.colore} />
+      )}
+      {toastEffect && (
+        <StatusEffectToast
+            effect={toastEffect}
+            onClose={() => setToastEffect(null)}
+            categoryColor={ginocchio.colore}
+        />
       )}
     </div>
   );
