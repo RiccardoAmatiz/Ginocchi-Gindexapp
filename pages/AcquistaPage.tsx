@@ -54,7 +54,7 @@ const AcquistaPage: React.FC = () => {
 
     return (
         <div className="py-6 max-w-5xl mx-auto text-center">
-            <h1 className="text-4xl sm:text-5xl font-rubik font-bold mb-12 text-white">Sobrio sei inutile. Risolvilo: ORDINA.</h1>
+            <h1 className="text-4xl sm:text-5xl font-rubik font-bold mb-12 text-white">Da sobrio sei inutile, ma abbiamo la soluzione: ordina subito!</h1>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 text-left">
                 <BundleCard 
