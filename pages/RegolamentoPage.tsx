@@ -93,7 +93,7 @@ const RegolamentoPage: React.FC = () => {
         <RuleSection number="3." title="Occorrente">
           <ul className="list-disc list-inside space-y-1">
             <li>2 o più giocatori;</li>
-            <li>Tabellone da gioco oppure almeno 25 casellotti;</li>
+            <li>Tabellone da gioco oppure almeno 25 stickers;</li>
             <li>Dado a 6 facce;</li>
             <li>Garnish: pepe nero, pepe rosa, ginepro o cardamomo (opzionale).</li>
           </ul>
@@ -110,8 +110,8 @@ const RegolamentoPage: React.FC = () => {
         
         <RuleSection number="4." title="Tabellone">
           <p>Il pack GINocchi XL include il tabellone ufficiale GINocchi: una griglia 5x5, ottimale da 2 a 4 giocatori.</p>
-          <p>Il pack GINocchi XS include 25 casellotti (stickers adesivi), con cui comporre il proprio tabellone personalizzato. Segui la griglia consigliata oppure scatena la fantasia!</p>
-          <p>Vuoi assicurarti un gioco equilibrato? Da 2 a 4 giocatori utilizza 4 caselle rosse, 4 verdi, 4 blu e 5 gialle. Per ogni giocatore che si unisce dopo il quarto, aggiungi 8 caselle (due per ogni tipologia).</p>
+          <p>Il pack GINocchi XS include 25 stickers adesivi, con cui comporre il proprio tabellone personalizzato. Attacca gli stickers sulla superficie che preferisci, seguendo uno schema 5x5 oppure scatenando la fantasia!</p>
+          <p>Vuoi assicurarti un gioco equilibrato? Da 2 a 4 giocatori utilizza 6 caselle rosse, 6 verdi, 6 blu e 7 gialle. Il tabellone dei ginocchi è espandibile. Utilizza altri stickers per ampliarlo e giocare con più amici, per ogni giocatore aggiuntivo è consigliato ampliare il tabellone di 8 caselle (due per tipologia).</p>
           <h3 className="text-xl font-rubik font-bold mt-4 mb-2 text-white">4.1 Gioco in casa</h3>
           <p>Le caselle rappresentano le tipologie di GINocchi: bilanciato (giallo), erbaceo (verde), fruttato (rosso) e speziato (blu).</p>
           <p>Durante il gioco, se un giocatore si trova sulla casella della propria categoria ottiene un bonus +1 in attacco e difesa per “gioco in casa”.</p>
