@@ -34,7 +34,7 @@ const BundleCard: React.FC<{
 
 const AcquistaPage: React.FC = () => {
     useSeo({
-        title: 'Acquista GINocchi | Scegli il tuo pack',
+        title: 'Shop | GINocchi GGC',
         description: 'Scegli il tuo pack GINocchi e inizia la battaglia. Disponibili i bundle XS e XL con tutto il necessario per giocare e bere responsabilmente.',
         canonical: 'https://www.ginocchi-ggc.it/#/acquista',
         keywords: 'acquista, compra, shop, GINocchi, bundle, pack, gin, gioco da tavolo',
@@ -54,7 +54,8 @@ const AcquistaPage: React.FC = () => {
 
     return (
         <div className="py-6 max-w-5xl mx-auto text-center">
-            <h1 className="text-4xl sm:text-5xl font-rubik font-bold mb-12 text-white">Da sobrio sei inutile, ma abbiamo la soluzione: ordina subito!</h1>
+            <h1 className="text-3xl sm:text-4xl font-rubik font-bold mb-4 text-white">Shop</h1>
+            <p className="text-lg sm:text-xl font-rubik font-bold mb-8 text-gray-300">Da sobrio sei inutile, ma abbiamo la soluzione: ordina subito!</p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 text-left">
                 <BundleCard 
