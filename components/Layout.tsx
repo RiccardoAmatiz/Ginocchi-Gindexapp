@@ -41,6 +41,7 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
+  const isGinPage = location.pathname === '/gin';
   const { headerInfo } = useHeaderUI();
 
   const effectsMap = useMemo(() => 
@@ -146,7 +147,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       
       <main 
         id="main-content" 
-        className={isHomePage 
+        className={isHomePage || isGinPage
           ? "flex-grow w-full" 
           : "container mx-auto p-4 flex-grow w-full max-w-4xl"}
       >
