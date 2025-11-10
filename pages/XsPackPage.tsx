@@ -2,8 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useSeo } from '../hooks/usePageMetadata';
 import Breadcrumbs from '../components/Breadcrumbs';
 import Button from '../components/Button';
-import { ArrowLeftIcon } from '../components/icons/ArrowLeftIcon';
-import { ArrowRightIcon } from '../components/icons/ArrowRightIcon';
 import { CATEGORY_COLORS } from '../constants';
 
 const XsPackPage: React.FC = () => {
@@ -51,8 +49,6 @@ const XsPackPage: React.FC = () => {
         };
     }, [currentIndex, images.length]);
 
-    const goToPrevious = () => setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : images.length - 1));
-    const goToNext = () => setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
     const selectImage = (index: number) => setCurrentIndex(index);
     
     const breadcrumbItems = [
@@ -68,7 +64,7 @@ const XsPackPage: React.FC = () => {
             <div className="max-w-6xl mx-auto mt-4 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
                 {/* Image Slideshow */}
                 <div 
-                    className="relative group"
+                    className="relative"
                     onMouseEnter={resetTimeout}
                 >
                     <div className="relative aspect-square w-full overflow-hidden rounded-lg bg-gray-800">
@@ -81,14 +77,20 @@ const XsPackPage: React.FC = () => {
                                 onError={mainImageFallback}
                             />
                         ))}
+                         {/* Dot indicators */}
+                        <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+                            {images.map((_, index) => (
+                                <button
+                                    key={`dot-${index}`}
+                                    onClick={() => selectImage(index)}
+                                    className={`h-3 w-3 rounded-full transition-colors ${
+                                        currentIndex === index ? 'bg-yellow-400' : 'bg-gray-600 bg-opacity-75 hover:bg-gray-400'
+                                    }`}
+                                    aria-label={`Vai all'immagine ${index + 1}`}
+                                />
+                            ))}
+                        </div>
                     </div>
-
-                    <button onClick={goToPrevious} className="absolute top-1/2 left-2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity focus:opacity-100" aria-label="Immagine precedente">
-                        <ArrowLeftIcon className="w-6 h-6" />
-                    </button>
-                    <button onClick={goToNext} className="absolute top-1/2 right-2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity focus:opacity-100" aria-label="Immagine successiva">
-                        <ArrowRightIcon className="w-6 h-6" />
-                    </button>
 
                     <div className="flex justify-center gap-2 mt-4">
                         {images.map((src, index) => (
