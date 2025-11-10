@@ -15,6 +15,7 @@ import FaqPage from './pages/FaqPage';
 import ContattiPage from './pages/ContattiPage';
 import { HeaderUIProvider } from './context/HeaderUIContext';
 import AcquistaPage from './pages/AcquistaPage';
+import XsPackPage from './pages/XsPackPage';
 
 const App: React.FC = () => {
   // Controlla il localStorage nello stato iniziale per evitare sfarfallii
@@ -66,6 +67,7 @@ const App: React.FC = () => {
               <Route path="/faq" element={<FaqPage />} />
               <Route path="/contatti" element={<ContattiPage />} />
               <Route path="/acquista" element={<AcquistaPage />} />
+              <Route path="/acquista/xs-pack" element={<XsPackPage />} />
 
               {/* Redirect legacy ID-based URLs */}
               <Route path="/ginocchio/:id" element={<Navigate to="/" replace />} />

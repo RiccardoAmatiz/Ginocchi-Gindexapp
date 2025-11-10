@@ -1,5 +1,5 @@
 import React, { ReactNode, useMemo } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useHeaderUI } from '../context/HeaderUIContext';
 import { StatusPlaceholderIcon } from './icons/StatusPlaceholderIcon';
 import HeaderMenu from './HeaderMenu';
@@ -40,6 +40,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const location = useLocation();
+  const navigate = useNavigate();
   const isHomePage = location.pathname === '/';
   const isGinPage = location.pathname === '/gin';
   const { headerInfo } = useHeaderUI();
@@ -88,8 +89,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       {!isHomePage && (
         <header className="w-full p-4 bg-gray-900 shadow-md sticky top-0 z-50">
           <nav className="container mx-auto flex justify-between items-center" aria-label="Navigazione principale">
-            <Link 
-              to="/" 
+            <button 
+              onClick={() => navigate('/')}
               className="flex items-center gap-2 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75 hover:bg-gray-700 transition-colors"
               aria-label="Torna alla Home page"
             >
@@ -101,7 +102,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 onError={(e) => (e.currentTarget.style.display = 'none')} 
               />
               <span className="font-rubik font-bold text-lg uppercase">HOME</span>
-            </Link>
+            </button>
 
             <div className="flex items-center gap-4">
               {/* Ginocchio Status in Header */}

@@ -197,18 +197,18 @@ const SchedaGinocchioPage: React.FC = () => {
   );
 
   return (
-    <div className="py-6 flex flex-col items-center">
+    <div key={slug} className="py-6 flex flex-col items-center">
       <div className="w-full max-w-2xl bg-gray-900 rounded-xl shadow-2xl p-2 sm:p-4 md:p-6 lg:p-8 mt-4">
         
         <div className="w-full flex justify-between items-center mb-4 pt-2">
             {previousGinocchio ? (
-                <Link to={`/personaggi/${previousGinocchio.slug}`} className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors p-2 rounded-lg w-1/3" aria-label={`Vai a ${previousGinocchio.nome}`}>
+                <button onClick={() => navigate(`/personaggi/${previousGinocchio.slug}`)} className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors p-2 rounded-lg w-1/3 text-left" aria-label={`Vai a ${previousGinocchio.nome}`}>
                     <ArrowLeftIcon className="w-8 h-8 flex-shrink-0" />
                     <div className="text-left">
                         <span className="text-sm font-bold block" style={{color: previousGinocchio.colore}}>#{previousGinocchio.id}</span>
                         <span className="text-xs block truncate">{previousGinocchio.nome}</span>
                     </div>
-                </Link>
+                </button>
             ) : <div className="w-1/3"></div>}
             
             <div className="w-1/3 text-center flex-shrink-0">
@@ -218,13 +218,13 @@ const SchedaGinocchioPage: React.FC = () => {
             </div>
 
             {nextGinocchio ? (
-                 <Link to={`/personaggi/${nextGinocchio.slug}`} className="flex items-center justify-end space-x-3 text-gray-400 hover:text-white transition-colors p-2 rounded-lg w-1/3" aria-label={`Vai a ${nextGinocchio.nome}`}>
+                 <button onClick={() => navigate(`/personaggi/${nextGinocchio.slug}`)} className="flex items-center justify-end space-x-3 text-gray-400 hover:text-white transition-colors p-2 rounded-lg w-1/3 text-right" aria-label={`Vai a ${nextGinocchio.nome}`}>
                      <div className="text-right">
                         <span className="text-sm font-bold block" style={{color: nextGinocchio.colore}}>#{nextGinocchio.id}</span>
                         <span className="text-xs block truncate">{nextGinocchio.nome}</span>
                     </div>
                     <ArrowRightIcon className="w-8 h-8 flex-shrink-0" />
-                </Link>
+                </button>
             ) : <div className="w-1/3"></div>}
         </div>
         
