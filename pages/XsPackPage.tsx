@@ -145,9 +145,6 @@ const XsPackPage: React.FC = () => {
                 </div>
             </div>
 
-            {/* Spacer for sticky button */}
-            <div className="h-36"></div> 
-
             {/* Sticky "Acquista" Button */}
             <div className="fixed bottom-0 left-0 w-full bg-black/80 backdrop-blur-sm p-4 border-t border-gray-700 z-40">
                 <div className="max-w-md mx-auto flex flex-col items-center gap-4">

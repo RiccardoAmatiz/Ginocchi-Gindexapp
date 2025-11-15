@@ -43,6 +43,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const navigate = useNavigate();
   const isHomePage = location.pathname === '/';
   const isGinPage = location.pathname === '/gin';
+  const isXsPackPage = location.pathname === '/acquista/xs-pack';
   const { headerInfo } = useHeaderUI();
 
   const effectsMap = useMemo(() => 
@@ -164,6 +165,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           onError={(e) => (e.currentTarget.style.display = 'none')} 
         />
       </div>
+
+      {/* Spacer for sticky footer on specific pages */}
+      {isXsPackPage && <div className="h-36"></div>}
 
       <footer className="w-full p-4 text-center text-sm text-gray-500">
         © {new Date().getFullYear()} <strong className="font-bold">GIN</strong>occhi - GGC
