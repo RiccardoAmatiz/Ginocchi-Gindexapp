@@ -15,7 +15,7 @@ const AgeVerificationModal: React.FC<AgeVerificationModalProps> = ({ onVerified 
       aria-labelledby="age-verification-title"
     >
       <div 
-        className="bg-gray-900 p-6 sm:p-8 rounded-xl shadow-2xl w-full max-w-lg border-2"
+        className="bg-gray-900 p-6 sm:p-8 rounded-xl shadow-2xl w-full max-w-lg border-2 max-h-[90vh] overflow-y-auto"
         style={{ borderColor: CATEGORY_COLORS.Bilanciato }}
       >
         <img 

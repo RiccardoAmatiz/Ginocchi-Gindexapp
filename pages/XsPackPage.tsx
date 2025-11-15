@@ -3,6 +3,8 @@ import { useSeo } from '../hooks/usePageMetadata';
 import Breadcrumbs from '../components/Breadcrumbs';
 import Button from '../components/Button';
 import { CATEGORY_COLORS } from '../constants';
+import { PlusIcon } from '../components/icons/PlusIcon';
+import { MinusIcon } from '../components/icons/MinusIcon';
 
 const XsPackPage: React.FC = () => {
     useSeo({
@@ -31,6 +33,16 @@ const XsPackPage: React.FC = () => {
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const timeoutRef = useRef<number | null>(null);
+
+    const [quantity, setQuantity] = useState(1);
+    const salePrice = 34.99;
+    const originalPrice = 39.99;
+    const totalPrice = (salePrice * quantity).toFixed(2).replace('.', ',');
+
+    const incrementQuantity = () => setQuantity(prev => (prev < 99 ? prev + 1 : 99));
+    const decrementQuantity = () => setQuantity(prev => (prev > 1 ? prev - 1 : 1));
+
+    const purchaseLink = `https://shop.iltuogin.it/carrello/cassa/?source=ginocchi&products[GINOCCHI-XS-0001]=${quantity}`;
 
     const resetTimeout = () => {
         if (timeoutRef.current) {
@@ -105,7 +117,12 @@ const XsPackPage: React.FC = () => {
                 <div className="py-4">
                     <h1 className="text-4xl lg:text-5xl font-rubik font-bold mb-2 text-white">GINocchi XS Pack</h1>
                     <p className="font-bold text-white text-lg mb-4">Gioco di Gin Collezionabili (6×50 ml)</p>
-                    <p className="text-3xl font-roboto-mono mb-6" style={{ color: CATEGORY_COLORS.Bilanciato }}>€999,99</p>
+                    
+                    <div className="flex items-baseline gap-3 mb-6">
+                        <span className="text-2xl lg:text-3xl font-roboto-mono text-gray-500 line-through">€{originalPrice.toFixed(2).replace('.', ',')}</span>
+                        <span className="text-4xl lg:text-5xl font-roboto-mono" style={{ color: CATEGORY_COLORS.Bilanciato }}>€{salePrice.toFixed(2).replace('.', ',')}</span>
+                        <span className="px-2 py-1 bg-green-600 text-white text-sm font-bold rounded-md">Offerta lancio</span>
+                    </div>
 
                     <div className="text-gray-300 space-y-4 leading-relaxed">
                         <ul className="list-disc list-inside space-y-3 pl-2">
@@ -115,22 +132,39 @@ const XsPackPage: React.FC = () => {
                             <li><strong className="font-semibold text-white">Made in Italy:</strong> prodotto e imbottigliato a Zola Predosa (BO), Italy. Confezione e componenti con istruzioni di raccolta differenziata (cartoncino PAP21 / vetro / alluminio).</li>
                         </ul>
                     </div>
+
                 </div>
             </div>
 
             {/* Spacer for sticky button */}
-            <div className="h-28"></div> 
+            <div className="h-36"></div> 
 
             {/* Sticky "Acquista" Button */}
             <div className="fixed bottom-0 left-0 w-full bg-black/80 backdrop-blur-sm p-4 border-t border-gray-700 z-40">
-                <div className="max-w-md mx-auto">
-                    <Button 
-                        variant="category" 
-                        categoryColor={CATEGORY_COLORS.Bilanciato}
-                        className="w-full !text-black !text-xl"
-                    >
-                        Acquista ora 999,99€
-                    </Button>
+                <div className="max-w-md mx-auto flex flex-col items-center gap-4">
+                    {/* Quantity Selector */}
+                    <div className="flex items-center gap-4">
+                        <span className="font-bold text-white text-lg">Quantità:</span>
+                        <div className="flex items-center border border-gray-600 rounded-lg bg-gray-800">
+                            <button onClick={decrementQuantity} className="p-3 text-white disabled:opacity-50 disabled:cursor-not-allowed" disabled={quantity <= 1} aria-label="Riduci quantità">
+                                <MinusIcon className="w-5 h-5" />
+                            </button>
+                            <span className="w-12 text-center text-xl font-bold text-white tabular-nums">{quantity}</span>
+                            <button onClick={incrementQuantity} className="p-3 text-white disabled:opacity-50 disabled:cursor-not-allowed" disabled={quantity >= 99} aria-label="Aumenta quantità">
+                                <PlusIcon className="w-5 h-5" />
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <a href={purchaseLink} target="_blank" rel="noopener noreferrer" className="block w-full">
+                        <Button 
+                            variant="category" 
+                            categoryColor={CATEGORY_COLORS.Bilanciato}
+                            className="w-full !text-black !text-xl"
+                        >
+                            Acquista ora {totalPrice}€
+                        </Button>
+                    </a>
                 </div>
             </div>
         </div>
