@@ -9,7 +9,7 @@ import { MinusIcon } from '../components/icons/MinusIcon';
 const XsPackPage: React.FC = () => {
     useSeo({
         title: 'GINocchi XS Pack | Acquista GINocchi GGC',
-        description: 'Dettagli del GINocchi XS Pack. Contiene 6 GINocchi casuali e 25 stickers per creare il tuo campo di battaglia personalizzato.',
+        description: 'Dettagli del GINocchi XS Pack. Contiene 6 GINocchi casuali, 1 dado e 25 stickers per creare il tuo campo di battaglia personalizzato.',
         canonical: 'https://www.ginocchi-ggc.it/#/acquista/xs-pack',
         keywords: 'GINocchi XS, acquista, compra, pack, bundle, gin',
     });
@@ -70,7 +70,7 @@ const XsPackPage: React.FC = () => {
     ];
     
     return (
-        <div className="py-6">
+        <div className="pt-6">
             <Breadcrumbs items={breadcrumbItems} />
 
             <div className="max-w-6xl mx-auto mt-4 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
@@ -125,12 +125,7 @@ const XsPackPage: React.FC = () => {
                     </div>
 
                     <div className="text-gray-300 space-y-4 leading-relaxed">
-                        <ul className="list-disc list-inside space-y-3 pl-2">
-                            <li><strong className="font-semibold text-white">Contenuto:</strong> 6 bottiglie mignon da 50 ml di gin al 40% vol., selezionate in maniera casuale tra i 50 GINocchi esistenti.</li>
-                            <li><strong className="font-semibold text-white">Set da gioco:</strong> 25 stickers per comporre il tabellone da gioco. Gli stickers possono essere applicati dove preferisci e nella maniera che più ti piace per creare il tuo campo da gioco personalizzato.</li>
-                            <li><strong className="font-semibold text-white">Fascia riutilizzabile:</strong> la fascia esterna dello XS Pack può anche essere tagliata a metà e usata come base dove posizionare gli stickers, trasformandola in un tabellone pronto all’uso.</li>
-                            <li><strong className="font-semibold text-white">Made in Italy:</strong> prodotto e imbottigliato a Zola Predosa (BO), Italy. Confezione e componenti con istruzioni di raccolta differenziata (cartoncino PAP21 / vetro / alluminio).</li>
-                        </ul>
+                        <p>Contenuto: 6 GINocchi (bottiglie di gin premium da 50 ml) selezionati casualmente, 1 dado e 25 stickers.</p>
                     </div>
 
                 </div>
