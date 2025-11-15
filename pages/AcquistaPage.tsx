@@ -42,8 +42,7 @@ const AcquistaPage: React.FC = () => {
     });
 
     const bundleXsItems = [
-        "6 GINocchi: 6 bottiglie di gin premium da 50 ml selezionate in maniera casuale",
-        "25 stickers per andare a creare il tuo tabellone"
+        "Contenuto: 6 GINocchi (bottiglie di gin premium da 50 ml) selezionati casualmente, 1 dado e 25 stickers."
     ];
 
     const bundleXlItems = [

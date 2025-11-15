@@ -2,14 +2,14 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useSeo } from '../hooks/usePageMetadata';
 import Breadcrumbs from '../components/Breadcrumbs';
 import Button from '../components/Button';
-import { ArrowLeftIcon } from '../components/icons/ArrowLeftIcon';
-import { ArrowRightIcon } from '../components/icons/ArrowRightIcon';
 import { CATEGORY_COLORS } from '../constants';
+import { PlusIcon } from '../components/icons/PlusIcon';
+import { MinusIcon } from '../components/icons/MinusIcon';
 
 const XsPackPage: React.FC = () => {
     useSeo({
         title: 'GINocchi XS Pack | Acquista GINocchi GGC',
-        description: 'Dettagli del GINocchi XS Pack. Contiene 6 GINocchi casuali e 25 stickers per creare il tuo campo di battaglia personalizzato.',
+        description: 'Dettagli del GINocchi XS Pack. Contiene 6 GINocchi casuali, 1 dado e 25 stickers per creare il tuo campo di battaglia personalizzato.',
         canonical: 'https://www.ginocchi-ggc.it/#/acquista/xs-pack',
         keywords: 'GINocchi XS, acquista, compra, pack, bundle, gin',
     });
@@ -34,6 +34,16 @@ const XsPackPage: React.FC = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const timeoutRef = useRef<number | null>(null);
 
+    const [quantity, setQuantity] = useState(1);
+    const salePrice = 34.99;
+    const originalPrice = 39.99;
+    const totalPrice = (salePrice * quantity).toFixed(2).replace('.', ',');
+
+    const incrementQuantity = () => setQuantity(prev => (prev < 99 ? prev + 1 : 99));
+    const decrementQuantity = () => setQuantity(prev => (prev > 1 ? prev - 1 : 1));
+
+    const purchaseLink = `https://shop.iltuogin.it/carrello/cassa/?source=ginocchi&products[GINOCCHI-XS-0001]=${quantity}`;
+
     const resetTimeout = () => {
         if (timeoutRef.current) {
             clearTimeout(timeoutRef.current);
@@ -51,8 +61,6 @@ const XsPackPage: React.FC = () => {
         };
     }, [currentIndex, images.length]);
 
-    const goToPrevious = () => setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : images.length - 1));
-    const goToNext = () => setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
     const selectImage = (index: number) => setCurrentIndex(index);
     
     const breadcrumbItems = [
@@ -62,13 +70,13 @@ const XsPackPage: React.FC = () => {
     ];
     
     return (
-        <div className="py-6">
+        <div className="pt-6">
             <Breadcrumbs items={breadcrumbItems} />
 
             <div className="max-w-6xl mx-auto mt-4 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
                 {/* Image Slideshow */}
                 <div 
-                    className="relative group"
+                    className="relative"
                     onMouseEnter={resetTimeout}
                 >
                     <div className="relative aspect-square w-full overflow-hidden rounded-lg bg-gray-800">
@@ -81,14 +89,20 @@ const XsPackPage: React.FC = () => {
                                 onError={mainImageFallback}
                             />
                         ))}
+                         {/* Dot indicators */}
+                        <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+                            {images.map((_, index) => (
+                                <button
+                                    key={`dot-${index}`}
+                                    onClick={() => selectImage(index)}
+                                    className={`h-3 w-3 rounded-full transition-colors ${
+                                        currentIndex === index ? 'bg-yellow-400' : 'bg-gray-600 bg-opacity-75 hover:bg-gray-400'
+                                    }`}
+                                    aria-label={`Vai all'immagine ${index + 1}`}
+                                />
+                            ))}
+                        </div>
                     </div>
-
-                    <button onClick={goToPrevious} className="absolute top-1/2 left-2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity focus:opacity-100" aria-label="Immagine precedente">
-                        <ArrowLeftIcon className="w-6 h-6" />
-                    </button>
-                    <button onClick={goToNext} className="absolute top-1/2 right-2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity focus:opacity-100" aria-label="Immagine successiva">
-                        <ArrowRightIcon className="w-6 h-6" />
-                    </button>
 
                     <div className="flex justify-center gap-2 mt-4">
                         {images.map((src, index) => (
@@ -103,32 +117,63 @@ const XsPackPage: React.FC = () => {
                 <div className="py-4">
                     <h1 className="text-4xl lg:text-5xl font-rubik font-bold mb-2 text-white">GINocchi XS Pack</h1>
                     <p className="font-bold text-white text-lg mb-4">Gioco di Gin Collezionabili (6×50 ml)</p>
-                    <p className="text-3xl font-roboto-mono mb-6" style={{ color: CATEGORY_COLORS.Bilanciato }}>€999,99</p>
+                    
+                    <div className="flex items-baseline gap-3 mb-6">
+                        <span className="text-2xl lg:text-3xl font-roboto-mono text-gray-500 line-through">€{originalPrice.toFixed(2).replace('.', ',')}</span>
+                        <span className="text-4xl lg:text-5xl font-roboto-mono" style={{ color: CATEGORY_COLORS.Bilanciato }}>€{salePrice.toFixed(2).replace('.', ',')}</span>
+                        <span className="px-2 py-1 bg-green-600 text-white text-sm font-bold rounded-md">Offerta lancio</span>
+                    </div>
 
                     <div className="text-gray-300 space-y-4 leading-relaxed">
-                        <ul className="list-disc list-inside space-y-3 pl-2">
-                            <li><strong className="font-semibold text-white">Contenuto:</strong> 6 bottiglie mignon da 50 ml di gin al 40% vol., selezionate in maniera casuale tra i 50 GINocchi esistenti.</li>
-                            <li><strong className="font-semibold text-white">Set da gioco:</strong> 25 stickers per comporre il tabellone da gioco. Gli stickers possono essere applicati dove preferisci e nella maniera che più ti piace per creare il tuo campo da gioco personalizzato.</li>
-                            <li><strong className="font-semibold text-white">Fascia riutilizzabile:</strong> la fascia esterna dello XS Pack può anche essere tagliata a metà e usata come base dove posizionare gli stickers, trasformandola in un tabellone pronto all’uso.</li>
-                            <li><strong className="font-semibold text-white">Made in Italy:</strong> prodotto e imbottigliato a Zola Predosa (BO), Italy. Confezione e componenti con istruzioni di raccolta differenziata (cartoncino PAP21 / vetro / alluminio).</li>
+                        <p>
+                            Il pack GINocchi XS è il punto di partenza ideale per tuffarsi nell'abisso di GINocchi. Pensato per 2 o 3 giocatori, questo bundle compatto ti fornisce tutto il necessario per iniziare a giocare, collezionare e, ovviamente, bere.
+                        </p>
+                        <p>
+                            All'interno troverai una selezione casuale di 6 GINocchi, ognuno con la sua personalità, i suoi attacchi e la sua storia da scoprire. Usa i 25 stickers inclusi per creare il tuo campo di battaglia personalizzato su qualsiasi superficie: un tavolo, il pavimento, la schiena di un amico... il limite è la tua sobrietà.
+                        </p>
+                        <p className="font-bold text-white mt-4">Cosa trovi dentro:</p>
+                        <ul className="list-disc list-inside space-y-1 pl-4">
+                            <li><strong className="font-semibold">6 GINocchi casuali:</strong> Sei bottiglie mignon di gin premium da 50ml, ognuna rappresentante un personaggio unico del Gindex. La sorpresa è parte del gioco!</li>
+                            <li><strong className="font-semibold">1 Dado a 6 facce:</strong> L'arbitro imparziale del caos, per decidere le tue mosse e i tuoi attacchi.</li>
+                            <li><strong className="font-semibold">25 Stickers per il tabellone:</strong> Crea la tua arena 5x5 personalizzata. Ogni sticker rappresenta una casella di gioco colorata (Bilanciato, Erbaceo, Fruttato, Speziato).</li>
                         </ul>
+                        <p>
+                            Prepara il gin tonic, schiera i tuoi GINocchi e che la battaglia (e la sbronza) abbia inizio!
+                        </p>
                     </div>
+
                 </div>
             </div>
 
             {/* Spacer for sticky button */}
-            <div className="h-28"></div> 
+            <div className="h-36"></div> 
 
             {/* Sticky "Acquista" Button */}
             <div className="fixed bottom-0 left-0 w-full bg-black/80 backdrop-blur-sm p-4 border-t border-gray-700 z-40">
-                <div className="max-w-md mx-auto">
-                    <Button 
-                        variant="category" 
-                        categoryColor={CATEGORY_COLORS.Bilanciato}
-                        className="w-full !text-black !text-xl"
-                    >
-                        Acquista ora 999,99€
-                    </Button>
+                <div className="max-w-md mx-auto flex flex-col items-center gap-4">
+                    {/* Quantity Selector */}
+                    <div className="flex items-center gap-4">
+                        <span className="font-bold text-white text-lg">Quantità:</span>
+                        <div className="flex items-center border border-gray-600 rounded-lg bg-gray-800">
+                            <button onClick={decrementQuantity} className="p-3 text-white disabled:opacity-50 disabled:cursor-not-allowed" disabled={quantity <= 1} aria-label="Riduci quantità">
+                                <MinusIcon className="w-5 h-5" />
+                            </button>
+                            <span className="w-12 text-center text-xl font-bold text-white tabular-nums">{quantity}</span>
+                            <button onClick={incrementQuantity} className="p-3 text-white disabled:opacity-50 disabled:cursor-not-allowed" disabled={quantity >= 99} aria-label="Aumenta quantità">
+                                <PlusIcon className="w-5 h-5" />
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <a href={purchaseLink} target="_blank" rel="noopener noreferrer" className="block w-full">
+                        <Button 
+                            variant="category" 
+                            categoryColor={CATEGORY_COLORS.Bilanciato}
+                            className="w-full !text-black !text-xl"
+                        >
+                            Acquista ora {totalPrice}€
+                        </Button>
+                    </a>
                 </div>
             </div>
         </div>
