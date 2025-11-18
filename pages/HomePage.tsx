@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
@@ -70,7 +71,7 @@ const HomePage: React.FC = () => {
 
         <Link to="/acquista" className="w-full">
           <Button className={compraButtonStyle}>
-            Compra GINocchi
+            SHOP
           </Button>
         </Link>
 

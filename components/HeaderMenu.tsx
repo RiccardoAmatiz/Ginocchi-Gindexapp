@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { HamburgerIcon } from './icons/HamburgerIcon';
@@ -55,7 +56,7 @@ const HeaderMenu: React.FC = () => {
             <li><Link to="/gindex" className={`${linkBaseStyle} ${gindexStyle}`}>GINDEX</Link></li>
             <li><Link to="/lore" className={`${linkBaseStyle} ${infoStyle}`}>Cos'è <strong>GIN</strong>occhi?</Link></li>
             <li><Link to="/gin" className={`${linkBaseStyle} ${infoStyle}`}>Il Gin</Link></li>
-            <li><Link to="/acquista" className={`${linkBaseStyle} ${compraStyle}`}>Compra GINocchi</Link></li>
+            <li><Link to="/acquista" className={`${linkBaseStyle} ${compraStyle}`}>SHOP</Link></li>
             <li><Link to="/regolamento" className={`${linkBaseStyle} ${regolamentoStyle}`}>Regolamento completo</Link></li>
             <li><Link to="/regolamento-ubriachi" className={`${linkBaseStyle} ${regolamentoStyle}`}>Regolamento per ubriachi</Link></li>
             <li><Link to="/faq" className={`${linkBaseStyle} ${infoStyle}`}>FAQ</Link></li>
