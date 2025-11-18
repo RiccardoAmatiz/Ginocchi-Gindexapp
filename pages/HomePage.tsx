@@ -5,7 +5,6 @@ import Button from '../components/Button';
 import { CATEGORY_COLORS } from '../constants';
 import { useSeo } from '../hooks/usePageMetadata';
 import { InstagramIcon } from '../components/icons/InstagramIcon';
-import { DiscordIcon } from '../components/icons/DiscordIcon';
 import { YoutubeIcon } from '../components/icons/YoutubeIcon';
 
 const HomePage: React.FC = () => {
@@ -95,12 +94,9 @@ const HomePage: React.FC = () => {
       <div className="mt-16 text-center">
         <h2 className="text-xl font-rubik font-bold mb-4 text-white">Seguici miserabile</h2>
         <div className="flex justify-center items-center space-x-6">
-          <div className="cursor-not-allowed opacity-50" title="Instagram (presto disponibile)">
-            <InstagramIcon className="w-10 h-10 text-gray-400" />
-          </div>
-          <div className="cursor-not-allowed opacity-50" title="Discord (presto disponibile)">
-            <DiscordIcon className="w-10 h-10 text-gray-400" />
-          </div>
+          <a href="https://www.instagram.com/ginocchiggc/" target="_blank" rel="noopener noreferrer" title="Seguici su Instagram" className="text-gray-400 hover:text-white transition-colors">
+            <InstagramIcon className="w-10 h-10" />
+          </a>
           <a href="https://www.youtube.com/channel/UCSN8EGoUmmQjxWt14LJtNZg" target="_blank" rel="noopener noreferrer" title="Visita il nostro canale YouTube" className="text-gray-400 hover:text-white transition-colors">
             <YoutubeIcon className="w-10 h-10" />
           </a>
