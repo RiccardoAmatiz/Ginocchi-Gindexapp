@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/Layout';
@@ -16,6 +17,8 @@ import ContattiPage from './pages/ContattiPage';
 import { HeaderUIProvider } from './context/HeaderUIContext';
 import AcquistaPage from './pages/AcquistaPage';
 import XsPackPage from './pages/XsPackPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import CookiePolicyPage from './pages/CookiePolicyPage';
 
 const App: React.FC = () => {
   // Controlla il localStorage nello stato iniziale per evitare sfarfallii
@@ -68,6 +71,8 @@ const App: React.FC = () => {
               <Route path="/contatti" element={<ContattiPage />} />
               <Route path="/acquista" element={<AcquistaPage />} />
               <Route path="/acquista/xs-pack" element={<XsPackPage />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+              <Route path="/cookie-policy" element={<CookiePolicyPage />} />
 
               {/* Redirect legacy ID-based URLs */}
               <Route path="/ginocchio/:id" element={<Navigate to="/" replace />} />

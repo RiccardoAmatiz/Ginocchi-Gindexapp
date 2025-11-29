@@ -1,3 +1,4 @@
+
 import React, { ReactNode, useMemo } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useHeaderUI } from '../context/HeaderUIContext';
@@ -59,7 +60,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     '/regolamento', 
     '/regolamento-ubriachi', 
     '/faq', 
-    '/contatti'
+    '/contatti',
+    '/privacy-policy',
+    '/cookie-policy'
   ];
   const showMenu = pagesWithMenu.includes(location.pathname);
 
@@ -169,8 +172,25 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       {/* Spacer for sticky footer on specific pages */}
       {isXsPackPage && <div className="h-36"></div>}
 
-      <footer className="w-full p-4 text-center text-sm text-gray-500">
-        © {new Date().getFullYear()} <strong className="font-bold">GIN</strong>occhi - GGC
+      <footer className="w-full bg-gray-900 text-gray-400 py-8 px-4 text-center text-xs font-roboto-mono mt-auto">
+        <div className="max-w-4xl mx-auto space-y-4">
+            <p>© 2025 GINocchi – GGC. Tutti i diritti riservati.</p>
+            <p>Mosaico Spirits SRL – P. IVA: IT10767740961 – Viale Regina Margherita 28, 20122 Milano (MI) – info@iltuogin.it</p>
+            <p className="font-bold text-gray-300">Prodotti alcolici destinati esclusivamente a persone maggiorenni. Bevi responsabilmente.</p>
+            
+            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 pt-4 border-t border-gray-800">
+                <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy GINocchi – GGC</Link>
+                <Link to="/cookie-policy" className="hover:text-white transition-colors">Cookie Policy GINocchi – GGC</Link>
+                <a 
+                  href="https://iltuogin.it/terms-and-conditions" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:text-white transition-colors flex items-center justify-center gap-1"
+                >
+                  Termini e condizioni di vendita (iltuogin.it)
+                </a>
+            </div>
+        </div>
       </footer>
     </div>
   );
